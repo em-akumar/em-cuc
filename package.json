@@ -27,7 +27,9 @@
   "ems_config": {
     "project_type": "cuc",
     "index": "./src/index.html",
-    "externals": "commonjs ems",
+    "externals": {
+      "ems": "commonjs ems"
+    },
     "entry": {
       "app": [
         "./src/app/app.module.js"
