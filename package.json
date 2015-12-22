@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/elliemaedev/em-cuc#readme",
   "peerDependencies": {
-    "@emdev/em-swift": "0.1.0"
+    "@emdev/em-swift": "1.0.0"
   },
   "ems_config": {
     "project_type": "cuc",
