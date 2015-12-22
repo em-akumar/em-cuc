@@ -1,0 +1,271 @@
+
+.clearable{
+  background: #fff url(http://i.stack.imgur.com/mJotv.gif) no-repeat right -10px center;
+  border: 1px solid #999;
+  padding: 3px 18px 3px 4px;     /* Use the same right padding (18) in jQ! */
+  border-radius: 3px;
+  transition: background 0.4s;
+}
+.clearable.x  { background-position: right 5px center; } /* (jQ) Show icon */
+.clearable.onX{ cursor: pointer; }              /* (jQ) hover cursor style */
+.clearable::-ms-clear {display: none; width:0; height:0;} /* Remove IE default X */
+
+/* override default input label */
+.em-text-label {
+    color: @black;
+    max-width: @text-line-max-width;
+    font-size: @font-size-small;
+    font-weight: 400;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.em-top-align {
+    margin-top: 0;
+    padding-top: 0;
+}
+/* common input box properties */
+.em-input-text(@fontSize) {
+    font-family: @font-family-base;
+    font-size: @fontSize;
+    box-shadow: inset 0px 1px 0px 0px rgba(red(@gray-warm-darker), green(@gray-warm-darker), blue(@gray-warm-darker), 0.40);
+    border: 1px solid @input-field-default-border-color;
+    background-color: @input-field-default-background;
+    box-sizing: border-box;
+    .rounded_shape(@input-field-border-radius);
+}
+
+/* override default input text box */
+input[type="text"], input[type="password"] {
+    height: @input-field-height;
+    padding: 0px 8px;
+    vertical-align: middle;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    outline: none;
+    .em-input-text(@font-size-base);
+}
+
+/*override default input textbox hover, focus, and active states */
+input[type="text"]:hover, input[type="text"]:active, input[type="text"]:focus {
+    border: 1px solid @input-field-hover-border-color;
+    box-shadow: 0px 0px 0px 2px @input-field-hover-outer-border-color;
+}
+
+/*override input box disabled  and readonly*/
+input[disabled], input[readonly], input[type="text"]:disabled, input[type="text"]:readonly, input[disabled]:hover, input[disabled]:focus, input[disabled]:active, input[readonly]:hover, input[readonly]:active, input[readonly]:focus{
+    background-color: @input-field-disabled-background-color;
+    border: 1px solid @input-field-disabled-border-color;
+    box-shadow: none;
+}
+input[type="text"] {
+color:#000000;
+}
+
+/* added restricted business rule */
+input[data-restricted=true],input[data-restricted=true]:hover {
+    background-color: @input-field-disabled-background-color!important;
+    border: 1px solid @input-field-disabled-border-color!important;
+    box-shadow: none!important;
+    -webkit-text-security: none;
+    -webkit-text-security: circle;
+    -webkit-text-security: square;
+    -webkit-text-security: disc; /* Default */
+}
+
+/*Need extra class to disabled label */
+.em-label-disabled {
+  label {
+    color: @gray-warm-dark;
+  }
+}
+
+/*Override BS  has error class */
+.has-error .form-control, .has-error .form-control:focus, .has-error .form-control:hover {
+    border: 1px solid @input-field-error-inside-border;
+    -webkit-box-shadow: 0px 0px 0px 2px  @input-field-error-outside-border;
+    box-shadow: 0px 0px 0px 2px  @input-field-error-outside-border;
+}
+
+/* Additional class to add required style for asterisk*/
+.em-astRequired {
+    color: @input-label-required-color;
+}
+
+// label position right
+.form-group.em-lbl-right {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: flex-start;
+    label {
+        margin-left: 10px;
+    }
+}
+
+/* Extra classes for making different size of input box */
+.form-control.em-txt-ex-sm {
+    width: @input-field-size-extra-small;
+}
+.form-control.em-txt-sm {
+    width: @input-field-size-small;
+}
+.form-control.em-txt-md, .em-lbl-md {
+    width: @input-field-size-medium;
+}
+.form-control.em-txt-lg {
+    width: @input-field-size-large;
+}
+.form-control.em-txt-flex {
+    width: @input-field-size-flexible;
+}
+.form-control.em-txt-height-sm {
+    height: @input-field-smaller-height;
+}
+
+// label position left
+.form-group.em-lbl-left, .input-group.em-lbl-left {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: flex-start;
+    label {
+        margin-right: 10px;
+    }
+}
+
+/* override input icon button BS class*/
+.input-group-addon {
+    border-weight: 1px;
+    height: 32px;
+    border-color: @gray-warm-darker;
+    background-color: @white;
+}
+.input-group-addon.em-lock {
+    color: @blue-base;
+    background: url("../../assets/images/icon-lock-unlocked-default.svg") center center no-repeat;
+    padding: 10px 15px;
+    background-size: 40%;
+}
+
+.input-group-addon.em-hide-password {
+    color: @blue-base;
+    background: url("../../assets/images/icon-visibility-true-active.svg") center center no-repeat;
+    padding: 10px 15px;
+    background-size: 60%;
+    border-left: 1px solid transparent;
+}
+
+.input-group-addon.em-show-password {
+    color: @blue-base;
+      background: url("../../assets/images/icon-visibility-false-active.svg") center center no-repeat;
+    padding: 10px 15px;
+    background-size: 60%;
+    border-left: 0px solid transparent;
+}
+
+.form-control.em-no-left-border {
+    border-right: 1px solid transparent;
+    box-shadow: none;
+    padding: 0px;
+}
+
+.form-control.em-text-right {
+    text-align: right;
+}
+
+.form-control.em-no-right-border {
+    border-left: 1px solid transparent;
+    box-shadow: none;
+}
+
+  .em-label-TextBox{
+    label{
+      color: @black;
+      max-width: @text-line-max-width;
+      font-size: @font-size-small;
+      font-weight: 400;
+      margin-bottom: 5px;
+      display: block;
+    }
+    // label position right
+    .em-lbl-right {
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: flex-start;
+      label {
+        margin-left: 10px;
+      }
+    }
+
+    // label position left
+    .em-lbl-left {
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: flex-start;
+      vertical-align: top;
+      label {
+        margin-right: 10px;
+      }
+    }
+
+    .em-helper-text{
+      margin-top: 10px;
+      color: lightgray;
+      font-size: 11px;
+      font-weight: normal;
+    }
+
+  }
+.em-txt-dollar,.em-txt-percent,.em-txt-month {
+  position: relative;
+  }
+
+.em-txt-dollar{
+  span.addon{
+  position: absolute;
+  transform: translate(0,-50%);
+  top:50%;
+  pointer-events:none;
+  margin-left:0.2em;
+}
+  input[type="text"]{
+    padding-left: 14px;
+  }
+}
+.em-txt-percent{
+  span.addon {
+    position: absolute;
+    transform: translate(0, -50%);
+    top: 50%;
+    pointer-events: none;
+    right: 0.2em;
+  }
+  input[type="text"]{
+    padding-right: 1.8em;
+    text-align: right;
+  }
+}
+.em-txt-month {
+  span.addon {
+    position: absolute;
+    transform: translate(0, -50%);
+    top: 50%;
+    pointer-events: none;
+    right: 0.2em;
+  }
+  input[type="text"]{
+    padding-right: 4.8em;
+    text-align: right;
+  }
+}
+
+.input-group-addon.em-lock-right-addon {
+    right: 0;
+    position: absolute;
+    color: @blue-base;
+    background: url("../../assets/images/icon-lock-unlocked-default.svg") center center no-repeat;
+    padding: 10px 15px;
+    background-size: 40%;
+  z-index: 999;
+}

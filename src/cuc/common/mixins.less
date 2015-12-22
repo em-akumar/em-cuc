@@ -1,0 +1,97 @@
+@import "variables.less";
+@import "typography.less";
+
+.box_shadow (...) {
+    -webkit-box-shadow: @arguments;
+    -moz-box-shadow:    @arguments;
+    box-shadow:         @arguments;
+}
+
+.rounded_shape(@radius:@defaultRadius){
+    -webkit-border-radius:@radius;
+    -moz-border-radius:@radius;
+    border-radius:@radius;
+}
+.box_sizing (@type: border-box) {
+    -webkit-box-sizing: @type;
+    -moz-box-sizing:    @type;
+    box-sizing:         @type;
+}
+
+.gradient(@startColor, @endColor) {
+  background: -moz-linear-gradient(top, @startColor, @endColor);
+  background: -ms-linear-gradient(top, @startColor, @endColor);
+  background: -o-linear-gradient(top, @startColor, @endColor);
+  background: -webkit-linear-gradient(top, @startColor, @endColor);
+  background-color: @startColor;
+}
+
+.gradient_dual(@startTopColor, @StartTopEndColor, @BottomTopColor, @BottomEndEndColor) {
+  background: -moz-linear-gradient(top, @startTopColor 0%, @StartTopEndColor 50%, @BottomTopColor 51%, @BottomEndEndColor 100%);
+  background: -ms-linear-gradient(top, @startTopColor 0%, @StartTopEndColor 50%, @BottomTopColor 51%, @BottomEndEndColor 100%);
+  background: -o-linear-gradient(top, @startTopColor 0%, @StartTopEndColor 50%, @BottomTopColor 51%, @BottomEndEndColor 100%);
+  background: -webkit-linear-gradient(top, @startTopColor 0%, @StartTopEndColor 50%, @BottomTopColor 51%, @BottomEndEndColor 100%);
+  background-color: @startTopColor;
+}
+
+.transform(@degree) {
+    -moz-transform: rotate(@degree);
+    -webkit-transform: rotate(@degree);
+    -o-transform: rotate(@degree);
+    -ms-transform: rotate(@degree);
+}
+
+
+//Mixin to support different states(specific to container properties) such as default,hover,active.This part is expected
+//to get modified/enhanced later
+.controlContainer(@borderWidth, @borderStyle, @borderColor, @borderTopLeftRadius, @borderTopRightRadius, @borderBottomRightRadius,
+@borderBottomLeftRadius, @boxShadowTop, @boxShadowRight, @boxShadowBottom, @boxShadowLeft, @backgroundColor){
+  border : @borderWidth @borderStyle @borderColor;
+  border-radius:@borderTopLeftRadius @borderTopRightRadius @borderBottomRightRadius @borderBottomLeftRadius;
+  box-shadow: @boxShadowTop @boxShadowRight @boxShadowBottom @boxShadowLeft ;
+  background-color: @backgroundColor;
+}
+
+//Mixin to support different states(specific to control's text) such as default,hover,active.This part is expected to get
+//modified/enhanced later
+.controlText(@fontSize, @font, @fontColor, @textAlign, @verticalAlign){
+  font-size: @fontSize;
+  font: @font;
+  color: @fontColor;
+  text-align: @textAlign;
+  vertical-align: @verticalAlign;
+}
+
+//common placeholder
+::-webkit-input-placeholder,:-moz-placeholder, :-ms-input-placeholder{
+    color: @text-input-placeholder;
+    font-size: @font-size-base;
+    font-weight: lighter;
+}
+
+/* common button properties */
+.em-button-text(@fontSize){
+  font-size: @fontSize;
+  font: @font-family-base;
+  font-color: @white;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 5px;
+  .rounded_shape(@text-button-border-radius);
+}
+.em-button-var-width(@width){
+  height:@text-button-height-medium;
+  max-height: @text-button-height-medium;
+  width:@width;
+  min-width:@width;
+}
+.em-button-var-height(@height){
+  height:@height;
+  min-height: @height;
+  max-width: @text-button-width-medium;
+  width:@text-button-width-medium;
+}
+
+.em-button-color-text(@textColor){
+  color: @textColor;
+}

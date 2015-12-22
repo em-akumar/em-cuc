@@ -1,0 +1,56 @@
+{
+  "name": "@emdev/em-cuc",
+  "version": "0.1.25",
+  "description": "Ellie Mae EmCuc Development",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elliemaedev/em-cuc.git"
+  },
+  "keywords": [
+    "Ellie",
+    "Mae",
+    "EmCuc",
+    "Development"
+  ],
+  "author": "EllieMae Development <jaspal.kamboj@elliemae.com> (http://elliemae.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/elliemaedev/em-cuc/issues"
+  },
+  "homepage": "https://github.com/elliemaedev/em-cuc#readme",
+  "peerDependencies": {
+    "@emdev/em-swift": "0.1.0"
+  },
+  "ems_config": {
+    "project_type": "cuc",
+    "index": "./src/index.html",
+    "externals": "commonjs ems",
+    "entry": {
+      "app": [
+        "./src/app/app.module.js"
+      ],
+      "cuc": [
+        "./src/cuc/cuc.js"
+      ],
+      "cuc.angular": [
+        "./src/cuc/cuc.angular.js"
+      ],
+      "cuc.grid": [
+        "./src/cuc/cuc.grid.js"
+      ],
+      "cuc.ui.bootstrap": [
+        "./src/cuc/cuc.ui.bootstrap.js"
+      ]
+    }
+  },
+  "devDependencies": {
+    "@emdev/em-swift": "0.1.0",
+    "bootstrap": "3.3.6",
+    "angular": "1.4.8",
+    "angular-ui-bootstrap": "0.14.3",
+    "angular-ui-grid": "3.0.7"
+  }
+}

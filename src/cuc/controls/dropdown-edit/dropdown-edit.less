@@ -1,0 +1,220 @@
+.em-dropdown-edit{
+  position: relative;
+  .input-group{
+    display:inline;
+  }
+  &.completed {
+   // border: 1px solid @dropdown-edit-completed-border-color;
+    color: @dropdown-edit-completed-text-color;
+    border-radius: @dropdown-edit-border-radius;
+  }
+
+  label{
+    color:@black;
+    max-width: @text-line-max-width;
+    font-size: @font-size-small;
+    margin-bottom: 3px;
+    display: block;
+  }
+
+  .em-combobox{
+      &.readonly{
+          background-color: @dropdown-edit-readonly-background-color;
+          border: 1px solid @dropdown-edit-readonly-border-color;
+          border-radius: @dropdown-edit-border-radius;
+          box-shadow: none;
+          cursor: default;
+          pointer-events: none;
+      }
+      &.restricted{
+          background-color: @dropdown-edit-restricted-background-color;
+          border: 1px solid @dropdown-edit-restricted-border-color;
+          color: @dropdown-edit-restricted-text-color;
+          border-radius: @dropdown-edit-border-radius;
+          box-shadow: none;
+          cursor: default;
+          pointer-events: none;
+      }
+      &disabled{
+          background-color: @dropdown-edit-disabled-background-color;
+          border: 1px solid @dropdown-edit-disabled-border-color;
+          box-shadow: none;
+          pointer-events: none;
+      }
+      &.error{
+          border: 1px solid @dropdown-error-inside-border;
+          box-shadow: 0 0 0 2px @dropdown-error-outside-border;
+          border-radius: @dropdown-edit-border-radius;
+      }
+  }
+
+  .btn {
+    background-color: @dropdown-edit-default-background;
+    border-color: @dropdown-edit-default-border-color;
+    border-radius: @dropdown-edit-border-radius;
+    height: @text-button-height-medium;
+     padding: @dropdown-list-item-highlight-padding;
+    text-align: left;
+    .caret{
+      float: right;
+      color: @dropdown-edit-default-icon-color;
+      cursor: hand;
+    }
+
+    &:hover {
+      background-color: @dropdown-edit-hover-background-color;
+      border: 1px solid @dropdown-edit-hover-border-color;
+      box-shadow: 0 0 0 2px @dropdown-edit-hover-outer-border-color;
+      color: @dropdown-edit-hover-text-color;
+    }
+    &.readonly{
+      background-color: @dropdown-edit-readonly-background-color;
+      border: 1px solid @dropdown-edit-readonly-border-color;
+      border-radius: @dropdown-edit-border-radius;
+      box-shadow: none;
+      cursor: default;
+      pointer-events: none;
+      .caret{
+        color: @dropdown-edit-disabled-arrow-color;
+      }
+    }
+    &.restricted {
+      background-color: @dropdown-edit-restricted-background-color;
+      border: 1px solid @dropdown-edit-restricted-border-color;
+      color: @dropdown-edit-restricted-text-color;
+      border-radius: @dropdown-edit-border-radius;
+      box-shadow: none;
+      pointer-events: none;
+      cursor: default;
+      .caret{
+        color: @dropdown-edit-disabled-arrow-color;
+      }
+    }
+    &.disabled {
+      background-color: @dropdown-edit-disabled-background-color;
+      border: 1px solid @dropdown-edit-disabled-border-color;
+      box-shadow: none;
+      pointer-events: none;
+      .caret{
+        color: @dropdown-edit-disabled-arrow-color;
+      }
+    }
+    &.error {
+      border: 1px solid @dropdown-error-inside-border;
+      box-shadow: 0 0 0 2px @dropdown-error-outside-border;
+      border-radius: @dropdown-edit-border-radius;
+    }
+  }
+
+  .large {
+    width:@dropdown-edit-size-large;
+  }
+  .small {
+    width: @dropdown-edit-size-small;
+  }
+  .medium {
+    width: @dropdown-edit-size-medium;
+  }
+  .xs {
+    width:@dropdown-edit-size-extra-small;
+  }
+  .flexible-width {
+    width: calc(~'100% - 30px');
+  }
+
+  ul.dropdown-menu {
+    background-color: @dropdown-edit-default-background;
+    border: 1px solid @dropdown-edit-default-border-color;
+    box-shadow: @dropdown-edit-inner-shadow;
+    border-radius: @dropdown-edit-border-radius;
+    padding:@dropdown-edit-item-panel-padding;
+    &.large {
+      width:@dropdown-edit-size-large+30px;
+    }
+    &.small {
+      width:@dropdown-edit-size-small+30px;
+    }
+    &.medium {
+      width:@dropdown-edit-size-medium+30px;
+    }
+    &.xs {
+      width:@dropdown-edit-size-extra-small+30px;
+    }
+    &.flexible-width {
+      width: 100%;
+    }
+    li {
+       padding:@dropdown-list-item-highlight-padding;
+
+    /*  .em-circle {
+        width: @dropdown-edit-item-icon-width;
+        height: @dropdown-edit-item-icon-width;
+        background: @dropdown-edit-item-icon-color;
+        -moz-border-radius: @dropdown-edit-item-icon-radius;
+        -webkit-border-radius: @dropdown-edit-item-icon-radius;
+        border-radius: @dropdown-edit-item-icon-radius;
+        float:left;
+        margin-top: @dropdown-edit-item-margin-top;
+        margin-right:@dropdown-edit-item-margin-right;
+      }
+    */
+      .em-left-icon{
+        width: @dropdown-edit-item-icon-width;
+        height: @dropdown-edit-item-icon-width;
+        float:left;
+        margin-top: @dropdown-edit-item-margin-top;
+        margin-right:@dropdown-edit-item-margin-right;
+        //padding-right: @dropdown-combo-panel-padding-right;
+      }
+      .em-right-icon{
+        width: @dropdown-edit-item-icon-width;
+        height: @dropdown-edit-item-icon-width;
+        float:right;
+        margin-top: @dropdown-edit-item-margin-top;
+      }
+     /* span.em-img-combobox{
+         background: url("../../assets/images/icon-lock-locked-locked.svg") no-repeat right center;
+         width: @dropdown-edit-item-icon-width;
+         height:@dropdown-edit-item-icon-width;
+         float:right;
+         margin-top: @dropdown-edit-item-margin-top;
+
+      }*/
+        &:focus, &:hover {
+            background-color: @dropdown-list-item-highlight-color;
+        }
+        &:active {
+            background-color: @dropdown-edit-active-background-color;
+            color: @dropdown-panel-active-text-color;
+        }
+        &.disabled {
+            color: @dropdown-panel-disabled-text-color;
+            pointer-events: none;
+        }
+    }
+
+
+    li > a {
+      font-size: @font-size-base;
+      font: @font-family-base;
+      color: @black;
+      text-align: left;
+      vertical-align: middle;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      cursor: pointer;
+      cursor: hand;
+      display:block;
+        &:focus, &:hover {
+            background-color: @dropdown-list-item-highlight-color;
+        }
+        &:active {
+            background-color: @dropdown-panel-active-background-color;
+            color: @dropdown-panel-active-text-color;
+        }
+        &.disabled {
+            color: @dropdown-panel-disabled-text-color;
+        }
+    }
+  }
+}

@@ -1,0 +1,160 @@
+/**********************************
+     Logic Input Field Styles
+**********************************/
+.em-logic-input-field{
+  position: relative;
+  &.em-txt-ex-sm {
+    width: @input-field-size-extra-small;
+    .input-group input{
+      width: @input-field-size-extra-small;
+    }
+  }
+  &.em-txt-sm {
+    width: @input-field-size-small;
+    .input-group input{
+      width: @input-field-size-small;
+    }
+  }
+  &.em-txt-md {
+    width: @input-field-size-medium;
+    .input-group input{
+      width: @input-field-size-medium;
+    }
+  }
+  &.em-txt-lg {
+    width: @input-field-size-large;
+    .input-group input{
+      width: @input-field-size-large;
+    }
+  }
+  &.em-txt-flex {
+    width: @input-field-size-flexible;
+    .input-group input{
+      width: @input-field-size-flexible;
+    }
+  }
+  label {
+    color: @black;
+    max-width: @text-line-max-width;
+    font-size: @font-size-small;
+    font-weight: 400;
+    margin-bottom: 5px;
+    display: block;
+    &.disabled,&.readonly {
+      color: @gray-warm-dark;
+    }
+  }
+  // label position right
+  .em-lbl-right {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: flex-start;
+    margin-bottom: 0;
+    label {
+      margin-left: 10px;
+    }
+  }
+  // label position left
+  .em-lbl-left {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: flex-start;
+    vertical-align: top;
+    margin-bottom: 0;
+    label {
+      margin-right: 10px;
+    }
+  }
+
+  .btn.operators{
+    line-height: 10px;
+  }
+
+  .input-group input{
+    &:hover, &:active {
+      z-index: 3;
+    }
+    &:disabled, &[readonly] {
+      background-color: @input-field-disabled-background-color;
+      border:1px solid @input-field-disabled-border-color;
+      box-shadow: none;
+    }
+    &[readonly]:hover, &[readonly]:active, &[readonly]:focus,
+    &:disabled:hover, &:disabled:active, &:disabled:focus {
+      background-color: @input-field-disabled-background-color;
+      border:1px solid @input-field-disabled-border-color;
+      box-shadow: none;
+    }
+
+  }
+  .input-group-btn {
+    &:first-child>.btn, &:first-child>.btn-group {
+      background-color: @input-field-button-default-background;
+      border: 1px solid @input-field-default-border-color;
+      border-top-left-radius: @input-field-border-radius;
+      border-bottom-left-radius: @input-field-border-radius;
+      height: @input-field-height;
+      width: @input-field-height;
+      z-index: 3;
+      outline: none;
+
+      &:hover, &:active, &:focus {
+        border: 1px solid @input-field-hover-border-color;
+        box-shadow: 0 0 0 2px @input-field-hover-outer-border-color;
+        color: @input-field-button-icon-hover-color;
+      }
+      &.operators {
+        background: url("../../assets/images/icon-logic-default.svg") no-repeat center;
+
+        &:active {
+          background: url("../../assets/images/icon-logic-active.svg") no-repeat center;
+        }
+      }
+      &.readonly {
+        background-color: @input-field-disabled-background-color;
+        border: 1px solid @input-field-disabled-border-color;
+        box-shadow: none;
+        cursor: default;
+
+        &.operators {
+          background: url("../../assets/images/icon-logic-read-only-locked.svg") no-repeat center;
+        }
+      }
+      &.disabled {
+        background-color: @input-field-disabled-background-color;
+        border: 1px solid @input-field-disabled-border-color;
+        box-shadow: none;
+        cursor: not-allowed;
+
+        &.operators {
+          background: url("../../assets/images/icon-logic-disabled.svg") no-repeat center;
+        }
+      }
+      &[readonly]:hover, &[readonly]:active, &[readonly]:focus,
+      &:disabled:hover, &:disabled:active, &:disabled:focus {
+        background-color: @input-field-disabled-background-color;
+        border:1px solid @input-field-disabled-border-color;
+        box-shadow: none;
+      }
+    }
+  }
+  .dropdown-menu {
+    background-color: @dropdown-default-background;
+    border-color: @dropdown-default-border-color;
+    border-radius: @dropdown-border-radius;
+    padding: @dropdown-default-padding;
+    min-width: @input-field-size-extra-small;
+
+    & > li > a {
+      font-size: @font-size-base;
+      font-family: @font-family-base;
+      color: @dropdown-default-text-color;
+      text-align: center;
+      padding: 0;
+
+      &:hover {
+        background-color: #e4e7e9;
+      }
+    }
+  }
+}

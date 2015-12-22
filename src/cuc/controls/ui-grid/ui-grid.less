@@ -1,0 +1,272 @@
+@import '../../common/variables.less';
+@import (less) '~angular-ui-grid/ui-grid.css';
+
+@arrowImgUrl: url("../../assets/images/icon-chevron-down-active-blue-dark.svg");
+
+.position-of-triangle-in-button(){
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}
+
+//FOR SIMPLE UI GRID
+.em-simple-grid{
+  .ui-grid-row {
+    .ng-isolate-scope{
+      .ui-grid-cell{
+        height: @simple-grid-header-row-container-height !important;
+        border-bottom: 1px solid @table-header-row-column-separator;
+        background-color: @simple-grid-body-row-cell-background-color;
+        .ui-grid-cell-contents {
+          padding: 9px 10px 8px 15px;
+          font-size: @simple-grid-body-row-font-size;
+          font-family: @simple-grid-body-row-font-family;
+          color: @simple-grid-body-row-font-color;
+          text-align: left;
+          vertical-align: middle;
+        }
+      }
+    }
+    &:nth-child(odd) .ui-grid-cell {
+      background-color: @simple-grid-body-row-cell-background-color;
+    }
+    &:nth-child(even) .ui-grid-cell {
+      background-color: @simple-grid-body-row-cell-background-color;
+    }
+  }
+
+  .ui-grid-cell {
+    border-right: @none;
+  }
+  .ui-grid-cell-contents {
+    i {
+      width: @table-header-row-sort-icon-width;
+      vertical-align: middle;
+      &.ui-grid-icon-up-dir{
+        content:@arrowImgUrl;
+        transform: rotate(180deg);
+      }
+      &.ui-grid-icon-down-dir{
+        content: @arrowImgUrl;
+      }
+    }
+    sub{
+      visibility: hidden;
+    }
+  }
+
+  .ui-grid-header{
+    width: @simple-grid-header-row-container-width;
+    .ui-grid-header-cell{
+      background-color: @simple-grid-header-row-cell-background-color;
+      padding: @simple-grid-header-row-cell-padding;
+      border: @none;
+      font-size: @simple-grid-header-row-font-size;
+      font-family: @simple-grid-header-row-font-family;
+      color: @simple-grid-header-row-font-color;
+      text-align: left;
+      vertical-align: middle;
+    }
+    .ui-grid-icon-angle-down{
+      display: @none;
+    }
+  }
+  .ui-grid-top-panel {
+    background: @none; // To clear out gradient properties
+    background-color: @table-header-row-background-color;
+    min-height: @table-header-row-height;
+  }
+}
+
+//For complex grid  --- TODo: need to work on it
+.em-complex-grid{
+  .ui-grid-row {
+    height: @simple-grid-header-row-container-height !important;
+    .ng-isolate-scope{
+      .ui-grid-cell{
+        height: @simple-grid-header-row-container-height !important;
+        border-bottom: 1px solid @table-header-row-column-separator;
+        background-color: @simple-grid-body-row-cell-background-color;
+        .ui-grid-cell-contents {
+          padding: 9px 10px 8px 15px;
+          font-size: @simple-grid-body-row-font-size;
+          font-family: @simple-grid-body-row-font-family;
+          color: @simple-grid-body-row-font-color;
+          text-align: left;
+          vertical-align: middle;
+        }
+      }
+    }
+    &:nth-child(odd) .ui-grid-cell {
+      background-color: @simple-grid-body-row-cell-background-color;
+    }
+    &:nth-child(even) .ui-grid-cell {
+      background-color: @simple-grid-body-row-cell-background-color;
+    }
+  }
+
+  .ui-grid-cell {
+    border-right: @none;
+  }
+  .ui-grid-cell-contents {
+    i {
+      width: @table-header-row-sort-icon-width;
+      vertical-align: middle;
+      &.ui-grid-icon-up-dir{
+        content:@arrowImgUrl;
+        transform: rotate(180deg);
+      }
+      &.ui-grid-icon-down-dir{
+        content: @arrowImgUrl;
+      }
+    }
+    sub{
+      visibility: hidden;
+    }
+  }
+
+  .ui-grid-header{
+    width: @simple-grid-header-row-container-width;
+    .ui-grid-header-cell{
+      background-color: @simple-grid-header-row-cell-background-color;
+      padding: 0 10px 0 0;
+      border: @none;
+      font-size: @simple-grid-header-row-font-size;
+      font-family: @simple-grid-header-row-font-family;
+      color: @simple-grid-header-row-font-color;
+      text-align: left;
+      vertical-align: middle;
+    }
+    .ui-grid-icon-angle-down{
+      display: @none;
+    }
+  }
+  .ui-grid-top-panel {
+    background: @none; // To clear out gradient properties
+    background-color: @table-header-row-background-color;
+    min-height: @table-header-row-height;
+    .ui-grid-header-cell-wrapper{
+      padding-left: 10px;
+    }
+  }
+  .ui-grid-filter-container{
+    padding: 4px 10px 4px 4px;
+  }
+}
+
+//For pagination in grid
+
+.em-complex-grid{
+  .ui-grid-pager-panel{
+    font: @font-family-base;
+    font-size: @pagination-font-size;
+    color: @pagination-font-color;
+    padding: @pagination-font-padding;
+    text-align: center;
+    vertical-align: middle;
+
+    //Pager Control
+    .ui-grid-pager-container{
+      float: right;
+      .ui-grid-pager-control{
+        float: right;
+        border-left: 1px solid #efefef;
+        margin-top: 3px;
+        .ui-grid-pager-first, .ui-grid-pager-last{
+          //color: @pagination-hover-icon-background-color;
+          //height: @pagination-hover-icon-background-height;
+          //width: @pagination-hover-icon-background-width;
+          //border-radius: @pagination-hover-icon-background-radius;
+          display: @none;
+        }
+        .ui-grid-pager-previous, .ui-grid-pager-next{
+          color: @pagination-hover-icon-background-color;
+          height: @pagination-hover-icon-background-height;
+          width: @pagination-hover-icon-background-width;
+          border-radius: @pagination-hover-icon-background-radius;
+        }
+        .first-triangle, .prev-triangle{
+          .position-of-triangle-in-button;
+          border-color: transparent  @pagination-icon-arrow-color transparent transparent;
+        }
+        .last-triangle, .next-triangle{
+          .position-of-triangle-in-button;
+          margin-left: 2px;
+          border-color: transparent transparent transparent @pagination-icon-arrow-color;
+        }
+        button{
+          position: relative;
+          background: transparent;
+          min-width: @pagination-hover-background-width;
+          border-radius: @pagination-hover-background-width;
+          border: @none;
+          padding: 0;
+          &:hover{
+            background-color: @gray-warm-light;
+          }
+          &[disabled]{
+            cursor: pointer;
+          }
+        }
+        input{
+          //border: @none;
+          box-shadow: @none;
+          padding: 2px 0px 2px 5px;
+          line-height: 1.3;
+          height: 20px;
+          width:40px;
+          //direction: rtl; //Optional to keep current page number closer to '/100'
+          &:focus, &:active, &:hover {
+            //width: auto;
+            border: 1px solid #cccccc;
+            border-radius: 2px;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+            //direction: ltr; // Make it normal
+          }
+          &::-webkit-inner-spin-button,
+          &::-webkit-outer-spin-button{
+            opacity: 1;
+          }
+        }
+      }
+    }
+    //Rows per page select
+    .ui-grid-pager-row-count-picker{
+      margin-top: 3px;
+      margin-right: 10px;
+      select{
+        border: @none;
+        box-shadow: @none;
+        padding: 2px 0px;
+        line-height: 1.3;
+        height: 20px;
+        width: auto;
+        -webkit-appearance: none;
+        &:focus, &:active, &:hover {
+
+        }
+      }
+      &:after{
+        content: '';
+        width: 0;
+        top: 10px;
+        position: absolute;
+        height: 0;
+        border-style: solid;
+        border-width: 8px 6.5px 0;
+        border-color: #0060a0 transparent transparent;
+        line-height: 0;
+        _border-color: #0060a0 #000000 #000000 #000000;
+        _filter: progid:DXImageTransform.Microsoft.Chroma(color='#000000');
+      }
+    }
+
+    //Pager Counter
+    .ui-grid-pager-count-container{
+      .ui-grid-pager-count{
+
+      }
+    }
+  }
+}

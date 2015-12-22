@@ -1,0 +1,94 @@
+
+.em-icon-duplicate-file{
+    background-image: url("../../assets/images/icon-duplicate-file-default.svg");
+    &:active{
+        background-image: url("../../assets/images/icon-duplicate-file-active.svg");
+    }
+    &:hover{
+        background-image: url("../../assets/images/icon-duplicate-file-hover.svg");
+    }
+    &[disabled], &[disabled]:hover{
+        background-image: url("../../assets/images/icon-duplicate-file-disabled.svg");
+    }
+	&:after{
+    display:none;
+    content: url("../../assets/images/icon-duplicate-file-hover.svg")
+	url("../../assets/images/icon-duplicate-file-active.svg");
+	}
+}
+
+.em-icon-move-file{
+    background-image: url("../../assets/images/icon-move-file-default.svg");
+    &:active{
+        background-image: url("../../assets/images/icon-move-file-active.svg");
+    }
+    &:hover{
+        background-image: url("../../assets/images/icon-move-file-hover.svg");
+    }
+    &[disabled], &[disabled]:hover{
+        background-image: url("../../assets/images/icon-move-file-disabled.svg");
+    }
+	&:after{
+    display:none;
+    content: url("../../assets/images/icon-move-file-hover.svg")
+	url("../../assets/images/icon-move-file-active.svg");
+	}
+}
+.em-icon-print{
+    background-image: url("../../assets/images/icon-print-default.svg");
+    &:active{
+        background-image: url("../../assets/images/icon-print-active.svg");
+    }
+    &:hover{
+        background-image: url("../../assets/images/icon-print-hover.svg");
+    }
+    &[disabled], &[disabled]:hover{
+        background-image: url("../../assets/images/icon-print-disabled.svg");
+    }
+	&:after{
+    display:none;
+    content: url("../../assets/images/icon-print-hover.svg")
+	url("../../assets/images/icon-print-active.svg");
+	}
+}
+.em-icon-trash{
+    background-image: url("../../assets/images/icon-trash-default.svg");
+    &:active{
+        background-image: url("../../assets/images/icon-trash-active.svg");
+    }
+    &:hover{
+        background-image: url("../../assets/images/icon-trash-hover.svg");
+    }
+    &[disabled]{
+        background-image: url("../../assets/images/icon-trash-disabled.svg");
+    }
+    &[disabled]:hover {
+        background-image: url("../../assets/images/icon-trash-disabled.svg");
+    }
+	&:after{
+    display:none;
+    content: url("../../assets/images/icon-trash-hover.svg")
+	url("../../assets/images/icon-trash-active.svg");
+	}
+}
+.em-icon{
+    border: 0px;
+    background-repeat: no-repeat;
+    padding:0px;
+}
+.em-icon-sm{
+    width: @image-button-small;
+    height: @image-button-small;
+}
+.em-icon-md{
+	width: @image-button-medium;
+	height: @image-button-medium;
+}
+.em-icon-lg{
+	width: @image-button-large;
+	height: @image-button-large;
+}
+.em-icon-xl{
+	width: @image-button-larger;
+	height: @image-button-larger;
+}
