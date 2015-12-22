@@ -1,3 +1,4 @@
+/* eslint-disable */
 var FileUpload = function (el, opts) {
 
   let uploadStack = [], // upload file item store array

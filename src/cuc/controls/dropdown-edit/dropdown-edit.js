@@ -1,3 +1,4 @@
+/* eslint-disable */
 class DropdownEdit {
   constructor(element, options = {}) {
     this.mainParent = typeof element === 'object' ? element : document.querySelector(element);

@@ -1,3 +1,4 @@
+/* eslint-disable */
 class ProgressBar {
     constructor(el, options = {}) {
         this.mailEl = (typeof el === 'object') ? el : document.getElementById(el);

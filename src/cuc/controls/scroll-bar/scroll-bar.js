@@ -1,3 +1,4 @@
+/* eslint-disable */
 class Scrollbar {
 
     constructor(n) {

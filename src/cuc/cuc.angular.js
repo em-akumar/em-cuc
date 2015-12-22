@@ -1,3 +1,4 @@
+/* eslint-disable */
 import {angular} from 'ems';
 import * as emc from './cuc';
 

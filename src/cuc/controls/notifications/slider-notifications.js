@@ -1,3 +1,4 @@
+/* eslint-disable */
 class SliderNotifications {
 
   constructor(options = {}) {

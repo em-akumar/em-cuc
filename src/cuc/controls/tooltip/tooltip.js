@@ -1,3 +1,4 @@
+/* eslint-disable */
 class Tooltip {
   constructor(element, options) {
     this.link = typeof element === 'object' ? element : document.querySelector(element);

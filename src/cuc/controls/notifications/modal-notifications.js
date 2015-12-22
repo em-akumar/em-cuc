@@ -1,3 +1,4 @@
+/* eslint-disable */
 class ModalNotifications {
 
   constructor(element, options) {

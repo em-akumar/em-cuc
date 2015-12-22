@@ -1,3 +1,4 @@
+/* eslint-disable */
 class LabelTextAreaInputField{
 
     constructor(element, options){

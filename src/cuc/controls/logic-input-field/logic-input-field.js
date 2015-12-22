@@ -1,3 +1,4 @@
+/* eslint-disable */
 class LogicInput {
 constructor(elementId,options ={}) {
     this.element = typeof elementId === "object"? elementId : document.querySelector(elementId);

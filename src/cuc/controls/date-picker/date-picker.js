@@ -1,3 +1,4 @@
+/* eslint-disable */
 class DatePicker {
 
   constructor(element, options={}){
@@ -309,7 +310,7 @@ class DatePicker {
             cell.className += " disabled";
           }
         }
-        
+
         var currentcell = this.changeToDate( self.calendarIter.format("dd/mm/yyyy"));
        if(self.enableFrom){
         var fromcell = this.changeToDate(self.enableFrom);
@@ -331,7 +332,7 @@ class DatePicker {
   }
   changeToDate(str){
     var parts =str.split('/');
-    var dt = new Date(parts[2],parts[1]-1,parts[0]); 
+    var dt = new Date(parts[2],parts[1]-1,parts[0]);
     return dt;
   }
   addCalendarHeader(rootTable) {

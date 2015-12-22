@@ -1,3 +1,4 @@
+/* eslint-disable */
 class ToastNotifications {
 
   constructor(el, options = {}) {

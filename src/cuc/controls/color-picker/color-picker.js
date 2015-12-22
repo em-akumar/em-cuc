@@ -1,3 +1,4 @@
+/* eslint-disable */
 let ColorPicker = (function (window, document, undefined) {
 
   var type =

@@ -1,3 +1,4 @@
+/* eslint-disable */
 class ToggleSwitch {
     static load() {
         var slice = [].slice;
