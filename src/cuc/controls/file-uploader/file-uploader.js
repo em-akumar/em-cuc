@@ -1,68 +1,69 @@
+import {ProgressBar} from '../progress-bar/progress-bar';
 /* eslint-disable */
 var FileUpload = function (el, opts) {
 
-  let uploadStack = [], // upload file item store array
+  var uploadStack = [], //upload file item store array
     uploadedStack = [],
-    uploadControlDragAreaDivId = '', // Id  of div where files are dragged and dropped or selected from select button
-    filesUploadedAreaDivId = '', // Id  of div responsible for progress of all the selected files for upload
-    maxFileNameLength = 30, // default max length of file name is 30
-    maxFileSize = 400, //  default file size maximum limit is 400kb
-    isMultiFileUpload = true, // false when single file upload
-    uploadButtonId = '', // Id  of button responsible for starting upload
-    cancelButtonId = '', // Id  of button responsible for cancelling upload
-    fileSelectButtonId = '', // Id of button used for firing file select
-    fileUploadControlId = '',// Id of button used for file Upload
-    filter = '', // file filter type  viz .css, .js etc
-    saveUrl = '', //  Upload url link path
-    controlId = '', // div id to be made into draggable file upload area
-    dropDirectionParaId = '',// paragraph direction to drop files
-    supportedFileTypeParaId = '', // paragraph id for showing File validation errors
-    dropDirectionMsg = '', //  drop message direction in the control
+    uploadControlDragAreaDivId = '',//Id  of div where files are dragged and dropped or selected from select button
+    filesUploadedAreaDivId = '', //Id  of div responsible for progress of all the selected files for upload
+    maxFileNameLength = 30, //default max length of file name is 30
+    maxFileSize = 400, // default file size maximum limit is 400kb
+    isMultiFileUpload = true, //false when single file upload
+    uploadButtonId = '', //Id  of button responsible for starting upload
+    cancelButtonId = '', //Id  of button responsible for cancelling upload
+    fileSelectButtonId = '', //Id of button used for firing file select
+    fileUploadControlId = '',//Id of button used for file Upload
+    filter = '', //file filter type  viz .css, .js etc
+    saveUrl = '', // Upload url link path
+    controlId = '', //div id to be made into draggable file upload area
+    dropDirectionParaId = '',//paragraph direction to drop files
+    supportedFileTypeParaId = '', //paragraph id for showing File validation errors
+    dropDirectionMsg = '', // drop message direction in the control
 
-    fileDropZoneCss = '', // css class for draggable div
-    fileUploadCtrl = '', // file upload control
-    fileFilterErrorMessage = '', //  invalid file extension error message
-    fileSizeErrorMessage = '', // invalid file size error message
-    fileNameLengthErrorMessage = '', // file name character length validation
-    supportedFormatsText = '',//  supported file formats for drage drop
-    fileTypeIconCss = '', // type of file type icon css class name
-    dropZoneClass = ''; // css to the drag drop area
+    fileDropZoneCss = '', //css class for draggable div
+    fileUploadCtrl = '', //file upload control
+    fileFilterErrorMessage = '', // invalid file extension error message
+    fileSizeErrorMessage = '', //invalid file size error message
+    fileNameLengthErrorMessage = '', //file name character length validation
+    supportedFormatsText = '',// supported file formats for drage drop
+    fileTypeIconCss = '', //type of file type icon css class name
+    dropZoneClass = ''; //css to the drag drop area
 
-  let fileUpload = {}; //  to be returned to with control state when the object is to be used in IFB angularJs integration
+  var fileUpload = {}; // to be returned to with control state when the object is to be used in IFB angularJs integration
 
   function initialize(options) {
-    // Removing existing control if any
+    //Removing existing control if any
     var existingCtrl = document.getElementById(options.controlId).querySelectorAll('.dropZone');
     if (existingCtrl.length > 0) {
-      // $(existingCtrl).remove();
+      existingCtrl.remove();
     }
-    uploadStack = []; //  clear the upload stack
+    uploadStack = []; // clear the upload stack
     uploadedStack = [];
-    saveUrl = options.url; //  Upload url link path
-    controlId = options.controlId; // div id to be made into draggable file upload area
+    saveUrl = options.url; // Upload url link path
+    controlId = options.controlId; //div id to be made into draggable file upload area
 
-    isMultiFileUpload = options.isMultiFileUpload; //  get from user the type of file upload  i.e single file upload or muti-file upload
+    isMultiFileUpload = options.isMultiFileUpload; // get from user the type of file upload  i.e single file upload or muti-file upload
 
-    filter = options.fileType; // file filter type  viz .css, .js etc
-    fileFilterErrorMessage = options.fileFilterErrorMessage; // file extension validation error message
-    maxFileSize = options.maxFileSize; // max file size - 400kb
-    fileSizeErrorMessage = options.fileSizeErrorMessage; // file size error message
+    filter = options.fileType; //file filter type  viz .css, .js etc
+    fileFilterErrorMessage = options.fileFilterErrorMessage; //file extension validation error message
+    maxFileSize = options.maxFileSize; //max file size - 400kb
+    fileSizeErrorMessage = options.fileSizeErrorMessage; //file size error message
     maxFileNameLength = options.maxFileNameLength;
-    fileNameLengthErrorMessage = options.fileNameLengthErrorMessage; // validation error message when file size exceeds 30 character length
-    supportedFormatsText = options.supportedFormatsText;// text displaying which formats are supported for upload
-    fileDropZoneCss = options.fileDropZoneCss; // css class for draggable div
-    fileTypeIconCss = options.fileTypeIconCss; //  type of icon for file type being uploaded
-    dropDirectionMsg = options.dropDirectionMsg; //  drop or drag file instruction message
+    fileNameLengthErrorMessage = options.fileNameLengthErrorMessage; //validation error message when file size exceeds 30 character length
+    supportedFormatsText = options.supportedFormatsText;//text displaying which formats are supported for upload
+    fileDropZoneCss = options.fileDropZoneCss; //css class for draggable div
+    fileTypeIconCss = options.fileTypeIconCss; // type of icon for file type being uploaded
+    dropDirectionMsg = options.dropDirectionMsg; // drop or drag file instruction message
 
     initializeDragDropDivArea();
 
-    // after the control has been rendered and ids have been assigned to the controls fill the fileUpload object
+    //after the control has been rendered and ids have been assigned to the controls fill the fileUpload object
     setUploadControlAccessProperties();
 
     return fileUpload;
   }
 
-  // / set the upload file properties in the object , which need access during dom manipulation
+  /// set the upload file properties in the object , which need access during dom manipulation
   function setUploadControlAccessProperties() {
     fileUpload.uploadControlDragAreaDivId = uploadControlDragAreaDivId;
     fileUpload.uploadStack = uploadStack;
@@ -77,19 +78,19 @@ var FileUpload = function (el, opts) {
     fileUpload.fileDropZoneCss = fileDropZoneCss;
   }
 
-  // intialize Upload Progress Area
+  //intialize Upload Progress Area
   function initUploadProgressArea() {
     var uploadProgressAreaDiv = document.getElementById(filesUploadedAreaDivId);
-    // clean the area for new uploads
+    //clean the area for new uploads
     uploadProgressAreaDiv.innerHTML = '';
-    // get the file icons class
+    //get the file icons class
     var fileIconClass = fileTypeIconCss;
 
     var tileDivHolder, tileDiv, progressBgDiv, par, errPar, nameSpan, fileName, fileUploadStatusFor, deleteThisFileIconSpan = '';
-    var crossX, previewDiv, detailsDiv, fileSizeSpan, closeDiv, progressBarDiv, fileStatusDiv, closeIcon, closeSpan = '';
+    var crossX, previewDiv, detailsDiv, fileSizeSpan, closeDiv, progressBarDiv,fileStatusDiv, closeIcon, closeSpan = '';
     var pdiv, bdiv, pddiv, perdiv;
     for (var i = 0; i < uploadStack.length; i++) {
-      // Create main div
+      //Create main div
       tileDivHolder = document.createElement('DIV');
       tileDivHolder.className = 'tileHolder';
       tileDivHolder.id = 'tileFor' + uploadStack[i].guid;
@@ -97,12 +98,12 @@ var FileUpload = function (el, opts) {
       tileDiv = document.createElement('DIV');
       tileDiv.className = 'tile';
 
-      // div preview image
+      //div preview image
       previewDiv = document.createElement('DIV');
       previewDiv.className = 'previewDiv';
       tileDiv.appendChild(previewDiv);
 
-      // div for file name and size
+      //div for file name and size
       detailsDiv = document.createElement('DIV');
       detailsDiv.className = 'fileDetails clearfix';
       fileSizeSpan = document.createElement('SPAN');
@@ -111,34 +112,34 @@ var FileUpload = function (el, opts) {
       detailsDiv.appendChild(fileName);
       detailsDiv.appendChild(fileSizeSpan);
       tileDiv.appendChild(detailsDiv);
-      // tileDiv.appendChild(fileSizeSpan);
-      // div for x close
+      //tileDiv.appendChild(fileSizeSpan);
+      //div for x close
       closeDiv = document.createElement('DIV');
       closeDiv.className = 'fileCloseDiv';
       closeDiv.addEventListener('click', deleteFileFromUploadProgressDiv, false);
 
-      closeDiv.id = 'fileCloseDiv' + uploadStack[i].guid;
-      closeSpan = document.createElement('SPAN');
+      closeDiv.id = 'fileCloseDiv'+uploadStack[i].guid;
+      closeSpan =  document.createElement('SPAN');
       closeSpan.className = 'closeSpan';
-      closeIcon = document.createTextNode('x');
+      closeIcon= document.createTextNode('x');
       closeSpan.appendChild(closeIcon);
       closeDiv.appendChild(closeSpan);
       tileDiv.appendChild(closeDiv);
-      // div for progress bar
+      //div for progress bar
       /* progressBarDiv = document.createElement('DIV');
        progressBarDiv.className = 'fileProgressDiv';
        progressBarDiv.id = 'progressFor' + uploadStack[i].guid;
        tileDiv.appendChild(progressBarDiv);*/
-      // div for percent and status
+      //div for percent and status
       fileStatusDiv = document.createElement('DIV');
       fileStatusDiv.className = 'fileStatusDiv';
       fileStatusDiv.id = 'fileUploadStatusFor' + uploadStack[i].guid;
-      pdiv = document.createElement('DIV');
+      pdiv =  document.createElement('DIV');
       pdiv.className = 'progress-Bar';
       pdiv.id = 'change-style' + uploadStack[i].guid;
-      bdiv = document.createElement('DIV');
+      bdiv =  document.createElement('DIV');
       bdiv.className = 'em-base-Bar  em-progress-Bar-right';
-      pddiv = document.createElement('DIV');
+      pddiv =  document.createElement('DIV');
       pddiv.className = 'em-progress-Bar';
       perdiv = document.createElement('DIV');
       perdiv.className = 'em-perentage-Display-right';
@@ -152,17 +153,17 @@ var FileUpload = function (el, opts) {
 
       tileDiv.appendChild(fileStatusDiv);
 
-      // Create progressbar to show bottle filing effect
+      //Create progressbar to show bottle filing effect
       /* progressBgDiv = document.createElement('DIV');
        progressBgDiv.className = 'progressBgDiv';
        progressBgDiv.id = 'progressFor' + uploadStack[i].guid;
        tileDiv.appendChild(progressBgDiv);*/
 
-      // Create paragraph showing details of file
+      //Create paragraph showing details of file
       /*par = document.createElement('P');
-      par.className = 'clearfix';*/
+       par.className = 'clearfix';*/
 
-      // Create span for name of file
+      //Create span for name of file
       /* nameSpan = document.createElement('SPAN');
        nameSpan.className = 'name ellipsis ' + fileIconClass;
        fileName = document.createTextNode(uploadStack[i].name);
@@ -170,65 +171,65 @@ var FileUpload = function (el, opts) {
        par.appendChild(nameSpan);
        tileDiv.appendChild(par);*/
 
-      // Create paragraph showing error message
+      //Create paragraph showing error message
       errPar = document.createElement('DIV');
       errPar.className = 'errorMessageInTile';
       errPar.id = 'errorMessageInTile' + uploadStack[i].guid;
       tileDiv.appendChild(errPar);
 
-      // Create delete button
+      //Create delete button
       /*fileUploadStatusFor = document.createElement('DIV');
-      fileUploadStatusFor.id = 'fileUploadStatusFor' + uploadStack[i].guid;
-      fileUploadStatusFor.className = 'fileUploadStatusFor';
+       fileUploadStatusFor.id = 'fileUploadStatusFor' + uploadStack[i].guid;
+       fileUploadStatusFor.className = 'fileUploadStatusFor';
 
-      deleteThisFileIconSpan = document.createElement('SPAN');
-      deleteThisFileIconSpan.className = 'deleteSelection';
+       deleteThisFileIconSpan = document.createElement('SPAN');
+       deleteThisFileIconSpan.className = 'deleteSelection';
 
-      crossX = document.createElement('SPAN');
-      crossX.className = 'crossImageSrc';
-      crossX.addEventListener('click', deleteFileFromUploadProgressDiv, false);
-      crossX.id = uploadStack[i].guid;
-      deleteThisFileIconSpan.appendChild(crossX);
-      fileUploadStatusFor.appendChild(deleteThisFileIconSpan);*/
+       crossX = document.createElement('SPAN');
+       crossX.className = 'crossImageSrc';
+       crossX.addEventListener('click', deleteFileFromUploadProgressDiv, false);
+       crossX.id = uploadStack[i].guid;
+       deleteThisFileIconSpan.appendChild(crossX);
+       fileUploadStatusFor.appendChild(deleteThisFileIconSpan);*/
 
-      //  tileDiv.appendChild(fileUploadStatusFor);
+      // tileDiv.appendChild(fileUploadStatusFor);
       tileDivHolder.appendChild(tileDiv);
 
       uploadProgressAreaDiv.appendChild(tileDivHolder);
     }
 
-    //  document.getElementById(uploadButtonId).style.display = 'block';
+    // document.getElementById(uploadButtonId).style.display = 'block';
     document.getElementById(cancelButtonId).style.display = 'inline-block';
-    //  document.getElementById(cancelButtonId).parentNode.style.border = "1px solid #D2D5DA";
+    // document.getElementById(cancelButtonId).parentNode.style.border = "1px solid #D2D5DA";
     document.getElementById(cancelButtonId).parentNode.style.border = "1px solid #D2D5DA";
 
   }
 
   function fileSelectHandler(e) {
     console.log('drop');
-    //  cancel event and hover styling
+    // cancel event and hover styling
     fileDragHover(e);
-    //  fetch FileList object
+    // fetch FileList object
     var files = e.target.files || e.dataTransfer.files;
-    //  process all File objects
+    // process all File objects
 
     var f = '';
     if (isMultiFileUpload === true) {
       var i = 0;
       for (i = 0; i < (files.length); i++) {
         f = files[i];
-        f.guid = getGuid(); //  ToDo :Replace by generateGUID call in Utility Class when intergrating with Angular JS
+        f.guid = getGuid(); // ToDo :Replace by generateGUID call in Utility Class when intergrating with Angular JS
         f.status = 'added';
         f.description = '';
         uploadStack.push(f);
       }
     }
-    else { // if single file uplod is enabled
+    else { //if single file uplod is enabled
       if (uploadStack.length === 0) {
 
         if (files.length === 1) {
           f = files[0];
-          f.guid = getGuid(); //  ToDo :Replace by generateGUID call in Utility Class
+          f.guid = getGuid(); // ToDo :Replace by generateGUID call in Utility Class
           f.status = 'added';
           f.description = '';
           uploadStack.push(f);
@@ -237,9 +238,9 @@ var FileUpload = function (el, opts) {
       }
 
     }
-    //  document.getElementById(fileSelectButtonId).className = 'fileUploadBtn';
+    // document.getElementById(fileSelectButtonId).className = 'fileUploadBtn';
     initUploadProgressArea();
-    // any time during file rendering of control the upload stack becomes empty make sync behaviour of other controls
+    //any time during file rendering of control the upload stack becomes empty make sync behaviour of other controls
     if (uploadStack.length === 0) {
       uploadedStack.length = 0;
       syncControlsWhenUploadStackEmpty();
@@ -254,7 +255,7 @@ var FileUpload = function (el, opts) {
 
   function isFileValid(file) {
     var isValid = true;
-    // check if file extension is valid
+    //check if file extension is valid
     if (isValid) {
       if (!isfileExtensionValid(file)) {
         file.status = 'invalid';
@@ -262,7 +263,7 @@ var FileUpload = function (el, opts) {
         isValid = false;
       }
     }
-    // check if file name Length is valid
+    //check if file name Length is valid
     if (isValid) {
       if (!isfileNameLengthValid(file)) {
         file.status = 'invalid';
@@ -270,7 +271,7 @@ var FileUpload = function (el, opts) {
         isValid = false;
       }
     }
-    // check if file Size is valid
+    //check if file Size is valid
     if (isValid) {
       if (!isfileSizeValid(file)) {
         file.status = 'invalid';
@@ -281,7 +282,7 @@ var FileUpload = function (el, opts) {
   }
 
   function isfileSizeValid(file) {
-    var fileSize = Math.floor(file.size) / (1024); // convert byts to KBs
+    var fileSize = Math.floor(file.size) / (1024); //convert byts to KBs
     if (fileSize > maxFileSize) {
       return false;
     }
@@ -313,18 +314,19 @@ var FileUpload = function (el, opts) {
   }
 
   function btnUpload() {
-    // disable the upload and cancel buttons on Upload button click
-    //  document.getElementById(uploadButtonId).disabled = true;
-    document.getElementById(cancelButtonId).disabled = true;
-    // document.getElementById(fileSelectButtonId).disabled = true;
+    //disable the upload and cancel buttons on Upload button click
+    // document.getElementById(uploadButtonId).disabled = true;
+    //document.getElementsByClassName('actionButtonHolder').style.display = 'block';
+    //document.getElementById(fileSelectButtonId).disabled = true;
+    document.getElementById(cancelButtonId).parentNode.style.display = 'block';
 
-    // Check validation rules
+    //Check validation rules
     var i, j = 0;
     for (i = 0; i < uploadStack.length; i++) {
       isFileValid(uploadStack[i]);
 
       if (uploadStack[i].status === 'invalid') {
-        // need to recreate the image variable every time
+        //need to recreate the image variable every time
         var showExcl = document.createElement('DIV');
         showExcl.className = 'notificationImageAtRightCorner ';
         var showError = document.createTextNode('Error');
@@ -332,14 +334,14 @@ var FileUpload = function (el, opts) {
         showTickImg.className = 'errorImageSrc';
         showExcl.appendChild(showError);
         showExcl.appendChild(showTickImg)
-        document.getElementById('fileUploadStatusFor' + uploadStack[i].guid).innerHTML = '';//  it is need here to make innerHTML empty
+        document.getElementById('fileUploadStatusFor' + uploadStack[i].guid).innerHTML = '';// it is need here to make innerHTML empty
         document.getElementById('fileUploadStatusFor' + uploadStack[i].guid).appendChild(showExcl);
       }
     }
 
-    // remove files from stack that are invalid
-    // for that create a temporary array and keep only valid in it
-    // copy this array information to uploadstack
+    //remove files from stack that are invalid
+    //for that create a temporary array and keep only valid in it
+    //copy this array information to uploadstack
     var tempValidFilesArray = [];
     for (i = 0, j = 0; i < uploadStack.length; i++) {
       if (uploadStack[i].status !== 'invalid') {
@@ -350,8 +352,8 @@ var FileUpload = function (el, opts) {
     uploadStack = [];
     uploadStack.push.apply(uploadStack, tempValidFilesArray);
 
-    // now that upload stack has only valid files
-    // upload  all the valid files that are left in the stack
+    //now that upload stack has only valid files
+    //upload  all the valid files that are left in the stack
     if (uploadStack.length > 0) {
       var l = 0;
       for (l = 0; l < uploadStack.length; l++) {
@@ -360,6 +362,12 @@ var FileUpload = function (el, opts) {
         else
           setProgressBar(uploadStack[l], '100');
       }
+      document.getElementById(cancelButtonId).textContent = 'Close';
+      document.getElementById(cancelButtonId).addEventListener('click', function(){
+        document.getElementById('uploadShowCase').innerHTML = '';
+        document.getElementsByClassName('actionButtonHolder').innerHTML = '';
+        document.getElementById(cancelButtonId).parentNode.style.display = 'none';
+      });
     }
   }
 
@@ -374,25 +382,25 @@ var FileUpload = function (el, opts) {
   }
 
   function showProgressBar(xhr, progress2) {
-    //  create progress bar
-    //  var progressBarDiv = document.getElementById('progressFor' + file.guid);
+    // create progress bar
+    // var progressBarDiv = document.getElementById('progressFor' + file.guid);
 
-    //  progress bar
+    // progress bar
     xhr.upload.addEventListener('progress', function (e) {
       var uploadPercent = parseInt(e.loaded / e.total * 100, 10);
       if (uploadPercent > 0) {
-        //   progressBarDiv.style.width = uploadPercent + '%';
+        //  progressBarDiv.style.width = uploadPercent + '%';
         progress2.progress(uploadPercent);
-        // document.getElementById('fileUploadStatusFor' + file.guid).innerHTML = uploadPercent + '%';
+        //document.getElementById('fileUploadStatusFor' + file.guid).innerHTML = uploadPercent + '%';
       }
     }, false);
   }
 
   function setProgressBar(file, uploadPercent) {
-    //  create progress bar
-    // var progressBarDiv = document.getElementById('progressFor' + file.guid);
+    // create progress bar
+    //var progressBarDiv = document.getElementById('progressFor' + file.guid);
 
-    //  progressBarDiv.style.width = uploadPercent + '%';
+    // progressBarDiv.style.width = uploadPercent + '%';
     if (uploadPercent == '100') {
       var showTick = document.createElement('DIV');
       var showComplete = document.createTextNode('Complete');
@@ -414,7 +422,7 @@ var FileUpload = function (el, opts) {
     try {
       var xhr = getXmlHttpRequestObject();
       var xhrStatus = '';
-      var progress2 = new emcNg.emc.ProgressBar("change-style" + file.guid, {});
+     var progress2 = new ProgressBar("change-style"+file.guid,{});
       if (xhr.upload) {
         var showTick = document.createElement('DIV');
         var showComplete = document.createTextNode('Complete');
@@ -423,14 +431,14 @@ var FileUpload = function (el, opts) {
         showTickImg.className = 'tickImageSrc';
         showTick.appendChild(showComplete);
         showTick.appendChild(showTickImg);
-        showProgressBar(xhr, progress2); // shows progress bar
-        document.getElementById('fileCloseDiv' + file.guid).addEventListener('click', function () {
+        showProgressBar(xhr, progress2); //shows progress bar
+        document.getElementById('fileCloseDiv'+ file.guid).addEventListener('click', function () {
           this.abort();
         }.bind(xhr));
         var data = new FormData();
 
         data.append('importFiles', file);
-        //  start upload
+        // start upload
         xhr.onreadystatechange = function () {
 
           if (xhr.readyState === 4) {
@@ -442,7 +450,7 @@ var FileUpload = function (el, opts) {
               uploadedStack.push(file);
               document.getElementById('fileCloseDiv' + file.guid).className = '';
               document.getElementById('fileCloseDiv' + file.guid).innerHTML = '';
-              document.getElementById('fileUploadStatusFor' + file.guid).innerHTML = '';//  it is need here to make innerHTML empty
+              document.getElementById('fileUploadStatusFor' + file.guid).innerHTML = '';// it is need here to make innerHTML empty
               document.getElementById('fileUploadStatusFor' + file.guid).appendChild(showTick);
             } else {
               var showExcl = document.createElement('DIV');
@@ -452,7 +460,7 @@ var FileUpload = function (el, opts) {
               showTickImg.className = 'errorImageSrc';
               showExcl.appendChild(showError);
               showExcl.appendChild(showTickImg)
-              document.getElementById('fileUploadStatusFor' + file.guid).innerHTML = '';//  it is need here to make innerHTML empty
+              document.getElementById('fileUploadStatusFor' + file.guid).innerHTML = '';// it is need here to make innerHTML empty
               document.getElementById('fileUploadStatusFor' + file.guid).appendChild(showExcl);
             }
           }
@@ -462,6 +470,8 @@ var FileUpload = function (el, opts) {
       }
     }
     catch (e) {
+      console.log(e);
+
     }
   }
 
@@ -476,13 +486,12 @@ var FileUpload = function (el, opts) {
   }
 
   function fileDragHover(e) {
-    console.log('drag over');
     e.stopPropagation();
     e.preventDefault();
     if (e.target.className === dropZoneClass || e.target.className === dropZoneClass + ' hover') {
       e.target.className = (e.type === 'dragover' ? dropZoneClass + ' hover' : dropZoneClass);
-      //  document.getElementById(fileSelectButtonId).className = 'fileUploadBtn camouflage';
       // document.getElementById(fileSelectButtonId).className = 'fileUploadBtn camouflage';
+      //document.getElementById(fileSelectButtonId).className = 'fileUploadBtn camouflage';
     }
   }
 
@@ -493,18 +502,17 @@ var FileUpload = function (el, opts) {
   }
 
   function dragLeave(e) {
-    console.log('drag leave');
     e.stopPropagation();
     e.preventDefault();
     if (e.target.className === dropZoneClass || e.target.className === dropZoneClass + ' hover') {
       e.target.className = (e.type === 'dragleave' ? dropZoneClass : dropZoneClass + ' hover');
-      // document.getElementById(fileSelectButtonId).className = 'fileUploadBtn';
-      // document.getElementById(fileSelectButtonId).className = 'fileUploadBtn';
+      //document.getElementById(fileSelectButtonId).className = 'fileUploadBtn';
+      //document.getElementById(fileSelectButtonId).className = 'fileUploadBtn';
     }
   }
 
   function deleteFileFromUploadProgressDiv(event) {
-    // /cross browser remove  functionality
+    ///cross browser remove  functionality
     var elementId, fileBoxDiv = '';
     var l = 0;
     for (l = 0; l < uploadStack.length; l++) {
@@ -519,32 +527,32 @@ var FileUpload = function (el, opts) {
     }
 
     if (uploadStack.length === 0) {
-      // hide the upload and cancel button when the upload stack is empty
+      //hide the upload and cancel button when the upload stack is empty
       syncControlsWhenUploadStackEmpty();
     }
   }
 
   function syncControlsForSingleFileUpload() {
-    //   document.getElementById(uploadButtonId).style.display = 'block';
+    //  document.getElementById(uploadButtonId).style.display = 'block';
     document.getElementById(cancelButtonId).style.display = 'inline-block';
-    // document.getElementsByClassName('actionButtonHolder').style.border = '1px solid #D2D5DA';
+    //document.getElementsByClassName('actionButtonHolder').style.border = '1px solid #D2D5DA';
     document.getElementById(cancelButtonId).parentNode.style.border = "1px solid #D2D5DA";
   }
 
   function syncControlsWhenUploadStackEmpty() {
     uploadStack = [];
     document.getElementById(filesUploadedAreaDivId).innerHTML = '';
-    // document.getElementById(uploadButtonId).style.display = 'none';
+    //document.getElementById(uploadButtonId).style.display = 'none';
     document.getElementById(cancelButtonId).style.display = 'none';
   }
 
-  //  To Do Remove this function and use Utilty.generateGUID when integating with IFB angularJS
+  // To Do Remove this function and use Utilty.generateGUID when integating with IFB angularJS
   function getGuid() {
     return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
       s4() + '-' + s4() + s4() + s4();
   }
 
-  // To Do Remove this function and use Utilty.generateGUID when integating with IFB angularJS
+  //To Do Remove this function and use Utilty.generateGUID when integating with IFB angularJS
   function s4() {
     return Math.floor((1 + Math.random()) * 0x10000)
       .toString(16)
@@ -596,39 +604,45 @@ var FileUpload = function (el, opts) {
     var directionText = document.createTextNode(dropDirectionMsg);
 
 
-    // select button
+    //select button
     var fileSelectButton = document.createElement('BUTTON');
-    fileSelectButton.id = 'fileButton' + getGuid(); //  ToDo :Replace by generateGUID call in Utility Class
+    fileSelectButton.id = 'fileButton' + getGuid(); // ToDo :Replace by generateGUID call in Utility Class
     fileSelectButtonId = fileSelectButton.id;
     fileSelectButton.className = 'btn em-btn-tertiary';
     fileSelectButton.textContent = 'Browse';
     dropDirectionPara.appendChild(directionText);
     dropDirectionPara.appendChild(fileSelectButton);
     directionWithButtonDiv.appendChild(dropDirectionPara);
-    // directionWithButtonDiv.appendChild(fileSelectButton);
+    //directionWithButtonDiv.appendChild(fileSelectButton);
 
-    // supportedFileTypePara
+    //supportedFileTypePara
     var supportedFileTypePara = document.createElement('DIV');
     supportedFileTypePara.Id = 'supportedFileTypePara' + getGuid();
     supportedFileTypePara.className = 'supportedFileTypePara';
     supportedFileTypeParaId = supportedFileTypePara.Id;
-    // showing supported file types message
+    //showing supported file types message
     var supportedFilesFormatText = document.createTextNode(supportedFormatsText);
     supportedFileTypePara.appendChild(supportedFilesFormatText);
 
     var uploadControlDragAreaDiv = document.createElement('DIV');
-    uploadControlDragAreaDiv.id = 'fileDrag' + getGuid(); //  ToDo :Replace by generateGUID call in Utility Class
+    uploadControlDragAreaDiv.id = 'fileDrag' + getGuid(); // ToDo :Replace by generateGUID call in Utility Class
     uploadControlDragAreaDivId = uploadControlDragAreaDiv.id;
     uploadControlDragAreaDiv.className = dropZoneClass;
+    var upArrowCircleDiv= document.createElement('DIV');
+    upArrowCircleDiv.className = 'upArrowCircle';
+    var upArrowDiv= document.createElement('DIV');
+    upArrowDiv.className = 'upArrow';
+    upArrowCircleDiv.appendChild(upArrowDiv);
+    uploadControlDragAreaDiv.appendChild(upArrowCircleDiv);
     uploadControlDragAreaDiv.appendChild(directionWithButtonDiv);
     uploadControlDragAreaDiv.appendChild(supportedFileTypePara);
 
     fileUploadCtrl = document.createElement('INPUT');
-    fileUploadCtrl.id = 'fileInput' + getGuid(); //  ToDo :Replace by generateGUID call in Utility Class
+    fileUploadCtrl.id = 'fileInput' + getGuid(); // ToDo :Replace by generateGUID call in Utility Class
     fileUploadControlId = fileUploadCtrl.id;
     fileUploadCtrl.type = 'file';
     if (isMultiFileUpload) {
-      // need to set 'multiple' in the input file control's mulitple property for selecting multiple files
+      //need to set 'multiple' in the input file control's mulitple property for selecting multiple files
       fileUploadCtrl.multiple = 'multiple';
     }
 
@@ -638,44 +652,44 @@ var FileUpload = function (el, opts) {
     hidefileDiv.appendChild(fileUploadCtrl);
     uploadControlDragAreaDiv.appendChild(hidefileDiv);
 
-    // progress Div
+    //progress Div
     var filesUploadedAreaDiv = document.createElement('DIV');
-    filesUploadedAreaDiv.id = 'uploadShowCase' + getGuid(); //  ToDo :Replace by generateGUID call in Utility Class
+    filesUploadedAreaDiv.id = 'uploadShowCase' // ToDo :Replace by generateGUID call in Utility Class
     filesUploadedAreaDivId = filesUploadedAreaDiv.id;
     filesUploadedAreaDiv.className = 'clearfix uploadedArea';
-    //  var filesUploadedOverlay = document.createElement('DIV');
-    // filesUploadedOverlay.className = 'uploadedAreaOverlay';
+    // var filesUploadedOverlay = document.createElement('DIV');
+    //filesUploadedOverlay.className = 'uploadedAreaOverlay';
 
-    // upload button
+    //upload button
     /* var uploadButton = document.createElement('BUTTON');
      uploadButton.className = 'fileUploadBtn uploadButton';
-     uploadButton.id = 'uploadButton' + getGuid(); //  ToDo :Replace by generateGUID call in Utility Class
+     uploadButton.id = 'uploadButton' + getGuid(); // ToDo :Replace by generateGUID call in Utility Class
      uploadButtonId = uploadButton.id;
      uploadButton.textContent = 'Upload Files';*/
 
-    // cancel button
+    //cancel button
     var cancelButton = document.createElement('BUTTON');
     cancelButton.className = 'btn btn-primary btn-sm fileUploadBtn cancelButton';
-    cancelButton.id = 'fileUploadBtn' + getGuid(); //  ToDo :Replace by generateGUID call in Utility Class
+    cancelButton.id = 'fileUploadBtn' + getGuid(); // ToDo :Replace by generateGUID call in Utility Class
     cancelButtonId = cancelButton.id;
     cancelButton.textContent = 'Cancel';
 
     divToBind.appendChild(uploadControlDragAreaDiv);
     divToBind.appendChild(filesUploadedAreaDiv);
 
-    // add the cancel and upload buttons in a div
+    //add the cancel and upload buttons in a div
     var divButtonWrapper = document.createElement('DIV');
     divButtonWrapper.className = 'clearfix actionButtonHolder';
     divButtonWrapper.appendChild(cancelButton);
-    // divButtonWrapper.appendChild(uploadButton);
+    //divButtonWrapper.appendChild(uploadButton);
     divToBind.parentNode.insertBefore(divButtonWrapper, divToBind.nextSibling);
-    // divToBind.appendChild(divButtonWrapper);
+    //divToBind.appendChild(divButtonWrapper);
 
-    // add event listener to the click event of file select, upload and cancel button
+    //add event listener to the click event of file select, upload and cancel button
     fileSelectButton.addEventListener('click', selectFile, false);
-    //  uploadButton.addEventListener('click', btnUpload, false);
+    // uploadButton.addEventListener('click', btnUpload, false);
     cancelButton.addEventListener('click', cancelUpload, false);
-    // add event listener to the change event of file select button
+    //add event listener to the change event of file select button
     fileUploadCtrl.addEventListener('change', fileSelectHandler, false);
 
     var xhrRequest = getXmlHttpRequestObject();
@@ -689,9 +703,9 @@ var FileUpload = function (el, opts) {
     }
   }
 
-  //  $(document).ready(function () {
-  //    initialize(opts);
-  //  });
+  angular.element(document).ready(function () {
+    initialize(opts);
+  });
 };
 
 export {FileUpload};

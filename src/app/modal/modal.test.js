@@ -1,16 +1,16 @@
-import demoModule from './demo.module';
-import DemoController from './demo.controller';
-import demoComponent from './demo.component';
-import demoTemplate from './demo.html';
+import modalModule from './modal.module';
+import ModalController from './modal.controller';
+import modalComponent from './modal.component';
+import modalTemplate from './modal.html';
 
-describe('Demo', () => {
+describe('Modal', () => {
   let $rootScope, makeController; // eslint-disable-line no-unused-vars
 
-  beforeEach(window.module(demoModule.name));
+  beforeEach(window.module(modalModule.name));
   beforeEach(inject((_$rootScope_) => {
     $rootScope = _$rootScope_;
     makeController = () => {
-      return new DemoController();
+      return new ModalController();
     };
   }));
 
@@ -30,16 +30,16 @@ describe('Demo', () => {
     // template specs
     // tip: use regex to ensure correct bindings are used e.g., {{  }}
     it('has label in template [REMOVE]', () => {
-      expect(demoTemplate).to.match(/{{\s?::\s?vm\.label\s?}}/g);
+      expect(modalTemplate).to.match(/{{\s?::\s?vm\.label\s?}}/g);
     });
   });
 
   describe('Component', () => {
       // component/directive specs
-    let component = demoComponent();
+    let component = modalComponent();
 
     it('includes the intended template', () => {
-      expect(component.template).to.equal(demoTemplate);
+      expect(component.template).to.equal(modalTemplate);
     });
 
     it('uses `controllerAs` syntax', () => {
@@ -47,7 +47,7 @@ describe('Demo', () => {
     });
 
     it('invokes the right controller', () => {
-      expect(component.controller).to.equal(DemoController);
+      expect(component.controller).to.equal(ModalController);
     });
   });
 });

@@ -11,19 +11,16 @@ import 'cuc/cuc.grid';
 
 import './app.less';
 
-import demoModule from './demo/demo.module';
-console.log('cuc here:', cuc);
-
 emsApi.baseUrl = 'http://localhost:9000/';
 
-let appModule = angular.module('app', [uiRouter, cuc.name, demoModule.name]);
+let appModule = angular.module('app', [uiRouter, cuc.name, 'cuc', 'ui.grid', 'ui.bootstrap']);
 
 appModule.config(($stateProvider, $urlRouterProvider) => {
   $stateProvider.state('app', {
     url: '/',
     template: '<app-component></app-component>'
   });
-  $urlRouterProvider.otherwise('/demo');
+  $urlRouterProvider.otherwise('');
 });
 
 appModule.directive('appComponent', appComponent);
@@ -36,3 +33,4 @@ angular.element(document).ready(() => {
 });
 
 export default appModule;
+

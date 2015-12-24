@@ -1,6 +1,6 @@
 import {emsApi} from 'ems';
 
-class DemoService {
+class CkeditorService {
   /* @ngInject */
   constructor() {
   }
@@ -9,4 +9,4 @@ class DemoService {
   }
 }
 
-export default DemoService;
+export default CkeditorService;
