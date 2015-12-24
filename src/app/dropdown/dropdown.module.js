@@ -8,7 +8,7 @@ let dropdownModule = angular.module('dropdown', []);
 dropdownModule.config(($stateProvider) => {
   $stateProvider.state('dropdown', {
     url: '/dropdown',
-    template: '<dropdown></dropdown>'
+    template: '<dropdown-component></dropdown-component>'
   });
 });
 

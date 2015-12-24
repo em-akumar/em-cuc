@@ -8,7 +8,7 @@ let gridModule = angular.module('grid', ['ui.grid', 'ui.grid.moveColumns', 'ui.g
 gridModule.config(($stateProvider) => {
   $stateProvider.state('grid', {
     url: '/grid',
-    template: '<grid></grid>'
+    template: '<grid-component></grid-component>'
   });
 });
 

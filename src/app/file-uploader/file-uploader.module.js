@@ -8,8 +8,8 @@ let fileUploaderModule = angular.module('fileUploader', ['cuc']);
 fileUploaderModule.config(($stateProvider) => {
   $stateProvider.state('file-uploader', {
     url: '/file-uploader',
-    template: '<file-uploader></file-uploader>',
-    onEnter: function(){
+    template: '<file-uploader-component></file-uploader-component>',
+    onEnter: function() {
       console.log('file uploader');
     }
   });

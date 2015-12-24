@@ -3,14 +3,14 @@ class DropdownEditController {
   constructor(DropdownEditService) {
     this.dropdownEditService = DropdownEditService;
     this.renderDropdownEdit();
-     this.initialize();
+    this.initialize();
   }
 
-  renderDropdownEdit(){
+  renderDropdownEdit() {
     this.drpState = {
       defaultText: 'Select',
       onChange: function (e) {
-        console.log("Clicked");
+        console.log('Clicked');
       },
       defaultSize: 'flexible-width'
     };

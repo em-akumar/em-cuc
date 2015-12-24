@@ -4,9 +4,9 @@ class ColorPickerController {
     this.label = 'ColorPicker Controller !!';
     this.colorPickerService = ColorPickerService;
     this.ColorPicker = {};
-    this.ColorPicker.handleClick=(e)=>{
+    this.ColorPicker.handleClick = (e) => {
       e.stopPropagation();
-    }
+    };
     // this.initialize();
   }
   initialize() {

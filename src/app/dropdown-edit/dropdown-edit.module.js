@@ -9,7 +9,7 @@ let dropdownEditModule = angular.module('dropdownEdit', []);
 dropdownEditModule.config(($stateProvider) => {
   $stateProvider.state('dropdown-edit', {
     url: '/dropdown-edit',
-    template: '<dropdown-edit></dropdown-edit>'
+    template: '<dropdown-edit-component></dropdown-edit-component>'
   });
 });
 

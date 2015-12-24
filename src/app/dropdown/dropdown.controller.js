@@ -7,7 +7,7 @@ class DropdownController {
     this.renderDropdown();
 
   }
-  renderDropdown(){
+  renderDropdown() {
     this.drpCountry = {
       defaultText: 'Select',
       onChange: function (e) {

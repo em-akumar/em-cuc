@@ -2,7 +2,7 @@ import modalTemplate from './modalTemplate.html';
 
 class ModalController {
   /* @ngInject */
-  constructor(ModalService,$uibModal) {
+  constructor(ModalService, $uibModal) {
     this.$uibModal = $uibModal;
 
     this.modalService = ModalService;

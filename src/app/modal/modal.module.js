@@ -9,7 +9,7 @@ let modalModule = angular.module('modal', ['ui.bootstrap']);
 modalModule.config(($stateProvider) => {
   $stateProvider.state('modal', {
     url: '/modal',
-    template: '<modal></modal>'
+    template: '<modal-component></modal-component>'
   });
 });
 
