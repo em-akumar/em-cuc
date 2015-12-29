@@ -1,45 +1,18 @@
 {
   "paginationPageSizes": [25, 50, 75],
-  "paginationPageSize": 25,
+  "paginationPageSize": 10,
   "sortEnabled": true,
   "rowHeight": 50,
   "enableRowSelection": true,
-  "enableRowHeaderSelection": false,
-  "multiSelect": false,
-  "enableSelectAll": false,
-  "noUnselect": true,
-  "columnDefs": [
-    {
-      "field": "IsActive",
-      "displayName": "",
-      "maxWidth": 20,
-      "cellTemplate": "<div class='ngSelectionCell'><input tabindex='-1' class='ngSelectionCheckbox' type='checkbox' ng-checked='row.selected' /> </div>"
-    },
-    {
-      "field": "HasMessage",
-      "enableSelection": false,
-      "headerCellTemplate": "<span class='glyphicon glyphicon-envelope' aria-hidden='true' > </span>",
-      "width": 40,
-      "cellTemplate": "<span class='glyphicon glyphicon-envelope' aria-hidden='true' ng-show= {{row.entity[col.field]}}> </span>"
-    },
-    {
+  "enablePaginationControls": false,
+  "enableRowHeaderSelection": true,
+  "multiSelect": true,
+  "enableSelectAll": true,
+  "enableFiltering": true,
+  "columnDefs": [{
       "field": "Name_Property_Address",
       "displayName": "Name Property/ Address",
-      "minWidth": 350,
-      "cellTemplate": "<div><b>{{row.entity[col.field][0]}}</b></div> <div>{{row.entity[col.field][1]}}</div>"
-    },
-    {
-      "field": "Lock_Status",
-      "displayName": "Lock Status",
-      "cellTemplate": "<span class='glyphicon glyphicon-lock' aria-hidden='true'> {{row.entity[col.field]}}</span>"
-    },
-    {
-      "field": "Lock_Exp",
-      "displayName": "Lock Exp."
-    },
-    {
-      "field": "Loan_Program_Amount"
-    },
+      "minWidth": 200   },
     {"field": "Date_Started"},
     {"field": "Estimated_Close_Date"},
     {"field": "Status"},
