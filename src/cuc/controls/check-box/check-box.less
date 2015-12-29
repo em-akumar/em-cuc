@@ -195,3 +195,47 @@
   background-color: @checkbox-disabled-background-color;
   border: 1px solid @checkbox-disabled-border-color;
 }
+.em-checkbox-other-control-grp{
+  .radio,.em-dropdown-edit, .em-dropdown{
+    padding-left:25px;
+  }
+}
+.em-checkbox-expose-text {
+  input[type="checkbox"] {
+    &:checked + label:before {
+      background: none;
+      content: 'Y';
+      border:none;
+      box-shadow: none;
+    }
+    &:hover::before, &:hover + label:before{
+      box-shadow: none;
+    }
+  }
+  &.checkbox input[type="checkbox"] + label
+  {
+    &:hover::before,&:focus::before{
+      box-shadow: none;
+    }
+  }
+}
+
+.em-checkbox-expose-img {
+  input[type="checkbox"] {
+    &:checked + label:before {
+      background: url('../../assets/images/icon-chevron-down-active-blue-dark.svg') center center no-repeat;
+      content: '';
+      border:none;
+      box-shadow: none;
+    }
+    &:hover::before, &:hover + label:before{
+      box-shadow: none;
+    }
+  }
+  &.checkbox input[type="checkbox"] + label
+  {
+    &:hover::before,&:focus::before{
+      box-shadow: none;
+    }
+  }
+}

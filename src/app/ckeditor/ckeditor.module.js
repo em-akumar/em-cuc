@@ -1,10 +1,9 @@
-import {angular} from 'ems';
+import {angular, uiRouter} from 'ems';
 
 import ckeditorComponent from './ckeditor.component';
 import CkeditorService from './ckeditor.service';
 
-let ckeditorModule = angular.module('ckeditor', []);
-
+let ckeditorModule = angular.module('ckeditor', [uiRouter]);
 
 ckeditorModule.config(($stateProvider) => {
   $stateProvider.state('ckeditor', {

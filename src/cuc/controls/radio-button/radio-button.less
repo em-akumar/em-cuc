@@ -171,8 +171,50 @@
     box-shadow: 0 0 0 2px @radiobutton-error-outside-border;
   }
 }
-.em-radio-checkbox-grp{
-  .checkbox{
+.em-radio-other-control-grp{
+  .checkbox,.em-dropdown-edit, .em-dropdown{
     padding-left:25px;
+  }
+}
+.em-radio-expose-text {
+  input[type=radio] {
+    &:checked + label:before {
+      background: none;
+      content: 'Y';
+      border:none;
+      box-shadow: none;
+    }
+    &:hover::before, &:hover + label:before{
+      box-shadow: none;
+      border:none;
+    }
+  }
+  &.radio input[type="radio"]:not([disabled]) + label
+  {
+    &:hover::before{
+      box-shadow: none;
+      border:none;
+    }
+  }
+}
+.em-radio-expose-img {
+  input[type=radio] {
+    &:checked + label:before {
+      background: url('../../assets/images/icon-chevron-down-active-blue-dark.svg') center center no-repeat;
+      content: '';
+      border:none;
+      box-shadow: none;
+    }
+    &:hover::before, &:hover + label:before,&:active:before + label{
+      box-shadow: none;
+      border:none;
+    }
+  }
+  &.radio input[type="radio"]:not([disabled]) + label
+  {
+    &:hover::before,&:active::before{
+      box-shadow: none;
+      border:none;
+    }
   }
 }

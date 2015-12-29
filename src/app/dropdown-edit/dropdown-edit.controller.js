@@ -1,3 +1,4 @@
+import {safeApply} from 'ems';
 class DropdownEditController {
   /* @ngInject */
   constructor(DropdownEditService) {

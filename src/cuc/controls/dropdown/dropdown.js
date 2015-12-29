@@ -6,6 +6,7 @@ class Dropdown {
     this.reinit();
   }
   reinit() {
+if(this.options !== undefined){
     if (Object.keys(this.options).length) {
       this.options.defaultText = this.options.defaultText || "Select item";
       this.options.itemList = this.options.itemList || [];
@@ -27,7 +28,7 @@ class Dropdown {
     this.setReadonly();
     this.setRestricted();
     this.setError();
-    this.setDisabledItem();
+    this.setDisabledItem();}
   }
   init() {
     var self = this;

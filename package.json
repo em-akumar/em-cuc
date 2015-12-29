@@ -45,6 +45,9 @@
       ],
       "cuc.ui.bootstrap": [
         "./src/cuc/cuc.ui.bootstrap.js"
+      ],
+      "cuc.ckeditor": [
+        "./src/cuc/cuc.ckeditor.js"
       ]
     }
   },
@@ -53,6 +56,7 @@
     "bootstrap": "3.3.6",
     "angular": "1.4.8",
     "angular-ui-bootstrap": "0.14.3",
-    "angular-ui-grid": "3.0.7"
+    "angular-ui-grid": "3.0.7",
+    "ckeditor-dev": "^4.4.8"
   }
 }

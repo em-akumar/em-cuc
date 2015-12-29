@@ -1,15 +1,40 @@
 @import '../../common/variables.less';
-@import (less) '~angular-ui-grid/ui-grid.css';
 
-@arrowImgUrl: url("../../assets/images/icon-chevron-down-active-blue-dark.svg");
+@arrowImgUrl: url("../../assets/images/icon-solid-arrow-blue-base.svg");
+@solidArrowImgUrl: url("../../assets/images/icon-solid-arrow-white.svg");
 
 .position-of-triangle-in-button(){
   position: absolute;
   top: 5px;
   left: 5px;
 }
+.common-style-for-arrow-in-pagination(){
+  background: @arrowImgUrl center center no-repeat;
+  color: @pagination-icon-arrow-color;
+  align: center;
+  text-align: center;
+  vertical-align: middle;
+  display: inline-block;
+  background-size: 10px;
+  margin: 0 5px;
+  height: @pagination-active-background-height;
+  width: @pagination-active-background-width;
+  border-radius: @close-icon-hover-background-radius;
+  &:hover {
+    color: @pagination-hover-icon-arrow-color;
+    background-color: @pagination-hover-icon-background-color;
+    cursor: pointer;
+  }
+}
+.activeIconBg(){
+  background-color: @pagination-active-icon-background-color;
+}
 
-//FOR SIMPLE UI GRID
+.ui-grid{
+  padding-bottom: 30px;
+}
+
+//For simple grid  --- ToDo: need to optimise with common code
 .em-simple-grid{
   .ui-grid-row {
     .ng-isolate-scope{
@@ -78,7 +103,7 @@
   }
 }
 
-//For complex grid  --- TODo: need to work on it
+//For complex grid  --- TODo: need to optimise with common code
 .em-complex-grid{
   .ui-grid-row {
     height: @simple-grid-header-row-container-height !important;
@@ -152,121 +177,179 @@
   .ui-grid-filter-container{
     padding: 4px 10px 4px 4px;
   }
-}
 
-//For pagination in grid
-
-.em-complex-grid{
-  .ui-grid-pager-panel{
-    font: @font-family-base;
-    font-size: @pagination-font-size;
-    color: @pagination-font-color;
-    padding: @pagination-font-padding;
-    text-align: center;
-    vertical-align: middle;
-
-    //Pager Control
-    .ui-grid-pager-container{
-      float: right;
-      .ui-grid-pager-control{
-        float: right;
-        border-left: 1px solid #efefef;
-        margin-top: 3px;
-        .ui-grid-pager-first, .ui-grid-pager-last{
-          //color: @pagination-hover-icon-background-color;
-          //height: @pagination-hover-icon-background-height;
-          //width: @pagination-hover-icon-background-width;
-          //border-radius: @pagination-hover-icon-background-radius;
-          display: @none;
-        }
-        .ui-grid-pager-previous, .ui-grid-pager-next{
-          color: @pagination-hover-icon-background-color;
-          height: @pagination-hover-icon-background-height;
-          width: @pagination-hover-icon-background-width;
-          border-radius: @pagination-hover-icon-background-radius;
-        }
-        .first-triangle, .prev-triangle{
-          .position-of-triangle-in-button;
-          border-color: transparent  @pagination-icon-arrow-color transparent transparent;
-        }
-        .last-triangle, .next-triangle{
-          .position-of-triangle-in-button;
-          margin-left: 2px;
-          border-color: transparent transparent transparent @pagination-icon-arrow-color;
-        }
-        button{
-          position: relative;
-          background: transparent;
-          min-width: @pagination-hover-background-width;
-          border-radius: @pagination-hover-background-width;
-          border: @none;
-          padding: 0;
-          &:hover{
-            background-color: @gray-warm-light;
+  //For pagination in grid
+  .em-complex-table-footer{
+    height: 40px;
+    text-align: right;
+    .em-pagination{
+      width: auto;
+      margin: 5px 10px 0 0;
+      text-align: center;
+      vertical-align: middle;
+      display: inline-flex;
+      .pagination {
+        margin: 0;
+      }
+      .em-left-arrow {
+        -ms-transform: rotate(90deg); /* IE 9 */
+        -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
+        transform: rotate(90deg);
+        .common-style-for-arrow-in-pagination;
+      }
+      .pagination {
+        & > .active {
+          & > a {
+            color: @pagination-active-font-color;
+            font-size: @pagination-active-font-size;
+            font: @font-family-base;
+            text-align: center;
+            vertical-align: middle;
+            background-color: @pagination-active-background-color;
+            height: 19px; // Needed to override due to over sized font
+            padding: 0 6px;
+            border-radius: @pagination-hover-background-radius;
+            &:hover{
+              background-color: @pagination-active-background-color;
+              font-size: @pagination-active-font-size;
+              height: 19px;// Needed to override due to over sized font
+            }
           }
-          &[disabled]{
+        }
+        & > li {
+          & > a {
+            cursor: pointer !important;
+            border: none;
+            font: @font-family-base;
+            font-size: @pagination-font-size;
+            color: @pagination-font-color;
+            //padding: @pagination-font-padding;
+            padding: 0px 7px;
+            margin-left: 2px;
+            text-align: center;
+            vertical-align: middle;
+            &:hover {
+              //color: @pagination-hover-font-color;
+              color: black;
+              font-size: @pagination-hover-font-size;
+              font: @font-family-base;
+              text-align: center;
+              vertical-align: middle;
+              //color: @gray-warm-light;
+              background-color: @gray-warm-light;
+              height: @pagination-hover-background-height;
+              border-radius: @pagination-hover-background-radius;
+            }
+          }
+          & > span {
+            padding: 0;
+            border: none;
             cursor: pointer;
           }
-        }
-        input{
-          //border: @none;
-          box-shadow: @none;
-          padding: 2px 0px 2px 5px;
-          line-height: 1.3;
-          height: 20px;
-          width:40px;
-          //direction: rtl; //Optional to keep current page number closer to '/100'
-          &:focus, &:active, &:hover {
-            //width: auto;
-            border: 1px solid #cccccc;
-            border-radius: 2px;
-            -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-            //direction: ltr; // Make it normal
+          &.active > a {
+            color: white;
+            &:hover{
+              cursor: default !important;
+            }
           }
-          &::-webkit-inner-spin-button,
-          &::-webkit-outer-spin-button{
-            opacity: 1;
+        }
+        i {
+          display: inline-block;
+          float: left;
+          margin: 0 5px;
+          &:hover{
+            cursor: default;
           }
         }
       }
+      .em-right-arrow {
+        -ms-transform: rotate(-90deg); /* IE 9 */
+        -webkit-transform: rotate(-90deg); /* Chrome, Safari, Opera */
+        transform: rotate(-90deg);
+        .common-style-for-arrow-in-pagination;
+      }
+
     }
-    //Rows per page select
-    .ui-grid-pager-row-count-picker{
-      margin-top: 3px;
-      margin-right: 10px;
-      select{
-        border: @none;
-        box-shadow: @none;
-        padding: 2px 0px;
-        line-height: 1.3;
-        height: 20px;
-        width: auto;
+    .em-pageview {
+      position: relative;
+      font: @font-family-base;
+      font-size: @pagination-font-size;
+      color: @pagination-font-color;
+      padding: 0 12px 0 0;
+      text-align: center;
+      vertical-align: middle;
+      display: inline-block;
+      width: auto;
+      height: 20px;
+      border-right: 1px solid @gray-warm-base;
+      top: 2px;
+      select {
+        border: none;
+        direction: rtl;
+        background: @arrowImgUrl center center no-repeat;
+        background-position: 0px;
+        background-size: @pagination-icon-arrow-height;
         -webkit-appearance: none;
-        &:focus, &:active, &:hover {
-
+        -moz-appearance: none;
+        appearance: none;
+        position: relative;
+        display: inline-block;
+        left: 5px;
+        z-index: 12;
+        height: 20px;
+        min-width: 43px;
+        &::-ms-expand {
+          display: none;
+        }
+        &:focus {
+          outline: none;
+        }
+        &:active {
+          background: @solidArrowImgUrl 0 no-repeat;
+        }
+        &:hover{
+          background: @solidArrowImgUrl 1px 9px no-repeat;
+          //background-position: 1px 9px;
+          & + label {
+            visibility: visible;
+          }
+        }
+        &+ label {
+          .activeIconBg;
         }
       }
-      &:after{
-        content: '';
-        width: 0;
-        top: 10px;
-        position: absolute;
-        height: 0;
-        border-style: solid;
-        border-width: 8px 6.5px 0;
-        border-color: #0060a0 transparent transparent;
-        line-height: 0;
-        _border-color: #0060a0 #000000 #000000 #000000;
-        _filter: progid:DXImageTransform.Microsoft.Chroma(color='#000000');
+      span{
+        &:active {
+          background: @solidArrowImgUrl 0 no-repeat;
+          &+ label {
+            .activeIconBg;
+          }
+        }
+        :hover + label {
+          visibility: visible;
+        }
+        span{
+          position: relative;
+          display: inline-block;
+          float: left;
+        }
       }
-    }
-
-    //Pager Counter
-    .ui-grid-pager-count-container{
-      .ui-grid-pager-count{
-
+      label {
+        align: center;
+        vertical-align: middle;
+        background-color: @pagination-hover-icon-background-color;
+        border-radius: @pagination-hover-background-radius;
+        height: @pagination-hover-icon-background-height;
+        width: @pagination-hover-icon-background-width;
+        display: block;
+        visibility: hidden;
+        z-index: 11;
+        position: absolute;
+        left: 0;
+        top: 0;
       }
     }
   }
 }
+
+

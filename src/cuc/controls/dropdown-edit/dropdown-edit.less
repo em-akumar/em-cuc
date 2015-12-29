@@ -4,7 +4,7 @@
     display:inline;
   }
   &.completed {
-   // border: 1px solid @dropdown-edit-completed-border-color;
+    // border: 1px solid @dropdown-edit-completed-border-color;
     color: @dropdown-edit-completed-text-color;
     border-radius: @dropdown-edit-border-radius;
   }
@@ -18,34 +18,34 @@
   }
 
   .em-combobox{
-      &.readonly{
-          background-color: @dropdown-edit-readonly-background-color;
-          border: 1px solid @dropdown-edit-readonly-border-color;
-          border-radius: @dropdown-edit-border-radius;
-          box-shadow: none;
-          cursor: default;
-          pointer-events: none;
-      }
-      &.restricted{
-          background-color: @dropdown-edit-restricted-background-color;
-          border: 1px solid @dropdown-edit-restricted-border-color;
-          color: @dropdown-edit-restricted-text-color;
-          border-radius: @dropdown-edit-border-radius;
-          box-shadow: none;
-          cursor: default;
-          pointer-events: none;
-      }
-      &disabled{
-          background-color: @dropdown-edit-disabled-background-color;
-          border: 1px solid @dropdown-edit-disabled-border-color;
-          box-shadow: none;
-          pointer-events: none;
-      }
-      &.error{
-          border: 1px solid @dropdown-error-inside-border;
-          box-shadow: 0 0 0 2px @dropdown-error-outside-border;
-          border-radius: @dropdown-edit-border-radius;
-      }
+    &.readonly{
+      background-color: @dropdown-edit-readonly-background-color;
+      border: 1px solid @dropdown-edit-readonly-border-color;
+      border-radius: @dropdown-edit-border-radius;
+      box-shadow: none;
+      cursor: default;
+      pointer-events: none;
+    }
+    &.restricted{
+      background-color: @dropdown-edit-restricted-background-color;
+      border: 1px solid @dropdown-edit-restricted-border-color;
+      color: @dropdown-edit-restricted-text-color;
+      border-radius: @dropdown-edit-border-radius;
+      box-shadow: none;
+      cursor: default;
+      pointer-events: none;
+    }
+    &disabled{
+      background-color: @dropdown-edit-disabled-background-color;
+      border: 1px solid @dropdown-edit-disabled-border-color;
+      box-shadow: none;
+      pointer-events: none;
+    }
+    &.error{
+      border: 1px solid @dropdown-error-inside-border;
+      box-shadow: 0 0 0 2px @dropdown-error-outside-border;
+      border-radius: @dropdown-edit-border-radius;
+    }
   }
 
   .btn {
@@ -53,7 +53,7 @@
     border-color: @dropdown-edit-default-border-color;
     border-radius: @dropdown-edit-border-radius;
     height: @text-button-height-medium;
-     padding: @dropdown-list-item-highlight-padding;
+    padding: @dropdown-list-item-highlight-padding;
     text-align: left;
     .caret{
       float: right;
@@ -144,20 +144,20 @@
       width: 100%;
     }
     li {
-       padding:@dropdown-list-item-highlight-padding;
+      padding:@dropdown-list-item-highlight-padding;
 
-    /*  .em-circle {
-        width: @dropdown-edit-item-icon-width;
-        height: @dropdown-edit-item-icon-width;
-        background: @dropdown-edit-item-icon-color;
-        -moz-border-radius: @dropdown-edit-item-icon-radius;
-        -webkit-border-radius: @dropdown-edit-item-icon-radius;
-        border-radius: @dropdown-edit-item-icon-radius;
-        float:left;
-        margin-top: @dropdown-edit-item-margin-top;
-        margin-right:@dropdown-edit-item-margin-right;
-      }
-    */
+      /*  .em-circle {
+          width: @dropdown-edit-item-icon-width;
+          height: @dropdown-edit-item-icon-width;
+          background: @dropdown-edit-item-icon-color;
+          -moz-border-radius: @dropdown-edit-item-icon-radius;
+          -webkit-border-radius: @dropdown-edit-item-icon-radius;
+          border-radius: @dropdown-edit-item-icon-radius;
+          float:left;
+          margin-top: @dropdown-edit-item-margin-top;
+          margin-right:@dropdown-edit-item-margin-right;
+        }
+      */
       .em-left-icon{
         width: @dropdown-edit-item-icon-width;
         height: @dropdown-edit-item-icon-width;
@@ -172,25 +172,25 @@
         float:right;
         margin-top: @dropdown-edit-item-margin-top;
       }
-     /* span.em-img-combobox{
-         background: url("../../assets/images/icon-lock-locked-locked.svg") no-repeat right center;
-         width: @dropdown-edit-item-icon-width;
-         height:@dropdown-edit-item-icon-width;
-         float:right;
-         margin-top: @dropdown-edit-item-margin-top;
+      /* span.em-img-combobox{
+          background: url("/main/images/control-images/icon-lock-locked-locked.svg") no-repeat right center;
+          width: @dropdown-edit-item-icon-width;
+          height:@dropdown-edit-item-icon-width;
+          float:right;
+          margin-top: @dropdown-edit-item-margin-top;
 
-      }*/
-        &:focus, &:hover {
-            background-color: @dropdown-list-item-highlight-color;
-        }
-        &:active {
-            background-color: @dropdown-edit-active-background-color;
-            color: @dropdown-panel-active-text-color;
-        }
-        &.disabled {
-            color: @dropdown-panel-disabled-text-color;
-            pointer-events: none;
-        }
+       }*/
+      &:focus, &:hover {
+        background-color: @dropdown-list-item-highlight-color;
+      }
+      &:active {
+        background-color: @dropdown-edit-active-background-color;
+        color: @dropdown-panel-active-text-color;
+      }
+      &.disabled {
+        color: @dropdown-panel-disabled-text-color;
+        pointer-events: none;
+      }
     }
 
 
@@ -205,16 +205,16 @@
       cursor: pointer;
       cursor: hand;
       display:block;
-        &:focus, &:hover {
-            background-color: @dropdown-list-item-highlight-color;
-        }
-        &:active {
-            background-color: @dropdown-panel-active-background-color;
-            color: @dropdown-panel-active-text-color;
-        }
-        &.disabled {
-            color: @dropdown-panel-disabled-text-color;
-        }
+      &:focus, &:hover {
+        background-color: @dropdown-list-item-highlight-color;
+      }
+      &:active {
+        background-color: @dropdown-panel-active-background-color;
+        color: @dropdown-panel-active-text-color;
+      }
+      &.disabled {
+        color: @dropdown-panel-disabled-text-color;
+      }
     }
   }
 }

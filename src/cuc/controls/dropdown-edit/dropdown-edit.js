@@ -6,6 +6,7 @@ class DropdownEdit {
     this.reinit();
   }
   reinit(){
+    if(this.options){
     let isIcon=false;
     if (Object.keys(this.options).length) {
       this.options.defaultText = this.options.defaultText || "Select item";
@@ -42,7 +43,7 @@ class DropdownEdit {
     this.setReadonly();
     this.setRestricted();
     this.setError();
-    this.setDisabledItem();
+    this.setDisabledItem();}
   }
   init() {
     var self = this;

@@ -1,3 +1,4 @@
+import {safeApply} from 'ems';
 class DropdownController {
   /* @ngInject */
   constructor(DropdownService) {
@@ -21,6 +22,7 @@ class DropdownController {
   initialize() {
     this.dropdownService.resolvePromise().then((response) => {
       this.drpCountries.options.itemList = response;
+      this.drpCountries.reinit();
       safeApply();
     });
   }
