@@ -11,9 +11,7 @@ class GridController {
 
   //Render UI-Grid and load the options from json file
   gridRender() {
-    this.gridOptions = {
-      template:gridOption
-    };
+    this.gridOptions = gridOption;
   }
   initialize() {
     this.gridService.resolvePromise().then((response) => {
