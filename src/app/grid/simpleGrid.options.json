@@ -1,0 +1,10 @@
+{ "enableSorting": false ,
+  "columnDefs": [{
+      "field": "Name_Property_Address",
+      "displayName": "Name Property/ Address" ,
+      "width": "*" },
+    {"field": "Date_Started"},
+    {"field": "Estimated_Close_Date"},
+    {"field": "Status"}
+  ]
+}
