@@ -1,8 +1,6 @@
 {
-  "paginationPageSizes": [25, 50, 75],
   "paginationPageSize": 10,
   "sortEnabled": true,
-  "rowHeight": 50,
   "enableRowSelection": true,
   "enablePaginationControls": false,
   "enableRowHeaderSelection": true,
@@ -12,15 +10,9 @@
   "columnDefs": [{
       "field": "Name_Property_Address",
       "displayName": "Name Property/ Address",
-      "minWidth": 200   },
+      "width": "*"  },
     {"field": "Date_Started"},
     {"field": "Estimated_Close_Date"},
-    {"field": "Status"},
-    {
-      "field": "Contacts",
-      "width": 100,
-      "displayName": "Contacts",
-      "cellTemplate": "<span class='glyphicon glyphicon-user' aria-hidden='true'></span>"
-    }
+    {"field": "Status"}
   ]
 }
