@@ -1,0 +1,10 @@
+{ "enableSorting": false ,
+  "columnDefs": [{
+      "field": "Loan_Program_Amount",
+      "displayName": "Amount",
+      "width": "*" },
+    {"field": "Date_Started"},
+    {"field": "Estimated_Close_Date"},
+    {"field": "Status"}
+  ]
+}

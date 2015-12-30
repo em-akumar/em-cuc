@@ -3,6 +3,7 @@
 @import '../../common/mixins.less';
 @import '../../common/typography.less';
 @arrowImgUrl: url("../../assets/images/icon-solid-arrow-blue-base.svg");
+@disArrowImgUrl: url("../../assets/images/icon-solid-arrow-temp-white-base.svg");
 @solidArrowImgUrl: url("../../assets/images/icon-solid-arrow-white.svg");
 
 
@@ -53,6 +54,34 @@
   padding-bottom: 30px;
 }
 
+.panel-heading{
+  background-color: @simple-grid-table-header-background-color;
+  border: 1px solid @simple-grid-table-header-border-color;
+  border-bottom: @none;
+}
+.action-button-wrapper{
+  text-align: right;
+  .btn{
+    background-color: transparent;
+    padding: 8px 0px;
+    width: 30px;
+    .em-icon{
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: 20px;
+    }
+    &.btnprint{
+      margin-right: 5px;
+    }
+  }
+  position: absolute;
+  top: 30px;
+  right: 0px;
+  //border: 1px solid @simple-grid-table-header-border-color;
+  //border-top: @none;
+  //border-bottom: @none;
+}
+
 //For simple grid  --- ToDo: need to optimise with common code
 .em-simple-grid{
   .ui-grid-row {
@@ -101,6 +130,7 @@
 
   .ui-grid-header{
     width: @simple-grid-header-row-container-width;
+    background-color: @table-header-row-background-color;
     .ui-grid-header-cell{
       background-color: @simple-grid-header-row-cell-background-color;
       padding: @simple-grid-header-row-cell-padding;
@@ -224,7 +254,8 @@
     background-color: @table-header-row-background-color;
     min-height: @table-header-row-height;
     .ui-grid-header-cell-wrapper{
-      padding-left: 10px;
+      padding: 0 10px;
+      background-color: @table-header-row-background-color;
     }
   }
   .ui-grid-filter-container{
@@ -233,7 +264,8 @@
 
   //For pagination in grid
   .em-complex-table-footer{
-    height: 40px;
+    background-color: @simple-grid-table-header-background-color;
+    height: 30px;
     text-align: right;
     .em-pagination{
       width: auto;
@@ -249,6 +281,15 @@
         -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
         transform: rotate(90deg);
         .common-style-for-arrow-in-pagination;
+        &.disable{
+          background: @disArrowImgUrl center center no-repeat;
+          background-size: 24px;
+          opacity: 0.2;
+          &:hover{
+            background-color: @none;
+            cursor: default;
+          }
+        }
       }
       .pagination {
         & > .active {
@@ -320,6 +361,15 @@
         -webkit-transform: rotate(-90deg); /* Chrome, Safari, Opera */
         transform: rotate(-90deg);
         .common-style-for-arrow-in-pagination;
+        &.disable{
+          background: @disArrowImgUrl center center no-repeat;
+          background-size: 24px;
+          opacity: 0.2;
+          &:hover{
+            background-color: @none;
+            cursor: default;
+          }
+        }
       }
 
     }
@@ -407,3 +457,38 @@
 }
 
 
+
+.em-icon-duplicate-file{
+  background-image: url("../../assets/images/icon-duplicate-file-default.svg");
+  &:active{
+    background-image: url("../../assets/images/icon-duplicate-file-active.svg");
+  }
+  &:hover{
+    background-image: url("../../assets/images/icon-duplicate-file-hover.svg");
+  }
+  &[disabled], &[disabled]:hover{
+    background-image: url("../../assets/images/icon-duplicate-file-disabled.svg");
+  }
+  &:after{
+    display:none;
+    content: url("../../assets/images/icon-duplicate-file-hover.svg")
+    url("../../assets/images/icon-duplicate-file-active.svg");
+  }
+}
+.em-icon-print{
+  background-image: url("../../assets/images/icon-print-default.svg");
+  &:active{
+    background-image: url("../../assets/images/icon-print-active.svg");
+  }
+  &:hover{
+    background-image: url("../../assets/images/icon-print-hover.svg");
+  }
+  &[disabled], &[disabled]:hover{
+    background-image: url("../../assets/images/icon-print-disabled.svg");
+  }
+  &:after{
+    display:none;
+    content: url("../../assets/images/icon-print-hover.svg")
+    url("../../assets/images/icon-print-active.svg");
+  }
+}

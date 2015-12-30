@@ -54,14 +54,18 @@ cuc.directive('emc', () => {
     restrict: 'A',
     replace: true,
     link: (scope, elem, attrs) => {
-      if (getVal(scope, attrs.options) !== '') {
-        setVal(scope, (attrs.control || ''), new emc[attrs.emc](elem[0], getVal(scope, attrs.options)));
-      } else {
-        setVal(scope, (attrs.control || ''), new emc[attrs.emc](elem[0]));
+      var elementName = attrs.emc+'_'+Math.random().toString(36).slice(2);
+      if (getVal(scope, attrs.options) != '') {
+        setVal(scope, (attrs.control || elementName), new emc[attrs.emc](elem[0], getVal(scope, attrs.options)));
       }
-      if (attrs.watchdepth !== undefined)
-        watchProps(attrs.watchdepth, scope, [attrs.options], getVal(scope, attrs.reinit || 'vm.reinit')
-          .bind(scope));
+      else {
+        setVal(scope, (attrs.control || elementName), new emc[attrs.emc](elem[0]));
+      }
+      scope.$watch(attrs.options, function(){
+        getVal(this.scope, (this.attrs.control || elementName)).options= getVal(this.scope,this.attrs.options);
+      }.bind({scope:scope,attrs:attrs}), true);
+      watchProps(attrs.watchdepth, scope, [(attrs.control || elementName)+'.options'],
+      attrs.reinit ? getVal(scope, attrs.reinit ).bind(scope): (getVal(scope,(attrs.control || elementName)).reinit||function(){}).bind(getVal(scope,(attrs.control || elementName))));
     }
   };
 });
@@ -154,6 +158,7 @@ function initPage(scope){
         for (var i = 0 ; i < maxPage; ++i) {
            pageListItems.push({value:i,text:(perpageRow *i+1) +'-'+ (maxPage-1==i?totalRow: (perpageRow *(i+1)))}) ;
         }
+
       scope._pageListItems = pageListItems;
       //selectPage.innerHTML = (html);
 
@@ -194,32 +199,32 @@ function initPage(scope){
           {
             startExt.style.display = '';
             endExt.style.display = '';
-            leftArrow.style.display = '';
-             rightArrow.style.display = '';
+            leftArrow.classList.remove('disable');
+             rightArrow.classList.remove('disable');
           }
           if(val>=maxPage-2 )
           {
             endExt.style.display = 'none';
             if(val == maxPage)
-              rightArrow.style.display = 'none';
+              rightArrow.classList.add('disable');
           }
           else{
             if( maxPage > 4){
               if(maxPage > 5)
                 endExt.style.display = '';
-            rightArrow.style.display = '';}
+            rightArrow.classList.remove('disable');}
           }
           if(val<4 )
           {
             startExt.style.display = 'none';
             if(val==1)
-              leftArrow.style.display = 'none';
+              leftArrow.classList.add('disable');
           }
           else{
             if( maxPage > 4){
               if(maxPage > 5)
                 startExt.style.display = '';
-            leftArrow.style.display = '';
+              leftArrow.classList.remove('disable');
             }
           }
             var initMd = val;
@@ -235,7 +240,7 @@ function initPage(scope){
                     if(val === initMd)
                       el.classList.add('active');
                     initMd++;
-                });
+            });
 
       }
       var pageOnclick = function(e){
@@ -243,6 +248,7 @@ function initPage(scope){
          changePage(val);
          selectPage.value= val-1;
 
+         selectPage.style.width=( selectPage.options[selectPage.selectedIndex].text.length * 10)+'px';
         uiGridctrl.grid.api.pagination.seek(Number(val));
       };
 
@@ -251,7 +257,7 @@ function initPage(scope){
       scope._pageOnClickSelect = function(){
          var val =  Number( scope._selectedVal)+1;
           changePage(val);
-
+          selectPage.style.width=( selectPage.options[selectPage.selectedIndex].text.length * 10)+'px';
         uiGridctrl.grid.api.pagination.seek(Number(val));
       }
       selectPage.onchange=function(e){
@@ -261,9 +267,12 @@ function initPage(scope){
            selectPage.style.width=( selectPage.options[selectPage.selectedIndex].text.length * 10)+'px';
         uiGridctrl.grid.api.pagination.seek(Number(val));
       };
-      scope._leftArrow_click=function(){
+      scope._leftArrow_click = function () {
+        if (uiGridctrl.grid.api.pagination.getPage() == 1)
+          return;
         uiGridctrl.grid.api.pagination.previousPage();
         selectPage.value = uiGridctrl.grid.api.pagination.getPage()-1;
+        selectPage.style.width=( selectPage.options[selectPage.selectedIndex].text.length * 10)+'px';
         var activeEl = element[0].querySelector('.pagination .active');
         var middel = pageMiddle.indexOf(activeEl);
        if(middel >-1)  {
@@ -271,7 +280,7 @@ function initPage(scope){
              var initMd = Number(activeEl.childNodes[0].innerHTML)-1;
               if(!(initMd-1<=0)){
                 endExt.style.display='';
-                rightArrow.style.display ='';
+                rightArrow.classList.remove('disable');
                 pageMiddle.forEach(function(el){
                     el.childNodes[0].innerHTML = initMd;
                     initMd++;
@@ -282,10 +291,10 @@ function initPage(scope){
               else{
 
                 if(maxPage === 5)
-                   rightArrow.style.display ='';
+                   rightArrow.classList.remove('disable');
                 pageMiddle[middel].classList.remove('active');
                 startPage.classList.add('active');
-                 leftArrow.style.display ='none';}
+                 leftArrow.classList.add('disable');}
           }
           else{
             pageMiddle[middel].classList.remove('active');
@@ -297,13 +306,15 @@ function initPage(scope){
         pageMiddle[2].classList.add('active');
       }
       else
-        leftArrow.style.display ='none';
+        leftArrow.classList.add('disable');
 
       };
       scope._rightArrow_click=function(){
-
+        if(uiGridctrl.grid.api.pagination.getPage() == (maxPage))
+          return;
         uiGridctrl.grid.api.pagination.nextPage();
-        selectPage.value = uiGridctrl.grid.api.pagination.getPage()-1;
+        selectPage.value = uiGridctrl.grid.api.pagination.getPage() - 1;
+        selectPage.style.width=( selectPage.options[selectPage.selectedIndex].text.length * 10)+'px';
         var activeEl = element[0].querySelector('.pagination .active');
         var middel = pageMiddle.indexOf(activeEl);
        if(middel >-1)  {
@@ -311,7 +322,7 @@ function initPage(scope){
              var initMd = Number(activeEl.childNodes[0].innerHTML)-1;
               if(initMd<=maxPage-3 ){
                 startExt.style.display='';
-                 leftArrow.style.display ='';
+                 leftArrow.classList.remove('disable');
                 pageMiddle.forEach(function(el){
                     el.childNodes[0].innerHTML = initMd;
                     initMd++;
@@ -321,10 +332,10 @@ function initPage(scope){
                 }
               else{
                 if(maxPage === 5)
-                   leftArrow.style.display ='';
+                   leftArrow.classList.remove('disable');
                 pageMiddle[middel].classList.remove('active');
                 endPage.classList.add('active');
-                 rightArrow.style.display ='none';}
+                 rightArrow.classList.add('disable');}
           }
           else{
             pageMiddle[middel].classList.remove('active');
@@ -336,7 +347,7 @@ function initPage(scope){
         pageMiddle[0].classList.add('active');
       }
       else
-          rightArrow.style.display ='none';
+          rightArrow.classList.remove('disable');
 
 
       };
@@ -371,13 +382,13 @@ function initPage(scope){
         initMd++;
       });
        if(!settings.prvArr)
-        leftArrow.style.display = 'none';
+        leftArrow.classList.add('disable');
        else
-        leftArrow.style.display = '';
+        leftArrow.classList.remove('disable');
        if(!settings.nxtArr)
-        rightArrow.style.display = 'none';
+        rightArrow.classList.add('disable');
        else
-        rightArrow.style.display = '';
+        rightArrow.classList.remove('disable');
 }
     },
     restrict: 'A',
