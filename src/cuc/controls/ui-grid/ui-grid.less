@@ -3,6 +3,7 @@
 @import '../../common/mixins.less';
 @import '../../common/typography.less';
 @arrowImgUrl: url("../../assets/images/icon-solid-arrow-blue-base.svg");
+@disArrowImgUrl: url("../../assets/images/icon-solid-arrow-temp-white-base.svg");
 @solidArrowImgUrl: url("../../assets/images/icon-solid-arrow-white.svg");
 
 
@@ -224,7 +225,8 @@
     background-color: @table-header-row-background-color;
     min-height: @table-header-row-height;
     .ui-grid-header-cell-wrapper{
-      padding-left: 10px;
+      padding: 0 10px;
+      background-color: @table-header-row-background-color;
     }
   }
   .ui-grid-filter-container{
@@ -249,6 +251,15 @@
         -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
         transform: rotate(90deg);
         .common-style-for-arrow-in-pagination;
+        &.disable{
+          background: @disArrowImgUrl center center no-repeat;
+          background-size: 24px;
+          opacity: 0.2;
+          &:hover{
+            background-color: @none;
+            cursor: default;
+          }
+        }
       }
       .pagination {
         & > .active {
