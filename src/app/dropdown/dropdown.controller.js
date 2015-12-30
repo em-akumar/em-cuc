@@ -12,11 +12,19 @@ class DropdownController {
     this.drpCountry = {
       defaultText: 'Select',
       onChange: function (e) {
-        console.log('clicked');
-      },
+        this.drpState.itemList = [{'value':1, 'text':'State1' + '-' + e.target.getAttribute('value')}, {'value':2, 'text':'State2' + '-' + e.target.getAttribute('value')}];
+        safeApply();
+      }.bind(this),
       valueField: 'alpha2Code',
       textField: 'name',
       defaultSize: 'large'
+    };
+    this.drpState = {
+      defaultText: 'Select',
+      onChange: function (e) {
+        console.log('clicked');
+      },
+      defaultSize: 'medium'
     };
   }
   initialize() {
