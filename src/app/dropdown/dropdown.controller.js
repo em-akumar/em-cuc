@@ -21,8 +21,7 @@ class DropdownController {
   }
   initialize() {
     this.dropdownService.resolvePromise().then((response) => {
-      this.drpCountries.options.itemList = response;
-      this.drpCountries.reinit();
+      this.drpCountry.itemList = response;
       safeApply();
     });
   }
