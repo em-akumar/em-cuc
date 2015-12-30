@@ -148,7 +148,7 @@ setSelected(value){
     self.toggle = function (e) {
       var target = e.currentTarget || e.srcElement;
      // alert(target);
-      target.parentNode.classList.add('open');
+      //target.parentNode.classList.add('open');
      // target.parentNode.addClass +=" open";
       target.parentNode.classList.toggle('open');
     //  console.log(target.parentNode);

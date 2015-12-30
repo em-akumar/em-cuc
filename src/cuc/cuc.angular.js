@@ -54,14 +54,18 @@ cuc.directive('emc', () => {
     restrict: 'A',
     replace: true,
     link: (scope, elem, attrs) => {
-      if (getVal(scope, attrs.options) !== '') {
-        setVal(scope, (attrs.control || ''), new emc[attrs.emc](elem[0], getVal(scope, attrs.options)));
-      } else {
-        setVal(scope, (attrs.control || ''), new emc[attrs.emc](elem[0]));
+      var elementName = attrs.emc+'_'+Math.random().toString(36).slice(2);
+      if (getVal(scope, attrs.options) != '') {
+        setVal(scope, (attrs.control || elementName), new emc[attrs.emc](elem[0], getVal(scope, attrs.options)));
       }
-      if (attrs.watchdepth !== undefined)
-        watchProps(attrs.watchdepth, scope, [attrs.options], getVal(scope, attrs.reinit || 'vm.reinit')
-          .bind(scope));
+      else {
+        setVal(scope, (attrs.control || elementName), new emc[attrs.emc](elem[0]));
+      }
+      scope.$watch(attrs.options, function(){
+        getVal(this.scope, (this.attrs.control || elementName)).options= getVal(this.scope,this.attrs.options);
+      }.bind({scope:scope,attrs:attrs}), true);
+      watchProps(attrs.watchdepth, scope, [(attrs.control || elementName)+'.options'],
+      attrs.reinit ? getVal(scope, attrs.reinit ).bind(scope): (getVal(scope,(attrs.control || elementName)).reinit||function(){}).bind(getVal(scope,(attrs.control || elementName))));
     }
   };
 });
