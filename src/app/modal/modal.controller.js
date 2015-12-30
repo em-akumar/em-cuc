@@ -9,7 +9,7 @@ class ModalController {
     // this.initialize();
   }
 
-  //Open angular ui bootstrap model on the click
+  // Open angular ui bootstrap model on the click
   open(size) {
     var modalInstance = this.$uibModal.open({
       template: modalTemplate,

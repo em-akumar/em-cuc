@@ -6,7 +6,6 @@ class DropdownController {
     this.dropdownService = DropdownService;
     this.initialize();
     this.renderDropdown();
-
   }
   renderDropdown() {
     this.drpCountry = {

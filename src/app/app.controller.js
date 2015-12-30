@@ -21,7 +21,9 @@ export default class AppController {
       console.log(this.toggle);
     }.bind(this));
 
-    //.initialize();
+
+
+    // .initialize();
   }
 
   getWidth() {

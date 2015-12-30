@@ -12,7 +12,6 @@ fileUploaderModule.config(($stateProvider) => {
   });
 });
 
-
 fileUploaderModule.directive('fileUploaderComponent', fileUploaderComponent);
 fileUploaderModule.service('FileUploaderService', FileUploaderService);
 

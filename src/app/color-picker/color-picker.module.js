@@ -5,7 +5,6 @@ import ColorPickerService from './color-picker.service';
 
 let colorPickerModule = angular.module('colorPicker', []);
 
-
 colorPickerModule.config(($stateProvider) => {
   $stateProvider.state('color-picker', {
     url: '/color-picker',

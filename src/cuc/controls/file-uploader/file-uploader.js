@@ -1,6 +1,6 @@
+/* eslint-disable */
 import {ProgressBar} from '../progress-bar/progress-bar';
 var FileUpload = function (el, opts) {
-
 
   var uploadStack = [], //upload file item store array
     uploadedStack = [],

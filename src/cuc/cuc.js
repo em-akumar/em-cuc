@@ -13,7 +13,6 @@ import {ToastNotifications} from './controls/notifications/toast-notifications';
 import {ModalNotifications} from './controls/notifications/modal-notifications';
 import {SliderNotifications} from './controls/notifications/slider-notifications';
 
-
 export {
 Dropdown, DropdownEdit, LabelTextInputField, LabelTextAreaInputField,
 DatePicker, ColorPicker, ProgressBar, FileUpload, ToastNotifications, ModalNotifications, SliderNotifications

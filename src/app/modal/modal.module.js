@@ -5,7 +5,6 @@ import ModalService from './modal.service';
 
 let modalModule = angular.module('modal', ['ui.bootstrap']);
 
-
 modalModule.config(($stateProvider) => {
   $stateProvider.state('modal', {
     url: '/modal',
