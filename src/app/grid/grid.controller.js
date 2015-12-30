@@ -13,7 +13,14 @@ class GridController {
   //Render UI-Grid and load the options from json file
   gridRender() {
     this.gridOptions = gridOption;
+    this.gridOptions.onRegisterApi = function (gridApi) {
+      this.gridApi = gridApi;
+    }.bind(this);
     this.simpleGridOptions = simpleGridOption;
+  }
+  exportCsv() {
+    var myElement = angular.element(document.querySelector('.xport-location'));
+    this.gridApi.exporter.csvExport('visible', 'all', myElement);//visible or selected
   }
   initialize() {
     this.gridService.resolvePromise().then((response) => {

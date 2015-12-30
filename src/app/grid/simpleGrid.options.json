@@ -1,7 +1,7 @@
 { "enableSorting": false ,
   "columnDefs": [{
-      "field": "Name_Property_Address",
-      "displayName": "Name Property/ Address" ,
+      "field": "Loan_Program_Amount",
+      "displayName": "Amount",
       "width": "*" },
     {"field": "Date_Started"},
     {"field": "Estimated_Close_Date"},
