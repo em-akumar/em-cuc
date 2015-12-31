@@ -6,12 +6,14 @@
   "enableRowHeaderSelection": true,
   "multiSelect": true,
   "enableSelectAll": true,
-  "enableFiltering": true,
+  "enableColumnResizing" : true,
+  "enableFiltering": false,
   "columnDefs": [{
       "field": "Loan_Program_Amount",
       "displayName": "Amount",
       "width": "*"  },
-    {"field": "Date_Started"},
+    {"field": "Date_Started",
+    "enableColumnResizing" : false},
     {"field": "Estimated_Close_Date"},
     {"field": "Status"}
   ]
