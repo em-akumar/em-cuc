@@ -1,3 +1,4 @@
+import {angular} from 'ems';
 export default class AppController {
   /* @ngInject */
   constructor(AppService, $scope) {
@@ -21,8 +22,6 @@ export default class AppController {
       console.log(this.toggle);
     }.bind(this));
 
-
-
     // .initialize();
   }
 
@@ -41,7 +40,6 @@ export default class AppController {
     console.log('toggleSidebar');
     this.toggle = !this.toggle;
   }
-
 
   initialize() {
 
