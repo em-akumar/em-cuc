@@ -5,7 +5,6 @@ import DropdownEditService from './dropdown-edit.service';
 
 let dropdownEditModule = angular.module('dropdownEdit', []);
 
-
 dropdownEditModule.config(($stateProvider) => {
   $stateProvider.state('dropdown-edit', {
     url: '/dropdown-edit',

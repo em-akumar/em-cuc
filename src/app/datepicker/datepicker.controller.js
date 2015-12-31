@@ -8,7 +8,7 @@ class DatepickerController {
       parent: 'jcalendar_parent1-angular',
       destDateField: 'txtDatePicker',
       destTimeField: 'txtTimePicker',
-      disabledDates: ['14/11/2015', '15/11/2015', '16/11/2015']
+      disabledDates: ['14/12/2015', '15/12/2015', '16/12/2015']
     };
     // this.initialize();
   }

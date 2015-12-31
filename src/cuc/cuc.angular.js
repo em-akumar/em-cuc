@@ -106,6 +106,7 @@ cuc.directive('uiGridPrint', function () {
     require: '^uiGrid'
   };
 });
+
 cuc.directive('uiGridCustomPaging', function ($compile) {
   return {
     link: function (scope, element, attrs, uiGridctrl) {
@@ -414,6 +415,5 @@ function loadPage(pageNumber){
       pageStruct.nxtArr = false;
   return pageStruct;
 }
-
 
 export {cuc};

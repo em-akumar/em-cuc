@@ -10,7 +10,6 @@ class ColorPickerController {
     // this.initialize();
   }
 
-
   initialize() {
     this.colorPickerService.resolvePromise().then((response) => {
       this.data = response.data;

@@ -6,7 +6,6 @@ class FileUploaderController {
     // this.initialize();
   }
 
-
   fileUploaderRender() {
     let configUploadUrl = 'http://10.112.104.13:85/v1/formbuilder/importpackage';
 
@@ -16,7 +15,7 @@ class FileUploaderController {
       dropDirectionMsg = 'Drop files to upload or  ',
       fileTypeIconCss = 'efrm-file',
       supportText = '[Supported File Format: .jpg]',
-      fileMaxSize = '5120', //size in KBs
+      fileMaxSize = '5120',   //  size in KBs
       invalidFileMsg = '! Upload failed: Invalid file extension.';
 
     let options = {
