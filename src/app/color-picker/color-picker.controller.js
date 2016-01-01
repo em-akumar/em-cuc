@@ -1,3 +1,4 @@
+import {angular} from 'ems';
 class ColorPickerController {
   /* @ngInject */
   constructor(ColorPickerService) {

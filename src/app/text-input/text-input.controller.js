@@ -1,7 +1,6 @@
 class TextInputController {
   /* @ngInject */
   constructor(TextInputService) {
-    this.label = 'TextInput Controller !!';
     this.textInputService = TextInputService;
     // this.initialize();
   }

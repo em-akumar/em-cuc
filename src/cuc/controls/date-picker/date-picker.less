@@ -1,21 +1,3 @@
-@bs-datetimepicker-timepicker-font-size: 1.2em;
-@gray-base: #000;
-@bs-datetimepicker-active-bg: darken(#428bca, 6.5%);
-@bs-datetimepicker-active-color: #fff;
-@bs-datetimepicker-border-radius: 4px;
-@bs-datetimepicker-btn-hover-bg: lighten(@gray-base, 93.5%);
-@bs-datetimepicker-disabled-color: lighten(@gray-base, 46.7%);
-@bs-datetimepicker-alternate-color: lighten(@gray-base, 46.7%);
-@bs-datetimepicker-secondary-border-color: #ccc;
-@bs-datetimepicker-secondary-border-color-rgba: rgba(0, 0, 0, 0.2);
-@bs-datetimepicker-primary-border-color: white;
-@bs-datetimepicker-text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-@screen-sm: 768px;
-@screen-sm-min: @screen-sm;
-@screen-md: 992px;
-@screen-md-min: @screen-md;
-@screen-lg: 1200px;
-@screen-lg-min: @screen-lg;
 
 .em-date-picker {
   .input-group-addon.em-calendar {
@@ -448,9 +430,11 @@ table.table-condensed.top {
       border-radius: @input-field-border-radius;
       .time-picker-icon{
         background: @dropdown-panel-active-background-color url("../../assets/images/icon-clock-active-white.svg") center center no-repeat;
+        background-size: 100%;
       }
       .date-picker-icon{
         background: @dropdown-panel-active-background-color url("../../assets/images/icon-calendar-active-white.svg") center center no-repeat;
+        background-size: 100%;
       }
       .time-picker-title{
         color:@white;
@@ -475,21 +459,21 @@ table.table-condensed.top {
     cursor: pointer;
   }
   .time-picker-icon {
-    width: 12px;
     border-top-left-radius: 2px;
     border-bottom-left-radius: 2px;
     color: @dropdown-default-icon-color;
     background: url("../../assets/images/icon-clock-default-blue-base.svg") center center no-repeat;
+    background-size: 100%;
     padding: 7px;
     cursor: pointer;
   }
 
   .date-picker-icon {
-    width: 12px;
     border-top-left-radius: 2px;
     border-bottom-left-radius: 2px;
     color: @dropdown-default-icon-color;
     background: url("../../assets/images/icon-calendar-default.svg") center center no-repeat;
+    background-size: 100%;
     padding: 7px;
     cursor: pointer;
   }
@@ -561,16 +545,16 @@ table.table-condensed.top {
     height: 32px;
     width: 32px;
     padding: 8px;
-   // background: @dropdown-panel-hover-highlight-color;
-   // border-radius: 25px;
+    // background: @dropdown-panel-hover-highlight-color;
+    // border-radius: 25px;
     &:active {
       background: @dropdown-panel-active-background-color;
       color: @white;
       border-radius: 25px;
     }
     &:hover,&:focus{
-       background: @dropdown-panel-hover-highlight-color;
-       border-radius: 25px;
+      background: @dropdown-panel-hover-highlight-color;
+      border-radius: 25px;
     }
     &.disabled {
       opacity: .35;
@@ -591,7 +575,7 @@ table.table-condensed.top {
 
   .calendar-hours, .calendar-Minutes, .calendar-toggle-period {
     cursor: pointer;
-   // background-color: @dropdown-panel-hover-highlight-color;
+    // background-color: @dropdown-panel-hover-highlight-color;
     width: 32px;
     //border-radius: 50%;
     line-height: 30px;
@@ -615,4 +599,3 @@ table.table-condensed.top {
     margin-left: -15px;
   }
 }
-
