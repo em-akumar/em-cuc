@@ -1,7 +1,6 @@
 class TextAreaController {
   /* @ngInject */
   constructor(TextAreaService) {
-    this.label = 'TextArea Controller !!';
     this.textAreaService = TextAreaService;
     // this.initialize();
   }

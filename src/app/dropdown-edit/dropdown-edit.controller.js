@@ -22,7 +22,6 @@ class DropdownEditController {
   initialize() {
     this.dropdownEditService.resolvePromise().then((response) => {
       this.drpState.itemList = response;
-      //this.drpStates.reinit();
       safeApply();
     });
   }
