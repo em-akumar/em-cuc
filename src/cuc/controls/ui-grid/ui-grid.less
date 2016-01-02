@@ -238,15 +238,19 @@
     .ui-grid-header-cell{
       background-color: @simple-grid-header-row-cell-background-color;
       border: @none;
-      font-size: @simple-grid-header-row-font-size;
-      font-family: @simple-grid-header-row-font-family;
-      color: @simple-grid-header-row-font-color;
+      font-size: @table-header-row-font-size;
+      font-family: @font-family-base;
+      font-weight: @table-header-row-font-weight;
+      color: @table-header-row-font-color;
       text-align: left;
       vertical-align: middle;
         .ui-grid-column-resizer{
           width: 1px;
           background-color: @table-header-row-column-separator;
-        }
+        };
+      &:hover{
+        font-weight: @table-header-row-active-font-weight;
+      }
     }
     .ui-grid-icon-angle-down{
       display: @none;
