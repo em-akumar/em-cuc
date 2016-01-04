@@ -1,7 +1,6 @@
 class ButtonsController {
   /* @ngInject */
   constructor(ButtonsService) {
-    this.label = 'Buttons Controller !!';
     this.buttonsService = ButtonsService;
     // this.initialize();
   }

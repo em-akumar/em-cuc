@@ -1,7 +1,6 @@
 class DatepickerController {
   /* @ngInject */
   constructor(DatepickerService) {
-    this.label = 'Datepicker Controller !!';
     this.datepickerService = DatepickerService;
     // added DatePicker
     this.dateTimePicker = {

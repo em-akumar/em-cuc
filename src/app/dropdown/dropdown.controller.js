@@ -7,40 +7,30 @@ class DropdownController {
     this.initialize();
     this.renderDropdown();
   }
+
+  /* The below example of country and state, on the selection of country (on change method), it shows up states */
   renderDropdown() {
     this.drpCountry = {
-      defaultText: '',
+      defaultText: 'Select',
       onChange: function (e) {
-        this.drpState.itemList = [
-          {
-            'value':1,
-            'text':'State1'
-          },
-          {
-            'value':2,
-            'text':'State2'
-          }
-        ];
-      },
+        this.drpState.itemList = [{'value':1, 'text':'State1' + '-' + e.target.getAttribute('value')}, {'value':2, 'text':'State2' + '-' + e.target.getAttribute('value')}];
+        safeApply();
+      }.bind(this),
       valueField: 'alpha2Code',
       textField: 'name',
       defaultSize: 'large'
     };
-
     this.drpState = {
       defaultText: 'Select',
       onChange: function (e) {
         console.log('clicked');
       },
-      valueField: 'alpha2Code',
-      textField: 'name',
-      defaultSize: 'medium'
+      defaultSize: 'large'
     };
   }
   initialize() {
     this.dropdownService.resolvePromise().then((response) => {
       this.drpCountry.itemList = response;
-      this.drpState.itemList = response;
       safeApply();
     });
   }
