@@ -2,10 +2,10 @@
 @import '../../common/variables.less';
 @import '../../common/mixins.less';
 @import '../../common/typography.less';
-@arrowImgUrl: url("../../assets/images/icon-solid-arrow-blue-base.svg");
+@arrowImgUrl: url("../../assets/images/icon-chevron-down-default-blue-base.svg");
 @disArrowImgUrl: url("../../assets/images/icon-solid-arrow-temp-white-base.svg");
 @solidArrowImgUrl: url("../../assets/images/icon-solid-arrow-white.svg");
-
+@checkmarkImageUrl: url("../../assets/images/icon-checkmark-white.svg");
 
 //Mixins for styling  --- ToDo: need to move shared place
 .position-of-triangle-in-button(){
@@ -32,7 +32,7 @@
   }
 }
 .checkBox-common-properties{
-  content: '\c362';
+  content: '';
   border: 1px solid;
   font-size: 0.615rem;
   border-radius: 3px;
@@ -113,14 +113,17 @@
   }
   .ui-grid-cell-contents {
     i {
-      width: @table-header-row-sort-icon-width;
+      width: @pagination-icon-arrow-height;
+      margin: 0 0 0 @border-width-2;
       vertical-align: middle;
       &.ui-grid-icon-up-dir{
         content:@arrowImgUrl;
+        width: @pagination-icon-arrow-height;
         transform: rotate(180deg);
       }
       &.ui-grid-icon-down-dir{
         content: @arrowImgUrl;
+        width: @pagination-icon-arrow-height;
       }
     }
     sub{
@@ -177,8 +180,8 @@
             }
             &.ui-grid-row-selected, &.ui-grid-all-selected{
               &:before{
-                background-color: #2080c3;
                 color: #ffffff;
+                background: #2080c3 @checkmarkImageUrl no-repeat center/12px;
                 .checkBox-common-properties;
                 border-color: @checkbox-active-border-color;
               }
@@ -218,8 +221,9 @@
   }
   .ui-grid-cell-contents {
     i {
-      width: @table-header-row-sort-icon-width;
+      width: @table-header-row-sort-icon-sm-width;
       vertical-align: middle;
+      margin: @table-header-row-sort-icon-margin;
       &.ui-grid-icon-up-dir{
         content:@arrowImgUrl;
         transform: rotate(180deg);
@@ -232,27 +236,33 @@
       visibility: hidden;
     }
   }
-
   .ui-grid-header{
-    width: @simple-grid-header-row-container-width;
+     background-color: @table-header-row-background-color;
+     height: @table-header-row-height;
     .ui-grid-header-cell{
-      background-color: @simple-grid-header-row-cell-background-color;
       padding: 0 10px 0 0;
       border: @none;
-      font-size: @simple-grid-header-row-font-size;
-      font-family: @simple-grid-header-row-font-family;
-      color: @simple-grid-header-row-font-color;
-      text-align: left;
-      vertical-align: middle;
-        .ui-grid-column-resizer{
-          width: 1px;
-          background-color: @table-header-row-column-separator;
+      .ui-grid-cell-contents{
+        font: @font-family-base;
+        font-size: @table-header-row-font-size;
+        font-weight: @table-header-row-font-weight;
+        color: @table-header-row-font-color;
+        text-align: left;
+        vertical-align: middle;
+        &:hover{
+          font-weight: @table-header-row-active-font-weight;
         }
+
+      }
+      .ui-grid-column-resizer{
+            width: 1px;
+            background-color: @table-header-row-column-separator;
+          }
+      }
+      .ui-grid-icon-angle-down{
+        display: @none;
+      }
     }
-    .ui-grid-icon-angle-down{
-      display: @none;
-    }
-  }
   .ui-grid-top-panel {
     background: @none; // To clear out gradient properties
     background-color: @table-header-row-background-color;
