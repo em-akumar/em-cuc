@@ -281,7 +281,8 @@ class DatePicker {
                 let timeCalHour = parentObj.querySelector('.calendar-hours');
                 let timeCalMin = parentObj.querySelector('.calendar-Minutes');
                 let timeCalAmPm = parentObj.querySelector('.calendar-toggle-period');
-                destTimeObj.value = timeCalHour.innerHTML + ":" + timeCalMin.innerHTML + ":" + timeCalAmPm.innerHTML;
+                console.log(timeCalHour.innerHTML);
+                destTimeObj.value = (timeCalHour.innerHTML.length==1?'0':'')+timeCalHour.innerHTML + ":" +(timeCalMin.innerHTML.length==1?'0':'')+ timeCalMin.innerHTML + " " + timeCalAmPm.innerHTML.trim();
               }
               else {
                 destTimeObj.value = self.showCurrentTime();
@@ -512,7 +513,7 @@ class DatePicker {
     divHoursTag.className = "calendar-hours";
     divHoursTag.innerHTML = this.showCurrentHour();
     divHoursTag.onclick =  function() {
-      timeFieldValue.value = divHoursTag.innerHTML + ":" + divMinutesTag.innerHTML + " " + divTogglePeriodTag.innerHTML;
+      timeFieldValue.value = divHoursTag.innerHTML + ":" + divMinutesTag.innerHTML + " " + divTogglePeriodTag.innerHTML.trim();
     };
 
     cell09.appendChild(divHoursTag);
@@ -525,7 +526,7 @@ class DatePicker {
     divMinutesTag.className = "calendar-Minutes";
     divMinutesTag.innerHTML = this.showCurrentMinutes();
     divMinutesTag.onclick =  function() {
-      timeFieldValue.value = divHoursTag.innerHTML + ":" + divMinutesTag.innerHTML + " " + divTogglePeriodTag.innerHTML;
+      timeFieldValue.value = divHoursTag.innerHTML + ":" + divMinutesTag.innerHTML + " " + divTogglePeriodTag.innerHTML.trim();
     };
     cell11.appendChild(divMinutesTag);
 
@@ -542,7 +543,7 @@ class DatePicker {
 
     divTogglePeriodTag.onclick =  function() {
       divTogglePeriodTag.innerHTML = divTogglePeriodTag.innerHTML == 'AM' ? 'PM' : 'AM';
-      timeFieldValue.value = divHoursTag.innerHTML + ":" + divMinutesTag.innerHTML + " " + divTogglePeriodTag.innerHTML;
+      timeFieldValue.value = divHoursTag.innerHTML + ":" + divMinutesTag.innerHTML + " " + divTogglePeriodTag.innerHTML.trim();
     };
 
     cell13.appendChild(divTogglePeriodTag);
@@ -561,7 +562,7 @@ class DatePicker {
     cell14.onclick =  function() {
       let currentHour = divHoursTag.innerHTML;
       divHoursTag.innerHTML = self.decrementHour(currentHour);
-      timeFieldValue.value = divHoursTag.innerHTML + ":" + divMinutesTag.innerHTML + " " + divTogglePeriodTag.innerHTML;
+      timeFieldValue.value = divHoursTag.innerHTML + ":" + divMinutesTag.innerHTML + " " + divTogglePeriodTag.innerHTML.trim();
     };
 
     let cell15 = tableDown.insertCell(1);
@@ -579,7 +580,7 @@ class DatePicker {
     cell15.onclick =  function(){
       let currentMinutes = divMinutesTag.innerHTML;
       divMinutesTag.innerHTML = self.decrementMinute(currentMinutes);
-      timeFieldValue.value = divHoursTag.innerHTML + ":" + divMinutesTag.innerHTML + " " + divTogglePeriodTag.innerHTML;
+      timeFieldValue.value = divHoursTag.innerHTML + ":" + divMinutesTag.innerHTML + " " + divTogglePeriodTag.innerHTML.trim();
     };
 
     let cell16 = tableDown.insertCell(3);
@@ -663,7 +664,8 @@ let self=this;
     let minutes = timeNow.getMinutes();
 
     //var seconds = timeNow.getSeconds();
-    let timeString = "" + ((hours > 12) ? hours - 12 : hours);
+    var hrsToShow = ((hours > 12) ? hours - 12 : hours);
+    let timeString = ((hrsToShow < 10) ? "0" : "") + hrsToShow;
     timeString += ((minutes < 10) ? ":0" : ":") + minutes;
     // timeString  += ((seconds < 10) ? ":0" : ":") + seconds;
     timeString += (hours >= 12) ? " PM" : " AM";
