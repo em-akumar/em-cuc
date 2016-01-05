@@ -21,9 +21,6 @@
     "url": "https://github.com/elliemaedev/em-cuc/issues"
   },
   "homepage": "https://github.com/elliemaedev/em-cuc#readme",
-  "peerDependencies": {
-    "@emdev/em-swift": "1.0.1"
-  },
   "ems_config": {
     "project_type": "cuc",
     "index": "./src/index.html",
@@ -52,7 +49,7 @@
     }
   },
   "devDependencies": {
-    "@emdev/em-swift": "1.0.1",
+    "@emdev/em-swift": "latest",
     "bootstrap": "3.3.6",
     "angular": "1.4.8",
     "angular-ui-bootstrap": "0.14.3",
