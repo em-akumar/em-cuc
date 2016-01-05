@@ -144,10 +144,10 @@ class DatePicker {
     Date.prototype.format =  function (mask, utc) {
       return self.dateFormat(this, mask, utc);
     };
-
+  if( !this._setDisabled()){
    this.AddOn.addEventListener('click',()=>{
       this.viewCalendar();
-    });
+    });}
 
   }
   viewCalendar(){
@@ -248,6 +248,19 @@ class DatePicker {
     }
     this.calendarTo = dateObj;
   }
+  _setDisabled() {
+    var self = this;
+    var isDisabled = self.AddOn.parentNode.classList.contains('disabled');
+    if(isDisabled)
+    {
+      self.AddOn.classList.add('disabled');
+      self.destDateField.classList.add('disabled');
+      self.destTimeField.classList.add('disabled');
+      self.destDateField.setAttribute('disabled', 'disabled');
+      self.destTimeField.setAttribute('disabled', 'disabled');
+    }
+    return isDisabled;
+  }
   _generateCalendarTable() {
     let parentObj = ((typeof this.parent === 'object')?this.parent: document.getElementById(this.parent));;
     let rootTable = document.createElement('table');
@@ -281,7 +294,6 @@ class DatePicker {
                 let timeCalHour = parentObj.querySelector('.calendar-hours');
                 let timeCalMin = parentObj.querySelector('.calendar-Minutes');
                 let timeCalAmPm = parentObj.querySelector('.calendar-toggle-period');
-                console.log(timeCalHour.innerHTML);
                 destTimeObj.value = (timeCalHour.innerHTML.length==1?'0':'')+timeCalHour.innerHTML + ":" +(timeCalMin.innerHTML.length==1?'0':'')+ timeCalMin.innerHTML + " " + timeCalAmPm.innerHTML.trim();
               }
               else {
@@ -301,7 +313,8 @@ class DatePicker {
           }
         }
 
-        if (this.isCurrentDate(this.calendarIter, this.today)) {
+        if (this.isCurrentDate(this.calendarIter, this.today)
+        && self.calendarIter.getMonth() == self.currentMonth.getMonth()) {
           cell.className = "current-calendar-day";
         }
 
