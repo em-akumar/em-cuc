@@ -18,8 +18,8 @@
     background-color: @dropdown-default-background;
     border-color: @dropdown-default-border-color;
     border-radius: @dropdown-border-radius;
-    padding: @dropdown-list-item-highlight-padding;
-    height: 32px;
+    padding: @dropdown-default-padding;
+    height: @dropdown-default-height;
     text-align: left;
     .selectedText {
       font-size: @font-size-base;
@@ -80,6 +80,9 @@
       pointer-events: none;
       .selectedText{
         color: @dropdown-restricted-text-color;
+        font-size: 27px;
+        line-height: 20px;
+        font-weight: bold;
       }
       .caret{
         color: @dropdown-disabled-arrow-color;
