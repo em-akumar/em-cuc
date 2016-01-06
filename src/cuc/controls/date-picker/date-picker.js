@@ -153,7 +153,10 @@ class DatePicker {
     this.showOnlyTime = this.destDateField == '' ? true : false;
     this.showOnlyDate = this.destTimeField == '' ? true : false;
     this.destTimeField.addEventListener("focus", () => { if(!this.isVisible){ this._viewCalendar();}   this.showtime();  });
-    this.destDateField.addEventListener("focus",  () =>{this._viewCalendar();  });
+    this.destDateField.addEventListener("focus",  () =>{ if(!this.isVisible){this._viewCalendar();}else{var timePickerTable = this.parent.querySelector(".table-condensed-time");
+        var datePickerTable = this.parent.querySelector(".table-condensed-date");
+        timePickerTable.style.display = "none";
+        datePickerTable.style.display = "";}  });
     if(this.defaultTime!='') this.destTimeField.value = this.defaultTime;
     if(this.defaultDate!='') this.destDateField.value = this.defaultDate;
   }
