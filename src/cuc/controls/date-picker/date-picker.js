@@ -6,7 +6,9 @@ class DatePicker {
     this.AddOn=element.querySelector('.em-calendar');
     this.parent=element.querySelector('.em-calendar-pop');
     this.destDateField=element.querySelector('.date-picker')||'';
-    this.destTimeField=element.querySelector('.time-picker')||'';
+    this.destTimeField = element.querySelector('.time-picker') || '';
+    this.defaultTime = options.defaultTime ||'';
+    this.defaultDate = options.defaultDate ||'';
     this.lastDayOfPrevMonth=null;
 
     this.calendarFrom=null;
@@ -148,7 +150,12 @@ class DatePicker {
    this.AddOn.addEventListener('click',()=>{
       this.viewCalendar();
     });}
-
+    this.showOnlyTime = this.destDateField == '' ? true : false;
+    this.showOnlyDate = this.destTimeField == '' ? true : false;
+    this.destTimeField.addEventListener("focus", () => { if(!this.isVisible){ this._viewCalendar();}   this.showtime();  });
+    this.destDateField.addEventListener("focus",  () =>{this._viewCalendar();  });
+    if(this.defaultTime!='') this.destTimeField.value = this.defaultTime;
+    if(this.defaultDate!='') this.destDateField.value = this.defaultDate;
   }
   viewCalendar(){
     this._viewCalendar();
@@ -177,7 +184,11 @@ class DatePicker {
     let dateParentObj = parentObj.querySelector('.table-condensed-date');
     let timeParentObj = parentObj.querySelector('.table-condensed-time');
 
-
+    document.getElementsByTagName('html')[0].addEventListener('click',(e) =>{
+      parentObj.style.display = "none"; this.isVisible = false;});
+    this.AddOn.parentNode.addEventListener('click', function (e) { e.stopPropagation();});
+    document.getElementsByTagName('html')[0].addEventListener('keydown',  ( e )=> {
+      if ( e.keyCode === 27 ) { parentObj.style.display = "none"; this.isVisible = false;}});
     if (this.isVisible) {
       parentObj.style.display = "none";
       this.isVisible = false;
@@ -320,7 +331,7 @@ class DatePicker {
 
         //disabled the dates
         for (let k = 0; k < this.disabledDates.length; k++) {
-          if (self.disabledDates[k] == self.calendarIter.format("dd/mm/yyyy")) {
+          if (self.disabledDates[k] == self.calendarIter.format("mm/dd/yyyy")) {
             cell.className += " disabled";
           }
         }
