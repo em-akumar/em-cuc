@@ -188,7 +188,8 @@
                     border-color: @checkbox-default-border-color;
                   }
                 }
-                &.ui-grid-row-selected, &.ui-grid-all-selected{
+                &.ui-grid-row-selected,
+                &.ui-grid-all-selected{
                   &:before{
                     background-color: #2080c3;
                     color: #ffffff;
@@ -243,27 +244,28 @@
 
 
   .ui-grid-row {
-    height: @simple-grid-header-row-container-height !important;
+    height: @table-body-row-container-height !important;
+    width: @table-body-row-container-width;
     .ng-isolate-scope{
       .ui-grid-cell{
-        height: @simple-grid-header-row-container-height !important;
+        height: @table-body-row-cell-height !important;
         border-bottom: 1px solid @table-header-row-column-separator;
-        background-color: @simple-grid-body-row-cell-background-color;
+        background-color: @table-body-row-cell-background-color;
         .ui-grid-cell-contents {
           padding: 9px 10px 8px 15px;
-          font-size: @simple-grid-body-row-font-size;
-          font-family: @simple-grid-body-row-font-family;
-          color: @simple-grid-body-row-font-color;
+          font: @font-family-base;
+          font-size: @table-body-row-cell-font-size;
+          color:@table-body-row-cell-font-color;
           text-align: left;
           vertical-align: middle;
         }
       }
     }
     &:nth-child(odd) .ui-grid-cell {
-      background-color: @simple-grid-body-row-cell-background-color;
+      background-color: @table-body-row-cell-background-color;
     }
     &:nth-child(even) .ui-grid-cell {
-      background-color: @simple-grid-body-row-cell-background-color;
+      background-color: @table-body-row-cell-background-color;
     }
   }
 
@@ -549,4 +551,57 @@
 
 .ui-grid-render-container-body .ui-grid-viewport {
   width: 100% !important;
+}
+
+
+// R O W   S E L E C T I O N
+.common-cell-highlighting-style(){
+  background-color: @table-body-row-cell-active-background-color;
+  border-top: 1px solid @table-body-row-cell-active-border-top;
+  border-bottom: 1px solid  @table-body-row-cell-active-border-bottom;
+  .ui-grid-cell-contents{
+    color: @table-body-row-cell-active-font-color !important;
+    padding: 8px 10px 8px 14px;
+  }
+}
+
+//selected
+.ui-grid-row-selected.ui-grid-row:nth-child(odd) .ui-grid-cell,
+.ui-grid-row-selected.ui-grid-row:nth-child(even) .ui-grid-cell {
+  .common-cell-highlighting-style;
+}
+.ui-grid-row-selected.ui-grid-row div:first-child .ui-grid-cell:first-child {
+  border-left: 1px solid @table-body-row-cell-active-border-top;
+}
+.ui-grid-row-selected.ui-grid-row div:first-child .ui-grid-cell:not(first-child) {
+  border-left: 1px solid @table-body-row-cell-active-background-color;
+}
+
+//focus
+.ui-grid-row-selected.ui-grid-row:nth-child(odd) .ui-grid-cell.ui-grid-cell-focus,
+.ui-grid-row-selected.ui-grid-row:nth-child(even) .ui-grid-cell.ui-grid-cell-focus {
+  outline: 0;
+  .common-cell-highlighting-style;
+}
+.ui-grid-row-selected.ui-grid-row div:first-child .ui-grid-cell-focus.ui-grid-cell:first-child{
+  border-left: 1px solid @table-body-row-cell-active-border-top;
+}
+.ui-grid-row-selected.ui-grid-row div:first-child .ui-grid-cell-focus.ui-grid-cell:not(first-child) {
+  border-left: 1px solid @table-body-row-cell-active-background-color;
+}
+
+//hover
+.ui-grid-row:nth-child(odd):hover .ui-grid-cell,
+.ui-grid-row:nth-child(even):hover .ui-grid-cell,
+.ui-grid-row:nth-child(odd):hover .ui-grid-row:nth-child(odd) > .ui-grid-cell.ui-grid-row-header-cell ,
+.ui-grid-row:nth-child(even):hover .ui-grid-row:nth-child(even) > .ui-grid-cell.ui-grid-row-header-cell {
+  .common-cell-highlighting-style;
+}
+.ui-grid-row:nth-child(odd):hover div:first-child .ui-grid-cell:first-child,
+.ui-grid-row:nth-child(even):hover div:first-child .ui-grid-cell:first-child {
+  border-left: 1px solid @table-body-row-cell-active-border-top;
+}
+.ui-grid-row:nth-child(odd):hover div:first-child .ui-grid-cell:not(first-child),
+.ui-grid-row:nth-child(even):hover div:first-child .ui-grid-cell:not(first-child) {
+  border-left: 1px solid @table-body-row-cell-active-background-color;
 }
