@@ -4,10 +4,9 @@ class DatepickerController {
     this.datepickerService = DatepickerService;
     // added DatePicker
     this.dateTimePicker = {
-      parent: 'jcalendar_parent1-angular',
-      destDateField: 'txtDatePicker',
-      destTimeField: 'txtTimePicker',
-      disabledDates: ['14/12/2015', '15/12/2015', '16/12/2015']
+      disabledDates: ['12/14/2015', '12/15/2015', '12/16/2015'],
+      defaultDate:'01/06/2016',
+      defaultTime:'01:30 AM'
     };
     // this.initialize();
   }

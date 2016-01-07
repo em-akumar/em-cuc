@@ -147,7 +147,7 @@ function initPage(scope){
 			'<option ng-selected="$first" ng-repeat="item in _pageListItems"  value="{{item.value}}">{{item.text}}</option> '+
 		'</select>'+
 		'<label class="em-pageview-arrow"></label>'+
-		'<span>&nbsp; of 100</span>'+
+		'<span>&nbsp; of {{_pageTotalCount}}</span>'+
 		'<label class="em-pageview-arrow"></label>'+
 	'</span>'+
 	'<nav class="em-pagination" style="display:">'+
@@ -183,7 +183,7 @@ function initPage(scope){
 
       scope._pageListItems = pageListItems;
       //selectPage.innerHTML = (html);
-
+      scope._pageTotalCount = totalRow;
       scope._selectedVal = '0';
       var pageArray = null;
       try {
