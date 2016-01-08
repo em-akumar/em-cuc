@@ -12,10 +12,10 @@ class DropdownController {
   renderDropdown() {
     this.drpCountry = {
       defaultText: 'Select',
-      onChange: function (e) {
+      onChange:(e) => {
         this.drpState.itemList = [{'value':1, 'text':'State1' + '-' + e.target.getAttribute('value')}, {'value':2, 'text':'State2' + '-' + e.target.getAttribute('value')}];
         safeApply();
-      }.bind(this),
+      },
       valueField: 'alpha2Code',
       textField: 'name',
       defaultSize: 'large'

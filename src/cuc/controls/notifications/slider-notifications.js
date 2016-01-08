@@ -26,6 +26,7 @@ class SliderNotifications {
 
   init() {
     //this.setTriming();
+    console.log(this.options);
     this.initTempl();
     this.render();
     if (this.options.sliderAutoClose === true) { this.destroy(); }
@@ -53,17 +54,17 @@ class SliderNotifications {
   }
 
   fadeOutNoti() {
-      let op = 1;
+     /* let op = 1;
       let ele = this.options.sliderEl;
       let timer = setInterval(function () {
         if (op <= 0.1){
           clearInterval(timer);
           ele.parentNode.removeChild(ele);
         }
-        ele.style.opacity = op;
-        ele.style.filter = 'alpha(opacity=' + op * 100 + ")";
+       ele.style.opacity = op;
+       ele.style.filter = 'alpha(opacity=' + op * 100 + ")";
         op -= op * 0.1;
-      },  this.options.fadeOutSpeed);
+      },  this.options.fadeOutSpeed);*/
   }
 
   destroy() {
