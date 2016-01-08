@@ -8,7 +8,7 @@ import '../favicon.ico';
 import {cuc} from '../cuc/cuc.angular';
 import '../cuc/cuc.ui.bootstrap';
 import '../cuc/cuc.grid';
-import '../cuc/cuc.angular.messages';
+import 'angular-messages/angular-messages.js';
 import './app.less';
 
 import buttons from './buttons/buttons.module';

@@ -389,6 +389,11 @@ let ColorPicker = (function (window, document, undefined) {
     mainElement.querySelector('button').parentNode.insertBefore(
       divTemp.childNodes[0], mainElement.querySelector('button').nextSibling);
     this.mainElement = mainElement;
+    document.getElementsByTagName('html')[0].addEventListener('click', function (e) { this.mainElement.querySelector('button').parentNode.classList.remove('open');}.bind(this));
+    mainElement.addEventListener('click', function (e) { e.stopPropagation();});
+    document.getElementsByTagName('html')[0].addEventListener('keydown',  ( e )=> {
+      if ( e.keyCode === 27 ) { this.mainElement.querySelector('button').parentNode.classList.remove('open');}});
+    mainElement.querySelector('button').addEventListener('click', function (e) { e.target.parentNode.parentNode.classList.toggle('open');});
     var slideElement = this.mainElement.querySelector('.color-picker');
     if (this.mainElement.querySelector('.em-input-color')) {
       this.textBox = this.mainElement.querySelector('.em-input-color');

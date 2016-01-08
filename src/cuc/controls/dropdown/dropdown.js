@@ -90,12 +90,12 @@ if(this.options !== undefined){
   setRestricted() {
     var self = this;
     [].forEach.call(self.menu.parentNode.querySelectorAll(".restricted .dropdown-menu li a"), (value, i) => {
-      value.innerText = '*******';
+      value.innerHTML = '&#183;&#183;&#183;&#183;&#183;&#183;';
     });
     [].forEach.call(self.menu.parentNode.querySelectorAll(".restricted .dropdown-toggle"), (value, i) => {
       value.setAttribute('disabled', 'disabled');
       value.classList.add('restricted');
-      value.getElementsByTagName('span')[0].innerText = "******";
+      value.getElementsByTagName('span')[0].innerHTML = "&#183;&#183;&#183;&#183;&#183;&#183;";
     });
   }
 

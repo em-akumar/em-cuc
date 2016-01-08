@@ -6,7 +6,9 @@ class DatePicker {
     this.AddOn=element.querySelector('.em-calendar');
     this.parent=element.querySelector('.em-calendar-pop');
     this.destDateField=element.querySelector('.date-picker')||'';
-    this.destTimeField=element.querySelector('.time-picker')||'';
+    this.destTimeField = element.querySelector('.time-picker') || '';
+    this.defaultTime = options.defaultTime ||'';
+    this.defaultDate = options.defaultDate ||'';
     this.lastDayOfPrevMonth=null;
 
     this.calendarFrom=null;
@@ -144,11 +146,19 @@ class DatePicker {
     Date.prototype.format =  function (mask, utc) {
       return self.dateFormat(this, mask, utc);
     };
-
+  if( !this._setDisabled()){
    this.AddOn.addEventListener('click',()=>{
       this.viewCalendar();
-    });
-
+    });}
+    this.showOnlyTime = this.destDateField == '' ? true : false;
+    this.showOnlyDate = this.destTimeField == '' ? true : false;
+    this.destTimeField.addEventListener("focus", () => { if(!this.isVisible){ this._viewCalendar();}   this.showtime();  });
+    this.destDateField.addEventListener("focus",  () =>{ if(!this.isVisible){this._viewCalendar();}else{var timePickerTable = this.parent.querySelector(".table-condensed-time");
+        var datePickerTable = this.parent.querySelector(".table-condensed-date");
+        timePickerTable.style.display = "none";
+        datePickerTable.style.display = "";}  });
+    if(this.defaultTime!='') this.destTimeField.value = this.defaultTime;
+    if(this.defaultDate!='') this.destDateField.value = this.defaultDate;
   }
   viewCalendar(){
     this._viewCalendar();
@@ -177,7 +187,11 @@ class DatePicker {
     let dateParentObj = parentObj.querySelector('.table-condensed-date');
     let timeParentObj = parentObj.querySelector('.table-condensed-time');
 
-
+    document.getElementsByTagName('html')[0].addEventListener('click',(e) =>{
+      parentObj.style.display = "none"; this.isVisible = false;});
+    this.AddOn.parentNode.addEventListener('click', function (e) { e.stopPropagation();});
+    document.getElementsByTagName('html')[0].addEventListener('keydown',  ( e )=> {
+      if ( e.keyCode === 27 ) { parentObj.style.display = "none"; this.isVisible = false;}});
     if (this.isVisible) {
       parentObj.style.display = "none";
       this.isVisible = false;
@@ -248,6 +262,19 @@ class DatePicker {
     }
     this.calendarTo = dateObj;
   }
+  _setDisabled() {
+    var self = this;
+    var isDisabled = self.AddOn.parentNode.classList.contains('disabled');
+    if(isDisabled)
+    {
+      self.AddOn.classList.add('disabled');
+      self.destDateField.classList.add('disabled');
+      self.destTimeField.classList.add('disabled');
+      self.destDateField.setAttribute('disabled', 'disabled');
+      self.destTimeField.setAttribute('disabled', 'disabled');
+    }
+    return isDisabled;
+  }
   _generateCalendarTable() {
     let parentObj = ((typeof this.parent === 'object')?this.parent: document.getElementById(this.parent));;
     let rootTable = document.createElement('table');
@@ -281,7 +308,7 @@ class DatePicker {
                 let timeCalHour = parentObj.querySelector('.calendar-hours');
                 let timeCalMin = parentObj.querySelector('.calendar-Minutes');
                 let timeCalAmPm = parentObj.querySelector('.calendar-toggle-period');
-                destTimeObj.value = timeCalHour.innerHTML + ":" + timeCalMin.innerHTML + ":" + timeCalAmPm.innerHTML;
+                destTimeObj.value = (timeCalHour.innerHTML.length==1?'0':'')+timeCalHour.innerHTML + ":" +(timeCalMin.innerHTML.length==1?'0':'')+ timeCalMin.innerHTML + " " + timeCalAmPm.innerHTML.trim();
               }
               else {
                 destTimeObj.value = self.showCurrentTime();
@@ -300,13 +327,14 @@ class DatePicker {
           }
         }
 
-        if (this.isCurrentDate(this.calendarIter, this.today)) {
+        if (this.isCurrentDate(this.calendarIter, this.today)
+        && self.calendarIter.getMonth() == self.currentMonth.getMonth()) {
           cell.className = "current-calendar-day";
         }
 
         //disabled the dates
         for (let k = 0; k < this.disabledDates.length; k++) {
-          if (self.disabledDates[k] == self.calendarIter.format("dd/mm/yyyy")) {
+          if (self.disabledDates[k] == self.calendarIter.format("mm/dd/yyyy")) {
             cell.className += " disabled";
           }
         }
@@ -512,7 +540,7 @@ class DatePicker {
     divHoursTag.className = "calendar-hours";
     divHoursTag.innerHTML = this.showCurrentHour();
     divHoursTag.onclick =  function() {
-      timeFieldValue.value = divHoursTag.innerHTML + ":" + divMinutesTag.innerHTML + " " + divTogglePeriodTag.innerHTML;
+      timeFieldValue.value = divHoursTag.innerHTML + ":" + divMinutesTag.innerHTML + " " + divTogglePeriodTag.innerHTML.trim();
     };
 
     cell09.appendChild(divHoursTag);
@@ -525,7 +553,7 @@ class DatePicker {
     divMinutesTag.className = "calendar-Minutes";
     divMinutesTag.innerHTML = this.showCurrentMinutes();
     divMinutesTag.onclick =  function() {
-      timeFieldValue.value = divHoursTag.innerHTML + ":" + divMinutesTag.innerHTML + " " + divTogglePeriodTag.innerHTML;
+      timeFieldValue.value = divHoursTag.innerHTML + ":" + divMinutesTag.innerHTML + " " + divTogglePeriodTag.innerHTML.trim();
     };
     cell11.appendChild(divMinutesTag);
 
@@ -542,7 +570,7 @@ class DatePicker {
 
     divTogglePeriodTag.onclick =  function() {
       divTogglePeriodTag.innerHTML = divTogglePeriodTag.innerHTML == 'AM' ? 'PM' : 'AM';
-      timeFieldValue.value = divHoursTag.innerHTML + ":" + divMinutesTag.innerHTML + " " + divTogglePeriodTag.innerHTML;
+      timeFieldValue.value = divHoursTag.innerHTML + ":" + divMinutesTag.innerHTML + " " + divTogglePeriodTag.innerHTML.trim();
     };
 
     cell13.appendChild(divTogglePeriodTag);
@@ -561,7 +589,7 @@ class DatePicker {
     cell14.onclick =  function() {
       let currentHour = divHoursTag.innerHTML;
       divHoursTag.innerHTML = self.decrementHour(currentHour);
-      timeFieldValue.value = divHoursTag.innerHTML + ":" + divMinutesTag.innerHTML + " " + divTogglePeriodTag.innerHTML;
+      timeFieldValue.value = divHoursTag.innerHTML + ":" + divMinutesTag.innerHTML + " " + divTogglePeriodTag.innerHTML.trim();
     };
 
     let cell15 = tableDown.insertCell(1);
@@ -579,7 +607,7 @@ class DatePicker {
     cell15.onclick =  function(){
       let currentMinutes = divMinutesTag.innerHTML;
       divMinutesTag.innerHTML = self.decrementMinute(currentMinutes);
-      timeFieldValue.value = divHoursTag.innerHTML + ":" + divMinutesTag.innerHTML + " " + divTogglePeriodTag.innerHTML;
+      timeFieldValue.value = divHoursTag.innerHTML + ":" + divMinutesTag.innerHTML + " " + divTogglePeriodTag.innerHTML.trim();
     };
 
     let cell16 = tableDown.insertCell(3);
@@ -663,7 +691,8 @@ let self=this;
     let minutes = timeNow.getMinutes();
 
     //var seconds = timeNow.getSeconds();
-    let timeString = "" + ((hours > 12) ? hours - 12 : hours);
+    var hrsToShow = ((hours > 12) ? hours - 12 : hours);
+    let timeString = ((hrsToShow < 10) ? "0" : "") + hrsToShow;
     timeString += ((minutes < 10) ? ":0" : ":") + minutes;
     // timeString  += ((seconds < 10) ? ":0" : ":") + seconds;
     timeString += (hours >= 12) ? " PM" : " AM";

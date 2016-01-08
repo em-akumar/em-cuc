@@ -27,7 +27,80 @@ class DropdownController {
       },
       defaultSize: 'large'
     };
+
+    //for Disabled items
+    this.drpStateDisabledItem = {
+
+      defaultText: 'Select',
+      onChange: function (e) {
+        console.log('clicked');
+      },
+      defaultSize: 'large',
+      itemList: [{ 'value': 1, 'text': 'State1', 'class': 'disabled' }, { 'value': 2, 'text': 'State2' }]
+    };
+
+    //for Divider items
+    this.drpStateDividerItem = {
+
+      defaultText: 'Select',
+      onChange: function (e) {
+        console.log('clicked');
+      },
+      defaultSize: 'large',
+      itemList: [{ 'value': 1, 'text': 'State1', }, { 'value': 2, 'text': 'State2', 'divider': 'true'}]
+    };
+    //for Large dropdown
+    this.drpStateLarge = {
+
+      defaultText: 'Select',
+      onChange: function (e) {
+        console.log('clicked');
+      },
+      defaultSize: 'large',
+      itemList: [{ 'value': 1, 'text': 'State1', }, { 'value': 2, 'text': 'State2'}]
+    };
+    //for Medium items
+    this.drpStateMedium = {
+
+      defaultText: 'Select',
+      onChange: function (e) {
+        console.log('clicked');
+      },
+      defaultSize: 'medium',
+      itemList: [{ 'value': 1, 'text': 'State1', }, { 'value': 2, 'text': 'State2'}]
+    };
+     //for Small items
+    this.drpStateSmall = {
+
+      defaultText: 'Select',
+      onChange: function (e) {
+        console.log('clicked');
+      },
+      defaultSize: 'small',
+      itemList: [{ 'value': 1, 'text': 'State1', }, { 'value': 2, 'text': 'State2'}]
+    };
+     //for Extra Small dropdown
+    this.drpStateExtraSmall = {
+
+      defaultText: 'Select',
+      onChange: function (e) {
+        console.log('clicked');
+      },
+      defaultSize: 'xs',
+      itemList: [{ 'value': 1, 'text': 'State1', }, { 'value': 2, 'text': 'State2'}]
+    };
+     //for Flexible dropdown
+    this.drpStateFlexible = {
+
+      defaultText: 'Select',
+      onChange: function (e) {
+        console.log('clicked');
+      },
+      defaultSize: 'flexible-width',
+      itemList: [{ 'value': 1, 'text': 'State1', }, { 'value': 2, 'text': 'State2'}]
+    };
   }
+
   initialize() {
     this.dropdownService.resolvePromise().then((response) => {
       this.drpCountry.itemList = response;
