@@ -42,9 +42,6 @@
       ],
       "cuc.ui.bootstrap": [
         "./src/cuc/cuc.ui.bootstrap.js"
-      ],
-      "cuc.ckeditor": [
-        "./src/cuc/cuc.ckeditor.js"
       ]
     }
   },

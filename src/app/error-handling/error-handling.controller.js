@@ -10,8 +10,6 @@ class ErrorHandlingController {
     // this.initialize();
   }
 
-
-
   /* Render Marital Status dropdown control */
   renderMaritalStatus() {
     this.drpMarital = {
@@ -40,7 +38,7 @@ renderMaritalStatus1() {
 
   renderContainerError() {
    //modal noti options
-    let sliderNotiOptions = {};
+    var sliderNotiOptions = {};
   //Modal Header Title
     sliderNotiOptions.headerText = 'Lorem ipsum nullam enim';
   //Modal Body content
@@ -48,13 +46,15 @@ renderMaritalStatus1() {
     sliderNotiOptions.bodyContent = 'Pellen tesque habitant morbi tristique senectus et negtus.';
   //Modal close icon
   //Default: true
+    var elm = document.querySelector('#error-container');
+    console.log(elm);
     sliderNotiOptions.closeButton = true;
-    sliderNotiOptions.sliderBtnFlag = true;
-    sliderNotiOptions.sliderType = 'Error';
-    sliderNotiOptions.sliderChkFlg = 'Default';
-    sliderNotiOptions.sliderAutoClose = 'yes';
-    sliderNotiOptions.containerEl = document.querySelector('.em-category-box');
-    this.SliderNotifications = sliderNotiOptions;
+    sliderNotiOptions.sliderBtnFlag = 'true';
+    sliderNotiOptions.sliderType = 'danger';
+    sliderNotiOptions.sliderChkFlg = 'false';
+    sliderNotiOptions.sliderAutoClose = 'false';
+    sliderNotiOptions.containerEl = document.querySelector('#error-container');
+    this.sNotifications = sliderNotiOptions;
   }
 
   initialize() {
