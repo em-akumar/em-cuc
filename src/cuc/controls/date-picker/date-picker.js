@@ -350,7 +350,7 @@ class DatePicker {
       };
     }
     let cell2 = tableTop.insertCell(0);
-    cell2.className = "header-title"
+    cell2.className = "header-title";
     cell2.colSpan = 5;
     if (this.showOnlyDate) {
       let month_names = ["January", "February", "March", "April", "May", "June",
@@ -601,7 +601,7 @@ class DatePicker {
     spanTimeIcon.style.display = this.showOnlyTime && !this.showOnlyDate ? "none" : "";
     let spanTimeTitle = document.createElement("span");
     spanTimeTitle.className = "time-picker-title";
-    spanTimeTitle.innerHTML = "Choose Date"
+    spanTimeTitle.innerHTML = "Choose Date";
     spanTimeTitle.style.display = this.showOnlyTime && !this.showOnlyDate ? "none" : "";
     cell1.appendChild(spanTimeIcon);
     cell1.appendChild(spanTimeTitle);

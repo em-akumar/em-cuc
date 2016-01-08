@@ -38,7 +38,7 @@
 
 .em-slider-panel .em-slider-menu .em-slider-icon{
     content:"";
-    background: @slider-panel-default-icon-background-color url("../../assets/images/icon-chevron-down-active-blue-dark.svg") center center no-repeat;
+    background: @slider-panel-default-icon-background-color url("../../assets/images/icon-chevron-down-active-blue-dark.svg") center center/contain no-repeat;
     height: @slider-panel-default-icon-width;
     width: @slider-panel-default-icon-width;
     color: @slider-panel-default-icon-color;
@@ -54,14 +54,14 @@
 }
 .em-slider-panel .em-slider-menu.push .em-slider-icon{
     content:"";
-    background: @slider-panel-default-icon-background-color url("../../assets/images/icon-chevron-down-active-blue-dark.svg") center center no-repeat;
+    background: @slider-panel-default-icon-background-color url("../../assets/images/icon-chevron-down-active-blue-dark.svg") center center/contain no-repeat;
     transform: translate((@slider-expand-default-container-width - @slider-panel-default-container-width), 0) rotate(90deg);
     -webkit-transform: translate((@slider-expand-default-container-width - @slider-panel-default-container-width), 0) rotate(90deg);
     -ms-transform: translate((@slider-expand-default-container-width - @slider-panel-default-container-width), 0) rotate(90deg);
     border-radius:  @slider-panel-hover-icon-radius;
 }
 .em-slider-panel .em-slider-menu .em-slider-icon:hover{
-     background: @slider-panel-hover-icon-background-color url("../../assets/images/icon-chevron-down-active-white.svg") center center no-repeat;
+     background: @slider-panel-hover-icon-background-color url("../../assets/images/icon-chevron-down-active-white.svg") center center/contain no-repeat;
       -ms-transform: translate(0, 0) rotate(-90deg);
     -webkit-transform: translate(0, 0) rotate(-90deg);
     transform: translate(0, 0) rotate(-90deg);
@@ -69,7 +69,7 @@
 }
 
 .em-slider-panel .em-slider-menu.push .em-slider-icon:hover{
-     background: @slider-panel-hover-icon-background-color url("../../assets/images/icon-chevron-down-active-white.svg") center center no-repeat;
+     background: @slider-panel-hover-icon-background-color url("../../assets/images/icon-chevron-down-active-white.svg") center center/contain no-repeat;
      transform: translate((@slider-expand-default-container-width - @slider-panel-default-container-width), 0) rotate(90deg);
     -webkit-transform: translate((@slider-expand-default-container-width - @slider-panel-default-container-width), 0) rotate(90deg);
     -ms-transform: translate((@slider-expand-default-container-width - @slider-panel-default-container-width), 0) rotate(90deg);

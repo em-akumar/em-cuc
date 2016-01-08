@@ -58,14 +58,14 @@
 }
 
 .checkbox input[type="checkbox"]:active + label::before {
-    background:@checkbox-active-background-color url("../../assets/images/icon-checkmark-white.svg") center center no-repeat;
+    background:@checkbox-active-background-color url("../../assets/images/icon-checkmark-white.svg") center center/contain no-repeat;
     border: 1px solid @checkbox-active-border-color;
     box-shadow: none;
 
 }
 
 .checkbox input[type="checkbox"]:checked + label::before {
-    background:@checkbox-checked-background-color url("../../assets/images/icon-checkmark-white.svg") center center no-repeat;
+    background:@checkbox-checked-background-color url("../../assets/images/icon-checkmark-white.svg") center center/contain no-repeat;
     border: 1px solid @checkbox-checked-border-color;
 }
 .checkbox input[type="checkbox"]:not(:checked):not(:hover) + label::before {
@@ -105,7 +105,7 @@
 .em-readonly-checked-checkbox.checkbox {
   label:before{
     content: "";
-    background:@checkbox-readonly-background-color url("../../assets/images/icon-checkmark-disabled.svg") center center no-repeat;
+    background:@checkbox-readonly-background-color url("../../assets/images/icon-checkmark-disabled.svg") center center/contain no-repeat;
     border: 1px solid @checkbox-readonly-border-color;
     border-radius: @checkbox-border-radius;
     width: @checkbox-width;
@@ -141,7 +141,7 @@
 }
 .em-readonly-checked-checkbox.checkbox input[type="checkbox"]:checked + label::before {
   content: "";
-  background:@checkbox-readonly-checked-background-color url("../../assets/images/icon-checkmark-white.svg") center center no-repeat;
+  background:@checkbox-readonly-checked-background-color url("../../assets/images/icon-checkmark-white.svg") center center/contain no-repeat;
   border: 1px solid @checkbox-readonly-border-color;
   border-radius: @checkbox-border-radius;
   width: @checkbox-width;
@@ -184,7 +184,7 @@
   content: "";
   border: none;
   box-shadow: none;
-  background:@checkbox-checked-background-color url("../../assets/images/icon-checkmark-white.svg") center center no-repeat;
+  background:@checkbox-checked-background-color url("../../assets/images/icon-checkmark-white.svg") center center/contain no-repeat;
 }
 
 .em-restricked-checkbox.checkbox input[type="checkbox"] + label {
@@ -223,7 +223,7 @@
 .em-checkbox-expose-img {
   input[type="checkbox"] {
     &:checked + label:before {
-      background: url('../../assets/images/icon-chevron-down-active-blue-dark.svg') center center no-repeat;
+      background: url('../../assets/images/icon-chevron-down-active-blue-dark.svg') center center/contain no-repeat;
       content: '';
       border:none;
       box-shadow: none;

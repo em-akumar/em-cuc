@@ -8,27 +8,29 @@ import '../favicon.ico';
 import {cuc} from '../cuc/cuc.angular';
 import '../cuc/cuc.ui.bootstrap';
 import '../cuc/cuc.grid';
-import '../cuc/cuc.ckeditor';
+import '../cuc/cuc.angular.messages';
 import './app.less';
 
-import buttons from './buttons/buttons.module.js';
-import textInput from './text-input/text-input.module.js';
-import textArea from './text-area/text-area.module.js';
-
-import fileUploader from './file-uploader/file-uploader.module.js';
-import dropdownEdit from './dropdown-edit/dropdown-edit.module.js';
-import grid from './grid/grid.module.js';
-import dropdown from './dropdown/dropdown.module.js';
-import colorPicker from './color-picker/color-picker.module.js';
-import modal from './modal/modal.module.js';
-import datepicker from './datepicker/datepicker.module.js';
-import ckeditor from './ckeditor/ckeditor.module.js';
+import buttons from './buttons/buttons.module';
+import textInput from './text-input/text-input.module';
+import textArea from './text-area/text-area.module';
+import fileUploader from './file-uploader/file-uploader.module';
+import dropdownEdit from './dropdown-edit/dropdown-edit.module';
+import grid from './grid/grid.module';
+import dropdown from './dropdown/dropdown.module';
+import colorPicker from './color-picker/color-picker.module';
+import modal from './modal/modal.module';
+import datepicker from './datepicker/datepicker.module';
+import checkbox from './checkbox/checkbox.module';
+import panel from './panel/panel.module';
+import errorHandling from './error-handling/error-handling.module';
+import imageButton from './image-button/image-button.module';
 
 emsApi.baseUrl = 'http://localhost:9000/';
 
 let appModule = angular.module('app', [uiRouter, cuc.name, 'cuc', 'ui.grid',
-  'ui.bootstrap', buttons.name, textInput.name, textArea.name, fileUploader.name, dropdownEdit.name,
-  grid.name, dropdown.name, colorPicker.name, modal.name, datepicker.name, ckeditor.name]);
+  'ui.bootstrap', 'ngMessages', buttons.name, textInput.name, textArea.name, fileUploader.name, dropdownEdit.name,
+  grid.name, dropdown.name, colorPicker.name, modal.name, datepicker.name, checkbox.name, panel.name, errorHandling.name, imageButton.name]);
 
 appModule.config(($stateProvider, $urlRouterProvider) => {
   $stateProvider.state('app', {

@@ -1,7 +1,6 @@
 class CheckboxController {
   /* @ngInject */
   constructor(CheckboxService) {
-    this.label = 'Checkbox Controller !!';
     this.checkboxService = CheckboxService;
     // this.initialize();
   }
