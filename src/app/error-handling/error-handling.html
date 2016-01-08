@@ -45,7 +45,7 @@
             <label class="control-label col-xs-2">Marital Status</label>
             <div class="col-xs-10">
                <div emc="Dropdown" name="drpMaritalStatus" class="em-dropdown" options="vm.drpMarital"
-                    ng-model="vm.value" tabindex="3"
+                    ng-model="vm.drpMaritalStatus" tabindex="3"
                     required></div>
                 <div class="help-block" ng-messages="userForm.drpMaritalStatus.$error" ng-if="userForm.drpMaritalStatus.$touched">
                     <!--<div ng-messages-include="./error-messages.html"></div>-->
@@ -53,7 +53,6 @@
               </div>
           </div>
       </div>
-
       <div class="form-group">
             <label class="control-label col-xs-2">Date of Birth</label>
             <div class="col-xs-10">
@@ -81,8 +80,8 @@
 <form name="innerForm" novalidate>
   <div class="panel">
     <div class="panel-heading em-category-box">Login Screen</div>
-    <div emc="SliderNotifications" options="vm.sNotifications"></div>
-    <div class="slider-noti-container" id="error-container">
+
+    <div  emc="SliderNotifications" options="vm.sNotifications">
 
       <div class="form-group" ng-class="{ 'has-error': innerForm.txtUserName.$touched && innerForm.txtUserName.$invalid }">
             <label class="control-label col-xs-2">Username</label>
@@ -125,6 +124,7 @@
       </div>
 
       </div>
+
     </div>
 
 </form>

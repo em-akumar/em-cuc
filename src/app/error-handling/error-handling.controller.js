@@ -1,3 +1,4 @@
+import {safeApply} from 'ems';
 class ErrorHandlingController {
   /* @ngInject */
   constructor(ErrorHandlingService) {
@@ -15,7 +16,11 @@ class ErrorHandlingController {
     this.drpMarital = {
       defaultText: '',
       itemList:[{value:'M', text:'Male'}, {value:'F', text:'Female'}],
-      defaultSize: 'flexible-width'
+      defaultSize: 'flexible-width',
+      onChange:(e) => {
+        this.drpMaritalStatus = e.target.getAttribute('value');
+        safeApply();
+      }
     };
   }
 renderMaritalStatus1() {
@@ -23,6 +28,7 @@ renderMaritalStatus1() {
     defaultText: '',
     itemList:[{value:'M', text:'Male'}, {value:'F', text:'Female'}],
     defaultSize: 'flexible-width'
+
   };
 }
 
@@ -38,7 +44,7 @@ renderMaritalStatus1() {
 
   renderContainerError() {
    //modal noti options
-    var sliderNotiOptions = {};
+   /* var sliderNotiOptions = {};
   //Modal Header Title
     sliderNotiOptions.headerText = 'Lorem ipsum nullam enim';
   //Modal Body content
@@ -46,15 +52,29 @@ renderMaritalStatus1() {
     sliderNotiOptions.bodyContent = 'Pellen tesque habitant morbi tristique senectus et negtus.';
   //Modal close icon
   //Default: true
-    var elm = document.querySelector('#error-container');
-    console.log(elm);
+
     sliderNotiOptions.closeButton = true;
     sliderNotiOptions.sliderBtnFlag = 'true';
     sliderNotiOptions.sliderType = 'danger';
     sliderNotiOptions.sliderChkFlg = 'false';
     sliderNotiOptions.sliderAutoClose = 'false';
-    sliderNotiOptions.containerEl = document.querySelector('#error-container');
-    this.sNotifications = sliderNotiOptions;
+    sliderNotiOptions.containerEl = document.querySelector('#error-container');*/
+
+
+    this.sNotifications = {
+      headerText: 'Lorem ipsum nullam enim',
+      bodyContent: 'Pellen tesque habitant morbi tristique senectus et negtus.',
+      closeButton: true,
+      sliderBtnFlag: 'true',
+      sliderType: 'danger',
+      sliderChkFlg: 'false',
+      sliderAutoClose: 'false'
+     // containerEl: document.querySelector('#error-container')
+    };
+    //this.SliderNotifications(sNotifications);
+
+    //sliderNotiOptions;
+
   }
 
   initialize() {
