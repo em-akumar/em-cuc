@@ -11,17 +11,19 @@ class DropdownController {
   /* The below example of country and state, on the selection of country (on change method), it shows up states */
   renderDropdown() {
     this.drpCountry = {
-      defaultText: 'Select',
+      defaultText: '',
       onChange:(e) => {
         this.drpState.itemList = [{'value':1, 'text':'State1' + '-' + e.target.getAttribute('value')}, {'value':2, 'text':'State2' + '-' + e.target.getAttribute('value')}];
         safeApply();
       },
       valueField: 'alpha2Code',
       textField: 'name',
-      defaultSize: 'large'
+      defaultSize: 'large',
+      sortField: 'alpha2Code',
+      sortOrder: 'desc'
     };
     this.drpState = {
-      defaultText: 'Select',
+      defaultText: 'Select State',
       onChange: function (e) {
         console.log('clicked');
       },
@@ -31,7 +33,7 @@ class DropdownController {
     //for Disabled items
     this.drpStateDisabledItem = {
 
-      defaultText: 'Select',
+      defaultText: 'Select One',
       onChange: function (e) {
         console.log('clicked');
       },
@@ -42,7 +44,7 @@ class DropdownController {
     //for Divider items
     this.drpStateDividerItem = {
 
-      defaultText: 'Select',
+      defaultText: 'Select One',
       onChange: function (e) {
         console.log('clicked');
       },
@@ -52,7 +54,7 @@ class DropdownController {
     //for Large dropdown
     this.drpStateLarge = {
 
-      defaultText: 'Select',
+      defaultText: 'Select One',
       onChange: function (e) {
         console.log('clicked');
       },
@@ -62,7 +64,7 @@ class DropdownController {
     //for Medium items
     this.drpStateMedium = {
 
-      defaultText: 'Select',
+      defaultText: 'Select One',
       onChange: function (e) {
         console.log('clicked');
       },
@@ -72,7 +74,7 @@ class DropdownController {
      //for Small items
     this.drpStateSmall = {
 
-      defaultText: 'Select',
+      defaultText: 'Select One',
       onChange: function (e) {
         console.log('clicked');
       },
@@ -82,7 +84,7 @@ class DropdownController {
      //for Extra Small dropdown
     this.drpStateExtraSmall = {
 
-      defaultText: 'Select',
+      defaultText: 'Select One',
       onChange: function (e) {
         console.log('clicked');
       },
@@ -92,7 +94,7 @@ class DropdownController {
      //for Flexible dropdown
     this.drpStateFlexible = {
 
-      defaultText: 'Select',
+      defaultText: 'Select One',
       onChange: function (e) {
         console.log('clicked');
       },
