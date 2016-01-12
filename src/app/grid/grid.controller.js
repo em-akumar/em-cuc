@@ -10,7 +10,7 @@ class GridController {
     this.gridRender();
   }
 
-  //Render UI-Grid and load the options from json file
+  // Render UI-Grid and load the options from json file
   gridRender() {
     this.gridOptions = gridOption;
     this.gridOptions.onRegisterApi = function (gridApi) {
@@ -20,7 +20,7 @@ class GridController {
   }
   exportCsv() {
     var myElement = angular.element(document.querySelector('.xport-location'));
-    this.gridApi.exporter.csvExport('visible', 'all', myElement);//visible or selected
+    this.gridApi.exporter.csvExport('visible', 'all', myElement);// visible or selected
   }
   initialize() {
     this.gridService.resolvePromise().then((response) => {

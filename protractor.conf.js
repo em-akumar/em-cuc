@@ -5,14 +5,17 @@ exports.config = {
     browser.executeScript("document.body.style.zoom='100%';");
   },
 
+  plugins: [{
+    path: 'node_modules/protractor-istanbul-plugin',
+    logAssertions: true
+  }],
+
   // ---------------------------------------------------------------------------
   // ----- What tests to run ---------------------------------------------------
   // ---------------------------------------------------------------------------
 
   // Spec patterns are relative to the location of this config.
   // specs: ['./src/cuc/controls/date-picker/test/date-picker.ftest.js'],
-  //specs: ['./src/cuc/controls/**/*.ftest.js'],
-
   // Patterns to exclude.
   exclude: [],
 
