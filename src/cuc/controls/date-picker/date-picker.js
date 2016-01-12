@@ -206,7 +206,7 @@ class DatePicker {
         this.AddOn.parentNode.addEventListener('click', function(e) {
             e.stopPropagation();
         });
-        this.AddOn.parentNode.addEventListener('keydown', (e) => {
+        this.AddOn.parentNode.addEventListener('keyup', (e) => {
             if (e.keyCode === 9 || e.keyCode === 13) {
                 var val = this._autocomplete(this.destDateField.value);
                 if (val != undefined && val.trim() != '') {
