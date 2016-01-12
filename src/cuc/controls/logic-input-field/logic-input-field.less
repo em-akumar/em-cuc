@@ -104,10 +104,10 @@
         color: @input-field-button-icon-hover-color;
       }
       &.operators {
-        background: url("../../assets/images/icon-logic-default.svg") no-repeat center;
+        background: url("../../assets/images/icon-logic-default.svg") no-repeat center center/contain;
 
         &:active {
-          background: url("../../assets/images/icon-logic-active.svg") no-repeat center;
+          background: url("../../assets/images/icon-logic-active.svg") no-repeat center center/contain;
         }
       }
       &.readonly {
@@ -117,7 +117,7 @@
         cursor: default;
 
         &.operators {
-          background: url("../../assets/images/icon-logic-read-only-locked.svg") no-repeat center;
+          background: url("../../assets/images/icon-logic-read-only-locked.svg") no-repeat center center/contain;
         }
       }
       &.disabled {
@@ -127,7 +127,7 @@
         cursor: not-allowed;
 
         &.operators {
-          background: url("../../assets/images/icon-logic-disabled.svg") no-repeat center;
+          background: url("../../assets/images/icon-logic-disabled.svg") no-repeat center center/contain;
         }
       }
       &[readonly]:hover, &[readonly]:active, &[readonly]:focus,

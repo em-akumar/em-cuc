@@ -387,11 +387,6 @@ class DatePicker {
             } else if (num.length == 3) {
                 num = num.slice(0, 2) + '0' + num.slice(2);
             }
-            /*
-            if(number.length>8 && num.indexOf(' ') ==-1)
-             {
-              num = num.slice(0,8)+' '+num.slice(8);
-            }*/
             if (num.length > 8 && Number(num.slice(8, 10)) > 12) {
                 num = num.slice(0, 8) + '0' + num.slice(8);
             } else if (num.length > 8 && Number(num.slice(8, 10)).toString().length === 1) {

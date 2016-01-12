@@ -125,13 +125,14 @@
 .cp-fancy .picker-indicator {
   width: 24px;
   height: 24px;
-  background-image: url(http://cdn1.iconfinder.com/data/icons/fugue/bonus/icons-24/target.png);
+  //background-image: url(http://cdn1.iconfinder.com/data/icons/fugue/bonus/icons-24/target.png); (Please replace the image if required)
+
 }
 .cp-fancy .slide-indicator {
   width: 30px;
   height: 31px;
   left: 30px;
-  background-image: url(http://cdn1.iconfinder.com/data/icons/bluecoral/Left.png);
+  //background-image: url(http://cdn1.iconfinder.com/data/icons/bluecoral/Left.png);//(Please replace the image if required)
 }
 
 /* Normal skin */
@@ -273,7 +274,7 @@
 .diagonal-line {
     background: url("../../assets/images/icon-color-picker-disabled-red-diagonal.svg")!important;
     background-repeat:no-repeat;
-    background-position:center center;
+    background-position:center center/contain;
     background-size: 100% 100%, auto;
    &:hover,&:focus,&:active{
         border: 1px solid @color-picker-hover-border-color;
@@ -315,18 +316,18 @@ span.diagonal-line{
         padding: 10px 13px;
         width: 50%;
         height: 100%;
-        background: url("../../assets/images/icon-color-picker-default-active.svg") center center no-repeat;
+        background: url("../../assets/images/icon-color-picker-default-active.svg") center center/contain no-repeat;
         background-size: 60%;
         &:hover, &:focus,&:active {
-            background: url("../../assets/images/icon-color-picker-hover.svg") center center no-repeat;
+            background: url("../../assets/images/icon-color-picker-hover.svg") center center/contain no-repeat;
             background-size: 60%;
         }
         &.restricted, &.readonly {
-            background: url("../../assets/images/icon-color-picker-readonly-restricted.svg") center center no-repeat;
+            background: url("../../assets/images/icon-color-picker-readonly-restricted.svg") center center/contain no-repeat;
             background-size: 60%;
         }
         &.disabled {
-            background: url("../../assets/images/icon-color-picker-disabled.svg") center center no-repeat;
+            background: url("../../assets/images/icon-color-picker-disabled.svg") center center/contain no-repeat;
             background-size: 60%;
         }
     }

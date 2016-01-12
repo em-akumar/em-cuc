@@ -6,4 +6,5 @@ class ColorPickerController {
   }
 }
 
+
 export default ColorPickerController;
