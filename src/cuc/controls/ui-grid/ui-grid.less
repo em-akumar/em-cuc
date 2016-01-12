@@ -2,10 +2,10 @@
 @import '../../common/variables.less';
 @import '../../common/mixins.less';
 @import '../../common/typography.less';
-@arrowImgUrl: url("../../assets/images/icon-chevron-down-default-blue-base.svg");
+@arrowImgUrl: url("../../assets/images/icon-solid-arrow-blue-base.svg");
 @disArrowImgUrl: url("../../assets/images/icon-solid-arrow-temp-white-base.svg");
 @solidArrowImgUrl: url("../../assets/images/icon-solid-arrow-white.svg");
-@checkmarkImageUrl: url("../../assets/images/icon-checkmark-white.svg");
+
 
 //Mixins for styling  --- ToDo: need to move shared place
 .position-of-triangle-in-button(){
@@ -31,8 +31,8 @@
     cursor: pointer;
   }
 }
-.checkBox-common-properties{
-  content: '';
+.checkBox-common-properties(){
+  content: '\c362';
   border: 1px solid;
   font-size: 0.615rem;
   border-radius: 3px;
@@ -54,33 +54,33 @@
   padding-bottom: 30px;
 }
 
-/*.panel-heading{
-  background-color: @simple-grid-table-header-background-color;
-  border: 1px solid @simple-grid-table-header-border-color;
-  border-bottom: @none;
-}*/
-.action-button-wrapper{
-  text-align: right;
-  .btn{
-    background-color: transparent;
-    padding: 8px 0px;
-    width: 30px;
-    .em-icon{
-      background-position: center center;
-      background-repeat: no-repeat;
-      background-size: 20px;
-    }
-    &.btnprint{
-      margin-right: 5px;
-    }
-  }
-  position: absolute;
-  top: 30px;
-  right: 0px;
-  //border: 1px solid @simple-grid-table-header-border-color;
-  //border-top: @none;
-  //border-bottom: @none;
-}
+// .panel-heading{
+//   background-color: @simple-grid-table-header-background-color;
+//   border: 1px solid @simple-grid-table-header-border-color;
+//   border-bottom: @none;
+// }
+// .action-button-wrapper{
+//   text-align: right;
+//   .btn{
+//     background-color: transparent;
+//     padding: 8px 0px;
+//     width: 30px;
+//     .em-icon{
+//       background-position: center center;
+//       background-repeat: no-repeat;
+//       background-size: 20px;
+//     }
+//     &.btnprint{
+//       margin-right: 5px;
+//     }
+//   }
+//   position: absolute;
+//   top: 30px;
+//   right: 0px;
+//   //border: 1px solid @simple-grid-table-header-border-color;
+//   //border-top: @none;
+//   //border-bottom: @none;
+// }
 
 //For simple grid  --- ToDo: need to optimise with common code
 .em-simple-grid{
@@ -113,17 +113,14 @@
   }
   .ui-grid-cell-contents {
     i {
-      width: @pagination-icon-arrow-height;
-      margin: 0 0 0 @border-width-2;
+      width: @table-header-row-sort-icon-width;
       vertical-align: middle;
       &.ui-grid-icon-up-dir{
         content:@arrowImgUrl;
-        width: @pagination-icon-arrow-height;
         transform: rotate(180deg);
       }
       &.ui-grid-icon-down-dir{
         content: @arrowImgUrl;
-        width: @pagination-icon-arrow-height;
       }
     }
     sub{
@@ -136,13 +133,17 @@
     background-color: @table-header-row-background-color;
     .ui-grid-header-cell{
       background-color: @simple-grid-header-row-cell-background-color;
-      padding: @simple-grid-header-row-cell-padding;
+      // padding: @simple-grid-header-row-cell-padding;
       border: @none;
+      border-left: 1px solid @table-body-row-checkbox-container-border-right-color;
       font-size: @simple-grid-header-row-font-size;
       font-family: @simple-grid-header-row-font-family;
       color: @simple-grid-header-row-font-color;
       text-align: left;
       vertical-align: middle;
+      &:last-child{
+        border: none;
+      }
     }
     .ui-grid-icon-angle-down{
       display: @none;
@@ -157,118 +158,156 @@
 
 //For complex grid  --- TODo: need to optimise with common code
 .em-complex-grid{
-  .left {
-    &.ui-grid-render-container,
-    &.ui-grid-render-container-left{
-      .ui-grid-canvas,
-      .ui-grid-header-canvas{
-        .ui-grid-header-cell-row,
-        .ui-grid-row-header-cell{
-          &.ui-grid-cell,
-          &.ui-grid-header-cell{
-            min-width: 40px;
-            max-width: 40px;
-          }
-          .ui-grid-selection-row-header-buttons{
-            opacity: 1;
-            &.ui-grid-icon-ok{
-              &:before{
-                color: transparent;
-                .checkBox-common-properties;
-                border-color: @checkbox-default-border-color;
+  .ui-grid-contents-wrapper{
+
+    //1
+    .ui-grid-pinned-container-left{
+      .left {
+        &.ui-grid-render-container,
+        &.ui-grid-render-container-left{
+          .ui-grid-canvas,
+          .ui-grid-header-canvas{
+            .ui-grid-header-cell-row,
+            .ui-grid-row-header-cell{
+              &.ui-grid-cell,
+              &.ui-grid-header-cell{
+                //-moz-box-sizing: border-box;
+                //-webkit-box-sizing: border-box;
+                //box-sizing: border-box;
+                //border-top: 1px solid @table-body-row-checkbox-container-border-top-color;
+                //border-bottom: 1px solid @table-body-row-checkbox-container-border-bottom-color;
+                //border-right: 1px solid @table-body-row-checkbox-container-border-right-color;
+                //border-left: @table-body-row-checkbox-container-border-left-color;
+                min-width: 40px;
+                max-width: 40px;
               }
-            }
-            &.ui-grid-row-selected, &.ui-grid-all-selected{
-              &:before{
-                color: #ffffff;
-                background: #2080c3 @checkmarkImageUrl no-repeat center/12px;
-                .checkBox-common-properties;
-                border-color: @checkbox-active-border-color;
+              .ui-grid-selection-row-header-buttons{
+                opacity: 1;
+                &.ui-grid-icon-ok{
+                  &:before{
+                    color: transparent;
+                    .checkBox-common-properties;
+                    border-color: @checkbox-default-border-color;
+                  }
+                }
+                &.ui-grid-row-selected,
+                &.ui-grid-all-selected{
+                  &:before{
+                    background-color: #2080c3;
+                    color: #ffffff;
+                    .checkBox-common-properties;
+                    border-color: @checkbox-active-border-color;
+                  }
+                }
               }
+
             }
           }
         }
+        .ui-grid-header-cell-wrapper{
+          padding: 0 10px !important;
+        }
+      }
+    }
+    //2
+    .ui-grid-render-container-body{
+      .ui-grid-viewport{
+        .ui-grid-canvas{
+
+        }
+      }
+      .ui-grid-header-viewport{
+        .ui-grid-header-canvas{
+
+        }
+      }
+    }
+
+    // Common for 1 and 2
+    .ui-grid-header{
+      background-color: @table-header-row-background-color;
+      height: @table-header-row-height;
+      //width: @table-header-row-width;
+      //padding: @table-header-row-padding;
+      .ui-grid-header-cell{
+        // padding: 0 10px 0 0;
+        //border: @none;
+        .ui-grid-cell-contents{
+          font: @font-family-base;
+          font-size: @table-header-row-font-size;
+          font-weight: @table-header-row-font-weight;
+          color: @table-header-row-font-color;
+          text-align: left;
+          vertical-align: middle;
+          &:hover{
+            font-weight: @table-header-row-active-font-weight;
+          }
+        }
+      }
+      .ui-grid-icon-angle-down{
+        display: @none;
       }
     }
   }
+
+
   .ui-grid-row {
-    height: @simple-grid-header-row-container-height !important;
+    height: @table-body-row-container-height !important;
+    width: @table-body-row-container-width;
     .ng-isolate-scope{
       .ui-grid-cell{
-        height: @simple-grid-header-row-container-height !important;
+        height: @table-body-row-cell-height !important;
         border-bottom: 1px solid @table-header-row-column-separator;
-        background-color: @simple-grid-body-row-cell-background-color;
+        background-color: @table-body-row-cell-background-color;
         .ui-grid-cell-contents {
           padding: 9px 10px 8px 15px;
-          font-size: @simple-grid-body-row-font-size;
-          font-family: @simple-grid-body-row-font-family;
-          color: @simple-grid-body-row-font-color;
+          font: @font-family-base;
+          font-size: @table-body-row-cell-font-size;
+          color:@table-body-row-cell-font-color;
           text-align: left;
           vertical-align: middle;
         }
       }
     }
     &:nth-child(odd) .ui-grid-cell {
-      background-color: @simple-grid-body-row-cell-background-color;
+      background-color: @table-body-row-cell-background-color;
     }
     &:nth-child(even) .ui-grid-cell {
-      background-color: @simple-grid-body-row-cell-background-color;
+      background-color: @table-body-row-cell-background-color;
     }
+  }
+
+  .ui-grid-render-container-body{
+    margin-left: 40px !important;
+    border-left: 1px solid @table-body-row-checkbox-container-border-right-dark-color;
   }
 
   .ui-grid-cell {
     border-right: @none;
+    //box-shadow: inset 0 0 15px 3px black;
   }
   .ui-grid-cell-contents {
     i {
-      width: @table-header-row-sort-icon-sm-width;
+      width: @table-header-row-sort-icon-width;
       vertical-align: middle;
-      margin: @table-header-row-sort-icon-margin;
       &.ui-grid-icon-up-dir{
         content:@arrowImgUrl;
         transform: rotate(180deg);
       }
       &.ui-grid-icon-down-dir{
-        content: @arrowImgUrl; 
+        content: @arrowImgUrl;
       }
     }
     sub{
       visibility: hidden;
     }
   }
-  .ui-grid-header{
-     background-color: @table-header-row-background-color;
-     height: @table-header-row-height;
-    .ui-grid-header-cell{
-      padding: 0 10px 0 0;
-      border: @none;
-      .ui-grid-cell-contents{
-        font: @font-family-base;
-        font-size: @table-header-row-font-size;
-        font-weight: @table-header-row-font-weight;
-        color: @table-header-row-font-color;
-        text-align: left;
-        vertical-align: middle;
-        &:hover{
-          font-weight: @table-header-row-active-font-weight;
-        }
 
-      }
-      .ui-grid-column-resizer{
-            width: 1px;
-            background-color: @table-header-row-column-separator;
-          }
-      }
-      .ui-grid-icon-angle-down{
-        display: @none;
-      }
-    }
   .ui-grid-top-panel {
     background: @none; // To clear out gradient properties
     background-color: @table-header-row-background-color;
     min-height: @table-header-row-height;
     .ui-grid-header-cell-wrapper{
-      padding: 0 10px;
       background-color: @table-header-row-background-color;
     }
   }
@@ -468,4 +507,87 @@
       }
     }
   }
+}
+
+.em-icon-duplicate-file{
+  background-image: url("../../assets/images/icon-duplicate-file-default.svg");
+  &:active{
+    background-image: url("../../assets/images/icon-duplicate-file-active.svg");
+  }
+  &:hover{
+    background-image: url("../../assets/images/icon-duplicate-file-hover.svg");
+  }
+  &[disabled], &[disabled]:hover{
+    background-image: url("../../assets/images/icon-duplicate-file-disabled.svg");
+  }
+  &:after{
+    display:none;
+    content: url("../../assets/images/icon-duplicate-file-hover.svg")
+    url("../../assets/images/icon-duplicate-file-active.svg");
+  }
+}
+.em-icon-print{
+  background-image: url("../../assets/images/icon-print-default.svg");
+  &:active{
+    background-image: url("../../assets/images/icon-print-active.svg");
+  }
+  &:hover{
+    background-image: url("../../assets/images/icon-print-hover.svg");
+  }
+  &[disabled], &[disabled]:hover{
+    background-image: url("../../assets/images/icon-print-disabled.svg");
+  }
+  &:after{
+    display:none;
+    content: url("../../assets/images/icon-print-hover.svg")
+    url("../../assets/images/icon-print-active.svg");
+  }
+}
+
+
+// Following are UnResolved classes => ToDo :: Need to find exact hierarchy
+.ui-grid-pinned-container-left,
+.ui-grid-pinned-container-left .ui-grid-render-container-left .ui-grid-viewport {
+  width: 40px !important;
+}
+.ui-grid-render-container-left .ui-grid-header-viewport {
+  width: 40px !important;
+}
+.ui-grid-render-container-left .ui-grid-header-canvas {
+  width: 40px !important;
+}
+
+.ui-grid-render-container-body .ui-grid-viewport {
+  width: 100% !important;
+}
+
+.ui-grid-pinned-container.ui-grid-pinned-container-left .ui-grid-header-cell:last-child{
+  border: none;
+}
+
+.ui-grid-row.ui-grid-row-selected > [ui-grid-row] > .ui-grid-cell {
+  background-color: @table-body-row-cell-active-background-color;
+}
+.ui-grid-cell.ui-grid-disable-selection.ui-grid-row-header-cell {
+  pointer-events: none;
+}
+.ui-grid-disable-selection {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: default;
+}
+
+.ui-grid-render-container.ui-grid-render-container-body
+.ui-grid-header
+.ui-grid-top-panel
+.ui-grid-header-cell-wrapper
+.ui-grid-header-cell-row
+.ui-grid-header-cell
+.ui-grid-cell-contents.ui-grid-header-cell-primary-focus{
+  padding: 5px 0 5px 15px;
+  border-left: 1px solid @table-body-row-checkbox-container-border-right-color;
 }
