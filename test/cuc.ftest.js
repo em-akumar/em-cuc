@@ -2,7 +2,7 @@
 /*eslint-disable */
 
 //let context = require.context('./src/cuc', true, /\.ftest\.js/);
-let context = require.context('./src/cuc/controls', true, /^\.\/.*\.ftest.js$/);
+let context = require.context('../src/cuc/controls', true, /\.ftest\.js/);
 context.keys().forEach(context);
 console.log(context.keys());
 

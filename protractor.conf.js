@@ -21,7 +21,7 @@ exports.config = {
   // --suite=smoke,full only the patterns matched by the specified suites will
   // run.
   suites: {
-    functionaltests: './src/cuc/controls/date-picker/test/date-picker.ftest.js',
+    functionaltests: './src/cuc/controls/**/test/*.ftest.js',
     uitests: './test/cuc.vtest.js',
     unittests: './test/cuc.utest.js'
   },
