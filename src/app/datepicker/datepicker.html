@@ -18,11 +18,10 @@
     <div class="col-sm-3">
       <!-- Added date and time picker control -->
       <label>Select Date and Time (Disabled)</label>
-
-      <div emc="DatePicker" class="disabled em-date-picker input-group em-lbl-left">
-        <span class="input-group-addon em-calendar"></span>
-        <input type="text" class="form-control em-txt-md  date-picker" placeholder="MM / DD / YYYY">
-        <input type="text" class="form-control em-txt-md-time time-picker" placeholder="## : ## AM">
+      <div  emc="DatePicker" options="vm.dateTimePicker"  class="em-date-picker input-group em-lbl-left disabled">
+        <span   class="input-group-addon em-calendar" ></span>
+        <input type="text" class="form-control em-txt-md  date-picker" placeholder="MM / DD / YYYY" >
+        <input type="text" class="form-control em-txt-md-time time-picker" placeholder="## : ## AM" >
         <div class="jcalendar_parent default em-calendar-pop" style="z-index: 999;display: none;"></div>
       </div>
     </div>
