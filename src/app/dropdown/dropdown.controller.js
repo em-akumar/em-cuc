@@ -18,17 +18,11 @@ class DropdownController {
       },
       valueField: 'alpha2Code',
       textField: 'name',
-<<<<<<< HEAD
-      defaultSize: 'large'
 
-    };
-=======
       defaultSize: 'large',
       sortField: 'alpha2Code',
       sortOrder: 'desc'
-      };
-
->>>>>>> 0a385ba4b85da4b576712025b16fa3bdb78cad8b
+    };
     this.drpState = {
       defaultText: 'Select State',
       onChange: function (e) {
@@ -66,11 +60,8 @@ class DropdownController {
         console.log('clicked');
       },
       defaultSize: 'large',
-<<<<<<< HEAD
       itemList: [{ 'value': 1, 'text': 'State1', 'rightImage': '/main/images/control-images/icon-lock-locked-locked.svg', 'leftImage': '/main/images/control-images/icon-lock-locked-locked.svg'}, { 'value': 2, 'text': 'State2'}]
-=======
-      itemList: [{ 'value': 1, 'text': 'State1'}, { 'value': 2, 'text': 'State2'}]
->>>>>>> 0a385ba4b85da4b576712025b16fa3bdb78cad8b
+
     };
     // for Medium items
     this.drpStateMedium = {
@@ -110,7 +101,7 @@ class DropdownController {
         console.log('clicked');
       },
       defaultSize: 'flexible-width',
-      itemList: [{ 'value': 1, 'text': 'State1'}, { 'value': 2, 'text': 'State2'}]
+      itemList: [{ 'value': 1, 'text': 'State1', 'rightImage': '/main/images/control-images/icon-lock-locked-locked.svg', 'leftImage': '/main/images/control-images/icon-lock-locked-locked.svg'}, { 'value': 2, 'text': 'State2'}]
     };
   }
 
