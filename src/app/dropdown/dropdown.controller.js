@@ -18,10 +18,13 @@ class DropdownController {
       },
       valueField: 'alpha2Code',
       textField: 'name',
-      defaultSize: 'large'
-    };
+      defaultSize: 'large',
+      sortField: 'alpha2Code',
+      sortOrder: 'desc'
+      };
+
     this.drpState = {
-      defaultText: 'Select',
+      defaultText: 'Select State',
       onChange: function (e) {
         console.log('clicked');
       },
@@ -31,7 +34,7 @@ class DropdownController {
     // for Disabled items
     this.drpStateDisabledItem = {
 
-      defaultText: 'Select',
+      defaultText: 'Select One',
       onChange: function (e) {
         console.log('clicked');
       },
@@ -42,7 +45,7 @@ class DropdownController {
     // for Divider items
     this.drpStateDividerItem = {
 
-      defaultText: 'Select',
+      defaultText: 'Select One',
       onChange: function (e) {
         console.log('clicked');
       },
@@ -52,7 +55,7 @@ class DropdownController {
     // for Large dropdown
     this.drpStateLarge = {
 
-      defaultText: 'Select',
+      defaultText: 'Select One',
       onChange: function (e) {
         console.log('clicked');
       },
@@ -62,7 +65,7 @@ class DropdownController {
     // for Medium items
     this.drpStateMedium = {
 
-      defaultText: 'Select',
+      defaultText: 'Select One',
       onChange: function (e) {
         console.log('clicked');
       },
@@ -72,7 +75,7 @@ class DropdownController {
      // for Small items
     this.drpStateSmall = {
 
-      defaultText: 'Select',
+      defaultText: 'Select One',
       onChange: function (e) {
         console.log('clicked');
       },
@@ -82,7 +85,7 @@ class DropdownController {
      // for Extra Small dropdown
     this.drpStateExtraSmall = {
 
-      defaultText: 'Select',
+      defaultText: 'Select One',
       onChange: function (e) {
         console.log('clicked');
       },
@@ -92,7 +95,7 @@ class DropdownController {
      // for Flexible dropdown
     this.drpStateFlexible = {
 
-      defaultText: 'Select',
+      defaultText: 'Select One',
       onChange: function (e) {
         console.log('clicked');
       },
