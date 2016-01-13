@@ -12,26 +12,29 @@ class DropdownController {
   renderDropdown() {
     this.drpCountry = {
       defaultText: 'Select',
-      onChange:(e) => {
-        this.drpState.itemList = [{'value':1, 'text':'State1' + '-' + e.target.getAttribute('value')}, {'value':2, 'text':'State2' + '-' + e.target.getAttribute('value')}];
+      onChange: (e) => {
+        this.drpState.itemList = [{'value': 1, 'text': 'State1' + '-' + e.target.getAttribute('value')}, {'value': 2, 'text': 'State2' + '-' + e.target.getAttribute('value')}];
         safeApply();
       },
       valueField: 'alpha2Code',
       textField: 'name',
-      defaultSize: 'large'
-    };
+      defaultSize: 'large',
+      sortField: 'alpha2Code',
+      sortOrder: 'desc'
+      };
+
     this.drpState = {
-      defaultText: 'Select',
+      defaultText: 'Select State',
       onChange: function (e) {
         console.log('clicked');
       },
       defaultSize: 'large'
     };
 
-    //for Disabled items
+    // for Disabled items
     this.drpStateDisabledItem = {
 
-      defaultText: 'Select',
+      defaultText: 'Select One',
       onChange: function (e) {
         console.log('clicked');
       },
@@ -39,65 +42,65 @@ class DropdownController {
       itemList: [{ 'value': 1, 'text': 'State1', 'class': 'disabled' }, { 'value': 2, 'text': 'State2' }]
     };
 
-    //for Divider items
+    // for Divider items
     this.drpStateDividerItem = {
 
-      defaultText: 'Select',
+      defaultText: 'Select One',
       onChange: function (e) {
         console.log('clicked');
       },
       defaultSize: 'large',
-      itemList: [{ 'value': 1, 'text': 'State1', }, { 'value': 2, 'text': 'State2', 'divider': 'true'}]
+      itemList: [{ 'value': 1, 'text': 'State1'}, { 'value': 2, 'text': 'State2', 'divider': 'true'}]
     };
-    //for Large dropdown
+    // for Large dropdown
     this.drpStateLarge = {
 
-      defaultText: 'Select',
+      defaultText: 'Select One',
       onChange: function (e) {
         console.log('clicked');
       },
       defaultSize: 'large',
-      itemList: [{ 'value': 1, 'text': 'State1', }, { 'value': 2, 'text': 'State2'}]
+      itemList: [{ 'value': 1, 'text': 'State1'}, { 'value': 2, 'text': 'State2'}]
     };
-    //for Medium items
+    // for Medium items
     this.drpStateMedium = {
 
-      defaultText: 'Select',
+      defaultText: 'Select One',
       onChange: function (e) {
         console.log('clicked');
       },
       defaultSize: 'medium',
-      itemList: [{ 'value': 1, 'text': 'State1', }, { 'value': 2, 'text': 'State2'}]
+      itemList: [{ 'value': 1, 'text': 'State1'}, { 'value': 2, 'text': 'State2'}]
     };
-     //for Small items
+     // for Small items
     this.drpStateSmall = {
 
-      defaultText: 'Select',
+      defaultText: 'Select One',
       onChange: function (e) {
         console.log('clicked');
       },
       defaultSize: 'small',
-      itemList: [{ 'value': 1, 'text': 'State1', }, { 'value': 2, 'text': 'State2'}]
+      itemList: [{ 'value': 1, 'text': 'State1'}, { 'value': 2, 'text': 'State2'}]
     };
-     //for Extra Small dropdown
+     // for Extra Small dropdown
     this.drpStateExtraSmall = {
 
-      defaultText: 'Select',
+      defaultText: 'Select One',
       onChange: function (e) {
         console.log('clicked');
       },
       defaultSize: 'xs',
-      itemList: [{ 'value': 1, 'text': 'State1', }, { 'value': 2, 'text': 'State2'}]
+      itemList: [{ 'value': 1, 'text': 'State1'}, { 'value': 2, 'text': 'State2'}]
     };
-     //for Flexible dropdown
+     // for Flexible dropdown
     this.drpStateFlexible = {
 
-      defaultText: 'Select',
+      defaultText: 'Select One',
       onChange: function (e) {
         console.log('clicked');
       },
       defaultSize: 'flexible-width',
-      itemList: [{ 'value': 1, 'text': 'State1', }, { 'value': 2, 'text': 'State2'}]
+      itemList: [{ 'value': 1, 'text': 'State1'}, { 'value': 2, 'text': 'State2'}]
     };
   }
 

@@ -15,9 +15,9 @@ class ErrorHandlingController {
   renderMaritalStatus() {
     this.drpMarital = {
       defaultText: '',
-      itemList:[{value:'M', text:'Male'}, {value:'F', text:'Female'}],
+      itemList: [{value: 'M', text: 'Male'}, {value: 'F', text: 'Female'}],
       defaultSize: 'flexible-width',
-      onChange:(e) => {
+      onChange: (e) => {
         this.drpMaritalStatus = e.target.getAttribute('value');
         safeApply();
       }
@@ -26,7 +26,7 @@ class ErrorHandlingController {
 renderMaritalStatus1() {
   this.drpMarital1 = {
     defaultText: '',
-    itemList:[{value:'M', text:'Male'}, {value:'F', text:'Female'}],
+    itemList: [{value: 'M', text: 'Male'}, {value: 'F', text: 'Female'}],
     defaultSize: 'flexible-width'
 
   };
@@ -45,7 +45,7 @@ renderMaritalStatus1() {
   }
 
   renderContainerError() {
-   //modal noti options
+   // modal noti options
    /* var sliderNotiOptions = {};
   //Modal Header Title
     sliderNotiOptions.headerText = 'Lorem ipsum nullam enim';
@@ -62,7 +62,6 @@ renderMaritalStatus1() {
     sliderNotiOptions.sliderAutoClose = 'false';
     sliderNotiOptions.containerEl = document.querySelector('#error-container');*/
 
-
     this.sNotifications = {
       headerText: 'Lorem ipsum nullam enim',
       bodyContent: 'Pellen tesque habitant morbi tristique senectus et negtus.',
@@ -73,10 +72,9 @@ renderMaritalStatus1() {
       sliderAutoClose: 'false'
      // containerEl: document.querySelector('#error-container')
     };
-    //this.SliderNotifications(sNotifications);
+    // this.SliderNotifications(sNotifications);
 
-    //sliderNotiOptions;
-
+    // sliderNotiOptions;
   }
 
   initialize() {

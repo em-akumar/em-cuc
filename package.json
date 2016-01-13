@@ -3,7 +3,8 @@
   "version": "1.0.3",
   "description": "Ellie Mae EmCuc Development",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/.bin/protractor protractor.conf.js --suite functionaltests",
+    "posttest": "./node_modules/istanbul report --include coverage/**/.json --dir reports/coverage cobertura"
   },
   "repository": {
     "type": "git",
@@ -51,6 +52,13 @@
     "angular": "1.4.8",
     "angular-ui-bootstrap": "0.14.3",
     "angular-ui-grid": "3.0.7",
-    "angular-messages": "1.4.8"
+    "angular-messages": "1.4.8",
+    "protractor": "3.0.0",
+    "chai": "3.4.1",
+    "mocha": "2.3.4",
+    "chai-as-promised" :"5.2.0",
+    "istanbul" : "0.4.2",
+    "protractor-istanbul-plugin" : "2.0.0",
+    "protractor-html-screenshot-reporter" : "0.0.21"
   }
 }
