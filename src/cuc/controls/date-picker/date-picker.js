@@ -11,7 +11,8 @@ class DatePicker {
         this.defaultTime = options.defaultTime || '';
         this.defaultDate = options.defaultDate || '';
         this.lastDayOfPrevMonth = null;
-
+        this.onDateChange = options.onDateChange || function(e){};
+        this.onTimeChange = options.onTimeChange || function(e){};
         this.calendarFrom = null;
         this.calendarIter = null;
         this.calendarTo = null;
@@ -140,9 +141,9 @@ class DatePicker {
                 "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
             ]
         };
-        this.init();
+        this.reinit();
     }
-    init() {
+    reinit() {
         // For convenience...
         var self = this;
         Date.prototype.format = function(mask, utc) {
@@ -150,29 +151,37 @@ class DatePicker {
         };
         if (!this._setDisabled()) {
             this.AddOn.addEventListener('click', () => {
-                this.viewCalendar();
+                self.viewCalendar();
             });
         }
         this.showOnlyTime = this.destDateField == '' ? true : false;
         this.showOnlyDate = this.destTimeField == '' ? true : false;
         this.destTimeField.addEventListener("focus", () => {
-            if (!this.isVisible) {
-                this._viewCalendar();
+            if (!self.isVisible) {
+                self._viewCalendar();
             }
-            this.showtime();
+            self.showtime();
+            var event = new Event('change');
+
+            self.destTimeField.dispatchEvent(event);
         });
         this.destDateField.addEventListener("focus", () => {
-            if (!this.isVisible) {
-                this._viewCalendar();
+            if (!self.isVisible) {
+                self._viewCalendar();
             } else {
-                var timePickerTable = this.parent.querySelector(".table-condensed-time");
-                var datePickerTable = this.parent.querySelector(".table-condensed-date");
-                timePickerTable.style.display = "none";
+                var timePickerTable = self.parent.querySelector(".table-condensed-time");
+                var datePickerTable = self.parent.querySelector(".table-condensed-date");
+               if(timePickerTable) timePickerTable.style.display = "none";
                 datePickerTable.style.display = "";
             }
+            var event = new Event('change');
+
+            self.destDateField.dispatchEvent(event);
+            self.destTimeField.dispatchEvent(event);
         });
         if (this.defaultTime != '') this.destTimeField.value = this.defaultTime;
         if (this.defaultDate != '') this.destDateField.value = this.defaultDate;
+      this._onChageEvents();
     }
     viewCalendar() {
         this._viewCalendar();
@@ -203,7 +212,12 @@ class DatePicker {
         document.getElementsByTagName('html')[0].addEventListener('click', (e) => {
             parentObj.style.display = "none";this.isVisible = false;
         });
-        this.AddOn.parentNode.addEventListener('click', function(e) {
+        this.AddOn.parentNode.addEventListener('click',  (e)=> {
+           var event = new Event('change');
+
+            this.destDateField.dispatchEvent(event);
+            this.destTimeField.dispatchEvent(event);
+
             e.stopPropagation();
         });
         this.AddOn.parentNode.addEventListener('keyup', (e) => {
@@ -482,6 +496,16 @@ class DatePicker {
 
         this.addCalendarFooter(rootTable);
         parentObj.appendChild(rootTable);
+    }
+    _onChageEvents(){
+      if(this.destDateField!=='')
+      this.destDateField.addEventListener('change', (e) => {
+          this.onDateChange(e);
+      });
+      if(this.destTimeField!=='')
+       this.destTimeField.addEventListener('change',(e)=>{
+          this.onTimeChange(e);
+      });
     }
     changeToDate(str) {
         var parts = str.split('/');
