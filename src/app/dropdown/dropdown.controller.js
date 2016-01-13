@@ -18,7 +18,9 @@ class DropdownController {
       },
       valueField: 'alpha2Code',
       textField: 'name',
-      defaultSize: 'large'
+      defaultSize: 'large',
+      leftImage: '/main/images/control-images/icon-lock-locked-locked.svg'
+
     };
     this.drpState = {
       defaultText: 'Select',

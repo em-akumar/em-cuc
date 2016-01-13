@@ -11,12 +11,13 @@ if(this.options !== undefined){
       this.options.defaultText = this.options.defaultText || "Select item";
       this.options.itemList = this.options.itemList || [];
       this.options.size = this.options.defaultSize || 'medium';
-      this.template = `<button  class="btn dropdown-toggle ${this.options.size}" type="button"  aria-haspopup="true" aria-expanded="true"><span class="selectedText pull-left ${this.options.size}">${this.options.defaultText}</span>
+      this.template = `<button  class="btn dropdown-toggle ${this.options.size}" type="button"  aria-haspopup="true" aria-expanded="true" data-toggle="dropdown"><span class="selectedText pull-left ${this.options.size}">${this.options.defaultText}</span>
 				<span class="caret"></span>
 			</button>
-			<ul class="dropdown-menu ${this.options.size}">
+			<ul class="dropdown-menu ${this.options.size}" role="menu">
 			${this.options.itemList.map((value, i) =>
-        ` ${value.divider ? '<li class="divider"></li>' : ''}<li value="${value[this.options.valueField || 'value']}" class="${value.class === undefined ? '' : value.class}"><a value="${value[this.options.valueField || 'value']}">${value[this.options.textField || 'text']}</a></li>`
+        ` ${value.divider ? '<li class="divider"></li>' : ''}<li value="${value[this.options.valueField || 'value']}" class="${value.class === undefined ? '' : value.class}"><a href="#" value="${value[this.options.valueField || 'value']}">${value.leftImage!==undefined? '<img class="em-left-icon" src="value.leftImage" />':''} ${value[this.options.textField || 'text']}
+        ${value.rightImage!==undefined? '<img class="em-right-icon" src="value.rightImage" />':''}</a></li>`
         ).join('') }
 			</ul>`;
       this.mainParent.innerHTML = this.template;
@@ -36,6 +37,51 @@ if(this.options !== undefined){
     self.menu.setAttribute('tabindex', '0'); // Fix onblur on Chrome
     self.menu.addEventListener('click', self.toggle, false);
     self.menu.addEventListener('blur', self.close, false);
+    document.getElementsByTagName('html')[0].addEventListener('keydown',  ( e )=> {
+      if ( e.keyCode === 27 ) { self.menu.parentNode.classList.remove('open');}});
+      self.menu.addEventListener('keydown',  ( e )=> {
+        if (e.keyCode === 40) {
+          let list = self.menu.parentNode.querySelectorAll('.dropdown-menu li');
+          let index = 0;
+          while (index < list.length) {
+            let item = list[index];
+             if (item.classList.contains('selected-text')) {
+              if(list.length>=(index )){
+                list[index + 1].classList.add('selected-text');
+                item.classList.remove('selected-text');
+                break;
+              }
+            }
+             index++;
+          }
+           e.preventDefault();
+        }
+        if (e.keyCode === 38) {
+          let list = self.menu.parentNode.querySelectorAll('.dropdown-menu li');
+          let index = 0;
+          while (index < list.length) {
+            let item = list[index];
+             if (item.classList.contains('selected-text')) {
+              if(index>0){
+                list[index - 1].classList.add('selected-text');
+                item.classList.remove('selected-text');
+                break;
+              }
+            }
+             index++;
+          }
+           e.preventDefault();
+        }
+        if (e.keyCode === 13) {
+          let item = self.menu.parentNode.querySelector('li.selected-text a');
+          self.menu.parentNode.querySelector(".btn .selectedText").innerText = item.innerText;
+        self.menu.parentNode.querySelector(".btn .selectedText").setAttribute('value', item.parentNode.getAttribute('value'));
+        if (!self.menu.parentNode.querySelector(".btn").classList.contains("completed")) {
+          self.menu.parentNode.querySelector(".btn").classList.add("completed");
+        }
+        }
+      });
+
   }
   setSelected(value) {
     var self = this;
@@ -113,6 +159,11 @@ if(this.options !== undefined){
     self.toggle = function (e) {
       var target = e.currentTarget || e.srcElement;
       target.parentNode.classList.toggle('open');
+      console.log(self.menu.parentNode.querySelector(".btn .selectedText").getAttribute('value'));
+      if (self.menu.parentNode.querySelector(".btn .selectedText").getAttribute('value') == null) {
+
+        self.menu.parentNode.querySelector('.dropdown-menu li:first-child').classList.add('selected-text');
+      }
       e.preventDefault();
       return false;
     };
