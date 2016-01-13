@@ -46,43 +46,11 @@
   background-color: @pagination-active-icon-background-color;
 }
 
-//
-// S T Y L I N G   S T A R T S  //
-//
 
 .ui-grid{
   padding-bottom: 30px;
 }
 
-.panel-heading{
-  background-color: @simple-grid-table-header-background-color;
-  border: 1px solid @simple-grid-table-header-border-color;
-  border-bottom: @none;
-}
-.action-button-wrapper{
-  text-align: right;
-  .btn{
-    background-color: transparent;
-    padding: 8px 0px;
-    width: 30px;
-    .em-icon{
-      background-position: center center;
-      background-repeat: no-repeat;
-      background-size: 20px;
-    }
-    &.btnprint{
-      margin-right: 5px;
-    }
-  }
-  position: absolute;
-  top: 30px;
-  right: 0px;
-  //border: 1px solid @simple-grid-table-header-border-color;
-  //border-top: @none;
-  //border-bottom: @none;
-}
-
-//For simple grid  --- ToDo: need to optimise with common code
 .em-simple-grid{
   .ui-grid-row {
     .ng-isolate-scope{
@@ -133,7 +101,7 @@
     background-color: @table-header-row-background-color;
     .ui-grid-header-cell{
       background-color: @simple-grid-header-row-cell-background-color;
-      padding: @simple-grid-header-row-cell-padding;
+      // padding: @simple-grid-header-row-cell-padding;
       border: @none;
       border-left: 1px solid @table-body-row-checkbox-container-border-right-color;
       font-size: @simple-grid-header-row-font-size;
@@ -141,6 +109,9 @@
       color: @simple-grid-header-row-font-color;
       text-align: left;
       vertical-align: middle;
+      &:last-child{
+        border: none;
+      }
     }
     .ui-grid-icon-angle-down{
       display: @none;
@@ -153,7 +124,7 @@
   }
 }
 
-//For complex grid  --- TODo: need to optimise with common code
+//For complex grid
 .em-complex-grid{
   .ui-grid-contents-wrapper{
 
@@ -168,16 +139,8 @@
             .ui-grid-row-header-cell{
               &.ui-grid-cell,
               &.ui-grid-header-cell{
-                //-moz-box-sizing: border-box;
-                //-webkit-box-sizing: border-box;
-                //box-sizing: border-box;
-                //border-top: 1px solid @table-body-row-checkbox-container-border-top-color;
-                //border-bottom: 1px solid @table-body-row-checkbox-container-border-bottom-color;
-                //border-right: 1px solid @table-body-row-checkbox-container-border-right-color;
-                //border-left: @table-body-row-checkbox-container-border-left-color;
                 min-width: 40px;
                 max-width: 40px;
-
               }
               .ui-grid-selection-row-header-buttons{
                 opacity: 1;
@@ -197,6 +160,7 @@
                   }
                 }
               }
+
             }
           }
         }
@@ -212,6 +176,11 @@
 
         }
       }
+      .ui-grid-header-viewport{
+         .ui-grid-header-canvas{
+
+          }
+      }
     }
 
     // Common for 1 and 2
@@ -221,7 +190,7 @@
       //width: @table-header-row-width;
       //padding: @table-header-row-padding;
       .ui-grid-header-cell{
-        padding: 0 10px 0 0;
+        // padding: 0 10px 0 0;
         //border: @none;
         .ui-grid-cell-contents{
           font: @font-family-base;
@@ -269,7 +238,7 @@
 
   .ui-grid-render-container-body{
     margin-left: 40px !important;
-    border-left: 1px solid @table-body-row-checkbox-container-border-right-color;
+    border-left: 1px solid @table-body-row-checkbox-container-border-right-dark-color;
   }
 
   .ui-grid-cell {
@@ -558,6 +527,13 @@
 }
 
 //Disabled
+.ui-grid-pinned-container.ui-grid-pinned-container-left .ui-grid-header-cell:last-child{
+  border: none;
+}
+
+.ui-grid-row.ui-grid-row-selected > [ui-grid-row] > .ui-grid-cell {
+  background-color: @table-body-row-cell-active-background-color;
+}
 .ui-grid-cell.ui-grid-disable-selection.ui-grid-row-header-cell {
   pointer-events: none;
 }
@@ -569,3 +545,14 @@
   -ms-user-select: none;
   cursor: default;
 }
+
+.ui-grid-render-container.ui-grid-render-container-body
+  .ui-grid-header
+  .ui-grid-top-panel
+    .ui-grid-header-cell-wrapper
+    .ui-grid-header-cell-row
+      .ui-grid-header-cell
+      .ui-grid-cell-contents.ui-grid-header-cell-primary-focus{
+        padding: 5px 0 5px 15px;
+        border-left: 1px solid @table-body-row-checkbox-container-border-right-color;
+      }

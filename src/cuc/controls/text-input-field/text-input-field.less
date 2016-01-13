@@ -1,6 +1,6 @@
 
 .clearable{
-  background: #fff url(http://i.stack.imgur.com/mJotv.gif) no-repeat right -10px center;
+  background: #fff url(http://i.stack.imgur.com/mJotv.gif) no-repeat right -10px center; // Todo - change the image
   border: 1px solid #999;
   padding: 3px 18px 3px 4px;     /* Use the same right padding (18) in jQ! */
   border-radius: 3px;
@@ -36,7 +36,7 @@
 }
 
 /* override default input text box */
-input[type="text"], input[type="password"] {
+input[type="text"], input[type="password"] ,input[type="email"]{
     height: @input-field-height;
     padding: 0px 8px;
     vertical-align: middle;
@@ -49,18 +49,19 @@ input[type="text"], input[type="password"] {
 }
 
 /*override default input textbox hover, focus, and active states */
-input[type="text"]:hover, input[type="text"]:active, input[type="text"]:focus {
+input[type="text"]:hover, input[type="text"]:active, input[type="text"]:focus,
+input[type="email"]:hover, input[type="email"]:active, input[type="email"]:focus {
     border: 1px solid @input-field-hover-border-color;
     box-shadow: 0px 0px 0px 2px @input-field-hover-outer-border-color;
 }
 
 /*override input box disabled  and readonly*/
-input[disabled], input[readonly], input[type="text"]:disabled, input[type="text"]:readonly, input[disabled]:hover, input[disabled]:focus, input[disabled]:active, input[readonly]:hover, input[readonly]:active, input[readonly]:focus{
+input[disabled], input[readonly], input[type="text"]:disabled, input[type="text"]:readonly, input[type="email"]:disabled, input[type="email"]:readonly, input[disabled]:hover, input[disabled]:focus, input[disabled]:active, input[readonly]:hover, input[readonly]:active, input[readonly]:focus{
     background-color: @input-field-disabled-background-color;
     border: 1px solid @input-field-disabled-border-color;
     box-shadow: none;
 }
-input[type="text"] {
+input[type="text"], input[type="email"] {
 color:#000000;
 }
 
@@ -179,6 +180,14 @@ input[data-restricted=true],input[data-restricted=true]:hover {
     box-shadow: none;
 }
 
+  .em-lbl-desc{
+      font-family: @font-family-base;
+      font-size: @font-size-small;
+      color: @input-field-description-text;
+      margin-top: 10px;
+      text-align: left;
+  }
+
   .em-label-TextBox{
     label{
       color: @black;
@@ -229,7 +238,7 @@ input[data-restricted=true],input[data-restricted=true]:hover {
   pointer-events:none;
   margin-left:0.2em;
 }
-  input[type="text"]{
+  input[type="text"], input[type="email"]{
     padding-left: 14px;
   }
 }
@@ -241,7 +250,7 @@ input[data-restricted=true],input[data-restricted=true]:hover {
     pointer-events: none;
     right: 0.2em;
   }
-  input[type="text"]{
+  input[type="text"],input[type="email"]{
     padding-right: 1.8em;
     text-align: right;
   }
@@ -254,7 +263,7 @@ input[data-restricted=true],input[data-restricted=true]:hover {
     pointer-events: none;
     right: 0.2em;
   }
-  input[type="text"]{
+  input[type="text"],input[type="email"]{
     padding-right: 4.8em;
     text-align: right;
   }
