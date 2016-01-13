@@ -112,18 +112,23 @@
 
   .large {
     width:@dropdown-size-large;
+    min-width:auto;
   }
   .small {
     width: @dropdown-size-small;
+    min-width:auto;
   }
   .medium {
     width: @dropdown-size-medium;
+    min-width:auto;
   }
   .xs {
     width:@dropdown-size-extra-small;
+    min-width:auto;
   }
   .flexible-width {
     width: @dropdown-size-flexible;
+    min-width:auto;
   }
 
   ul.dropdown-menu {
@@ -132,6 +137,10 @@
     box-shadow: 0 2px 5px 0 @dropdown-panel-shadow-color;
     border-radius: @dropdown-panel-border-radius;
     padding: @dropdown-panel-padding;
+    max-height: 340px;
+    overflow-y: auto;
+    min-width: none;
+
     li {
       &:hover {
         color: @dropdown-panel-hover-highlight-color;

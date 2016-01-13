@@ -8,11 +8,25 @@ class Dropdown {
   reinit() {
 if(this.options !== undefined){
     if (Object.keys(this.options).length) {
-      this.options.defaultText = this.options.defaultText || "Select item";
+      this.options.defaultText = (this.options.defaultText === undefined) ? "Select One" : this.options.defaultText;
       this.options.itemList = this.options.itemList || [];
+      this.options.sortField = this.options.sortField || this.options.textField || 'text';
+      this.options.sortOrder = this.options.sortOrder || 'asc';
       this.options.size = this.options.defaultSize || 'medium';
-      this.template = `<button  class="btn dropdown-toggle ${this.options.size}" type="button"  aria-haspopup="true" aria-expanded="true" data-toggle="dropdown"><span class="selectedText pull-left ${this.options.size}">${this.options.defaultText}</span>
-				<span class="caret"></span>
+
+      //Sort dropdown values
+      if (this.options.itemList) {
+        this.options.itemList.sort((obj1, obj2) => {
+          var x = obj1[this.options.sortField].toLowerCase();
+          var y = obj2[this.options.sortField].toLowerCase();
+          if (this.options.sortOrder === 'desc') {
+            return x > y ? -1 : x < y ? 1 : 0;
+          } else {
+            return x < y ? -1 : x > y ? 1 : 0;
+          }});
+      }
+      this.template = `<button  class="btn dropdown-toggle ${this.options.size}" type="button"  aria-haspopup="true" aria-expanded="true"><span class="selectedText pull-left ${this.options.size}">${this.options.defaultText || '&nbsp;'}</span>
+			<span class="caret"></span>
 			</button>
 			<ul class="dropdown-menu ${this.options.size}" role="menu">
 			${this.options.itemList.map((value, i) =>
