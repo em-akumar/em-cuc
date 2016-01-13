@@ -28,6 +28,7 @@ class DatePicker {
 
         this.date_format = "mm/dd/yyyy";
         this.time_format = "HH:MM TT";
+        this.max_dateTime = "12/31/9999 12:59";
 
         this.showOnlyDate = false;
         this.showOnlyTime = false;
@@ -228,6 +229,7 @@ class DatePicker {
                     this.destTimeField.value = (val.split(' ')[1] || '') + ' ' + (val.split(' ')[2] || '')
                 }
             }
+            return false;
         });
 
         document.getElementsByTagName('html')[0].addEventListener('keydown', (e) => {
@@ -304,8 +306,8 @@ class DatePicker {
         this.calendarTo = dateObj;
     }
     _setDisabled() {
-        var self = this;
-        var isDisabled = self.AddOn.parentNode.classList.contains('disabled');
+        let self = this;
+        let isDisabled = self.AddOn.parentNode.classList.contains('disabled');
         if (isDisabled) {
             self.AddOn.classList.add('disabled');
             self.destDateField.classList.add('disabled');
@@ -317,7 +319,7 @@ class DatePicker {
     }
     //format strig to a valid date
     _autocomplete(str) {
-        var code, i, j = 0,
+        let code, i, j = 0,
             len, number = '',
             ampm = 'am';
 
@@ -341,15 +343,14 @@ class DatePicker {
                     number += ":";
             }
         }
-        var dt = '';
+        let dt = '';
         //convert randam string to possible date string and format it.
         dt = this._formatDate(this._aiDate(number));
-        console.log(dt);
         //check the generated date is valid or not..
         if (dt.trim().length < 16)
             return '';
         else {
-            var dtTmp = dt.split(' ')[0];
+            let dtTmp = dt.split(' ')[0];
             dtTmp = dtTmp.split('/');
             if (Number(dtTmp[0]) > 0 && Number(dtTmp[1]) > 0 && Number(dtTmp[2]) > 0) {
 
@@ -376,40 +377,35 @@ class DatePicker {
 
             str = this._aiDate(str.trim());
         }
-        var val = String(Math.pow(10, (12 - str.length)) * Number(str));
+        let val = String(Math.round(Math.pow(10, (12 - str.length)) * Number(str)));
         if (val.length < 12)
             val = '0' + val;
-        var result = val.slice(0, 2) + '/' + val.slice(2, 4) + '/' + val.slice(4, 8) + ' ' + val.slice(8, 10) + ':' + val.slice(10, 12);
+        let result = val.slice(0, 2) + '/' + val.slice(2, 4) + '/' + val.slice(4, 8) + ' ' + val.slice(8, 10) + ':' + val.slice(10, 12);
         return result;
     }
     _DatePicker_IsValidDate(input) {
-        var bits = input.split('/');
-        var d = new Date((bits[2] || 0), (bits[0] || 1) - 1, (bits[1] || 0));
+        let bits = input.split('/');
+        let d = new Date((bits[2] || 0), (bits[0] || 1) - 1, (bits[1] || 0));
         return (d.getFullYear() == Number(bits[2]) || Number(bits[2]) == 0) && (d.getMonth() + 1) == Number(bits[0]) && d.getDate() == bits[1];
     }
-    _aiDate(number) {
+    _aiDate(number,y = 1) {
         if (number.indexOf('/') == -1) {
-            var len = number.length;
-            var num = number;
-            if (number.length > 1 && Number(num.slice(0, 2)) > 12) {
-                num = '0' + num;
-            } else if (num.length == 1) {
-                num = '0' + num;
+            let num = number;
+            let x = y - 1;
+            let limit= this.max_dateTime.replace(/[^0-9]/g, '');
+            let val = limit.slice(x, y + 1);
+            if(x<5 || (x>7 && x<12)){
+              if (number.length > y && Number(num.slice(x, y+1)) > val) {
+                  num = num.slice(0, x) + '0' + num.slice(x);
+              } else if (num.length == y) {
+                  num = num.slice(0, x) + '0' + num.slice(x);
+              }
+              num = this._aiDate(num, y + 2);
             }
-            if (number.length >= 3 && Number(num.slice(2, 4)) > 31) {
-                num = num.slice(0, 2) + '0' + num.slice(2);
-            } else if (num.length == 3) {
-                num = num.slice(0, 2) + '0' + num.slice(2);
-            }
-            if (num.length > 8 && Number(num.slice(8, 10)) > 12) {
-                num = num.slice(0, 8) + '0' + num.slice(8);
-            } else if (num.length > 8 && Number(num.slice(8, 10)).toString().length === 1) {
-                num = num.slice(0, 8) + '0' + num.slice(8);
-            }
-            if (num.length > 10 && Number(num.slice(10)) > 59) {
-                num = num.slice(0, 10) + '0' + num.slice(10, 11);
-            } else if (num.length > 10 && Number(num.slice(10, 12)).toString().length === 1) {
-                num = num.slice(0, 10) + '0' + num.slice(10);
+            else if(x>11){
+              return num;}
+             else{
+               num = this._aiDate(num, y + 2);
             }
             return num;
         } else
