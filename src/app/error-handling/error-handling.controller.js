@@ -38,7 +38,9 @@ renderMaritalStatus1() {
       parent: 'jcalendar_parent1-angular',
       destDateField: 'txtDatePicker',
       destTimeField: 'txtTimePicker',
-      disabledDates: ['14/12/2015', '15/12/2015', '16/12/2015']
+      disabledDates: ['14/12/2015', '15/12/2015', '16/12/2015'],
+      onDateChange: function (e) { safeApply(); },
+      onTimeChange: function (e) { safeApply(); }
     };
   }
 
