@@ -18,11 +18,11 @@ class DropdownController {
       },
       valueField: 'alpha2Code',
       textField: 'name',
+
       defaultSize: 'large',
       sortField: 'alpha2Code',
       sortOrder: 'desc'
-      };
-
+    };
     this.drpState = {
       defaultText: 'Select State',
       onChange: function (e) {
@@ -60,7 +60,8 @@ class DropdownController {
         console.log('clicked');
       },
       defaultSize: 'large',
-      itemList: [{ 'value': 1, 'text': 'State1'}, { 'value': 2, 'text': 'State2'}]
+      itemList: [{ 'value': 1, 'text': 'State1', 'rightImage': '/main/images/control-images/icon-lock-locked-locked.svg', 'leftImage': '/main/images/control-images/icon-lock-locked-locked.svg'}, { 'value': 2, 'text': 'State2'}]
+
     };
     // for Medium items
     this.drpStateMedium = {
@@ -100,7 +101,7 @@ class DropdownController {
         console.log('clicked');
       },
       defaultSize: 'flexible-width',
-      itemList: [{ 'value': 1, 'text': 'State1'}, { 'value': 2, 'text': 'State2'}]
+      itemList: [{ 'value': 1, 'text': 'State1', 'rightImage': '/main/images/control-images/icon-lock-locked-locked.svg', 'leftImage': '/main/images/control-images/icon-lock-locked-locked.svg'}, { 'value': 2, 'text': 'State2'}]
     };
   }
 
