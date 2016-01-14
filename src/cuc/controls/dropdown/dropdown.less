@@ -155,6 +155,7 @@
       &.selected-text{
         background-color: @dropdown-list-item-highlight-color;
       }
+
     }
     li > a {
       font-size: @font-size-base;
@@ -164,7 +165,7 @@
       vertical-align: middle;
       text-overflow: ellipsis;
       overflow: hidden;
-      padding: 0 22px;
+      padding: 5px 10px;
       cursor: pointer;
       cursor: hand;
       &:focus, &:hover {
@@ -180,14 +181,16 @@
       .em-left-icon{
         width: @dropdown-edit-item-icon-width;
         height: @dropdown-edit-item-icon-width;
-        position: absolute;
-        left: 15px;
+        position: relative;
+        float: left;
+        margin-right: 8px;
       }
       .em-right-icon{
         width: @dropdown-edit-item-icon-width;
         height: @dropdown-edit-item-icon-width;
-        position: absolute;
-        right: 15px;
+        position: relative;
+        float: right;
+        margin-left: 8px;
       }
     }
     .divider{

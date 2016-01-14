@@ -60,7 +60,7 @@ class DropdownController {
         console.log('clicked');
       },
       defaultSize: 'large',
-      itemList: [{ 'value': 1, 'text': 'State1', 'rightImage': '/main/images/control-images/icon-lock-locked-locked.svg', 'leftImage': '/main/images/control-images/icon-lock-locked-locked.svg'}, { 'value': 2, 'text': 'State2'}]
+      itemList: [{ 'value': 1, 'text': 'State1', 'rightImage': '../../assets/images/icon-lock-locked-locked.svg', 'leftImage': '../../assets/images/icon-lock-locked-locked.svg'}, { 'value': 2, 'text': 'State2'}]
 
     };
     // for Medium items
