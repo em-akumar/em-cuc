@@ -101,36 +101,26 @@ describe('cuic-427 dropdown functional test suite ->', function(){
 
     });
 
-    it.skip('default sort order should be from A-Z', function () {
+    it('cuic-435 default sort order should be from A-Z', function () {
 
       var dropdown = new CreateDropdown();
 
       dropdown.dropdownselector.click();
 
-      browser.driver.sleep(3000);
+      browser.wait(function(){
+        return dropdown.selectedlistitem.isPresent();
+      }, 3000);
 
-      var tabs = element.all(by.css('.dropdown-menu.large')).map(function (elm) {
-        return elm.getText();
+      var unsorted = dropdown.menulist.getText();
+
+      unsorted.then(function (unsortedresult) {
+
+        var sorted = unsortedresult.slice();
+        var sortedresult = sorted.sort();
+
+        expect(unsortedresult).to.equal(sortedresult); //check if both sorted and unsorted arrays are same
+
       });
-
-      tabs.then(function (result) {
-        console.log("result.length = " + result.length);
-        console.log("result = " + result);
-      });
-
-      /*
-      var ele = element.all(by.css ('.dropdown-menu.large'));
-      ele.map(function(eachName){
-        return eachName.getText().then(function(unSorted){
-          return unSorted;
-        });
-      }).then(function(unSorted){
-        var sorted = unSorted.slice();
-        sorted = sorted.sort(); //sort the array
-        expect(sorted).to.eventually.equal(unSorted); //check if both sorted and unsorted arrays are same
-      });
-      */
-
     });
 
   });

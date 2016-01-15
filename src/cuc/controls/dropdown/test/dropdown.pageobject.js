@@ -17,6 +17,7 @@ module.exports = function(){
   this.dropdowncaret = element(by.css(dropdowncaret_cssLocator));
   this.dropdownmenu = element(by.css(dropdownmenu_cssLocator));
   this.selectedlistitem = element(by.cssContainingText(listitem_cssLocator,TestData.Country));
+  this.menulist = element(by.css('.dropdown-menu.large')).all(by.tagName('li'));
 
 };
 
