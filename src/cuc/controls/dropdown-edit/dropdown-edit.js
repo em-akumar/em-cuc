@@ -68,6 +68,13 @@ class DropdownEdit {
         self.menu.parentNode.classList.remove('open');
     }});
 
+     self.menu.parentNode.querySelector('.dropdown-menu').addEventListener('mouseover', (e) => {
+      let dropdownSelect = self.menu.parentNode.querySelector('.dropdown-menu li.selected-text');
+
+      if (dropdownSelect && dropdownSelect.classList.contains('selected-text')) {
+        dropdownSelect.classList.remove('selected-text');
+      }
+    });
     self.menu.addEventListener('keydown', (e) => {
       if (e.keyCode === 40) {  // scroll dropdown option using down array key
         let list = self.menu.parentNode.querySelectorAll('.dropdown-menu li');
@@ -107,7 +114,8 @@ class DropdownEdit {
       if (e.keyCode === 13) { // select dropdwon value on enter key
         if (!self.menu.parentNode.querySelector('li.selected-text').classList.contains("disabled")) {
           let item = self.menu.parentNode.querySelector('li.selected-text a');
-          self.combobox.parentNode.querySelector("input.form-control.em-combobox").value = item.innerText;
+          self.combobox.parentNode.querySelector("input.form-control.em-combobox").value = item.innerText || item.textContent;
+
           self.combobox.parentNode.querySelector("input.form-control.em-combobox").setAttribute('value', item.parentNode.getAttribute('value'));
           if (!self.combobox.parentNode.querySelector("input.form-control.em-combobox").classList.contains("completed")) {
            self.combobox.parentNode.querySelector("input.form-control.em-combobox").classList.add("completed");
@@ -131,7 +139,7 @@ setSelected(value){
         if(typeof self.options.onChange === 'function'){
 					self.options.onChange(e);
 				}
-        self.combobox.parentNode.querySelector("input.form-control.em-combobox").value = element.innerText;
+        self.combobox.parentNode.querySelector("input.form-control.em-combobox").value = element.innerText || element.textContent;
         self.combobox.parentNode.querySelector("input.form-control.em-combobox").setAttribute('value', element.parentNode.getAttribute('value'));
         if (!self.combobox.parentNode.querySelector("input.form-control.em-combobox").classList.contains("completed")) {
           self.combobox.parentNode.querySelector("input.form-control.em-combobox").classList.add("completed");
@@ -213,8 +221,13 @@ setSelected(value){
     self.toggle = function (e) {
       var target = e.currentTarget || e.srcElement;
       target.parentNode.classList.toggle('open');
-      if (self.combobox.parentNode.querySelector("input.form-control.em-combobox").value  == '') {
+
+      var selValue = self.combobox.parentNode.querySelector("input.form-control.em-combobox").getAttribute('value');
+      console.log(selValue);
+      if (selValue == '' || selValue == null) {
         self.menu.parentNode.querySelector('.dropdown-menu li:first-child').classList.add('selected-text');
+      } else {
+         self.menu.parentNode.querySelector("li[value='" + selValue + "']").classList.add('selected-text');
       }
       e.preventDefault();
       return false;

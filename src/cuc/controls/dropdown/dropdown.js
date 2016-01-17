@@ -28,13 +28,12 @@ if(this.options !== undefined){
 
       var IconFlag = false;
       for (var i = 0; i < this.options.itemList.length; i++) {
-        
+
           if (this.options.itemList[i].leftImage != undefined) {
               IconFlag = true;
               break;
           }
       }
-      console.log(IconFlag);
 
       this.template = `<button  class="btn dropdown-toggle ${this.options.size}" type="button"  aria-haspopup="true" aria-expanded="true"><span class="selectedText pull-left ${this.options.size}">${this.options.defaultText || '&nbsp;'}</span>
 			<span class="caret"></span>
@@ -67,6 +66,14 @@ if(this.options !== undefined){
         self.menu.parentNode.classList.remove('open');
     }});
 
+    self.menu.parentNode.querySelector('.dropdown-menu').addEventListener('mouseover', (e) => {
+      let dropdownSelect = self.menu.parentNode.querySelector('.dropdown-menu li.selected-text');
+
+      if (dropdownSelect && dropdownSelect.classList.contains('selected-text')) {
+        dropdownSelect.classList.remove('selected-text');
+      }
+    });
+
     self.menu.addEventListener('keydown', (e) => {
       if (e.keyCode === 40) {  // scroll dropdown option using down array key
         let list = self.menu.parentNode.querySelectorAll('.dropdown-menu li');
@@ -95,7 +102,6 @@ if(this.options !== undefined){
             if(index>0){
               item.classList.remove('selected-text');
               list[index - 1].classList.add('selected-text');
-
               break;
             }
           }
@@ -106,7 +112,11 @@ if(this.options !== undefined){
       if (e.keyCode === 13) { // select dropdwon value on enter key
         if (!self.menu.parentNode.querySelector('li.selected-text').classList.contains("disabled")) {
           let item = self.menu.parentNode.querySelector('li.selected-text a');
-          self.menu.parentNode.querySelector(".btn .selectedText").innerText = item.innerText;
+          if (item.innerText == undefined) {
+            self.menu.parentNode.querySelector(".btn .selectedText").textContent = item.textContent;
+          } else {
+            self.menu.parentNode.querySelector(".btn .selectedText").innerText = item.innerText;
+          }
           self.menu.parentNode.querySelector(".btn .selectedText").setAttribute('value', item.parentNode.getAttribute('value'));
           if (!self.menu.parentNode.querySelector(".btn").classList.contains("completed")) {
             self.menu.parentNode.querySelector(".btn").classList.add("completed");
@@ -125,12 +135,21 @@ if(this.options !== undefined){
   }
   setList() {
     var self = this;
+
     [].forEach.call(self.menu.parentNode.querySelectorAll(".dropdown-menu>li>a"), (value, i) => {
       value.addEventListener('click', (e) => {
+        //console.log(value.innerText);
         if (typeof self.options.onChange === 'function') {
           self.options.onChange(e);
         }
-        self.menu.parentNode.querySelector(".btn .selectedText").innerText = value.innerText;
+
+        if (value.innerText == undefined) {
+          self.menu.parentNode.querySelector(".btn .selectedText").textContent = value.textContent;
+        } else {
+          self.menu.parentNode.querySelector(".btn .selectedText").innerText = value.innerText;
+        }
+        value.parentNode.classList.add('selected-text');
+        //console.log(value.classList);
         self.menu.parentNode.querySelector(".btn .selectedText").setAttribute('value', value.parentNode.getAttribute('value'));
         if (!self.menu.parentNode.querySelector(".btn").classList.contains("completed")) {
           self.menu.parentNode.querySelector(".btn").classList.add("completed");
@@ -191,8 +210,13 @@ if(this.options !== undefined){
     self.toggle = function (e) {
       var target = e.currentTarget || e.srcElement;
       target.parentNode.classList.toggle('open');
-      if (self.menu.parentNode.querySelector(".btn .selectedText").getAttribute('value') == null) {
+      var selValue = self.menu.parentNode.querySelector(".btn .selectedText").getAttribute('value');
+      if (selValue == null) {
         self.menu.parentNode.querySelector('.dropdown-menu li:first-child').classList.add('selected-text');
+      } else {
+         //var selValue = self.menu.parentNode.querySelector(".btn .selectedText").getAttribute('value');
+         console.log(self.menu.parentNode.querySelector("li[value='" + selValue + "']"));
+         self.menu.parentNode.querySelector("li[value='" + selValue + "']").classList.add('selected-text');
       }
       e.preventDefault();
       return false;
