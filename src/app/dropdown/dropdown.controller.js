@@ -21,7 +21,7 @@ class DropdownController {
       defaultSize: 'large',
       sortField: 'alpha2Code',
       sortOrder: 'desc'
-      };
+    };
 
     this.drpState = {
       defaultText: 'Select State',
