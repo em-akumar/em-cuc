@@ -24,41 +24,44 @@
   "homepage": "https://github.com/elliemaedev/em-cuc#readme",
   "ems_config": {
     "project_type": "cuc",
-    "index": "./src/index.html",
+    "index": "./index.html",
     "externals": {
       "ems": "commonjs ems"
     },
     "entry": {
       "app": [
-        "./src/app/app.module.js"
+        "./app/app.module.js"
       ],
       "cuc": [
-        "./src/cuc/cuc.js"
+        "./cuc/cuc.js"
       ],
       "cuc.angular": [
-        "./src/cuc/cuc.angular.js"
+        "./cuc/cuc.angular.js"
       ],
       "cuc.grid": [
-        "./src/cuc/cuc.grid.js"
+        "./cuc/cuc.grid.js"
       ],
       "cuc.ui.bootstrap": [
-        "./src/cuc/cuc.ui.bootstrap.js"
+        "./cuc/cuc.ui.bootstrap.js"
       ]
     }
   },
   "devDependencies": {
     "@emdev/em-swift": "latest",
-    "bootstrap": "3.3.6",
     "angular": "1.4.8",
+    "angular-messages": "1.4.8",
     "angular-ui-bootstrap": "0.14.3",
     "angular-ui-grid": "3.0.7",
-    "angular-messages": "1.4.8",
-    "protractor": "3.0.0",
+    "babel-plugin-transform-runtime": "6.4.0",
+    "babel-polyfill": "6.3.14",
+    "babel-preset-es2015": "6.3.13",
+    "bootstrap": "3.3.6",
     "chai": "3.4.1",
+    "chai-as-promised": "5.2.0",
+    "istanbul": "0.4.2",
     "mocha": "2.3.4",
-    "chai-as-promised" :"5.2.0",
-    "istanbul" : "0.4.2",
-    "protractor-istanbul-plugin" : "2.0.0",
-    "protractor-html-screenshot-reporter" : "0.0.21"
+    "protractor": "3.0.0",
+    "protractor-html-screenshot-reporter": "0.0.21",
+    "protractor-istanbul-plugin": "2.0.0"
   }
 }
