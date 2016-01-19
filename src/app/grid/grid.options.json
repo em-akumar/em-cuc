@@ -2,7 +2,6 @@
   "paginationPageSize": 10,
   "sortEnabled": true,
   "enableRowSelection": true,
-  "enablePaginationControls": false,
   "enableRowHeaderSelection": true,
   "multiSelect": true,
   "enableSelectAll": true,

@@ -131,15 +131,16 @@ cuc.directive('uiGridPrint', function () {
 cuc.directive('uiGridCustomPaging', function ($compile) {
   return {
     link: function (scope, element, attrs, uiGridctrl) {
+      uiGridctrl.grid.options.enablePaginationControls = false;
+      scope._initfirst = true;
+      uiGridctrl.grid.api.core.on.rowsRendered(scope, function() {
+          if (uiGridctrl.grid.renderContainers.body.visibleRowCache.length === 0) { return; }
+          if(scope._initfirst)
+            {initPage(scope);
+          scope._initfirst = false;}
+      });
+      function initPage(scope) {
 
-scope._initfirst = true;
-uiGridctrl.grid.api.core.on.rowsRendered(scope, function() {
-    if (uiGridctrl.grid.renderContainers.body.visibleRowCache.length === 0) { return; }
-    if(scope._initfirst)
-      {initPage(scope);
-    scope._initfirst = false;}
-});
-function initPage(scope){
       var divPage = document.createElement('div');
       divPage.innerHTML='<div class="em-complex-table-footer">'+
 	'<span class="em-pageview">'+
@@ -436,5 +437,37 @@ function loadPage(pageNumber){
       pageStruct.nxtArr = false;
   return pageStruct;
 }
+cuc.directive('uiGridColumnSettings', function ($interval) {
+  return {
+    link: function (scope, element, attrs, uiGridctrl) {
+      uiGridctrl.grid.options.enableGridMenu = true;
+      uiGridctrl.grid.options.exporterMenuPdf = false;
+      uiGridctrl.grid.options.exporterMenuCsv = false;
+      uiGridctrl.grid.options.onRegisterApi= function( gridApi ){
+          scope.gridApi = gridApi;
+
+
+      };
+      scope._initMenuFirst = true;
+      uiGridctrl.grid.api.core.on.rowsRendered(scope, function() {
+          if (uiGridctrl.grid.renderContainers.body.visibleRowCache.length === 0) { return; }
+          if(scope._initMenuFirst)
+            {initMenu(scope);
+          scope._initMenuFirst = false;}
+      });
+
+      function initMenu(scope) {
+        element[0].querySelector('.ui-grid-menu-button div').onclick = function () {
+          [].forEach.call(element[0].querySelectorAll('.ui-grid-menu-inner li'), function (el, index) {
+          if (el.querySelector('button').innerText.trim()=='Columns:'){el.querySelector('button').childNodes[1].nodeValue= "View Columns";}
+        });};
+      }
+
+    },
+    restrict: 'A',
+    require: '^uiGrid'
+  };
+});
+
 
 export {cuc};
