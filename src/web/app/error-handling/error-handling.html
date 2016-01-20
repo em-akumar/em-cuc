@@ -1,0 +1,134 @@
+<div class="app error-handling">
+
+  <form name="userForm" class="form-horizontal" novalidate>
+  <div class="panel">
+    <div class="panel-heading em-category-box">Category Box Header</div>
+     <div  emc="SliderNotifications" options="vm.sNotifications">
+    <div class="panel-heading em-group-box">I.Borrower Information</div>
+    <div class="panel-body em-panel-section">
+
+      <div class="form-group" ng-class="{ 'has-error': userForm.txtFirstName.$touched && userForm.txtFirstName.$invalid }">
+            <label class="control-label col-xs-2">Borrower First Name</label>
+            <div class="col-xs-10">
+              <input type="text" name="txtFirstName" class="form-control" placeholder="Enter First Name"
+                    ng-model="vm.txtFirstName"
+                    ng-minlength="5"
+                    ng-maxlength="20"
+                    tabindex="1"
+                    required>
+
+              <div class="help-block" ng-messages="userForm.txtFirstName.$error" ng-if="userForm.txtFirstName.$touched">
+                    <div ng-message="required" class="error-message-icon"><span class="error-message">Please enter borrower first name! </span></div>
+                    <div ng-message="minlength" class="error-message-icon"><span class="error-message">This first name is too short</span></div> <div ng-message="maxlength" class="error-message-icon"><span class="error-message">This first name is too long</span></div>
+                </div>
+                <div class="em-lbl-desc">Description text goes here </div>
+          </div>
+        </div>
+
+        <div class="form-group" ng-class="{'has-error': userForm.txtLastName.$touched && userForm.txtLastName.$invalid }">
+          <label class="control-label col-xs-2">Borrower Last Name</label>
+          <div class="col-xs-10">
+            <input type="text" name="txtLastName" class="form-control" placeholder="Enter Last Name" ng-model="vm.txtLastName" ng-minlength="5"
+            ng-maxlength="20" tabindex="2" required>
+            <div class="help-block" ng-messages="userForm.txtLastName.$error" ng-if="userForm.txtLastName.$touched">
+              <!--<div ng-messages-include="./error-messages.html"></div>-->
+              <div ng-message="required" class="error-message-icon"><span class="error-message">Please enter borrower last name! Please enter borrower last name!! Please enter borrower last name!Please enter borrower last name!</span></div>
+              <div ng-message="minlength" class="error-message-icon"><span class="error-message">This last name is too short</span></div>
+              <div ng-message="maxlength" class="error-message-icon"><span class="error-message">This last name is too long</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group" ng-class="{'has-error': userForm.drpMaritalStatus.$touched && userForm.drpMaritalStatus.$invalid }">
+          <label class="control-label col-xs-2">Marital Status</label>
+          <div class="col-xs-10">
+            <div emc="Dropdown" name="drpMaritalStatus" class="em-dropdown" options="vm.drpMarital" ng-model="vm.drpMaritalStatus" tabindex="3"
+            required></div>
+            <div class="help-block" ng-messages="userForm.drpMaritalStatus.$error" ng-if="userForm.drpMaritalStatus.$touched">
+              <!--<div ng-messages-include="./error-messages.html"></div>-->
+              <div ng-message="required" class="error-message-icon"><span class="error-message">Please select the marital status</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group" ng-class="{'has-error': (userForm.datePick.$touched && userForm.datePick.$invalid)|| (userForm.timePick.$touched && userForm.timePick.$invalid) }">
+          <label class="control-label col-xs-2">Date of Birth</label>
+          <div class="col-xs-10">
+            <div emc="DatePicker" options="vm.dateTimePicker" class="em-date-picker input-group em-lbl-left">
+              <span class="input-group-addon em-calendar"></span>
+              <input type="text" name="datePick" ng-model="vm.datePick" class="form-control em-txt-md  date-picker" placeholder="MM / DD / YYYY"
+              tabindex="4" required>
+              <input type="text" name="timePick" ng-model="vm.timePick" class="form-control em-txt-md-time time-picker" placeholder="## : ## AM"
+              tabindex="5" required>
+              <div class="jcalendar_parent default em-calendar-pop" style="z-index: 999;display: none;"></div>
+            </div>
+            <div class="help-block" ng-messages="userForm.datePick.$error" ng-if="userForm.datePick.$touched">
+              <!--<div ng-messages-include="./error-messages.html"></div>-->
+              <div ng-message="required" class="error-message-icon"><span class="error-message">Please select date</span></div>
+            </div>
+            <div class="help-block" ng-messages="userForm.timePick.$error" ng-if="userForm.timePick.$touched">
+              <!--<div ng-messages-include="./error-messages.html"></div>-->
+              <div ng-message="required" class="error-message-icon"><span class="error-message">Please select time</span></div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-xs-offset-2 col-xs-10">
+              <button type="submit" class="btn btn-primary" ng-disabled="userForm.$invalid" tabindex="6">Submit</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+  </form>
+
+
+
+<!--<form name="innerForm" novalidate>
+  <div class="panel">
+    <div class="panel-heading em-category-box">Login Screen</div>
+
+      <div emc="SliderNotifications" options="vm.sNotifications">
+
+        <div class="form-group" ng-class="{ 'has-error': innerForm.txtUserName.$touched && innerForm.txtUserName.$invalid }">
+          <label class="control-label col-xs-2">Username</label>
+          <div class="col-xs-10">
+            <input type="text" name="txtUserName" class="form-control" placeholder="Username" ng-model="vm.txtUserName" ng-minlength="5"
+            ng-maxlength="20" tabindex="7" required>
+
+            <div class="help-block" ng-messages="innerForm.txtUserName.$error" ng-if="innerForm.txtUserName.$touched">
+              <div ng-message="required" class="error-message-icon"><span class="error-message">Please enter username!</span></div>
+              <div ng-message="minlength" class="error-message-icon"><span class="error-message">This username is too short</span></div>
+              <div ng-message="maxlength" class="error-message-icon"><span class="error-message">This username is too long</span></div>
+            </div>
+          </div>
+      </div>
+</br>
+      <div class="form-group" ng-class="{'has-error': innerForm.txtPassword.$touched && innerForm.txtPassword.$invalid }">
+            <label class="control-label col-xs-2">Password</label>
+            <div class="col-xs-10">
+                <input type="password" name="txtPassword" class="form-control" placeholder="Password"
+                      ng-model="vm.txtPassword"
+                      ng-minlength="5"
+                      ng-maxlength="20"
+                      tabindex="8"
+                      required>
+                <div class="help-block" ng-messages="innerForm.txtPassword.$error" ng-if="innerForm.txtPassword.$touched">
+                     <div ng-message="required" class="error-message-icon"><span class="error-message">Please enter borrower last name! Please enter borrower last name!! Please enter borrower last name!Please enter borrower last name!</span></div>
+                    <div ng-message="minlength" class="error-message-icon"><span class="error-message">This last name is too short</span></div> <div ng-message="maxlength" class="error-message-icon"><span class="error-message">This last name is too long</span></div>
+              </div>
+          </div>
+        </div>
+        <br/>
+        <div class="form-group">
+          <div class="col-xs-offset-2 col-xs-10">
+            <button type="submit" class="btn btn-primary" tabindex="9">Submit</button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+</form>-->
+
+  </div>

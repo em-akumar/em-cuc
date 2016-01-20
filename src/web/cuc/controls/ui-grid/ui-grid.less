@@ -1,0 +1,558 @@
+//Variables for styling  --- ToDo: need to move shared place
+@import '../../common/variables.less';
+@import '../../common/mixins.less';
+@import '../../common/typography.less';
+@arrowImgUrl: url("../../assets/images/icon-solid-arrow-blue-base.svg");
+@disArrowImgUrl: url("../../assets/images/icon-solid-arrow-temp-white-base.svg");
+@solidArrowImgUrl: url("../../assets/images/icon-solid-arrow-white.svg");
+
+
+//Mixins for styling  --- ToDo: need to move shared place
+.position-of-triangle-in-button(){
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}
+.common-style-for-arrow-in-pagination(){
+  background: @arrowImgUrl center center no-repeat;
+  color: @pagination-icon-arrow-color;
+  align: center;
+  text-align: center;
+  vertical-align: middle;
+  display: inline-block;
+  background-size: 10px;
+  margin: 0 5px;
+  height: @pagination-active-background-height;
+  width: @pagination-active-background-width;
+  border-radius: @close-icon-hover-background-radius;
+  &:hover {
+    color: @pagination-hover-icon-arrow-color;
+    background-color: @pagination-hover-icon-background-color;
+    cursor: pointer;
+  }
+}
+.checkBox-common-properties(){
+  content: '\c362';
+  border: 1px solid;
+  font-size: 0.615rem;
+  border-radius: 3px;
+  padding: 1px 0;
+  margin-left: -1px;
+  line-height: 1.2em;
+  width: 16px;
+  height: 16px;
+}
+.activeIconBg(){
+  background-color: @pagination-active-icon-background-color;
+}
+
+
+.ui-grid{
+  padding-bottom: 30px;
+}
+
+.em-simple-grid{
+  .ui-grid-row {
+    .ng-isolate-scope{
+      .ui-grid-cell{
+        height: @simple-grid-header-row-container-height !important;
+        border-bottom: 1px solid @table-header-row-column-separator;
+        background-color: @simple-grid-body-row-cell-background-color;
+        .ui-grid-cell-contents {
+          padding: 9px 10px 8px 15px;
+          font-size: @simple-grid-body-row-font-size;
+          font-family: @simple-grid-body-row-font-family;
+          color: @simple-grid-body-row-font-color;
+          text-align: left;
+          vertical-align: middle;
+        }
+      }
+    }
+    &:nth-child(odd) .ui-grid-cell {
+      background-color: @simple-grid-body-row-cell-background-color;
+    }
+    &:nth-child(even) .ui-grid-cell {
+      background-color: @simple-grid-body-row-cell-background-color;
+    }
+  }
+
+  .ui-grid-cell {
+    border-right: @none;
+  }
+  .ui-grid-cell-contents {
+    i {
+      width: @table-header-row-sort-icon-width;
+      vertical-align: middle;
+      &.ui-grid-icon-up-dir{
+        content:@arrowImgUrl;
+        transform: rotate(180deg);
+      }
+      &.ui-grid-icon-down-dir{
+        content: @arrowImgUrl;
+      }
+    }
+    sub{
+      visibility: hidden;
+    }
+  }
+
+  .ui-grid-header{
+    width: @simple-grid-header-row-container-width;
+    background-color: @table-header-row-background-color;
+    .ui-grid-header-cell{
+      background-color: @simple-grid-header-row-cell-background-color;
+      // padding: @simple-grid-header-row-cell-padding;
+      border: @none;
+      border-left: 1px solid @table-body-row-checkbox-container-border-right-color;
+      font-size: @simple-grid-header-row-font-size;
+      font-family: @simple-grid-header-row-font-family;
+      color: @simple-grid-header-row-font-color;
+      text-align: left;
+      vertical-align: middle;
+      &:last-child{
+        border: none;
+      }
+    }
+    .ui-grid-icon-angle-down{
+      display: @none;
+    }
+  }
+  .ui-grid-top-panel {
+    background: @none; // To clear out gradient properties
+    background-color: @table-header-row-background-color;
+    min-height: @table-header-row-height;
+  }
+}
+
+//For complex grid
+.em-complex-grid{
+  .ui-grid-contents-wrapper{
+
+    //1
+    .ui-grid-pinned-container-left{
+      .left {
+        &.ui-grid-render-container,
+        &.ui-grid-render-container-left{
+          .ui-grid-canvas,
+          .ui-grid-header-canvas{
+            .ui-grid-header-cell-row,
+            .ui-grid-row-header-cell{
+              &.ui-grid-cell,
+              &.ui-grid-header-cell{
+                min-width: 40px;
+                max-width: 40px;
+              }
+              .ui-grid-selection-row-header-buttons{
+                opacity: 1;
+                &.ui-grid-icon-ok{
+                  &:before{
+                    color: transparent;
+                    .checkBox-common-properties;
+                    border-color: @checkbox-default-border-color;
+                  }
+                }
+                &.ui-grid-row-selected, &.ui-grid-all-selected{
+                  &:before{
+                    background-color: #2080c3;
+                    color: #ffffff;
+                    .checkBox-common-properties;
+                    border-color: @checkbox-active-border-color;
+                  }
+                }
+              }
+
+            }
+          }
+        }
+        .ui-grid-header-cell-wrapper{
+          padding: 0 10px !important;
+        }
+      }
+    }
+    //2
+    .ui-grid-render-container-body{
+      .ui-grid-viewport{
+        .ui-grid-canvas{
+
+        }
+      }
+      .ui-grid-header-viewport{
+         .ui-grid-header-canvas{
+
+          }
+      }
+    }
+
+    // Common for 1 and 2
+    .ui-grid-header{
+      background-color: @table-header-row-background-color;
+      height: @table-header-row-height;
+      //width: @table-header-row-width;
+      //padding: @table-header-row-padding;
+      .ui-grid-header-cell{
+        // padding: 0 10px 0 0;
+        //border: @none;
+        .ui-grid-cell-contents{
+          font: @font-family-base;
+          font-size: @table-header-row-font-size;
+          font-weight: @table-header-row-font-weight;
+          color: @table-header-row-font-color;
+          text-align: left;
+          vertical-align: middle;
+          &:hover{
+            font-weight: @table-header-row-active-font-weight;
+          }
+        }
+      }
+      .ui-grid-icon-angle-down{
+        display: @none;
+      }
+    }
+  }
+
+
+  .ui-grid-row {
+    height: @simple-grid-header-row-container-height !important;
+    .ng-isolate-scope{
+      .ui-grid-cell{
+        height: @simple-grid-header-row-container-height !important;
+        border-bottom: 1px solid @table-header-row-column-separator;
+        background-color: @simple-grid-body-row-cell-background-color;
+        .ui-grid-cell-contents {
+          padding: 9px 10px 8px 15px;
+          font-size: @simple-grid-body-row-font-size;
+          font-family: @simple-grid-body-row-font-family;
+          color: @simple-grid-body-row-font-color;
+          text-align: left;
+          vertical-align: middle;
+        }
+      }
+    }
+    &:nth-child(odd) .ui-grid-cell {
+      background-color: @simple-grid-body-row-cell-background-color;
+    }
+    &:nth-child(even) .ui-grid-cell {
+      background-color: @simple-grid-body-row-cell-background-color;
+    }
+  }
+
+  .ui-grid-render-container-body{
+    margin-left: 40px !important;
+    border-left: 1px solid @table-body-row-checkbox-container-border-right-dark-color;
+  }
+
+  .ui-grid-cell {
+    border-right: @none;
+    //box-shadow: inset 0 0 15px 3px black;
+  }
+  .ui-grid-cell-contents {
+    i {
+      width: @table-header-row-sort-icon-width;
+      vertical-align: middle;
+      &.ui-grid-icon-up-dir{
+        content:@arrowImgUrl;
+        transform: rotate(180deg);
+      }
+      &.ui-grid-icon-down-dir{
+        content: @arrowImgUrl;
+      }
+    }
+    sub{
+      visibility: hidden;
+    }
+  }
+
+  .ui-grid-top-panel {
+    background: @none; // To clear out gradient properties
+    background-color: @table-header-row-background-color;
+    min-height: @table-header-row-height;
+    .ui-grid-header-cell-wrapper{
+      background-color: @table-header-row-background-color;
+    }
+  }
+  .ui-grid-filter-container{
+    padding: 4px 10px 4px 4px;
+  }
+
+  //For pagination in grid
+  .em-complex-table-footer{
+    background-color: @simple-grid-table-header-background-color;
+    height: 30px;
+    text-align: right;
+    .em-pagination{
+      width: auto;
+      margin: 5px 10px 0 0;
+      text-align: center;
+      vertical-align: middle;
+      display: inline-flex;
+      .pagination {
+        margin: 0;
+      }
+      .em-left-arrow {
+        -ms-transform: rotate(90deg); /* IE 9 */
+        -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
+        transform: rotate(90deg);
+        .common-style-for-arrow-in-pagination;
+        &.disable{
+          background: @disArrowImgUrl center center no-repeat;
+          background-size: 24px;
+          opacity: 0.2;
+          &:hover{
+            background-color: @none;
+            cursor: default;
+          }
+        }
+      }
+      .pagination {
+        & > .active {
+          & > a {
+            color: @pagination-active-font-color;
+            font-size: @pagination-active-font-size;
+            font: @font-family-base;
+            text-align: center;
+            vertical-align: middle;
+            background-color: @pagination-active-background-color;
+            height: 19px; // Needed to override due to over sized font
+            padding: 0 6px;
+            border-radius: @pagination-hover-background-radius;
+            &:hover{
+              background-color: @pagination-active-background-color;
+              font-size: @pagination-active-font-size;
+              height: 19px;// Needed to override due to over sized font
+            }
+          }
+        }
+        & > li {
+          & > a {
+            cursor: pointer !important;
+            border: none;
+            font: @font-family-base;
+            font-size: @pagination-font-size;
+            color: @pagination-font-color;
+            //padding: @pagination-font-padding;
+            padding: 0px 7px;
+            margin-left: 2px;
+            text-align: center;
+            vertical-align: middle;
+            &:hover {
+              //color: @pagination-hover-font-color;
+              color: black;
+              font-size: @pagination-hover-font-size;
+              font: @font-family-base;
+              text-align: center;
+              vertical-align: middle;
+              //color: @gray-warm-light;
+              background-color: @gray-warm-light;
+              height: @pagination-hover-background-height;
+              border-radius: @pagination-hover-background-radius;
+            }
+          }
+          & > span {
+            padding: 0;
+            border: none;
+            cursor: pointer;
+          }
+          &.active > a {
+            color: white;
+            &:hover{
+              cursor: default !important;
+            }
+          }
+        }
+        i {
+          display: inline-block;
+          float: left;
+          margin: 0 5px;
+          &:hover{
+            cursor: default;
+          }
+        }
+      }
+      .em-right-arrow {
+        -ms-transform: rotate(-90deg); /* IE 9 */
+        -webkit-transform: rotate(-90deg); /* Chrome, Safari, Opera */
+        transform: rotate(-90deg);
+        .common-style-for-arrow-in-pagination;
+        &.disable{
+          background: @disArrowImgUrl center center no-repeat;
+          background-size: 24px;
+          opacity: 0.2;
+          &:hover{
+            background-color: @none;
+            cursor: default;
+          }
+        }
+      }
+
+    }
+    .em-pageview {
+      position: relative;
+      font: @font-family-base;
+      font-size: @pagination-font-size;
+      color: @pagination-font-color;
+      padding: 0 12px 0 0;
+      margin-right: 10px;
+      text-align: center;
+      vertical-align: middle;
+      display: inline-block;
+      width: auto;
+      height: 20px;
+      border-right: 1px solid @gray-warm-base;
+      top: 2px;
+      select {
+        border: none;
+        direction: rtl;
+        background: @arrowImgUrl center center no-repeat;
+        background-position: 0px;
+        background-size: @pagination-icon-arrow-height;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        position: relative;
+        display: inline-block;
+        left: 5px;
+        z-index: 12;
+        height: 20px;
+        min-width: 43px;
+        &::-ms-expand {
+          display: none;
+        }
+        &:focus {
+          outline: none;
+        }
+        &:active {
+          background: @solidArrowImgUrl 0 no-repeat;
+        }
+        &:hover{
+          background: @solidArrowImgUrl 1px 9px no-repeat;
+          //background-position: 1px 9px;
+          & + label {
+            display: inline-block;
+          }
+        }
+        &+ label {
+          .activeIconBg;
+        }
+      }
+      span{
+        &:active {
+          background: @solidArrowImgUrl 0 no-repeat;
+          &+ label {
+            .activeIconBg;
+          }
+        }
+        :hover + label {
+          visibility: visible;
+        }
+        span{
+          position: relative;
+          display: inline-block;
+          float: left;
+        }
+      }
+      label {
+        align: center;
+        vertical-align: middle;
+        background-color: @pagination-hover-icon-background-color;
+        border-radius: @pagination-hover-background-radius;
+        height: @pagination-hover-icon-background-height;
+        width: @pagination-hover-icon-background-width;
+        display: none;
+        float: left;
+        z-index: 11;
+        position: relative;
+        left: 20px;
+        top: 0;
+      }
+    }
+  }
+}
+
+.em-icon-duplicate-file{
+  background-image: url("../../assets/images/icon-duplicate-file-default.svg");
+  &:active{
+    background-image: url("../../assets/images/icon-duplicate-file-active.svg");
+  }
+  &:hover{
+    background-image: url("../../assets/images/icon-duplicate-file-hover.svg");
+  }
+  &[disabled], &[disabled]:hover{
+    background-image: url("../../assets/images/icon-duplicate-file-disabled.svg");
+  }
+  &:after{
+    display:none;
+    content: url("../../assets/images/icon-duplicate-file-hover.svg")
+    url("../../assets/images/icon-duplicate-file-active.svg");
+  }
+}
+.em-icon-print{
+  background-image: url("../../assets/images/icon-print-default.svg");
+  &:active{
+    background-image: url("../../assets/images/icon-print-active.svg");
+  }
+  &:hover{
+    background-image: url("../../assets/images/icon-print-hover.svg");
+  }
+  &[disabled], &[disabled]:hover{
+    background-image: url("../../assets/images/icon-print-disabled.svg");
+  }
+  &:after{
+    display:none;
+    content: url("../../assets/images/icon-print-hover.svg")
+    url("../../assets/images/icon-print-active.svg");
+  }
+}
+
+.ui-grid-icon-left{
+  width: @table-body-row-cell-icon-left-width;
+  height: @table-body-row-cell-icon-left-height;
+  // align: left; // Please use image position left.
+}
+.ui-grid-icon-right{
+  width: @table-body-row-cell-icon-right-width;
+  height: @table-body-row-cell-icon-right-height;
+  // align: right; // Please use image position right.
+}
+
+.ui-grid-pinned-container-left,
+.ui-grid-pinned-container-left .ui-grid-render-container-left .ui-grid-viewport,
+.ui-grid-render-container-left .ui-grid-header-viewport,
+.ui-grid-render-container-left .ui-grid-header-canvas {
+  width: 40px !important;
+}
+
+
+.ui-grid-render-container-body .ui-grid-viewport {
+  width: 100% !important;
+}
+
+//Disabled
+.ui-grid-pinned-container.ui-grid-pinned-container-left .ui-grid-header-cell:last-child{
+  border: none;
+}
+
+.ui-grid-row.ui-grid-row-selected > [ui-grid-row] > .ui-grid-cell {
+  background-color: @table-body-row-cell-active-background-color;
+}
+.ui-grid-cell.ui-grid-disable-selection.ui-grid-row-header-cell {
+  pointer-events: none;
+}
+.ui-grid-disable-selection {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  cursor: default;
+}
+
+.ui-grid-render-container.ui-grid-render-container-body
+  .ui-grid-header
+  .ui-grid-top-panel
+    .ui-grid-header-cell-wrapper
+    .ui-grid-header-cell-row
+      .ui-grid-header-cell
+      .ui-grid-cell-contents.ui-grid-header-cell-primary-focus{
+        padding: 5px 0 5px 15px;
+        border-left: 1px solid @table-body-row-checkbox-container-border-right-color;
+      }
