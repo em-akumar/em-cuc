@@ -1,0 +1,30 @@
+
+.em-paragraph{
+  font-family:@font-family-base;
+  font-size:@font-size-base;
+  color: @black;
+  text-align: inherit;
+  line-height: 130%;
+  vertical-align: top;
+  max-width: @text-line-max-width;
+  min-width: inherit;
+}
+
+.em-paragraph.em-p-disabled{
+  font-family: @font-family-base;
+  font-size: @font-size-base;
+  color: @state-disabled-warm-gray-dark;
+  text-align: inherit;
+  line-height: 130%;
+  vertical-align: top;
+  max-width: @text-line-max-width;
+  min-width: inherit;
+}
+.em-paragraph::selection {
+  background: @blue-base;
+  color:@white;
+}
+.em-paragraph::-moz-selection {
+  background: @blue-base;
+  color:@white;
+}

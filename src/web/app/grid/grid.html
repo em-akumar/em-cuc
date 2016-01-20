@@ -1,0 +1,24 @@
+<div class="app controls grid">
+  <div>
+    <label for="">Simple Grid</label>
+    <div class="panel-heading em-toolbar-container"> Simple Grid Header
+    </div>
+    <div ui-grid="vm.simpleGridOptions" class="em-simple-grid"></div>
+  </div>
+  <div>
+    <label for="">Complex Grid</label>
+    <div class="panel-heading em-toolbar-container"> Complex Grid Header
+    </div>
+    <div class="action-button-wrapper">
+      <button class="btn " ng-click="vm.exportCsv()">
+        <div class="btn em-icon em-icon-duplicate-file em-icon-md"></div>
+      </button>
+      <button class="btn btnprint">
+        <div class="btn em-icon em-icon-print em-icon-md"></div>
+      </button>
+    </div>
+    <div ui-grid="vm.gridOptions" ui-grid-pinning ui-grid-selection ui-grid-pagination
+    ui-grid-custom-paging ui-grid-resize-columns  ui-grid-exporter ui-grid-print=".btnprint" class="em-complex-grid"></div>
+  </div>
+  <div class="xport-location"></div>
+</div>

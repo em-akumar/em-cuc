@@ -1,0 +1,150 @@
+.ui-resizable-se {
+  bottom: 17px;
+}
+
+.form-control.em-txt-md,.em-lbl-md {
+  width: @textarea-size-medium;
+  max-width: @textarea-size-medium;
+  max-height: @textarea-size-medium;
+}
+.form-control.em-txt-lg {
+  width: @textarea-size-large;
+  max-width: @textarea-size-large;
+  max-height: @textarea-size-large;
+}
+.form-control.em-txt-flex {
+  width: @textarea-size-flexible;
+  max-width: @textarea-size-flexible;
+  max-height: @textarea-size-flexible;
+}
+
+/* override default textarea */
+textarea.form-control {
+  height: @text-area-field-height;
+  background-color: @textarea-default-background;
+  border: 1px solid @textarea-default-border-color;
+  box-shadow: inset 0px 1px 0px 1px rgba(red(@gray-warm-darker),
+  green(@gray-warm-darker), blue(@gray-warm-darker), 0.40);
+  border-radius: @textarea-border-radius;
+  padding: 10px;
+  box-sizing: border-box;
+  vertical-align: middle;
+  display: block;
+  outline: none;
+  overflow : auto;
+
+}
+textarea.form-control::-webkit-input-placeholder { font-weight: lighter; }
+textarea.form-control::-moz-placeholder { font-weight: lighter; } /* firefox 19+ */
+textarea.form-control:-ms-input-placeholder { font-weight: lighter; } /* ie */
+textarea.form-control:-moz-placeholder { font-weight: lighter; }
+
+/*override default Text area input hover, focus, and active states */
+textarea.form-control:hover,textarea.form-control:focus,textarea.form-control:active {
+  border: 1px solid @textarea-hover-border-color;
+  box-shadow: 0px 0px 0px 2px @textarea-hover-outer-border-color;
+  overflow: auto;
+}
+
+/*override input box disabled */
+textarea.form-control[disabled], textarea.form-control[readonly],
+textarea.form-control[disabled]:hover, textarea.form-control[disabled]:focus, textarea.form-control[disabled]:active,
+textarea.form-control[readonly]:hover,
+textarea.form-control[readonly]:active, textarea.form-control[readonly]:focus{
+  background-color: @textarea-disabled-background-color;
+  border: 1px solid @textarea-disabled-border-color;
+  box-shadow: none;
+}
+
+textarea.form-control[restricted='restricted'],textarea.form-control[restricted='restricted']:hover {
+  background-color: @textarea-disabled-background-color;
+  border: 1px solid @textarea-disabled-border-color;
+  box-shadow: none;
+  -webkit-text-security: none;
+  -webkit-text-security: circle;
+  -webkit-text-security: square;
+  -webkit-text-security: disc; /* Default */
+}
+/* Additional class to add required style for asterisk*/
+.astRequired {
+  color: @input-label-required-color;
+}
+
+
+/* label position right */
+.form-group.lbl-right {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: flex-start;
+  label {
+    padding-left: 10px;
+    text-align: left;
+    vertical-align: top;
+  }
+}
+
+/* label position left */
+.form-group.lbl-left {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: flex-start;
+  label {
+    vertical-align: top;
+    text-align: right;
+    padding-right: 10px;
+  }
+}
+
+.form-control.em-resize-both {
+  resize: both;
+}
+.form-control.em-resize-vertical {
+  resize: vertical;
+}
+.form-control.em-resize-horizontal {
+  resize: horizontal;
+}
+.form-control.em-resize-none {
+  resize:none;
+  overflow-y: auto;
+}
+
+.em-label-TextArea{
+  /*disabled label color*/
+  label.disabled,label.readonly,label.restricted{
+    color: @gray-warm-dark;
+  }
+  /* override default input label */
+  .em-txt-area-label {
+    color: @black;
+    font-family: @font-family-base;
+    font-size: @font-size-small;
+    text-align: left;
+    margin-bottom: 5px;
+    display: block;
+    vertical-align: bottom
+  }
+    .em-lbl-left {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: flex-start;
+        label {
+            vertical-align: top;
+            text-align: right;
+            padding-right: 10px;
+            margin-bottom: 0px;
+        }
+    }
+
+    .em-lbl-right {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: flex-start;
+        label {
+            padding-left: 10px;
+            text-align: left;
+            vertical-align: top;
+            margin-bottom: 0px;
+        }
+    }
+}
