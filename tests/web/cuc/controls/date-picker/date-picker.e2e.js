@@ -1,12 +1,9 @@
-var chai = require('chai');
-var chaiAsPromised = require('chai-as-promised');
-chai.use(chaiAsPromised);
-var expect = chai.expect;
+import {expect} from '@emdev/em-swift/dist/ems.e2e';
 
 // import corresponding page object javascript file(s)
-var CreateDatePicker = require('../test/date-picker.pageobject.js');
+var CreateDatePicker = require('./date-picker.pageobject.js');
 // import corresponding test data json file(s)
-var TestData = require('../test/date-picker.testdata.json');
+var TestData = require('./date-picker.testdata.json');
 
 describe('date-picker functional test suite ->', function(){
     beforeEach(function () {
