@@ -459,7 +459,12 @@ cuc.directive('uiGridColumnSettings', function ($interval) {
       function initMenu(scope) {
         element[0].querySelector('.ui-grid-menu-button div').onclick = function () {
           [].forEach.call(element[0].querySelectorAll('.ui-grid-menu-inner li'), function (el, index) {
-          if (el.querySelector('button').innerText.trim()=='Columns:'){el.querySelector('button').childNodes[1].nodeValue= "View Columns";}
+          if (el.querySelector('button').innerText.trim()=='Columns:'){
+            var elMain =  el.querySelector('button');
+             elMain.childNodes[1].nodeValue= "View Columns";
+             elMain.classList.add('em-manu-col-header');
+             el.classList.add('em-menu-sec-header');
+          }
         });};
       }
 

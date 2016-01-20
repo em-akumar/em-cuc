@@ -229,7 +229,7 @@
         transform: rotate(180deg);
       }
       &.ui-grid-icon-down-dir{
-        content: @arrowImgUrl; 
+        content: @arrowImgUrl;
       }
     }
     sub{
@@ -468,4 +468,79 @@
       }
     }
   }
-}
+  .ui-grid-menu-button{
+
+    border: 0px;
+    background-color: @table-header-row-background-color;
+    .ui-grid-icon-menu{
+      &:before{
+        content: '\2699';
+        font-size: 24px;
+        display: inline-block;
+        color: @blue-dark;
+        margin: 0 0 0 5px;
+      }
+    }
+    .ui-grid-menu{
+      .ui-grid-menu-mid{
+        overflow-y: scroll;
+        overflow-x: hidden;
+      .ui-grid-menu-inner{
+        background-color: @white;
+        border: 1px solid @white;
+        color: @black;
+        font-size: @font-size-base;
+        ul{
+          li{
+            button{
+              text-overflow: ellipsis;
+              border: 0px;
+              &:focus{
+                    outline: none;
+                    -webkit-box-shadow: none;
+                    -moz-box-shadow: none;
+                    box-shadow:none;
+              }
+              &:hover{
+                outline: none;
+                -webkit-box-shadow: none;
+                -moz-box-shadow: none;
+                box-shadow:none;
+                font-weight: @table-header-row-active-font-weight;
+              }
+              &.em-manu-col-header {
+                //position: fixed;
+                 font-weight: @table-header-row-active-font-weight;
+              }
+              i{
+                &.ui-grid-icon-cancel{
+                 &:before{
+                    color: transparent;
+                    .checkBox-common-properties;
+                    border-color: @checkbox-default-border-color;
+                    position: relative;
+                    top: 3px;
+                  }
+                }
+                &.ui-grid-icon-ok{
+                 &:before{
+                  color: #ffffff;
+                  background: #2080c3 @checkmarkImageUrl no-repeat center/12px;
+                  .checkBox-common-properties;
+                  border-color: @checkbox-active-border-color;
+                  position: relative;
+                  top: 3px;
+                }
+                }
+              }
+            }
+            // &.em-menu-sec-header{
+            //   padding: 0 0 25px 0;
+            // }
+          }
+        }
+      }
+       }
+      }
+    }
+  }
