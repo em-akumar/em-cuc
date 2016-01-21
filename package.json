@@ -26,7 +26,8 @@
     "project_type": "cuc",
     "index": "./index.html",
     "externals": {
-      "ems": "commonjs ems"
+      "ems": "commonjs ems",
+      "angular": "commonjs angular"
     },
     "entry": {
       "app": [
