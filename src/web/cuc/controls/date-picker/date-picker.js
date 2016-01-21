@@ -142,6 +142,11 @@ class DatePicker {
                 "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
             ]
         };
+         if (!this._setDisabled()) {
+            this.AddOn.addEventListener('click', () => {
+                this.viewCalendar();
+            });
+        }
         this.reinit();
     }
     reinit() {
@@ -150,11 +155,7 @@ class DatePicker {
         Date.prototype.format = function(mask, utc) {
             return self.dateFormat(this, mask, utc);
         };
-        if (!this._setDisabled()) {
-            this.AddOn.addEventListener('click', () => {
-                self.viewCalendar();
-            });
-        }
+
         this.showOnlyTime = this.destDateField == '' ? true : false;
         this.showOnlyDate = this.destTimeField == '' ? true : false;
         this.destTimeField.addEventListener("focus", () => {
