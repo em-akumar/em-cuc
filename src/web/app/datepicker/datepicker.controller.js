@@ -11,6 +11,9 @@ class DatepickerController {
     this.dateTimePickerAuto = {
       disabledDates: ['12/14/2015', '12/15/2015', '12/16/2015']
     };
+    this.dateTimePickerDisabled = {
+      disabledDates: ['12/14/2015', '12/15/2015', '12/16/2015']
+    };
     // this.initialize();
   }
 
