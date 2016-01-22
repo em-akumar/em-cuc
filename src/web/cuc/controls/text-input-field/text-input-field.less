@@ -159,10 +159,24 @@ input[data-restricted=true],input[data-restricted=true]:hover {
 
 .input-group-addon.em-show-password {
     color: @blue-base;
-      background: url("../../assets/images/icon-visibility-false-active.svg") center center no-repeat;
+      background: url("../../assets/images/icon-visibility-false-active.svg") center right no-repeat;
     padding: 10px 15px;
     background-size: 60%;
     border-left: 0px solid transparent;
+}
+
+.form-control.em-eye-password{
+    background: url("../../assets/images/icon-visibility-true-active.svg") center right no-repeat;
+    padding-right: 30px;
+    background-position: calc(~'100% - 10px');
+    background-size: 20px auto;
+}
+
+.form-control.em-eye-show-password{
+    background: url("../../assets/images/icon-visibility-false-active.svg") center right no-repeat;
+    padding-right: 30px;
+    background-position: calc(~'100% - 10px');
+    background-size: 20px auto;
 }
 
 .form-control.em-no-left-border {
