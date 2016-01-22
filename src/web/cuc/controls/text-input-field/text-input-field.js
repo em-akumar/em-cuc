@@ -12,11 +12,6 @@ class TextInputField {
       this.addOnPassword();
 
     }, false);
-    this.action();
-  }
-
-  action() {
-    this.addOnPassword();
   }
 
 /* Valid of password input type, On the click of eye icon, convert into text type and vice versa */
