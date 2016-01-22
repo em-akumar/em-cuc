@@ -445,8 +445,6 @@ cuc.directive('uiGridColumnSettings', function ($interval) {
       uiGridctrl.grid.options.exporterMenuCsv = false;
       uiGridctrl.grid.options.onRegisterApi= function( gridApi ){
           scope.gridApi = gridApi;
-
-
       };
       scope._initMenuFirst = true;
       uiGridctrl.grid.api.core.on.rowsRendered(scope, function() {
@@ -458,13 +456,17 @@ cuc.directive('uiGridColumnSettings', function ($interval) {
 
       function initMenu(scope) {
         element[0].querySelector('.ui-grid-menu-button div').onclick = function () {
+          //todo: need to find some better way to do it
           [].forEach.call(element[0].querySelectorAll('.ui-grid-menu-inner li'), function (el, index) {
           if (el.querySelector('button').innerText.trim()=='Columns:'){
             var elMain =  el.querySelector('button');
              elMain.childNodes[1].nodeValue= "View Columns";
              elMain.classList.add('em-manu-col-header');
              el.classList.add('em-menu-sec-header');
-          }
+            }
+         if (el.querySelector('button').innerText.trim()=='Clear all filters'){
+           el.style.display = 'none';
+         }
         });};
       }
 

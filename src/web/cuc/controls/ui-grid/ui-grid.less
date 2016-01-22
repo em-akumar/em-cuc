@@ -238,7 +238,6 @@
   }
   .ui-grid-header{
      background-color: @table-header-row-background-color;
-     height: @table-header-row-height;
     .ui-grid-header-cell{
       padding: 0 10px 0 0;
       border: @none;
@@ -257,6 +256,9 @@
       .ui-grid-column-resizer{
             width: 1px;
             background-color: @table-header-row-column-separator;
+            &:last-child{
+              display: none;
+            }
           }
       }
       .ui-grid-icon-angle-down{
