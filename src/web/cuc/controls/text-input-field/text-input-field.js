@@ -19,9 +19,9 @@ class TextInputField {
     this.addOnPassword();
   }
 
+/* Valid of password input type, On the click of eye icon, convert into text type and vice versa */
   addOnPassword() {
     var self = this;
-    console.log(self.element.getAttribute('type'));
     if (self.element.getAttribute('type') == 'password') {
       self.element.setAttribute('type','text');
       self.element.classList.remove('em-eye-password');
@@ -32,6 +32,7 @@ class TextInputField {
       self.element.classList.add('em-eye-password');
     }
   }
+
   static load() {
     var textInputField = document.querySelectorAll('[class="em-eye-password"]');
     [].forEach.call(textInputField, function (item, index) {
