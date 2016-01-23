@@ -2,16 +2,26 @@
 class TextInputField {
   constructor(element, options = {}) {
     this.element = typeof element === 'object' ? element : document.querySelector(element);
+    this.span_password = null;
     this.options = options;
     this.init();
   }
 
   init() {
     var self = this;
-    self.element.addEventListener('click', () => {
-      this.addOnPassword();
 
-    }, false);
+    if (self.element) {
+      //create hide/show span
+      self.span_password = document.createElement('span');
+      self.span_password.setAttribute('class', 'em-toggle-password');
+      self.element.parentNode.insertBefore(self.span_password, self.element.nextSibling);
+
+      self.span_password.addEventListener('click', () => {
+          this.addOnPassword();
+
+        }, false);
+    }
+
   }
 
 /* Valid of password input type, On the click of eye icon, convert into text type and vice versa */
@@ -19,17 +29,17 @@ class TextInputField {
     var self = this;
     if (self.element.getAttribute('type') == 'password') {
       self.element.setAttribute('type','text');
-      self.element.classList.remove('em-eye-password');
-      self.element.classList.add('em-eye-show-password');
+      self.span_password.classList.remove('em-toggle-password');
+      self.span_password.classList.add('em-toggle-show-password');
     } else {
       self.element.setAttribute('type','password');
-      self.element.classList.remove('em-eye-show-password');
-      self.element.classList.add('em-eye-password');
+      self.span_password.classList.remove('em-toggle-show-password');
+      self.span_password.classList.add('em-toggle-password');
     }
   }
 
   static load() {
-    var textInputField = document.querySelectorAll('[class="em-eye-password"]');
+    var textInputField = document.querySelectorAll('[class="em-toggle-password"]');
     [].forEach.call(textInputField, function (item, index) {
       return new TextInputField(item);
     });

@@ -149,34 +149,35 @@ input[data-restricted=true],input[data-restricted=true]:hover {
     background-size: 40%;
 }
 
-.input-group-addon.em-hide-password {
-    color: @blue-base;
-    background: url("../../assets/images/icon-visibility-true-active.svg") center center no-repeat;
-    padding: 10px 15px;
-    background-size: 60%;
-    border-left: 1px solid transparent;
-}
+.hideShowPassword-wrapper{
+  position: relative;
 
-.input-group-addon.em-show-password {
-    color: @blue-base;
+    .em-toggle-password{
+      position: absolute;
+      right:0px;
+      top:0;
+      bottom:0;
+      margin-right:8px;
+      cursor: pointer;
+      background: url("../../assets/images/icon-visibility-true-active.svg") center right no-repeat;
+      padding-right: 30px;
+      padding-left: 5px;
+      //background-position: calc(~'100% - 10px');
+      background-size: 20px auto;
+  }
+    .em-toggle-show-password{
+      position: absolute;
+      right:0px;
+      top:1px;
+      bottom:0;
+      margin-right:8px;
+      cursor: pointer;
       background: url("../../assets/images/icon-visibility-false-active.svg") center right no-repeat;
-    padding: 10px 15px;
-    background-size: 60%;
-    border-left: 0px solid transparent;
-}
-
-.form-control.em-eye-password{
-    background: url("../../assets/images/icon-visibility-true-active.svg") center right no-repeat;
-    padding-right: 30px;
-    background-position: calc(~'100% - 10px');
-    background-size: 20px auto;
-}
-
-.form-control.em-eye-show-password{
-    background: url("../../assets/images/icon-visibility-false-active.svg") center right no-repeat;
-    padding-right: 30px;
-    background-position: calc(~'100% - 10px');
-    background-size: 20px auto;
+      padding-right: 30px;
+      padding-left: 5px;
+      //background-position: calc(~'100% - 10px');
+      background-size: 20px auto;
+  }
 }
 
 .form-control.em-no-left-border {
