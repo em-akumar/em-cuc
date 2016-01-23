@@ -149,35 +149,57 @@ input[data-restricted=true],input[data-restricted=true]:hover {
     background-size: 40%;
 }
 
-.hideShowPassword-wrapper{
+/* Classes for hide and show password using eye icon */
+.em-showPassword{
   position: relative;
 
     .em-toggle-password{
-      position: absolute;
-      right:0px;
-      top:0;
-      bottom:0;
-      margin-right:8px;
-      cursor: pointer;
-      background: url("../../assets/images/icon-visibility-true-active.svg") center right no-repeat;
-      padding-right: 30px;
-      padding-left: 5px;
-      //background-position: calc(~'100% - 10px');
-      background-size: 20px auto;
-  }
+        position: absolute;
+        right:0px;
+        top:0;
+        bottom:0;
+        margin-right:8px;
+        cursor: pointer;
+        background: url("../../assets/images/icon-visibility-true-active.svg") center right no-repeat;
+        padding-right: 30px;
+        padding-left: 5px;
+        //background-position: calc(~'100% - 10px');
+        background-size: 20px auto;
+      }
+      .form-control.em-showPassword-txt{
+       padding-right: 30px;
+      }
     .em-toggle-show-password{
-      position: absolute;
-      right:0px;
-      top:1px;
-      bottom:0;
-      margin-right:8px;
-      cursor: pointer;
-      background: url("../../assets/images/icon-visibility-false-active.svg") center right no-repeat;
-      padding-right: 30px;
-      padding-left: 5px;
-      //background-position: calc(~'100% - 10px');
-      background-size: 20px auto;
-  }
+        position: absolute;
+        right:0px;
+        top:1px;
+        bottom:0;
+        margin-right:8px;
+        cursor: pointer;
+        background: url("../../assets/images/icon-visibility-false-active.svg") center right no-repeat;
+        padding-right: 30px;
+        padding-left: 5px;
+        //background-position: calc(~'100% - 10px');
+        background-size: 20px auto;
+      }
+      &.em-txt-ex-sm {
+          width: @input-field-size-extra-small;
+      }
+      &.em-txt-sm {
+          width: @input-field-size-small;
+      }
+      &.em-txt-md, .em-lbl-md {
+          width: @input-field-size-medium;
+      }
+      &.em-txt-lg {
+        width: @input-field-size-large;
+      }
+      &.em-txt-flex {
+          width: @input-field-size-flexible;
+      }
+      &.em-txt-height-sm {
+          height: @input-field-smaller-height;
+      }
 }
 
 .form-control.em-no-left-border {
