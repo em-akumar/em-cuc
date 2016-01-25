@@ -1,14 +1,15 @@
 /* eslint-disable */
 class SliderNotifications {
 
-  constructor(options = {}) {
+  constructor(el, options = {}) {
     //el.style.opacity = 1;
+    console.log(options);
     this.mainEl = document.querySelector('body');
     this.options = {};
     this.options.containerEl = options.containerEl || '';
     this.options.fadeOutTimeout = options.fadeOutTimeout || 5000;
     this.options.fadeOutSpeed = options.fadeOutSpeed || 50;
-    this.options.sliderCloseFlag = options.sliderCloseFlag === 'false' ? false : true;
+    this.options.closeButton = options.closeButton === 'false' ? false : true;
     this.options.sliderIconFlag = options.sliderIconFlag === 'false' ? false : true;
     this.options.sliderBtnFlag = options.sliderBtnFlag === 'true' ? true : false;
     this.options.sliderBtnText = options.sliderBtnText ? options.sliderBtnText : 'Default';
@@ -20,20 +21,23 @@ class SliderNotifications {
     this.options.sliderAutoClose = options.sliderAutoClose === 'false' ? false : true;
     //slider-lock
     this.options.sliderPosition = options.sliderPosition || 'slider-relative';
-
     this.init();
   }
 
   init() {
     //this.setTriming();
-    console.log(this.options);
+
     this.initTempl();
     this.render();
     if (this.options.sliderAutoClose === true) { this.destroy(); }
   }
 
   initTempl() {
-    this.closeTmpl = (this.options.sliderCloseFlag === true)? `<div class="close-slider"><a href="#" class="close" data-dismiss="alert">&times;</a></div>`:` `;
+    this.options.closeDiv = document.createElement('div');
+    this.options.closeDiv.setAttribute('class', 'close-slider');
+    this.options.closeDiv.addEventListener('click', this.closeNoti);
+    this.options.closeDiv.innerHTML = '<a href="" class="close">&times;</a>';
+    //this.closeTmpl = (this.options.sliderCloseFlag === true)? `<div class="close-slider">closeDiv</div>`:` `;
     this.iconTmpl = (this.options.sliderIconFlag === true)? `<div class="noti-slider-icon"><span class="alert-${this.options.sliderType}-slider-icon"></span></div>`:` `;
     this.contentTmpl = `<span class="alert-text-header">${ this.options.headerText}</span><span class="alert-text-body">&nbsp;${ this.options.bodyContent}</span>`;
     this.buttonTmpl = (this.options.sliderBtnFlag === true)? `<button type="button" class="btn btn btn-default btn-sm-var-height">${ this.options.sliderBtnText}</button>`: ` `;
@@ -43,7 +47,10 @@ class SliderNotifications {
   renderContent() {
     var notiDiv = document.createElement('div');
     notiDiv.setAttribute('class', 'alert alert-slide-down alert-'+ this.options.sliderType +' '+this.options.sliderPosition);
-    notiDiv.innerHTML = this.closeTmpl + this.iconTmpl + this.contentTmpl +  this.buttonTmpl + this.checkboxTmpl;
+    notiDiv.innerHTML = this.iconTmpl + this.contentTmpl +  this.buttonTmpl + this.checkboxTmpl;
+    if (this.options.closeButton === true) {
+      notiDiv.insertBefore(this.options.closeDiv, notiDiv.firstChild);
+    }
     this.options.sliderEl = notiDiv;
     this.options.containerEl !== ''? this.options.containerEl.parentNode.insertBefore(notiDiv, this.options.containerEl.nextSibling):this.mainEl.insertBefore(notiDiv, this.mainEl.firstChild);
   }
@@ -51,6 +58,11 @@ class SliderNotifications {
   render(){
     this.renderContent();
    // this.renderEvent();
+  }
+
+  closeNoti(e) {
+    let ele = e.target.parentNode.parentNode;
+    ele.parentNode.removeChild(ele);
   }
 
   fadeOutNoti() {
@@ -78,6 +90,4 @@ class SliderNotifications {
     });*/
   }
 }
-
-
 export {SliderNotifications};
