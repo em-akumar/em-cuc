@@ -444,15 +444,17 @@ cuc.directive('uiGridColumnSettings', function ($timeout) {
       uiGridctrl.grid.options.exporterMenuPdf = false;
       uiGridctrl.grid.options.exporterMenuCsv = false;
       uiGridctrl.grid.options.onRegisterApi= function( gridApi ){
-          scope.gridApi = gridApi;
+        scope.gridApi = gridApi;
+          if(scope.gridApi.colMovable)
             scope.gridApi.colMovable.on.columnPositionChanged(scope, saveState);
+          if(scope.gridApi.colResizable)
             scope.gridApi.colResizable.on.columnSizeChanged(scope, saveState);
-            scope.gridApi.core.on.columnVisibilityChanged(scope, ()=>{setLastColDisable(saveState());} );
-            scope.gridApi.core.on.filterChanged(scope, saveState);
-            scope.gridApi.core.on.sortChanged(scope, saveState);
-            //scope.gridApi.grouping.on.aggregationChanged(scope, saveState);
-            //scope.gridApi.grouping.on.groupingChanged(scope, saveState);
-            
+          scope.gridApi.core.on.columnVisibilityChanged(scope, ()=>{setLastColDisable(saveState());} );
+          scope.gridApi.core.on.filterChanged(scope, saveState);
+          scope.gridApi.core.on.sortChanged(scope, saveState);
+          //scope.gridApi.grouping.on.aggregationChanged(scope, saveState);
+          //scope.gridApi.grouping.on.groupingChanged(scope, saveState);
+
             restoreState();
       };
       scope._initMenuFirst = true;
