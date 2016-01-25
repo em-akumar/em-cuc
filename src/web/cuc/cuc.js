@@ -3,7 +3,7 @@ import './cuc.less';
 /* controls being used in tpo now */
 import {Dropdown} from './controls/dropdown/dropdown';
 import {DropdownEdit} from './controls/dropdown-edit/dropdown-edit';
-import {LabelTextInputField} from './controls/text-input-field/text-input-field';
+import {TextInputField} from './controls/text-input-field/text-input-field';
 import {LabelTextAreaInputField} from './controls/text-area-input/text-area-input';
 import {DatePicker} from './controls/date-picker/date-picker';
 import {ColorPicker} from './controls/color-picker/color-picker';
@@ -14,6 +14,6 @@ import {ModalNotifications} from './controls/notifications/modal-notifications';
 import {SliderNotifications} from './controls/notifications/slider-notifications';
 
 export {
-Dropdown, DropdownEdit, LabelTextInputField, LabelTextAreaInputField,
+Dropdown, DropdownEdit, TextInputField, LabelTextAreaInputField,
 DatePicker, ColorPicker, ProgressBar, FileUpload, ToastNotifications, ModalNotifications, SliderNotifications
 };
