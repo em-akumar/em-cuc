@@ -418,6 +418,7 @@ cuc.directive('uiGridCustomPaging', function ($compile) {
     require: '^uiGrid'
   };
 });
+//basic paging settings
 function loadPage(pageNumber){
   var pageStruct={pageStart:1,
   pageStartExt:false,
@@ -437,13 +438,16 @@ function loadPage(pageNumber){
       pageStruct.nxtArr = false;
   return pageStruct;
 }
+// Grid settings directive
 cuc.directive('uiGridColumnSettings', function ($timeout) {
   return {
     link: function (scope, element, attrs, uiGridctrl) {
+      //required config for this feature
       uiGridctrl.grid.options.enableGridMenu = true;
       uiGridctrl.grid.options.exporterMenuPdf = false;
       uiGridctrl.grid.options.exporterMenuCsv = false;
       uiGridctrl.grid.options.onRegisterApi= function( gridApi ){
+        //To save changes to local storage
         scope.gridApi = gridApi;
           if(scope.gridApi.colMovable)
             scope.gridApi.colMovable.on.columnPositionChanged(scope, saveState);
@@ -458,13 +462,14 @@ cuc.directive('uiGridColumnSettings', function ($timeout) {
             restoreState();
       };
       scope._initMenuFirst = true;
+      //call when gird rendred
       uiGridctrl.grid.api.core.on.rowsRendered(scope, function() {
           if (uiGridctrl.grid.renderContainers.body.visibleRowCache.length === 0) { return; }
           if(scope._initMenuFirst)
             {initMenu(scope);
           scope._initMenuFirst = false;}
       });
-
+      //init menu chnages as per spec
       function initMenu(scope) {
         element[0].querySelector('.ui-grid-menu-button div').onclick = function () {
           //todo: need to find some better way to do it, if possible
@@ -481,6 +486,7 @@ cuc.directive('uiGridColumnSettings', function ($timeout) {
                       }
                 }
             });
+            //change col header
             if (el.querySelector('button').innerText.trim() == 'Columns:') {
              let elMain =  el.querySelector('button');
              elMain.childNodes[1].nodeValue= "View Columns";
@@ -494,6 +500,7 @@ cuc.directive('uiGridColumnSettings', function ($timeout) {
         });
           setLastColDisable(scope.gridApi.saveState.save());};
       }
+      //last col selection disabled in mune
       function setLastColDisable(state) {
         let cols = state.columns;
         let visIndx = -1;
@@ -515,6 +522,7 @@ cuc.directive('uiGridColumnSettings', function ($timeout) {
           ele[elIndex - 2].classList.add('readonly');
         }
       }
+      //save state in LS
       function saveState() {
         var state = scope.gridApi.saveState.save();
         if(typeof(Storage) !== "undefined") {
@@ -522,7 +530,7 @@ cuc.directive('uiGridColumnSettings', function ($timeout) {
         }
         return state;
       }
-
+      // get state from LS
       function restoreState() {
         $timeout(function() {
           var state = localStorage.getItem("gridState");
