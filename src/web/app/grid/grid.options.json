@@ -10,8 +10,7 @@
   "columnDefs": [{
       "field": "Loan_Program_Amount",
       "displayName": "Amount",
-      "width": "*",
-      "enableHiding": false },
+      "width": "*"},
     {"field": "Date_Started",
     "enableColumnResizing" : false},
     {"field": "Estimated_Close_Date"},

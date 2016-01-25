@@ -437,7 +437,7 @@ function loadPage(pageNumber){
       pageStruct.nxtArr = false;
   return pageStruct;
 }
-cuc.directive('uiGridColumnSettings', function ($interval) {
+cuc.directive('uiGridColumnSettings', function ($timeout) {
   return {
     link: function (scope, element, attrs, uiGridctrl) {
       uiGridctrl.grid.options.enableGridMenu = true;
@@ -445,6 +445,11 @@ cuc.directive('uiGridColumnSettings', function ($interval) {
       uiGridctrl.grid.options.exporterMenuCsv = false;
       uiGridctrl.grid.options.onRegisterApi= function( gridApi ){
           scope.gridApi = gridApi;
+            scope.gridApi.colResizable.on.columnSizeChanged(scope, saveState);
+            scope.gridApi.core.on.columnVisibilityChanged(scope, ()=>{setLastColDisable(saveState());} );
+            scope.gridApi.core.on.filterChanged(scope, saveState);
+            scope.gridApi.core.on.sortChanged(scope, saveState);
+            restoreState();
       };
       scope._initMenuFirst = true;
       uiGridctrl.grid.api.core.on.rowsRendered(scope, function() {
@@ -456,18 +461,67 @@ cuc.directive('uiGridColumnSettings', function ($interval) {
 
       function initMenu(scope) {
         element[0].querySelector('.ui-grid-menu-button div').onclick = function () {
-          //todo: need to find some better way to do it
+          //todo: need to find some better way to do it, if possible
           [].forEach.call(element[0].querySelectorAll('.ui-grid-menu-inner li'), function (el, index) {
-          if (el.querySelector('button').innerText.trim()=='Columns:'){
-            var elMain =  el.querySelector('button');
+            el.addEventListener('click', function (e) {
+              if (e.offsetX < el.offsetWidth) {
+                    if (!e)
+                  e = window.event;
+                    if (e.stopPropagation) {
+                        e.stopPropagation();
+                      }
+                    else {
+                        e.cancelBubble = true;
+                      }
+                }
+            });
+            if (el.querySelector('button').innerText.trim() == 'Columns:') {
+             let elMain =  el.querySelector('button');
              elMain.childNodes[1].nodeValue= "View Columns";
              elMain.classList.add('em-manu-col-header');
              el.classList.add('em-menu-sec-header');
+             scope._headerIndex = index;
             }
          if (el.querySelector('button').innerText.trim()=='Clear all filters'){
            el.style.display = 'none';
          }
-        });};
+        });
+          setLastColDisable(scope.gridApi.saveState.save());};
+      }
+      function setLastColDisable(state) {
+        let cols = state.columns;
+        let visIndx = -1;
+        let hiddenCols = cols.filter((val, index) => {
+          if (!val.visible){
+            return  true;}
+            else{
+             visIndx = index;
+            }
+        });
+        let colDiff = (cols.length - hiddenCols.length);
+        [].forEach.call(element[0].querySelectorAll('.ui-grid-menu-inner li'),(item)=>{
+          item.classList.remove('readonly');
+        });
+        if ( colDiff< 2) {
+          let ele = element[0].querySelectorAll('.ui-grid-menu-inner li');
+          let elIndex = ele.length - ((cols.length - (visIndx+1))*2);
+          ele[elIndex - 1].classList.add('readonly');//info: 2 li item per col.(checked & unchecked).it's ui-grid lib implementation.
+          ele[elIndex - 2].classList.add('readonly');
+        }
+      }
+      function saveState() {
+        var state = scope.gridApi.saveState.save();
+        if(typeof(Storage) !== "undefined") {
+          localStorage.setItem("gridState", JSON.stringify(state));
+        }
+        return state;
+      }
+
+      function restoreState() {
+        $timeout(function() {
+          var state = localStorage.getItem("gridState");
+          if (state) scope.gridApi.saveState.restore(scope, JSON.parse(state));
+        });
       }
 
     },
