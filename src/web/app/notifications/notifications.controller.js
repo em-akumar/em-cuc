@@ -6,16 +6,32 @@ class NotificationsController {
     // this.initialize();
   }
   renderNotification() {
-    this.sNotifications = {
-      headerText: 'Lorem ipsum nullam enim',
-      bodyContent: 'Pellen tesque habitant morbi tristique senectus et negtus.',
+    this.pageNotifications = {
+    //  headerText: 'Lorem ipsum nullam enim',
+     // bodyContent: 'Pellen tesque habitant morbi tristique senectus et negtus.',
+      contentTmpl: '<span class="alert-text-header">Errors Found - </span><span class="alert-text-body">&nbsp;Error message description.</span>',
       closeButton: 'true',
       sliderBtnFlag: 'true',
       sliderType: 'danger',
       sliderChkFlg: 'false',
       sliderAutoClose: 'false',
-      sliderIconFlag: 'true'
-     // containerEl: document.querySelector('#error-container')
+      sliderIconFlag: 'true',
+      sliderPosition: 'fixed'
+    };
+
+    this.containerNotifications = {
+    //  headerText: 'Lorem ipsum nullam enim',
+     // bodyContent: 'Pellen tesque habitant morbi tristique senectus et negtus.',
+      contentTmpl: '<span class="alert-text-header">4&nbsp;Errors Found - </span><span class="alert-text-body">&nbsp;Error message description.</span>',
+      closeButton: 'true',
+      sliderBtnFlag: 'true',
+      sliderType: 'danger',
+      sliderChkFlg: 'false',
+      sliderAutoClose: 'false',
+      sliderIconFlag: 'true',
+      isComplex: 'true',
+      complexTmpl: 'Complex details template will come here',
+      containerEl: '#error-container' //For container notification pass ID/CLASS and for page level container no need to set this attribute.
     };
   }
   initialize() {

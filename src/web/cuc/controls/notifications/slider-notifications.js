@@ -2,11 +2,12 @@
 class SliderNotifications {
 
   constructor(el, options = {}) {
-    //el.style.opacity = 1;
-    console.log(options);
-    this.mainEl = document.querySelector('body');
+
     this.options = {};
-    this.options.containerEl = options.containerEl || '';
+    this.options.contentTmpl = options.contentTmpl || '';
+    this.options.contentPosition = (options.containerEl) ? 'alert-container' : 'alert-page';
+    //check wheather container element is passes in options else use page level notofication
+    this.options.containerEl = document.querySelector(options.containerEl) || document.querySelector('body');
     this.options.fadeOutTimeout = options.fadeOutTimeout || 5000;
     this.options.fadeOutSpeed = options.fadeOutSpeed || 50;
     this.options.closeButton = options.closeButton === 'false' ? false : true;
@@ -19,14 +20,16 @@ class SliderNotifications {
     this.options.bodyContent = options.bodyContent || '';
     this.options.sliderType = options.sliderType || 'success';
     this.options.sliderAutoClose = options.sliderAutoClose === 'false' ? false : true;
+
+    this.options.isComplex = options.isComplex || '';
+    this.options.complexTmpl = options.complexTmpl || '';
+
     //slider-lock
-    this.options.sliderPosition = options.sliderPosition || 'slider-relative';
+    this.options.sliderPosition = (options.sliderPosition && options.sliderPosition ==='fixed' && !options.containerEl)?  'slider-fixed' : 'slider-relative';
     this.init();
   }
 
   init() {
-    //this.setTriming();
-
     this.initTempl();
     this.render();
     if (this.options.sliderAutoClose === true) { this.destroy(); }
@@ -37,25 +40,34 @@ class SliderNotifications {
     this.options.closeDiv.setAttribute('class', 'close-slider');
     this.options.closeDiv.addEventListener('click', this.closeNoti);
     this.options.closeDiv.innerHTML = '<a href="" class="close">&times;</a>';
-    //this.closeTmpl = (this.options.sliderCloseFlag === true)? `<div class="close-slider">closeDiv</div>`:` `;
-    this.iconTmpl = (this.options.sliderIconFlag === true)? `<div class="noti-slider-icon"><span class="alert-${this.options.sliderType}-slider-icon"></span></div>`:` `;
-    this.contentTmpl = `<span class="alert-text-header">${ this.options.headerText}</span><span class="alert-text-body">&nbsp;${ this.options.bodyContent}</span>`;
+    this.iconTmpl = (this.options.sliderIconFlag === true) ? `<div class="noti-slider-icon"><span class="alert-${this.options.sliderType}-slider-icon"></span></div>` : ` `;
+
+    /*this.contentTmpl = `<span class="alert-text-header">${ this.options.headerText}</span><span class="alert-text-body">&nbsp;${ this.options.bodyContent}</span>`;
     this.buttonTmpl = (this.options.sliderBtnFlag === true)? `<button type="button" class="btn btn btn-default btn-sm-var-height">${ this.options.sliderBtnText}</button>`: ` `;
-    this.checkboxTmpl = (this.options.sliderChkFlg === true)? `<div class="checkbox check-slider"> <input type="checkbox" id="chk25"><label for="chk25" class="checkbox-slider-noti">${this.options.chkBoxLable}</label></div>`: ` `;
+    this.checkboxTmpl = (this.options.sliderChkFlg === true)? `<div class="checkbox check-slider"> <input type="checkbox" id="chk25"><label for="chk25" class="checkbox-slider-noti">${this.options.chkBoxLable}</label></div>`: ` `;*/
   }
 
   renderContent() {
     var notiDiv = document.createElement('div');
-    notiDiv.setAttribute('class', 'alert alert-slide-down alert-'+ this.options.sliderType +' '+this.options.sliderPosition);
-    notiDiv.innerHTML = this.iconTmpl + this.contentTmpl +  this.buttonTmpl + this.checkboxTmpl;
+    notiDiv.setAttribute('class', 'alert alert-slide-down alert-'+ this.options.sliderType +' '+this.options.contentPosition+' '+this.options.sliderPosition);
+    //notiDiv.innerHTML = this.iconTmpl + this.contentTmpl +  this.buttonTmpl + this.checkboxTmpl;
+    notiDiv.innerHTML = this.iconTmpl + '' + this.options.contentTmpl;
+
     if (this.options.closeButton === true) {
       notiDiv.insertBefore(this.options.closeDiv, notiDiv.firstChild);
     }
     this.options.sliderEl = notiDiv;
-    this.options.containerEl !== ''? this.options.containerEl.parentNode.insertBefore(notiDiv, this.options.containerEl.nextSibling):this.mainEl.insertBefore(notiDiv, this.mainEl.firstChild);
+    this.options.containerEl.insertBefore(notiDiv, this.options.containerEl.firstChild);
+
+    if (this.options.isComplex === 'true') {
+      var notiDetailDiv = document.createElement('div');
+      notiDetailDiv.setAttribute('class', 'noti-details-div');
+      notiDetailDiv.innerHTML = this.options.complexTmpl;
+      this.options.containerEl.insertBefore(notiDetailDiv, notiDiv.nextSibling);
+    }
   }
 
-  render(){
+  render() {
     this.renderContent();
    // this.renderEvent();
   }
