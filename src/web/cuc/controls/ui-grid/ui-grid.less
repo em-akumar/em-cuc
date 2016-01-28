@@ -251,7 +251,6 @@
         &:hover{
           font-weight: @table-header-row-active-font-weight;
         }
-
       }
       .ui-grid-column-resizer{
             width: 1px;
@@ -259,7 +258,12 @@
             &:last-child{
               display: none;
             }
+        }
+        &:last-child{
+          .ui-grid-column-resizer[position=right]{
+                display:none;
           }
+        }
       }
       .ui-grid-icon-angle-down{
         display: @none;

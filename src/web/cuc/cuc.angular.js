@@ -484,7 +484,7 @@ cuc.directive('uiGridColumnSettings', function ($timeout) {
                     else {
                         e.cancelBubble = true;
                       }
-                }
+              }
             });
             //change col header
             if (el.querySelector('button').innerText.trim() == 'Columns:') {
@@ -494,6 +494,11 @@ cuc.directive('uiGridColumnSettings', function ($timeout) {
              el.classList.add('em-menu-sec-header');
              scope._headerIndex = index;
             }
+            el.querySelector('button').onclick = function () {
+               let menuClose = element[0].querySelector('.ui-grid-menu .ui-grid-menu-close-button');
+                if(menuClose)
+                        menuClose.classList.remove('ui-grid-sr-only');
+             };
          if (el.querySelector('button').innerText.trim()=='Clear all filters'){
            el.style.display = 'none';
          }
