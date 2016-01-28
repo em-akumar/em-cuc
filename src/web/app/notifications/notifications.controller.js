@@ -5,34 +5,31 @@ class NotificationsController {
     this.renderNotification();
     // this.initialize();
   }
+  //Page notification
   renderNotification() {
     this.pageNotifications = {
-    //  headerText: 'Lorem ipsum nullam enim',
-     // bodyContent: 'Pellen tesque habitant morbi tristique senectus et negtus.',
-      contentTmpl: '<span class="alert-text-header">Errors Found - </span><span class="alert-text-body">&nbsp;Error message description.</span>',
-      closeButton: 'true',
-      sliderBtnFlag: 'true',
-      sliderType: 'danger',
-      sliderChkFlg: 'false',
-      sliderAutoClose: 'false',
-      sliderIconFlag: 'true',
-      sliderPosition: 'fixed'
+      contentTmpl: '<span class="alert-text-header">Errors Found - </span><span class="alert-text-body">&nbsp;Error message description.</span>', //notification html template
+      closeButton: 'true',  //notification close icon 'true' , 'false'
+      sliderType: 'danger', //notification type 'error', 'success', 'warning'
+      sliderAutoClose: 'true', // notification auto close 'true', 'false'
+      sliderIconFlag: 'true' //notification image icon 'true', 'false'
+      //sliderPosition: 'fixed' // Notification sticky 'fixed', by default non-sticky 'relative'
     };
 
+    //Container notification
     this.containerNotifications = {
-    //  headerText: 'Lorem ipsum nullam enim',
-     // bodyContent: 'Pellen tesque habitant morbi tristique senectus et negtus.',
-      contentTmpl: '<span class="alert-text-header">4&nbsp;Errors Found - </span><span class="alert-text-body">&nbsp;Error message description.</span>',
+      contentTmpl: '<span class="alert-text-header">4&nbsp;Errors Found - </span><span class="alert-text-body">&nbsp;Error message description.</span> <button ng-click="vm.clickMe()">Default</button',
       closeButton: 'true',
-      sliderBtnFlag: 'true',
       sliderType: 'danger',
-      sliderChkFlg: 'false',
       sliderAutoClose: 'false',
       sliderIconFlag: 'true',
-      isComplex: 'true',
-      complexTmpl: 'Complex details template will come here',
-      containerEl: '#error-container' //For container notification pass ID/CLASS and for page level container no need to set this attribute.
+      isComplex: 'true', // Notification details (complex) 'true', 'false'
+      complexTmpl: 'Complex details template will come here', //notification details html template
+      containerEl: '#error-container' //Container element id.
     };
+  }
+  clickMe() {
+    console.log('I am in.');
   }
   initialize() {
     this.notificationsService.resolvePromise().then((response) => {
