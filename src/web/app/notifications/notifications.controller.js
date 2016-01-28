@@ -18,7 +18,7 @@ class NotificationsController {
 
     //Container notification
     this.containerNotifications = {
-      contentTmpl: '<span class="alert-text-header">4&nbsp;Errors Found - </span><span class="alert-text-body">&nbsp;Error message description.</span> <button ng-click="vm.clickMe()">Default</button',
+      contentTmpl: '<span class="alert-text-header">4&nbsp;Errors Found - </span><span class="alert-text-body">&nbsp;Error message description.</span>',
       closeButton: 'true',
       sliderType: 'danger',
       sliderAutoClose: 'false',
@@ -27,9 +27,6 @@ class NotificationsController {
       complexTmpl: 'Complex details template will come here', //notification details html template
       containerEl: '#error-container' //Container element id.
     };
-  }
-  clickMe() {
-    console.log('I am in.');
   }
   initialize() {
     this.notificationsService.resolvePromise().then((response) => {
