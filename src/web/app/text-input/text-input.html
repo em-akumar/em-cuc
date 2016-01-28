@@ -1,17 +1,40 @@
 <div class="app controls text-input">
-  <div class="form-group em-lbl-left">
-    <label>Left Label</label>
-    <input type="text" class="form-control" placeholder="Default placeholder style" id="field-label27">
-  </div>
-  <div class="form-group">
-    <div class="em-showPassword">
-      <input type="password" class="form-control em-showPassword-txt" emc="TextInputField" options="vm.options" placeholder="Placeholder">
+  <div class="demo-page-header">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1>Text Input Field</h1>
+      </div>
     </div>
   </div>
 
-  <div class="form-group">
-    <div class="em-showPassword em-txt-lg">
-      <input type="password" class="form-control em-showPassword-txt" emc="TextInputField" options="vm.options" placeholder="Placeholder">
-    </div>
-  </div>
+   <uib-tabset class="controls">
+      <uib-tab heading="Sizes">
+        <text-input-size></text-input-size>
+      </uib-tab>
+
+      <uib-tab heading="States">
+        <text-input-states></text-input-states>
+      </uib-tab>
+
+      <uib-tab heading="Error Handling">
+        <text-input-error-handling></text-input-error-handling>
+      </uib-tab>
+
+      <uib-tab heading="With Label">
+        <text-input-label></text-input-label>
+      </uib-tab>
+
+      <uib-tab heading="With Icon">
+        <text-input-with-icon></text-input-with-icon>
+      </uib-tab>
+
+      <uib-tab heading="With Label Wrapping">
+        <text-input-label-wrapping></text-input-label-wrapping>
+      </uib-tab>
+
+      <uib-tab heading="Format Masking">
+        <text-input-masking></text-input-masking>
+      </uib-tab>
+   </uib-tabset>
 </div>
+

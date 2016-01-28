@@ -9,7 +9,9 @@ import {cuc} from '../cuc/cuc.angular';
 import '../cuc/cuc.ui.bootstrap';
 import '../cuc/cuc.grid';
 import 'angular-messages/angular-messages.js';
+import 'angular-ui-mask/dist/mask.js';
 import './app.less';
+import '../common/utils/codepen';
 
 import buttons from './buttons/buttons.module';
 import textInput from './text-input/text-input.module';
@@ -30,7 +32,7 @@ import notifications from './notifications/notifications.module';
 emsApi.baseUrl = 'http://localhost:9000/';
 
 let appModule = angular.module('app', [uiRouter, cuc.name, 'cuc', 'ui.grid', 'ui.bootstrap',
-  'ngMessages', buttons.name, textInput.name, textArea.name, fileUploader.name, dropdownEdit.name, grid.name, dropdown.name, colorPicker.name, modal.name, datepicker.name, checkbox.name, panel.name, errorHandling.name, imageButton.name, notifications.name]);
+  'ngMessages', 'ui.mask', buttons.name, textInput.name, textArea.name, fileUploader.name, dropdownEdit.name, grid.name, dropdown.name, colorPicker.name, modal.name, datepicker.name, checkbox.name, panel.name, errorHandling.name, imageButton.name, notifications.name]);
 
 appModule.config(($stateProvider, $urlRouterProvider) => {
   $stateProvider.state('app', {
