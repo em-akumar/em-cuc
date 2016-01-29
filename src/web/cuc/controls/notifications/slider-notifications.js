@@ -1,83 +1,86 @@
 /* eslint-disable */
 class SliderNotifications {
-
-  constructor(options = {}) {
-    //el.style.opacity = 1;
-    this.mainEl = document.querySelector('body');
+  constructor(el, options = {}) {
     this.options = {};
-    this.options.containerEl = options.containerEl || '';
+    this.options.contentTmpl = options.contentTmpl || '';
+    this.options.contentPosition = (options.containerEl) ? 'alert-container' : 'alert-page';
+    this.options.containerEl = document.querySelector(options.containerEl) || document.querySelector('body'); //check container/page notifi
     this.options.fadeOutTimeout = options.fadeOutTimeout || 5000;
     this.options.fadeOutSpeed = options.fadeOutSpeed || 50;
-    this.options.sliderCloseFlag = options.sliderCloseFlag === 'false' ? false : true;
-    this.options.sliderIconFlag = options.sliderIconFlag === 'false' ? false : true;
-    this.options.sliderBtnFlag = options.sliderBtnFlag === 'true' ? true : false;
-    this.options.sliderBtnText = options.sliderBtnText ? options.sliderBtnText : 'Default';
-    this.options.sliderChkFlg = options.sliderChkFlg === 'true' ? true : false;
-    this.options.chkBoxLable = options.chkBoxLable ? options.chkBoxLable : 'Mauris vel lacus vitae felis vestibulum volutpat.';
-    this.options.headerText = options.headerText || '';
-    this.options.bodyContent = options.bodyContent || '';
-    this.options.sliderType = options.sliderType || 'success';
-    this.options.sliderAutoClose = options.sliderAutoClose === 'false' ? false : true;
-    //slider-lock
-    this.options.sliderPosition = options.sliderPosition || 'slider-relative';
-
+    this.options.closeButton = options.closeButton === 'false' ? false : true; // close icon
+    this.options.sliderIconFlag = options.sliderIconFlag === 'false' ? false : true; //notification icon
+    this.options.sliderType = options.sliderType || 'success'; //notification type 'error', 'success', 'warning'
+    this.options.sliderAutoClose = options.sliderAutoClose === 'false' ? false : true; // notification auto close
+    this.options.isComplex = options.isComplex || ''; // Notification complex, by default it is simple
+    this.options.complexTmpl = options.complexTmpl || ''; //Notiifcation detail template
+    this.options.sliderPosition = (options.sliderPosition && options.sliderPosition ==='fixed' && !options.containerEl)?  'slider-fixed' : 'slider-relative'; // Notification sticky 'fixed', by default 'relative'
     this.init();
   }
 
   init() {
-    //this.setTriming();
-    console.log(this.options);
-    this.initTempl();
     this.render();
     if (this.options.sliderAutoClose === true) { this.destroy(); }
   }
 
-  initTempl() {
-    this.closeTmpl = (this.options.sliderCloseFlag === true)? `<div class="close-slider"><a href="#" class="close" data-dismiss="alert">&times;</a></div>`:` `;
-    this.iconTmpl = (this.options.sliderIconFlag === true)? `<div class="noti-slider-icon"><span class="alert-${this.options.sliderType}-slider-icon"></span></div>`:` `;
-    this.contentTmpl = `<span class="alert-text-header">${ this.options.headerText}</span><span class="alert-text-body">&nbsp;${ this.options.bodyContent}</span>`;
-    this.buttonTmpl = (this.options.sliderBtnFlag === true)? `<button type="button" class="btn btn btn-default btn-sm-var-height">${ this.options.sliderBtnText}</button>`: ` `;
-    this.checkboxTmpl = (this.options.sliderChkFlg === true)? `<div class="checkbox check-slider"> <input type="checkbox" id="chk25"><label for="chk25" class="checkbox-slider-noti">${this.options.chkBoxLable}</label></div>`: ` `;
-  }
+  render() {
+    var notiDiv = document.createElement('div'); //notification div
+    notiDiv.setAttribute('class', 'alert alert-slide-down alert-' + this.options.sliderType + ' ' + this.options.contentPosition + ' ' + this.options.sliderPosition);
 
-  renderContent() {
-    var notiDiv = document.createElement('div');
-    notiDiv.setAttribute('class', 'alert alert-slide-down alert-'+ this.options.sliderType +' '+this.options.sliderPosition);
-    notiDiv.innerHTML = this.closeTmpl + this.iconTmpl + this.contentTmpl +  this.buttonTmpl + this.checkboxTmpl;
+    var closeDiv = document.createElement('div'); //close div
+    closeDiv.setAttribute('class', 'close-slider');
+    closeDiv.addEventListener('click', this.closeNoti);
+    closeDiv.innerHTML = '<a href="" class="close">&times;</a>';
+
+    var iconTmpl = (this.options.sliderIconFlag === true) ? `<div class="noti-slider-icon"><span class="alert-${this.options.sliderType}-slider-icon"></span></div>` : ` `; // notification image icon div
+
+    notiDiv.innerHTML = iconTmpl + '' + this.options.contentTmpl;
+
+    if (this.options.closeButton === true) { //check for close icon
+      notiDiv.insertBefore(closeDiv, notiDiv.firstChild);
+    }
     this.options.sliderEl = notiDiv;
-    this.options.containerEl !== ''? this.options.containerEl.parentNode.insertBefore(notiDiv, this.options.containerEl.nextSibling):this.mainEl.insertBefore(notiDiv, this.mainEl.firstChild);
+    this.options.containerEl.insertBefore(notiDiv, this.options.containerEl.firstChild);
+
+    if (this.options.isComplex === 'true') { // check wheather complex notification
+      var notiDetailDiv = document.createElement('div');
+      notiDetailDiv.setAttribute('class', 'noti-details-div');
+      notiDetailDiv.innerHTML = this.options.complexTmpl;
+      this.options.sliderElDetail = notiDetailDiv;
+      this.options.containerEl.insertBefore(notiDetailDiv, notiDiv.nextSibling);
+    }
   }
 
-  render(){
-    this.renderContent();
-   // this.renderEvent();
+  closeNoti(e) { //on click of close icon
+    let ele = e.target.parentNode.parentNode;
+    let eleDetail = ele.parentNode.querySelector('.noti-details-div');
+    if (eleDetail) {
+      eleDetail.parentNode.removeChild(eleDetail);
+    }
+    ele.parentNode.removeChild(ele);
   }
 
   fadeOutNoti() {
-     /* let op = 1;
-      let ele = this.options.sliderEl;
+      var op = 1;
+      var ele = this.options.sliderEl;
+      var eleDetail = this.options.sliderElDetail;
+
       let timer = setInterval(function () {
-        if (op <= 0.1){
+        if (op <= 0.1) {
           clearInterval(timer);
           ele.parentNode.removeChild(ele);
+          if (eleDetail) {
+            eleDetail.parentNode.removeChild(eleDetail);
+          }
         }
        ele.style.opacity = op;
        ele.style.filter = 'alpha(opacity=' + op * 100 + ")";
         op -= op * 0.1;
-      },  this.options.fadeOutSpeed);*/
+      },  this.options.fadeOutSpeed);
   }
 
-  destroy() {
-    var self = this;
-    var startTimeOut = setTimeout(function(){self.fadeOutNoti()}, self.options.fadeOutTimeout);
-   /* this.mainEl.addEventListener('mouseover', function(e) {
-      clearTimeout(startTimeOut);
-    });
-    this.mainEl.addEventListener('mouseout', function(e) {
-      startTimeOut = setTimeout(function(){self.fadeOutNoti()}, self.options.onMouseoverFadeOut);
-    });*/
+  destroy() { //destroy notification if autoclose is true
+    var self = {options:this.options};
+    setTimeout(this.fadeOutNoti.bind(self), this.options.fadeOutTimeout);
   }
 }
-
-
 export {SliderNotifications};
