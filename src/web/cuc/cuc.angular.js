@@ -418,6 +418,7 @@ cuc.directive('uiGridCustomPaging', function ($compile) {
     require: '^uiGrid'
   };
 });
+//basic paging settings
 function loadPage(pageNumber){
   var pageStruct={pageStart:1,
   pageStartExt:false,
@@ -437,35 +438,109 @@ function loadPage(pageNumber){
       pageStruct.nxtArr = false;
   return pageStruct;
 }
-cuc.directive('uiGridColumnSettings', function ($interval) {
+// Grid settings directive
+cuc.directive('uiGridColumnSettings', function ($timeout) {
   return {
     link: function (scope, element, attrs, uiGridctrl) {
+      //required config for this feature
       uiGridctrl.grid.options.enableGridMenu = true;
       uiGridctrl.grid.options.exporterMenuPdf = false;
       uiGridctrl.grid.options.exporterMenuCsv = false;
       uiGridctrl.grid.options.onRegisterApi= function( gridApi ){
-          scope.gridApi = gridApi;
+        //To save changes to local storage
+        scope.gridApi = gridApi;
+          if(scope.gridApi.colMovable)
+            scope.gridApi.colMovable.on.columnPositionChanged(scope, saveState);
+          if(scope.gridApi.colResizable)
+            scope.gridApi.colResizable.on.columnSizeChanged(scope, saveState);
+          scope.gridApi.core.on.columnVisibilityChanged(scope, ()=>{setLastColDisable(saveState());} );
+          scope.gridApi.core.on.filterChanged(scope, saveState);
+          scope.gridApi.core.on.sortChanged(scope, saveState);
+          //scope.gridApi.grouping.on.aggregationChanged(scope, saveState);
+          //scope.gridApi.grouping.on.groupingChanged(scope, saveState);
 
-
+            restoreState();
       };
       scope._initMenuFirst = true;
+      //call when gird rendred
       uiGridctrl.grid.api.core.on.rowsRendered(scope, function() {
           if (uiGridctrl.grid.renderContainers.body.visibleRowCache.length === 0) { return; }
           if(scope._initMenuFirst)
             {initMenu(scope);
           scope._initMenuFirst = false;}
       });
-
+      //init menu chnages as per spec
       function initMenu(scope) {
         element[0].querySelector('.ui-grid-menu-button div').onclick = function () {
+          //todo: need to find some better way to do it, if possible
           [].forEach.call(element[0].querySelectorAll('.ui-grid-menu-inner li'), function (el, index) {
-          if (el.querySelector('button').innerText.trim()=='Columns:'){
-            var elMain =  el.querySelector('button');
+            el.addEventListener('click', function (e) {
+              if (e.offsetX < el.offsetWidth) {
+                    if (!e)
+                  e = window.event;
+                    if (e.stopPropagation) {
+                        e.stopPropagation();
+                      }
+                    else {
+                        e.cancelBubble = true;
+                      }
+              }
+            });
+            //change col header
+            if (el.querySelector('button').innerText.trim() == 'Columns:') {
+             let elMain =  el.querySelector('button');
              elMain.childNodes[1].nodeValue= "View Columns";
              elMain.classList.add('em-manu-col-header');
              el.classList.add('em-menu-sec-header');
-          }
-        });};
+             scope._headerIndex = index;
+            }
+            el.querySelector('button').onclick = function () {
+               let menuClose = element[0].querySelector('.ui-grid-menu .ui-grid-menu-close-button');
+                if(menuClose)
+                        menuClose.classList.remove('ui-grid-sr-only');
+             };
+         if (el.querySelector('button').innerText.trim()=='Clear all filters'){
+           el.style.display = 'none';
+         }
+        });
+          setLastColDisable(scope.gridApi.saveState.save());};
+      }
+      //last col selection disabled in mune
+      function setLastColDisable(state) {
+        let cols = state.columns;
+        let visIndx = -1;
+        let hiddenCols = cols.filter((val, index) => {
+          if (!val.visible){
+            return  true;}
+            else{
+             visIndx = index;
+            }
+        });
+        let colDiff = (cols.length - hiddenCols.length);
+        [].forEach.call(element[0].querySelectorAll('.ui-grid-menu-inner li'),(item)=>{
+          item.classList.remove('readonly');
+        });
+        if ( colDiff< 2) {
+          let ele = element[0].querySelectorAll('.ui-grid-menu-inner li');
+          let elIndex = ele.length - ((cols.length - (visIndx+1))*2);
+          ele[elIndex - 1].classList.add('readonly');//info: 2 li item per col.(checked & unchecked).it's ui-grid lib implementation.
+          ele[elIndex - 2].classList.add('readonly');
+        }
+      }
+      //save state in LS
+      function saveState() {
+        var state = scope.gridApi.saveState.save();
+        if(typeof(Storage) !== "undefined") {
+          localStorage.setItem("gridState", JSON.stringify(state));
+        }
+        return state;
+      }
+      // get state from LS
+      function restoreState() {
+        $timeout(function() {
+          var state = localStorage.getItem("gridState");
+          if (state) scope.gridApi.saveState.restore(scope, JSON.parse(state));
+        });
       }
 
     },

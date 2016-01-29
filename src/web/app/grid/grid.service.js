@@ -5,7 +5,7 @@ class GridService {
   constructor() {
   }
   resolvePromise() {
-    return emsApi.fetch('http://beta.json-generator.com/api/json/get/4JOX8vO4l');
+    return emsApi.fetch('http://www.json-generator.com/api/json/get/cqcrdXPTci');
   }
 }
 
