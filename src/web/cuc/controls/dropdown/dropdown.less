@@ -180,6 +180,12 @@
     }
   }
 }
+  /*Override BS  has error class */
+.has-error .em-dropdown, .has-error .em-dropdown:focus, .has-error .em-dropdown:hover, .has-error .em-dropdown .btn:focus, .has-error .em-dropdown .btn:hover {
+    border: 1px solid @input-field-error-inside-border;
+    -webkit-box-shadow: 0px 0px 0px 2px  @input-field-error-outside-border;
+    box-shadow: 0px 0px 0px 2px  @input-field-error-outside-border;
+}
 
 .em-dropdown-label{
   label{

@@ -5,16 +5,27 @@ class NotificationsController {
     this.renderNotification();
     // this.initialize();
   }
+  //Page notification
   renderNotification() {
-    this.sNotifications = {
-      headerText: 'Lorem ipsum nullam enim',
-      bodyContent: 'Pellen tesque habitant morbi tristique senectus et negtus.',
-      closeButton: true,
-      sliderBtnFlag: 'true',
+    this.pageNotifications = {
+      contentTmpl: '<span class="alert-text-header">Errors Found - </span><span class="alert-text-body">&nbsp;Error message description.</span>', //notification html template
+      closeButton: 'true',  //notification close icon 'true' , 'false'
+      sliderType: 'danger', //notification type 'error', 'success', 'warning'
+      sliderAutoClose: 'true', // notification auto close 'true', 'false'
+      sliderIconFlag: 'true' //notification image icon 'true', 'false'
+      //sliderPosition: 'fixed' // Notification sticky 'fixed', by default non-sticky 'relative'
+    };
+
+    //Container notification
+    this.containerNotifications = {
+      contentTmpl: '<span class="alert-text-header">4&nbsp;Errors Found - </span><span class="alert-text-body">&nbsp;Error message description.</span>',
+      closeButton: 'true',
       sliderType: 'danger',
-      sliderChkFlg: 'false',
       sliderAutoClose: 'false',
-      containerEl: document.querySelector('#error-container')
+      sliderIconFlag: 'true',
+      isComplex: 'true', // Notification details (complex) 'true', 'false'
+      complexTmpl: 'Complex details template will come here', //notification details html template
+      containerEl: '#error-container' //Container element id.
     };
   }
   initialize() {

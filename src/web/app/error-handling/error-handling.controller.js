@@ -18,6 +18,7 @@ class ErrorHandlingController {
       itemList: [{value: 'M', text: 'Male'}, {value: 'F', text: 'Female'}],
       defaultSize: 'flexible-width',
       onChange: (e) => {
+        console.log(e);
         this.drpMaritalStatus = e.target.getAttribute('value');
         safeApply();
       }
