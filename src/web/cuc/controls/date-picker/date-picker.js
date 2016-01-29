@@ -32,7 +32,7 @@ class DatePicker {
 
         this.showOnlyDate = false;
         this.showOnlyTime = false;
-        this.disabledDates = options.disabledDates;
+        this.disabledDates = options.disabledDates||[];
         //range for date enable/disable
         this.enableFrom = options.enableFrom;
         this.enableTo = options.enableTo;
@@ -158,6 +158,8 @@ class DatePicker {
 
         this.showOnlyTime = this.destDateField == '' ? true : false;
         this.showOnlyDate = this.destTimeField == '' ? true : false;
+        this.showBoth = this.showOnlyTime == this.showOnlyDate;
+        if(this.showOnlyTime || this.showBoth)
         this.destTimeField.addEventListener("focus", () => {
             if (!self.isVisible) {
                 self._viewCalendar();
@@ -165,8 +167,9 @@ class DatePicker {
             self.showtime();
             var event = new Event('change');
 
-            self.destTimeField.dispatchEvent(event);
+            if(self.destTimeField != '') self.destTimeField.dispatchEvent(event);
         });
+        if(this.showOnlyDate || this.showBoth)
         this.destDateField.addEventListener("focus", () => {
             if (!self.isVisible) {
                 self._viewCalendar();
@@ -178,11 +181,11 @@ class DatePicker {
             }
             var event = new Event('change');
 
-            self.destDateField.dispatchEvent(event);
-            self.destTimeField.dispatchEvent(event);
+           if(self.destDateField != '') self.destDateField.dispatchEvent(event);
+           if(self.destTimeField != '') self.destTimeField.dispatchEvent(event);
         });
-        if (this.defaultTime != '') this.destTimeField.value = this.defaultTime;
-        if (this.defaultDate != '') this.destDateField.value = this.defaultDate;
+        if (this.defaultTime != '' && this.destTimeField != '') this.destTimeField.value = this.defaultTime;
+        if (this.defaultDate != '' && this.destDateField != '') this.destDateField.value = this.defaultDate;
       this._onChageEvents();
     }
     viewCalendar() {
@@ -208,27 +211,31 @@ class DatePicker {
         }
 
         let parentObj = ((typeof this.parent === 'object') ? this.parent : document.getElementById(this.parent));
-        let dateParentObj = parentObj.querySelector('.table-condensed-date');
-        let timeParentObj = parentObj.querySelector('.table-condensed-time');
+        let dateParentObj = parentObj.querySelector('.table-condensed-date')||document.createElement('div');
+        let timeParentObj = parentObj.querySelector('.table-condensed-time')||document.createElement('div');
 
         document.getElementsByTagName('html')[0].addEventListener('click', (e) => {
             parentObj.style.display = "none";this.isVisible = false;
         });
-        this.AddOn.parentNode.addEventListener('click',  (e)=> {
+        this.AddOn.parentNode.addEventListener('click',  function(e) {
            var event = new Event('change');
 
-            this.destDateField.dispatchEvent(event);
-            this.destTimeField.dispatchEvent(event);
+           if (this.destDateField != ""){
+              this.destDateField.dispatchEvent(event);}
+           if(this.destTimeField != ""){
+              this.destTimeField.dispatchEvent(event);}
 
             e.stopPropagation();
-        });
+        }.bind(this));
         this.AddOn.parentNode.addEventListener('keyup', (e) => {
             if (e.keyCode === 9 || e.keyCode === 13) {
                 var val = this._autocomplete(this.destDateField.value);
                 if (val != undefined && val.trim() != '') {
-                    this.destDateField.value = val.split(' ')[0];
-                    this.destTimeField.value = (val.split(' ')[1] || '') + ' ' + (val.split(' ')[2] || '')
-                }
+                  if (this.destDateField){
+                    this.destDateField.value = val.split(' ')[0];}
+                  if(this.destTimeField){
+                    this.destTimeField.value = this.destTimeField.value.trim() ===''? ((val.split(' ')[1] || '') + ' ' + (val.split(' ')[2] || '')): this.destTimeField.value;
+                }}
             }
             return false;
         });
@@ -557,7 +564,7 @@ class DatePicker {
     }
     showtime() {
         let parentObj = ((typeof this.parent === 'object') ? this.parent : document.getElementById(this.parent));;
-        let dateParentObj = parentObj.querySelector('.table-condensed-date');
+        let dateParentObj = parentObj.querySelector('.table-condensed-date')||document.createElement('div');
         let timeParentObj = parentObj.querySelector('.table-condensed-time');
 
 
