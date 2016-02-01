@@ -379,7 +379,6 @@ var FileUpload = function (el, opts) {
 
           if (xhr.readyState === 4) {
             xhrStatus = xhr.status;
-            
 
             setFileStatus(file, xhr);
 
