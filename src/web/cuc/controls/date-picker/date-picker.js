@@ -282,7 +282,7 @@ class DatePicker {
             if (this.showOnlyDate) {
                 this.generateCalendarTable();
             }
-            if (this.showOnlyTime) {
+            if (this.showOnlyTime && this.destTimeField != '') {
                 this.createtimePicker();
             }
         }
@@ -599,7 +599,8 @@ class DatePicker {
         let self = this;
         rootTimeTable.className = "table-condensed-time";
         let timeFieldValue = (typeof this.destTimeField === 'object') ? this.destTimeField : document.getElementById(this.destTimeField);
-        timeFieldValue.value = this.showCurrentTime();
+        if(timeFieldValue)
+          timeFieldValue.value = this.showCurrentTime();
         // add month title header on Time calender
         let tableMonthTop = rootTimeTable.insertRow(0);
         tableMonthTop.className = "months-header-picker-title";
@@ -784,15 +785,22 @@ class DatePicker {
         cell1.appendChild(spanTimeIcon);
         cell1.appendChild(spanTimeTitle);
         cell1.colSpan = 5;
-
         //hide the time calendar and show the date calendar
-        if (this.showOnlyTime) {
+        if (this.showOnlyTime && this.destTimeField != '') {
             tableFooter.onclick = function() {
+              if(this.destDateField != ''){
                 var timePickerTable = parentObj.querySelector(".table-condensed-time");
                 var datePickerTable = parentObj.querySelector(".table-condensed-date");
-                timePickerTable.style.display = "none";
-                datePickerTable.style.display = "";
-            };
+                if(timePickerTable)
+                  timePickerTable.style.display = "none";
+                if(datePickerTable)
+                  datePickerTable.style.display = "";
+              }
+            }.bind(this);
+        }
+        //off footer icon and hover for only time control
+        if(this.destDateField == ''){
+           tableFooter.classList.add('overlay');
         }
     }
     addCalendarFooter(rootTable) {
@@ -810,11 +818,14 @@ class DatePicker {
         cell1.appendChild(spanTimeIcon);
         cell1.appendChild(spanTimeTitle);
         cell1.colSpan = 7;
-        if (this.showOnlyDate) {
+        if (this.showOnlyDate && this.destTimeField != '') {
             tableFooter.onclick = function() {
                 self.showtime();
 
             };
+        }
+        else{
+          tableFooter.classList.add('overlay');
         }
 
     }
