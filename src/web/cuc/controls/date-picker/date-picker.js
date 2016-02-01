@@ -147,9 +147,24 @@ class DatePicker {
                 this.viewCalendar();
             });
         }
+         //IE issue fix patch
+      (function () {
+        function CustomEvent ( event, params ) {
+          params = params || { bubbles: false, cancelable: false, detail: undefined };
+          var evt = document.createEvent( 'CustomEvent' );
+          evt.initCustomEvent( event, params.bubbles, params.cancelable, params.detail );
+          return evt;
+        }
+
+        CustomEvent.prototype = window.Event.prototype;
+
+        window.CustomEvent = CustomEvent;
+      })();
+      //-------
         this.reinit();
     }
     reinit() {
+
         // For convenience...
         var self = this;
         Date.prototype.format = function(mask, utc) {
@@ -165,7 +180,7 @@ class DatePicker {
                 self._viewCalendar();
             }
             self.showtime();
-            var event = new Event('change');
+            var event = new CustomEvent('change');
 
             if(self.destTimeField != '') self.destTimeField.dispatchEvent(event);
         });
@@ -179,7 +194,7 @@ class DatePicker {
                if(timePickerTable) timePickerTable.style.display = "none";
                 datePickerTable.style.display = "";
             }
-            var event = new Event('change');
+            var event = new CustomEvent('change');
 
            if(self.destDateField != '') self.destDateField.dispatchEvent(event);
            if(self.destTimeField != '') self.destTimeField.dispatchEvent(event);
@@ -218,7 +233,7 @@ class DatePicker {
             parentObj.style.display = "none";this.isVisible = false;
         });
         this.AddOn.parentNode.addEventListener('click',  function(e) {
-           var event = new Event('change');
+           var event = new CustomEvent('change');
 
            if (this.destDateField != ""){
               this.destDateField.dispatchEvent(event);}
