@@ -119,11 +119,11 @@ var FileUpload = function (el, opts) {
       closeDiv.addEventListener('click', deleteFileFromUploadProgressDiv, false);
 
       closeDiv.id = 'fileCloseDiv' + uploadStack[i].guid;
-      closeSpan = document.createElement('SPAN');
-      closeSpan.className = 'closeSpan';
+      //closeSpan = document.createElement('SPAN');
+     // closeSpan.className = 'closeSpan';
       closeIcon = document.createTextNode('x');
-      closeSpan.appendChild(closeIcon);
-      closeDiv.appendChild(closeSpan);
+     // closeSpan.appendChild(closeIcon);
+      closeDiv.appendChild(closeIcon);
       tileDiv.appendChild(closeDiv);
       //div for progress bar
       //div for percent and status
@@ -379,16 +379,19 @@ var FileUpload = function (el, opts) {
 
           if (xhr.readyState === 4) {
             xhrStatus = xhr.status;
+            
 
             setFileStatus(file, xhr);
 
             if (xhr.status === 200) {
               uploadedStack.push(file);
+
               document.getElementById('fileCloseDiv' + file.guid).className = '';
               document.getElementById('fileCloseDiv' + file.guid).innerHTML = '';
               document.getElementById('fileUploadStatusFor' + file.guid).innerHTML = '';// it is need here to make innerHTML empty
               document.getElementById('fileUploadStatusFor' + file.guid).appendChild(showTick);
-            } else {
+            } else
+             {
               var showExcl = document.createElement('DIV');
               showExcl.className = 'notificationImageAtRightCorner ';
               var showError = document.createTextNode('Error');
@@ -396,8 +399,11 @@ var FileUpload = function (el, opts) {
               showTickImg.className = 'errorImageSrc';
               showExcl.appendChild(showError);
               showExcl.appendChild(showTickImg);
-              document.getElementById('fileUploadStatusFor' + file.guid).innerHTML = '';// it is need here to make innerHTML empty
-              document.getElementById('fileUploadStatusFor' + file.guid).appendChild(showExcl);
+              if(document.getElementById('fileUploadStatusFor' + file.guid) != null) {
+                document.getElementById('fileUploadStatusFor' + file.guid).innerHTML = '';// it is need here to make innerHTML empty
+                document.getElementById('fileUploadStatusFor' + file.guid).appendChild(showExcl);
+              }
+
             }
           }
         };
@@ -412,7 +418,7 @@ var FileUpload = function (el, opts) {
 
   function setFileStatus(file, xhr) {
     file.status = xhr.status;
-    file.serverResponseMsg = JSON.parse(xhr.responseText);
+    file.serverResponseMsg = (xhr.responseText != '' )?JSON.parse(xhr.responseText) : '';
     file.description = getFileUploadStatus(xhr.status);
   }
 
@@ -443,13 +449,14 @@ var FileUpload = function (el, opts) {
   }
 
   function deleteFileFromUploadProgressDiv(event) {
+
     ///cross browser remove  functionality
     var elementId, fileBoxDiv = '';
     var l = 0;
     for (l = 0; l < uploadStack.length; l++) {
-      if (uploadStack[l].guid === (event.target.id)) {
+      if ('fileCloseDiv'+uploadStack[l].guid === (event.target.id)) {
         uploadStack.splice(l, 1);
-        elementId = event.target.id;
+        elementId = event.target.id.replace('fileCloseDiv','');
         fileBoxDiv = document.getElementById('tileFor' + elementId);
         fileBoxDiv.outerHTML = '';
         fileBoxDiv = null;
