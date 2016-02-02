@@ -1,22 +1,25 @@
-<div class="app panel">
-  <!-- Panel Control Samples-->
-  <div class="panel-body">
-    <div class="demo-example" data-heading="Samples">
-      <div class="panel">
-        <div class="panel-body em-panel">Panel content
-        </div>
-      </div>
-    </div>
-    <div class="demo-example" data-heading="Panel Section">
-      <div class="panel">
-        <div class="panel-body em-panel-section">Panel Section </div>
-      </div>
-    </div>
-    <div class="demo-example" data-heading="Panel Bottom">
-      <div class="panel">
-        <div class="panel-footer em-panel-bottom">Panel Bottom</div>
+<div class="app controls panel">
+  <div class="demo-page-header">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1>Panel</h1>
       </div>
     </div>
   </div>
 
+   <uib-tabset class="controls">
+      <uib-tab heading="Category Box">
+        <category-box></category-box>
+      </uib-tab>
+
+      <uib-tab heading="Group Box">
+        <group-box></group-box>
+      </uib-tab>
+
+      <uib-tab heading="Panel">
+        <panel-usage></panel-usage>
+      </uib-tab>
+
+   </uib-tabset>
 </div>
+
