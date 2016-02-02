@@ -264,7 +264,7 @@ table.table-condensed.top {
     border-top-right-radius: @input-field-border-radius;
     // width: 228px;
     height: 32px;
-    margin: 2px 0;
+    margin: 0px 0;
     padding: 4px;
     font-size: 12px;
     font-size: @font-size-base;
@@ -437,6 +437,16 @@ table.table-condensed.top {
     text-align: center;
     cursor: pointer;
     border-top: 1px solid @input-field-default-border-color;
+    &.overlay{
+      cursor: auto;
+      background: @white;
+      &:hover{
+        background: @white;
+      }
+      &:active{
+        background: @white;
+      }
+    }
     &:hover, &:focus {
       background-color: @dropdown-panel-hover-highlight-color;
       width: 220px;

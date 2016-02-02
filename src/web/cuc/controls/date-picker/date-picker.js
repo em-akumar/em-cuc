@@ -32,7 +32,7 @@ class DatePicker {
 
         this.showOnlyDate = false;
         this.showOnlyTime = false;
-        this.disabledDates = options.disabledDates;
+        this.disabledDates = options.disabledDates||[];
         //range for date enable/disable
         this.enableFrom = options.enableFrom;
         this.enableTo = options.enableTo;
@@ -147,9 +147,24 @@ class DatePicker {
                 this.viewCalendar();
             });
         }
+         //IE issue fix patch
+      (function () {
+        function CustomEvent ( event, params ) {
+          params = params || { bubbles: false, cancelable: false, detail: undefined };
+          var evt = document.createEvent( 'CustomEvent' );
+          evt.initCustomEvent( event, params.bubbles, params.cancelable, params.detail );
+          return evt;
+        }
+
+        CustomEvent.prototype = window.Event.prototype;
+
+        window.CustomEvent = CustomEvent;
+      })();
+      //-------
         this.reinit();
     }
     reinit() {
+
         // For convenience...
         var self = this;
         Date.prototype.format = function(mask, utc) {
@@ -158,15 +173,18 @@ class DatePicker {
 
         this.showOnlyTime = this.destDateField == '' ? true : false;
         this.showOnlyDate = this.destTimeField == '' ? true : false;
+        this.showBoth = this.showOnlyTime == this.showOnlyDate;
+        if(this.showOnlyTime || this.showBoth)
         this.destTimeField.addEventListener("focus", () => {
             if (!self.isVisible) {
                 self._viewCalendar();
             }
             self.showtime();
-            var event = new Event('change');
+            var event = new CustomEvent('change');
 
-            self.destTimeField.dispatchEvent(event);
+            if(self.destTimeField != '') self.destTimeField.dispatchEvent(event);
         });
+        if(this.showOnlyDate || this.showBoth)
         this.destDateField.addEventListener("focus", () => {
             if (!self.isVisible) {
                 self._viewCalendar();
@@ -176,13 +194,13 @@ class DatePicker {
                if(timePickerTable) timePickerTable.style.display = "none";
                 datePickerTable.style.display = "";
             }
-            var event = new Event('change');
+            var event = new CustomEvent('change');
 
-            self.destDateField.dispatchEvent(event);
-            self.destTimeField.dispatchEvent(event);
+           if(self.destDateField != '') self.destDateField.dispatchEvent(event);
+           if(self.destTimeField != '') self.destTimeField.dispatchEvent(event);
         });
-        if (this.defaultTime != '') this.destTimeField.value = this.defaultTime;
-        if (this.defaultDate != '') this.destDateField.value = this.defaultDate;
+        if (this.defaultTime != '' && this.destTimeField != '') this.destTimeField.value = this.defaultTime;
+        if (this.defaultDate != '' && this.destDateField != '') this.destDateField.value = this.defaultDate;
       this._onChageEvents();
     }
     viewCalendar() {
@@ -208,27 +226,31 @@ class DatePicker {
         }
 
         let parentObj = ((typeof this.parent === 'object') ? this.parent : document.getElementById(this.parent));
-        let dateParentObj = parentObj.querySelector('.table-condensed-date');
-        let timeParentObj = parentObj.querySelector('.table-condensed-time');
+        let dateParentObj = parentObj.querySelector('.table-condensed-date')||document.createElement('div');
+        let timeParentObj = parentObj.querySelector('.table-condensed-time')||document.createElement('div');
 
         document.getElementsByTagName('html')[0].addEventListener('click', (e) => {
             parentObj.style.display = "none";this.isVisible = false;
         });
-        this.AddOn.parentNode.addEventListener('click',  (e)=> {
-           var event = new Event('change');
+        this.AddOn.parentNode.addEventListener('click',  function(e) {
+           var event = new CustomEvent('change');
 
-            this.destDateField.dispatchEvent(event);
-            this.destTimeField.dispatchEvent(event);
+           if (this.destDateField != ""){
+              this.destDateField.dispatchEvent(event);}
+           if(this.destTimeField != ""){
+              this.destTimeField.dispatchEvent(event);}
 
             e.stopPropagation();
-        });
+        }.bind(this));
         this.AddOn.parentNode.addEventListener('keyup', (e) => {
             if (e.keyCode === 9 || e.keyCode === 13) {
                 var val = this._autocomplete(this.destDateField.value);
                 if (val != undefined && val.trim() != '') {
-                    this.destDateField.value = val.split(' ')[0];
-                    this.destTimeField.value = (val.split(' ')[1] || '') + ' ' + (val.split(' ')[2] || '')
-                }
+                  if (this.destDateField){
+                    this.destDateField.value = val.split(' ')[0];}
+                  if(this.destTimeField){
+                    this.destTimeField.value = this.destTimeField.value.trim() ===''? ((val.split(' ')[1] || '') + ' ' + (val.split(' ')[2] || '')): this.destTimeField.value;
+                }}
             }
             return false;
         });
@@ -275,7 +297,7 @@ class DatePicker {
             if (this.showOnlyDate) {
                 this.generateCalendarTable();
             }
-            if (this.showOnlyTime) {
+            if (this.showOnlyTime && this.destTimeField != '') {
                 this.createtimePicker();
             }
         }
@@ -557,7 +579,7 @@ class DatePicker {
     }
     showtime() {
         let parentObj = ((typeof this.parent === 'object') ? this.parent : document.getElementById(this.parent));;
-        let dateParentObj = parentObj.querySelector('.table-condensed-date');
+        let dateParentObj = parentObj.querySelector('.table-condensed-date')||document.createElement('div');
         let timeParentObj = parentObj.querySelector('.table-condensed-time');
 
 
@@ -592,7 +614,8 @@ class DatePicker {
         let self = this;
         rootTimeTable.className = "table-condensed-time";
         let timeFieldValue = (typeof this.destTimeField === 'object') ? this.destTimeField : document.getElementById(this.destTimeField);
-        timeFieldValue.value = this.showCurrentTime();
+        if(timeFieldValue)
+          timeFieldValue.value = this.showCurrentTime();
         // add month title header on Time calender
         let tableMonthTop = rootTimeTable.insertRow(0);
         tableMonthTop.className = "months-header-picker-title";
@@ -777,15 +800,22 @@ class DatePicker {
         cell1.appendChild(spanTimeIcon);
         cell1.appendChild(spanTimeTitle);
         cell1.colSpan = 5;
-
         //hide the time calendar and show the date calendar
-        if (this.showOnlyTime) {
+        if (this.showOnlyTime && this.destTimeField != '') {
             tableFooter.onclick = function() {
+              if(this.destDateField != ''){
                 var timePickerTable = parentObj.querySelector(".table-condensed-time");
                 var datePickerTable = parentObj.querySelector(".table-condensed-date");
-                timePickerTable.style.display = "none";
-                datePickerTable.style.display = "";
-            };
+                if(timePickerTable)
+                  timePickerTable.style.display = "none";
+                if(datePickerTable)
+                  datePickerTable.style.display = "";
+              }
+            }.bind(this);
+        }
+        //off footer icon and hover for only time control
+        if(this.destDateField == ''){
+           tableFooter.classList.add('overlay');
         }
     }
     addCalendarFooter(rootTable) {
@@ -803,11 +833,14 @@ class DatePicker {
         cell1.appendChild(spanTimeIcon);
         cell1.appendChild(spanTimeTitle);
         cell1.colSpan = 7;
-        if (this.showOnlyDate) {
+        if (this.showOnlyDate && this.destTimeField != '') {
             tableFooter.onclick = function() {
                 self.showtime();
 
             };
+        }
+        else{
+          tableFooter.classList.add('overlay');
         }
 
     }
