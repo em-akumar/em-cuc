@@ -16,6 +16,28 @@
   <div class="form-group">
     <div class="col-sm-3">
       <!-- Added date and time picker control -->
+      <label>Select Time Only</label>
+      <div  emc="DatePicker" options="vm.dateTimePickerDisabled"  class="em-date-picker input-group">
+        <span   class="input-group-addon em-calendar" ></span>
+        <input type="text" class="form-control em-txt-md-time time-picker" placeholder="## : ## AM" >
+        <div class="jcalendar_parent default em-calendar-pop" style="z-index: 999;display: none;"></div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-3">
+      <!-- Added date and time picker control -->
+      <label>Select Date Only</label>
+      <div  emc="DatePicker" options="vm.dateTimePickerDisabled"  class="em-date-picker input-group">
+        <span   class="input-group-addon em-calendar" ></span>
+        <input type="text" class="form-control em-txt-md  date-picker" placeholder="MM / DD / YYYY" >
+        <div class="jcalendar_parent default em-calendar-pop" style="z-index: 999;display: none;"></div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-3">
+      <!-- Added date and time picker control -->
       <label>Select Date and Time (DIsabled)</label>
       <div  emc="DatePicker" options="vm.dateTimePickerDisabled"  class="em-date-picker input-group disabled">
         <span   class="input-group-addon em-calendar" ></span>
@@ -30,7 +52,7 @@
       <!-- Added date and time picker control -->
       <label>Select Date and Time (Auto complete)</label>
 
-      <div emc="DatePicker" options="vm.dateTimePickerAuto" class="em-date-picker input-group em-lbl-left">
+      <div emc="DatePicker" options="vm.dateTimePickerAuto" class="em-date-picker input-group ">
         <span class="input-group-addon em-calendar"></span>
         <input type="text" class="form-control em-txt-md  date-picker" placeholder="MM / DD / YYYY">
         <input type="text" class="form-control em-txt-md-time time-picker" placeholder="## : ## AM">
