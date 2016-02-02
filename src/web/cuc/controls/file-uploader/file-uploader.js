@@ -370,7 +370,9 @@ var FileUpload = function (el, opts) {
         showTick.appendChild(showTickImg);
         showProgressBar(xhr, progress2); //shows progress bar
         document.getElementById('fileCloseDiv' + file.guid).addEventListener('click', function (e) {
-         this.abort();
+          if(this.status != 200) {
+           this.abort();
+          }
         }.bind(xhr));
         var data = new FormData();
 
