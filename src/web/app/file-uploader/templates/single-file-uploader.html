@@ -1,0 +1,50 @@
+<div>
+  <div class="panel-heading em-toolbar-container"> Single File Uploader</div>
+  <div class="em-single-file-uploader">
+    <div emc="SingleFileUpload"  options="vm.singleFileoptions" ></div>
+  </div>
+  <br />
+  <button type="button" class="btn btn-primary" ng-click="vm.upload()">Upload</button>
+
+<br /><br />
+   <!-- Single File Uploader Control Usage -->
+        <div id="text-input-size-usage" class="panel panel-primary">
+            <div class="panel-heading">File Uploader Usage</div>
+            <div class="codepen-group">
+                <pre class="codepen-able" data-type="html">
+//Html usage
+&lt;div class=&quot;em-single-file-uploader&quot;&gt;
+  &lt;div emc=&quot;SingleFileUpload&quot; options=&quot;vm.singleFileoptions&quot; &gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot; ng-click=&quot;vm.upload()&quot;&gt;Upload&lt;/button&gt;
+
+//Controller usage
+let options = {
+      fileInputId: 'singleUpload'
+};
+this.singleFileoptions = options;
+
+upload(){
+  if(document.getElementById('singleUpload').files.length> 0)
+  {
+    var file = document.getElementById('singleUpload').files[0];
+    var fd = new FormData();
+    fd.append('file', file);
+    this.$http.post('http://10.112.104.13:85/v1/formbuilder/importpackage', fd, {
+        transformRequest: angular.identity,
+        headers: {'Content-Type': undefined}
+    })
+    .success(function(){
+      console.log('file uploaded successfully.');
+    })
+    .error(function(){
+      console.log('Error uploading file');
+    });
+  }
+}
+
+</pre>
+                <!--<pre class="codepen-able" id="css-file-uploader" data-type="css"></pre>-->
+            </div>
+        </div>
+</div>
