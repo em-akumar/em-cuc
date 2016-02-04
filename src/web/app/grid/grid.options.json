@@ -1,0 +1,19 @@
+{
+  "paginationPageSize": 10,
+  "sortEnabled": true,
+  "enableRowSelection": true,
+  "enableRowHeaderSelection": true,
+  "multiSelect": true,
+  "enableSelectAll": true,
+  "enableColumnResizing" : true,
+  "enableFiltering": true,
+  "columnDefs": [{
+      "field": "Loan_Program_Amount",
+      "displayName": "Amount",
+      "width": "*"},
+    {"field": "Date_Started",
+    "enableColumnResizing" : false},
+    {"field": "Estimated_Close_Date"},
+    {"field": "Status"}
+  ]
+}

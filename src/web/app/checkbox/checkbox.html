@@ -1,0 +1,220 @@
+<div class="app checkbox">
+  <div class="demo-page-header">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1>Check Box </h1>
+      </div>
+    </div>
+  </div>
+  <!-- Checkbox Controls Samples-->
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel-body em-checkbox-other-control-grp">
+        <div class="checkbox">
+          <input type="checkbox" id="chk25">
+          <label for="chk25">Default</label>
+        </div>
+        <div class="checkbox">
+          <input type="checkbox" id="chk26" value="" >
+          <label for="chk26">Hover/Focus</label>
+        </div>
+        <div class="checkbox">
+          <input type="checkbox" id="chk27" value="">
+          <label for="chk27">Active</label>
+        </div>
+        <div class="checkbox">
+          <input type="checkbox" id="chk28" value="" checked>
+          <label for="chk28">Checked</label>
+        </div>
+        <div class="checkbox">
+          <input type="checkbox" id="chk29" value="" disabled>
+          <label for="chk29">Disabled</label>
+        </div>
+        <div class="checkbox em-readonly-checkbox">
+          <input type="checkbox" id="chk30" onclick="return false" checked>
+          <label for="chk30">Readonly</label>
+        </div>
+        <div class="checkbox em-readonly-checked-checkbox">
+          <input type="checkbox" id="chk31" value="" onclick="return false" checked>
+          <label for="chk31" >Readonly Checked</label>
+        </div>
+        <div class="checkbox em-restricked-checkbox">
+          <input type="checkbox" id="chk32" value="" onclick="return false" checked>
+          <label for="chk32" data-restricted="true">Testing Restricted</label>
+        </div>
+        <div class="checkbox em-errorCheckbox">
+          <input type="checkbox" id="chk33">
+          <label for="chk33">Error</label>
+        </div>
+
+ <!-- Checkbox Control Usage -->
+    <div id="checkbox-usage" class="panel panel-primary">
+        <div class="panel-heading">CheckBox Control Usage</div>
+        <div class="codepen-group">
+            <pre class="codepen-able" data-type="html">&lt;div class=&quot;panel-body&quot;&gt;&#13;&#10     &lt;div class=&quot;demo-example&quot; data-heading=&quot;Samples&quot;&gt;
+    &lt;div class=&quot;checkbox&quot;&gt;
+      &lt;input type=&quot;checkbox&quot; id=&quot;chk1&quot; value=&quot;&quot; &gt;
+      &lt;label for=&quot;chk1&quot;&gt;Default&lt;/label&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;checkbox&quot;&gt;
+      &lt;input type=&quot;checkbox&quot; id=&quot;chk2&quot; value=&quot;&quot; &gt;
+      &lt;label for=&quot;chk2&quot;&gt;Hover/Focus&lt;/label&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;checkbox&quot;&gt;
+      &lt;input type=&quot;checkbox&quot; id=&quot;chk3&quot; value=&quot;&quot;&gt;
+      &lt;label for=&quot;chk3&quot;&gt;Active&lt;/label&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;checkbox&quot;&gt;
+      &lt;input type=&quot;checkbox&quot; id=&quot;chk4&quot; value=&quot;&quot; checked&gt;
+      &lt;label for=&quot;chk4&quot;&gt;Checked&lt;/label&gt;
+    &lt;/div&gt;
+
+     &lt;div class=&quot;checkbox&quot;&gt;
+      &lt;input type=&quot;checkbox&quot; id=&quot;chk5&quot; value=&quot;&quot; disabled&gt;
+      &lt;label for=&quot;chk5&quot;&gt;Disabled&lt;/label&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;checkbox em-readonly-checkbox&quot;&gt;
+      &lt;input type=&quot;checkbox&quot; id=&quot;chk6&quot; onclick=&quot;return false&quot; checked&gt;
+      &lt;label for=&quot;chk6&quot;&gt;Readonly&lt;/label&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;checkbox em-readonly-checked-checkbox&quot;&gt;
+      &lt;input type=&quot;checkbox&quot; id=&quot;chk7&quot; value=&quot;&quot; onclick=&quot;return false&quot; checked&gt;
+      &lt;label for=&quot;chk7&quot; &gt;Readonly Checked&lt;/label&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;checkbox em-restricked-checkbox&quot;&gt;
+      &lt;input type=&quot;checkbox&quot; id=&quot;chk8&quot;&gt;
+      &lt;label for=&quot;chk8&quot;&gt;......&lt;/label&gt;
+    &lt;/div&gt;&#13;&#10
+    &lt;div class=&quot;checkbox em-errorCheckbox&quot;&gt;
+      &lt;input type=&quot;checkbox&quot; id=&quot;chk9&quot;&gt;
+      &lt;label for=&quot;chk9&quot;&gt;Error&lt;/label&gt;
+    &lt;/div&gt;&#13;&#10       &lt;/div&gt&#13;&#10&lt;/div&gt;</pre>
+            <pre class="codepen-able" id="css-checkbox" data-type="css"></pre>
+        </div>
+    </div>
+
+    <!-- Show the checkbox classes-->
+    <div class="table-responsive em-table">
+        <table class="table table-striped table-hover">
+            <tbody><tr>
+                <th style="width:20%;">Class</th>
+                <th style="width:72%;">Description</th>
+            </tr>
+            <tr>
+                <td>.checkbox</td>
+                <td>Checkbox are created with the .checkbox class</td>
+            </tr>
+            <tr>
+                <td>.checkbox-group-header</td>
+                <td>Adds a heading to the checkbox group</td>
+            </tr>
+            <tr>
+                <td>.em-readonly-checkbox</td>
+                <td>Set readonly state of the checkbox.Add onclick='return false' event to readonly state of checkbox</td>
+            </tr>
+            <tr>
+                <td>.em-readonly-checked-checkbox</td>
+                <td>Set readonly and checked state of the checkbox.Add onclick="return false" event to readonly and checked state of checkbox</td>
+            </tr>
+            <tr>
+                <td>.em-restricked-checkbox</td>
+                <td>Set readonly and checked state of the checkbox.Convert checkbox label text into dots</td>
+            </tr>
+            <tr>
+                <td>.em-errorCheckbox</td>
+                <td>Display the error state in red color</td>
+            </tr>
+            </tbody></table>
+    </div>
+
+    <!-- Show the checkbox properties-->
+    <div class="table-responsive em-table">
+        <table class="table table-striped table-hover">
+            <tbody><tr>
+                <th style="width:20%;">Property</th>
+                <th style="width:72%;">Description</th>
+            </tr>
+            <tr>
+                <td>checked</td>
+                <td>Adds a checked state of the checkbox</td>
+            </tr>
+            <tr>
+                <td>disabled</td>
+                <td>Adds a disabled state of the checkbox</td>
+            </tr>
+            </tbody></table>
+    </div>
+
+
+
+<h1>Multiple Column Radio Buttons</h1>
+  <div class="row">
+    <div class="panel-body">
+      <div class="col-md-12">
+        <form role="form">
+          <div class="col-md-4 n-column" style="padding-left: 0;">
+            <div class="checkbox">
+              <input type="checkbox" id="chk13" value="" >
+              <label for="chk13">Refund prorated unearned Up Front</label>
+            </div>
+            <div class="checkbox">
+              <input type="checkbox" id="chk14" value="" >
+              <label for="chk14">Rounding to nearest $50</label>
+            </div>
+            <div class="checkbox">
+              <input type="checkbox" id="chk15" value="">
+              <label for="chk15">Charges for the insurance are added to your loan payments</label>
+            </div>
+            <div class="checkbox">
+              <input type="checkbox" id="chk16" value="" >
+              <label for="chk16">Charges for the insurance are collected upfront at loan closing</label>
+            </div>
+            <div class="checkbox">
+              <input type="checkbox" id="chk17" value="" >
+              <label for="chk17">Charges for the insurance are added to your loan payments.</label>
+            </div>
+            <div class="checkbox ">
+              <input type="checkbox" id="chk18" >
+              <label for="chk18">MI Factor Field Locked</label>
+            </div>
+          </div>
+          <div class="col-md-4 n-column" style="padding-left: 0;">
+            <div class="checkbox">
+              <input type="checkbox" id="chk19" value="" >
+              <label for="chk19">Refund prorated unearned Up Front</label>
+            </div>
+            <div class="checkbox">
+              <input type="checkbox" id="chk20" value="" >
+              <label for="chk20">Rounding to nearest $50</label>
+            </div>
+            <div class="checkbox">
+              <input type="checkbox" id="chk21" value="">
+              <label for="chk21">Charges for the insurance are added to your loan payments</label>
+            </div>
+            <div class="checkbox">
+              <input type="checkbox" id="chk22" value="" >
+              <label for="chk22">Charges for the insurance are collected upfront at loan closing</label>
+            </div>
+            <div class="checkbox">
+              <input type="checkbox" id="chk23" value="" >
+              <label for="chk23">Charges for the insurance are added to your loan payments.</label>
+            </div>
+            <div class="checkbox ">
+              <input type="checkbox" id="chk24" >
+              <label for="chk24">MI Factor Field Locked</label>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
