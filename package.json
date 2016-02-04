@@ -1,6 +1,6 @@
 {
   "name": "@emdev/em-cuc",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Ellie Mae EmCuc Development",
   "scripts": {
     "test": "./node_modules/.bin/protractor protractor.conf.js --suite functionaltests",
