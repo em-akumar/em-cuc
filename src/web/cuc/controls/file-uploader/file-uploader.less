@@ -46,6 +46,7 @@
           line-height: @close-icon-hover-background-size;
           cursor: pointer;
           text-align: center;
+          color: #444;
           &:hover {
             background-color: rgba(red(@close-icon-hover-background-color),
             green(@close-icon-hover-background-color),
@@ -191,5 +192,17 @@
   text-align: center;
   .fileUploadBtn, .cancelButton{
     display: none;
+  }
+}
+
+.em-single-file-uploader {
+  .file-input-hide{
+    display:none;
+  }
+  .file-input-text-button {
+    display: flex;
+    input {
+      margin-right:10px;
+    }
   }
 }
