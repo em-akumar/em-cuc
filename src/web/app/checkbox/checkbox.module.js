@@ -1,4 +1,5 @@
-import {angular, uiRouter} from 'ems';
+import angular from 'angular';
+import uiRouter from 'angular-ui-router';
 
 import checkboxComponent from './checkbox.component';
 import CheckboxService from './checkbox.service';

@@ -1,4 +1,6 @@
-import {angular, uiRouter, emsApi} from 'ems';
+import angular from 'angular';
+import uiRouter from 'angular-ui-router';
+import {emsApi} from 'ems';
 
 import appComponent from './app.component';
 import AppService from './app.service';
