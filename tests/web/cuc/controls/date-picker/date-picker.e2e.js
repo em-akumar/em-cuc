@@ -1,4 +1,4 @@
-import {expect} from '@emdev/em-swift/dist/ems.e2e';
+import {expect} from '@emdev/em-swift/dist/web/ems.e2e';
 
 // import corresponding page object javascript file(s)
 var CreateDatePicker = require('./date-picker.pageobject.js');
