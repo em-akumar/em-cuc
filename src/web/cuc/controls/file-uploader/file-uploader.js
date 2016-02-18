@@ -370,7 +370,9 @@ var FileUpload = function (el, opts) {
         showTick.appendChild(showTickImg);
         showProgressBar(xhr, progress2); //shows progress bar
         document.getElementById('fileCloseDiv' + file.guid).addEventListener('click', function (e) {
-         this.abort();
+          if(this.status != 200) {
+           this.abort();
+          }
         }.bind(xhr));
         var data = new FormData();
 
@@ -618,6 +620,7 @@ var FileUpload = function (el, opts) {
     //add the cancel and upload buttons in a div
     var divButtonWrapper = document.createElement('DIV');
     divButtonWrapper.className = 'clearfix actionButtonHolder';
+    divButtonWrapper.style.display = 'none';
     divButtonWrapper.appendChild(cancelButton);
     divToBind.parentNode.insertBefore(divButtonWrapper, divToBind.nextSibling);
     //add event listener to the click event of file select, upload and cancel button

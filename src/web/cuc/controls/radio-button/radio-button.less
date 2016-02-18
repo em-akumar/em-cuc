@@ -1,9 +1,9 @@
 .radio input[type=radio] {
   opacity: 0;
-  z-index: 1;
+  //z-index: 1;
   width: 18px;
   height: 17px;
-
+  margin-left:0px;
   &:checked + label:before {
     background: radial-gradient(at center, #fff 1px, @radiobutton-checked-background-color 1px);
     border: 1px solid @radiobutton-checked-border-color;
@@ -39,6 +39,10 @@
 
 .n-column .radio label {
   width: 100%;
+}
+
+.radio label{
+  line-height: 1.4;
 }
 
 .radio input[type="radio"]:not([disabled]) + label {

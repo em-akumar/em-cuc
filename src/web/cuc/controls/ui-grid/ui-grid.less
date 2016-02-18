@@ -192,10 +192,10 @@
     }
   }
   .ui-grid-row {
-    height: @simple-grid-header-row-container-height !important;
+    min-height: @simple-grid-header-row-container-height;
     .ng-isolate-scope{
       .ui-grid-cell{
-        height: @simple-grid-header-row-container-height !important;
+        min-height: @simple-grid-header-row-container-height;
         border-bottom: 1px solid @table-header-row-column-separator;
         background-color: @simple-grid-body-row-cell-background-color;
         .ui-grid-cell-contents {

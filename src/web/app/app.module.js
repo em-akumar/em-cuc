@@ -1,4 +1,6 @@
-import {angular, uiRouter, emsApi} from 'ems';
+import angular from 'angular';
+import uiRouter from 'angular-ui-router';
+import {emsApi} from 'ems';
 
 import appComponent from './app.component';
 import AppService from './app.service';
@@ -28,11 +30,12 @@ import panel from './panel/panel.module';
 import errorHandling from './error-handling/error-handling.module';
 import imageButton from './image-button/image-button.module';
 import notifications from './notifications/notifications.module';
+import radioButton from './radio-button/radio-button.module';
 
 emsApi.baseUrl = 'http://localhost:9000/';
 
 let appModule = angular.module('app', [uiRouter, cuc.name, 'cuc', 'ui.grid', 'ui.bootstrap',
-  'ngMessages', 'ui.mask', buttons.name, textInput.name, textArea.name, fileUploader.name, dropdownEdit.name, grid.name, dropdown.name, colorPicker.name, modal.name, datepicker.name, checkbox.name, panel.name, errorHandling.name, imageButton.name, notifications.name]);
+  'ngMessages', 'ui.mask', buttons.name, textInput.name, textArea.name, fileUploader.name, dropdownEdit.name, grid.name, dropdown.name, colorPicker.name, modal.name, datepicker.name, checkbox.name, panel.name, errorHandling.name, imageButton.name, notifications.name, radioButton.name]);
 
 appModule.config(($stateProvider, $urlRouterProvider) => {
   $stateProvider.state('app', {
