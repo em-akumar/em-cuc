@@ -1,4 +1,5 @@
-import {angular, uiRouter} from 'ems';
+import angular from 'angular';
+import {uiRouter} from 'ems';
 
 import buttonsComponent from './buttons.component';
 import ButtonsService from './buttons.service';

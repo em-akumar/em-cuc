@@ -1,4 +1,5 @@
-import {angular, uiRouter} from 'ems';
+import angular from 'angular';
+import {uiRouter} from 'ems';
 
 import datepickerComponent from './datepicker.component';
 import DatepickerService from './datepicker.service';
