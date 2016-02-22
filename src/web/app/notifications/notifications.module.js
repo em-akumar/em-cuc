@@ -1,4 +1,5 @@
-import {angular, uiRouter} from 'ems';
+import angular from 'angular';
+import {uiRouter} from 'ems';
 
 import notificationsComponent from './notifications.component';
 import NotificationsService from './notifications.service';

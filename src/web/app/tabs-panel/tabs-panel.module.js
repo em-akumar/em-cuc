@@ -1,4 +1,5 @@
-import {angular, uiRouter} from 'ems';
+import angular from 'angular';
+import {uiRouter} from 'ems';
 
 import tabsPanelComponent from './tabs-panel.component';
 import TabsPanelService from './tabs-panel.service';

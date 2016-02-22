@@ -1,4 +1,5 @@
-import {angular, uiRouter} from 'ems';
+import angular from 'angular';
+import {uiRouter} from 'ems';
 
 import radioButtonComponent from './radio-button.component';
 import RadioButtonService from './radio-button.service';

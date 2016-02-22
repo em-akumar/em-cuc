@@ -1,4 +1,5 @@
-import {angular} from 'ems';
+import angular from 'angular';
+import {uiRouter} from 'ems';
 
 import gridComponent from './grid.component';
 import GridService from './grid.service';

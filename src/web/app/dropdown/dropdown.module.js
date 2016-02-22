@@ -1,4 +1,5 @@
-import {angular} from 'ems';
+import angular from 'angular';
+import {uiRouter} from 'ems';
 
 import dropdownComponent from './dropdown.component';
 import DropdownService from './dropdown.service';

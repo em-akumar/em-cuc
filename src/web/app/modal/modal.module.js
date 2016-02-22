@@ -1,4 +1,5 @@
-import {angular} from 'ems';
+import angular from 'angular';
+import {uiRouter} from 'ems';
 
 import modalComponent from './modal.component';
 import ModalService from './modal.service';

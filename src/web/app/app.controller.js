@@ -1,4 +1,4 @@
-import {angular} from 'ems';
+import angular from 'angular';
 export default class AppController {
   /* @ngInject */
   constructor(AppService, $scope) {

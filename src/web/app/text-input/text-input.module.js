@@ -1,4 +1,5 @@
-import {angular, uiRouter} from 'ems';
+import angular from 'angular';
+import {uiRouter} from 'ems';
 
 import textInputComponent from './text-input.component';
 import TextInputService from './text-input.service';
