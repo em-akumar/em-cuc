@@ -1,5 +1,6 @@
 {
-  "paginationPageSize": 10,
+  "paginationPageSize": 30,
+  "paginationPageSizes":[30,60,90],
   "sortEnabled": true,
   "enableRowSelection": true,
   "enableRowHeaderSelection": true,
