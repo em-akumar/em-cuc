@@ -129,7 +129,7 @@ cuc.directive('uiGridPrint', function () {
   };
 });
 
-cuc.directive('uiGridCustomPaging', function ($compile) {
+cuc.directive('uiGridCustomPaging', function ($compile,$timeout) {
   return {
     link: function (scope, element, attrs, uiGridctrl) {
       uiGridctrl.grid.options.enablePaginationControls = false;
@@ -143,6 +143,8 @@ cuc.directive('uiGridCustomPaging', function ($compile) {
           scope._initfirst = false;
         }
       });
+
+      uiGridctrl.grid.api.core.on.filterChanged(scope, () => { $timeout(() => { initPage(scope); },200); });
       function initPage(scope) {
 
         var divPage = document.createElement('div');
@@ -170,7 +172,11 @@ cuc.directive('uiGridCustomPaging', function ($compile) {
           '<a style="opacity:0" ng-click="_rightArrow_click()">2</a>' +
           '</span>' +
           '</nav>' +
-          '</div>';
+        '</div>';
+        if(element[0].querySelector('.em-complex-table-footer')){
+          let elementToRemove = element[0].querySelector('.em-complex-table-footer').parentNode;
+         elementToRemove.parentNode.removeChild(elementToRemove );
+        }
         element[0].appendChild(divPage);
         var perpageRow = uiGridctrl.grid.options.paginationPageSize;
         var totalRow = uiGridctrl.grid.options.totalItems;
