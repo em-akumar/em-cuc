@@ -1,167 +1,127 @@
-@font-face {
-  font-family: 'FrutigerLTPro-BoldCn';
-  src: url('../assets/fonts/FrutigerLTPro-BoldCn.eot');
-  src: url('../assets/fonts/FrutigerLTPro-BoldCn.eot?#iefix') format('embedded-opentype'),
-  url('../assets/fonts/FrutigerLTPro-BoldCn.woff') format('woff'),
-  url('../assets/fonts/FrutigerLTPro-BoldCn.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'FrutigerLTPro-LightCn';
-  src: url('../assets/fonts/FrutigerLTPro-LightCn.eot');
-  src: url('../assets/fonts/FrutigerLTPro-LightCn.eot?#iefix') format('embedded-opentype'),
-  url('../assets/fonts/FrutigerLTPro-LightCn.woff') format('woff'),
-  url('../assets/fonts/FrutigerLTPro-LightCn.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'FrutigerLTPro-Condensed';
-  src: url('../assets/fonts/FrutigerLTPro-Condensed.eot');
-  src: url('../assets/fonts/FrutigerLTPro-Condensed.eot?#iefix') format('embedded-opentype'),
-  url('../assets/fonts/FrutigerLTPro-Condensed.woff') format('woff'),
-  url('../assets/fonts/FrutigerLTPro-Condensed.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'FrutigerLTPro-Roman';
-  src: url('../assets/fonts/FrutigerLTPro-Roman.eot');
-  src: url('../assets/fonts/FrutigerLTPro-Roman.eot?#iefix') format('embedded-opentype'),
-  url('../assets/fonts/FrutigerLTPro-Roman.woff') format('woff'),
-  url('../assets/fonts/FrutigerLTPro-Roman.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'FrutigerLTPro-Light';
-  src: url('../assets/fonts/FrutigerLTPro-Light.eot');
-  src: url('../assets/fonts/FrutigerLTPro-Light.eot?#iefix') format('embedded-opentype'),
-  url('../assets/fonts/FrutigerLTPro-Light.woff') format('woff'),
-  url('../assets/fonts/FrutigerLTPro-Light.ttf') format('truetype');
-}
-
 //Font Family
-@font-family-base : 'FrutigerLTPro-Roman', Helvetica, Arial, sans-serif;
+@font-family-base: 'ProximaNova-Regular', Helvetica, Arial, sans-serif;
 
 // Font Specs
-@font-body-size :1.0rem;
-@font-size-base : 0.815rem;
-@font-size-xsmall : 0.6875rem;
-@font-size-small : 0.75rem;
-@font-size-medium : 0.875rem;
-@font-size-large : 1rem;
-@font-size-h3 : 1.125rem;
-@font-size-h2 : 1.5rem;
-@font-size-h1 : 2rem;
+@font-body-size: 1.0rem;
+@font-size-base: 0.815rem;
+@font-size-xsmall: 0.6875rem;
+@font-size-small: 0.75rem;
+@font-size-medium: 0.875rem;
+@font-size-large: 1rem;
+@font-size-h3: 1.125rem;
+@font-size-h2: 1.5rem;
+@font-size-h1: 2rem;
 
 //Global Color
-@black : #333333;
-@text-link-default : #2080c3;
-@text-link-hover : #5da5d9;
-@text-link-visited : #5da5d9;
-@state-disabled-warm-gray-dark : #c0c6cc;
+@black: #333333;
+@text-link-default: #2080c3;
+@text-link-hover: #5da5d9;
+@text-link-visited: #5da5d9;
+@state-disabled-warm-gray-dark: #c0c6cc;
 @state-hover-color: #5da5d9;
-@state-disabled-color : #C0C6CC;
-@state-selected-color : #005fa0;
-@state-active-color : #005fa0;
-@state-success-color : #00c875;
-@state-warning-color : #f59131;
-@state-danger-red-light : #F8C8C8;
-@state-danger-red-base : #E42226;
+@state-disabled-color: #C0C6CC;
+@state-selected-color: #005fa0;
+@state-active-color: #005fa0;
+@state-success-color: #00c875;
+@state-warning-color: #f59131;
+@state-danger-red-light: #F8C8C8;
+@state-danger-red-base: #E42226;
 @text-input-placeholder: #C0C6CC;
 @text-input-placeholder-font-weight: lighter;
-@blue-darker : #004a79;
-@blue-dark : #005fa0;
-@blue-base : #2080c3;
-@blue-light : #5da5d9;
-@blue-lighter : #8ec3e7;
-@blue-lightest : #c0e0f8;
-@gray-warm-darkest : #80858c;
-@gray-warm-darker : #acb3bc;
-@gray-warm-dark : #c0c6cc;
-@gray-warm-base : #d5d9dd;
-@gray-warm-light : #e4e7e9;
-@gray-warm-lighter : #f5f7f7;
-@gray-warm-lightest : #f8f9f9;
-@white : #fff;
+@blue-darker: #004a79;
+@blue-dark: #005fa0;
+@blue-base: #2080c3;
+@blue-light: #5da5d9;
+@blue-lighter: #8ec3e7;
+@blue-lightest: #c0e0f8;
+@gray-warm-darkest: #80858c;
+@gray-warm-darker: #acb3bc;
+@gray-warm-dark: #c0c6cc;
+@gray-warm-base: #d5d9dd;
+@gray-warm-light: #e4e7e9;
+@gray-warm-lighter: #f5f7f7;
+@gray-warm-lightest: #f8f9f9;
+@white: #fff;
 
 //components
-@line-height-base : 1.375rem;
-@line-height-large : 125%;
-@line-height-small : 92%;
-@padding-base-vertical : 8px;
-@padding-base-horizontal : 18px;
-@padding-large-vertical : 10px;
-@padding-large-horizontal : 22px;
-@padding-small-vertical : 7px;
-@padding-small-horizontal : 15px;
-@border-radius-base : 2px;
-@border-radius-large : 3px;
-@border-radius-small : 1.5px;
+@line-height-base: 1.375rem;
+@line-height-large: 125%;
+@line-height-small: 92%;
+@padding-base-vertical: 8px;
+@padding-base-horizontal: 18px;
+@padding-large-vertical: 10px;
+@padding-large-horizontal: 22px;
+@padding-small-vertical: 7px;
+@padding-small-horizontal: 15px;
+@border-radius-base: 2px;
+@border-radius-large: 3px;
+@border-radius-small: 1.5px;
 @text-line-max-width: 620px;
 
 //image button width sizes
-@image-button-small : 14px;
-@image-button-medium : 20px;
-@image-button-large : 32px;
-@image-button-larger : 48px;
+@image-button-small: 14px;
+@image-button-medium: 20px;
+@image-button-large: 32px;
+@image-button-larger: 48px;
 
 //panels,containers,divs
-@border-width-1 : 1px;
-@border-width-2 : 2px;
-@border-width-3 : 3px;
-@border-radius-1 : 1px;
-@border-radius-2 : 2px;
-@border-radius-3 : 3px;
-@border-color-gray-warm-base : #d5d9dd;
-@background-color-gray-warm-lightest : #f8f8f9;
-@background-color-blue-base : #2080c3;
-@background-color-blue-darker : #004a79;
+@border-width-1: 1px;
+@border-width-2: 2px;
+@border-width-3: 3px;
+@border-radius-1: 1px;
+@border-radius-2: 2px;
+@border-radius-3: 3px;
+@border-color-gray-warm-base: #d5d9dd;
+@background-color-gray-warm-lightest: #f8f8f9;
+@background-color-blue-base: #2080c3;
+@background-color-blue-darker: #004a79;
 
 //Rendering Effects
-@drop-shadow-base : 0px 2px 5px 0px #d5d9dd;
-@drop-shadow-darker : 0px 2px 5px 0px #acb3bc;
-@inner-shadow-base : inset 0px 1px 0px 1px rgba(172,179,188,0.40);
+@drop-shadow-base: 0px 2px 5px 0px #d5d9dd;
+@drop-shadow-darker: 0px 2px 5px 0px #acb3bc;
+@inner-shadow-base: inset 0px 1px 0px 1px rgba(172, 179, 188, 0.40);
 
 //Links
-@text-link-primary-color-default : #2080c3;
-@text-link-primary-color-hover : #c0e0f8;
-@text-link-primary-color-active : #2080c3;
-@text-link-primary-color-disabled : @state-disabled-color;
+@text-link-primary-color-default: #2080c3;
+@text-link-primary-color-hover: #c0e0f8;
+@text-link-primary-color-active: #2080c3;
+@text-link-primary-color-disabled: @state-disabled-color;
 
 //Components
 //Panel (header)
-@panel-header-default-background : #e4e7e9;
-@panel-header-padding : 10px 20px;
-@panel-header-height : 32px;
-@panel-header-width : 100%;
+@panel-header-default-background: #e4e7e9;
+@panel-header-padding: 10px 20px;
+@panel-header-height: 32px;
+@panel-header-width: 100%;
 @panel-header-border-color: #acb3bc;
-@panel-header-default-border-color :  #acb3bc;
-@panel-header-hover-background-color : #e4e7e9;
-@panel-header-hover-border-color :  #80858c;
-@panel-header-active-background-color : #e4e7e9;
-@panel-header-active-border-color : #80858c;
-@panel-header-disabled-background-color : #e4e7e9;
-@panel-header-disabled-border-color :  #acb3bc;
-@panel-header-restricted-background-color : #f8f9f9;
-@panel-header-restricted-border-color : #acb3bc;
+@panel-header-default-border-color: #acb3bc;
+@panel-header-hover-background-color: #e4e7e9;
+@panel-header-hover-border-color: #80858c;
+@panel-header-active-background-color: #e4e7e9;
+@panel-header-active-border-color: #80858c;
+@panel-header-disabled-background-color: #e4e7e9;
+@panel-header-disabled-border-color: #acb3bc;
+@panel-header-restricted-background-color: #f8f9f9;
+@panel-header-restricted-border-color: #acb3bc;
 
 //Panel (content)
-@panel-content-default-background : #fff;
-@panel-content-default-padding : 20px;
-@panel-content-default-radius : 0px 0px 3px 3px;
+@panel-content-default-background: #fff;
+@panel-content-default-padding: 20px;
+@panel-content-default-radius: 0px 0px 3px 3px;
 @panel-content-default-width: 100%;
-@panel-content-default-border-color : #acb3bc;
-@panel-content-hover-background-color : #fff;
-@panel-content-hover-border-color : #80858c;
-@panel-content-active-background-color : #fff;
-@panel-content-active-border-color : #80858c;
-@panel-content-disabled-background-color : #f8f9f9;
-@panel-content-disabled-border-color : #d5d9dd;
-@panel-content-restricted-background-color :#f8f9f9;
-@panel-content-restricted-border-color : #acb3bc;
+@panel-content-default-border-color: #acb3bc;
+@panel-content-hover-background-color: #fff;
+@panel-content-hover-border-color: #80858c;
+@panel-content-active-background-color: #fff;
+@panel-content-active-border-color: #80858c;
+@panel-content-disabled-background-color: #f8f9f9;
+@panel-content-disabled-border-color: #d5d9dd;
+@panel-content-restricted-background-color: #f8f9f9;
+@panel-content-restricted-border-color: #acb3bc;
 
 //Category Box (header)
-@category-header-default-background : #004a79;
-@category-header-default-border-color : #004a79;
+@category-header-default-background: #004a79;
+@category-header-default-border-color: #004a79;
 @category-header-default-border-radius: 3px 3px 0px 0px;
 @category-header-padding: 12px 20px;
 @category-header-height: 44px;
@@ -172,16 +132,16 @@
 //@panel-header-default-border-color : #004a79;
 
 //Category Box (content)
-@panel-content-default-background : #fff;
-@panel-content-default-border-color : #acb3bc;
+@panel-content-default-background: #fff;
+@panel-content-default-border-color: #acb3bc;
 
 //Group Box (header)
 //@panel-header-default-background : #004a79;
 //@panel-header-default-border-color : #004a79;
 
 //Group Box (content)
-@panel-content-default-background : #fff;
-@panel-content-default-border-color : #acb3bc;
+@panel-content-default-background: #fff;
+@panel-content-default-border-color: #acb3bc;
 
 //Pane
 @pane-content-background-color: #e4e7e9;
@@ -192,33 +152,33 @@
 @pane-content-radius: 3px 3px 0px 0px;
 
 //Checkbox
-@checkbox-border-width : @border-width-1;
-@checkbox-border-style : solid;
-@checkbox-border-radius : 2px;
-@checkbox-width : 16px;
-@checkbox-default-background : @white;
-@checkbox-default-border-color : #acb3bc;
-@checkbox-default-label-color : #000;
-@checkbox-hover-background-color : @white ;
-@checkbox-hover-border-color : #2080c3;
-@checkbox-hover-outer-border-color : #c0e0f8;
-@checkbox-hover-outer-border-width : 2px;
-@checkbox-active-background-color : @state-active-color;
-@checkbox-active-border-color : @state-active-color;
-@checkbox-checked-background-color : @background-color-blue-base;
-@checkbox-checked-border-color : @background-color-blue-base;
-@checkbox-disabled-background-color : #f8f9f9;
-@checkbox-disabled-border-color : #d5d9dd;
-@checkbox-disabled-label-color : @state-disabled-color;
-@checkbox-restricted-background-color : #f8f9f9;
-@checkbox-restricted-border-color : #acb3bc;
-@checkbox-readonly-background-color : #f8f9f9;
-@checkbox-readonly-checked-background-color:#acb3bc;
-@checkbox-readonly-border-color : #acb3bc;
+@checkbox-border-width: @border-width-1;
+@checkbox-border-style: solid;
+@checkbox-border-radius: 2px;
+@checkbox-width: 16px;
+@checkbox-default-background: @white;
+@checkbox-default-border-color: #acb3bc;
+@checkbox-default-label-color: #000;
+@checkbox-hover-background-color: @white;
+@checkbox-hover-border-color: #2080c3;
+@checkbox-hover-outer-border-color: #c0e0f8;
+@checkbox-hover-outer-border-width: 2px;
+@checkbox-active-background-color: @state-active-color;
+@checkbox-active-border-color: @state-active-color;
+@checkbox-checked-background-color: @background-color-blue-base;
+@checkbox-checked-border-color: @background-color-blue-base;
+@checkbox-disabled-background-color: #f8f9f9;
+@checkbox-disabled-border-color: #d5d9dd;
+@checkbox-disabled-label-color: @state-disabled-color;
+@checkbox-restricted-background-color: #f8f9f9;
+@checkbox-restricted-border-color: #acb3bc;
+@checkbox-readonly-background-color: #f8f9f9;
+@checkbox-readonly-checked-background-color: #acb3bc;
+@checkbox-readonly-border-color: #acb3bc;
 @checkbox-icon: #fff;
 
 //Checkbox Mobile
-@checkbox-mobile-default-background-color: @white ;
+@checkbox-mobile-default-background-color: @white;
 @checkbox-mobile-border-color: #acb3bc;
 @checkbox-mobile-selected-background-color: #E4E7E9;
 @checkbox-mobile-width-flexible: 100%;
@@ -228,31 +188,31 @@
 @checkbox-error-outside-border: #f8c8c8;
 
 //Radio Button
-@radiobutton-border-width : @border-width-1;
+@radiobutton-border-width: @border-width-1;
 @radiobutton-width-flexible: 100%;
-@radiobutton-width : 16px;
-@radiobutton-filled-circle-width : 12px;
+@radiobutton-width: 16px;
+@radiobutton-filled-circle-width: 12px;
 @radiobutton-filled-circle-color: #fff;
-@radiobutton-border-style : solid;
-@radiobutton-border-radius : 3px;
-@radiobutton-default-background : @white ;
-@radiobutton-default-border-color : #acb3bc;
-@radiobutton-hover-background-color : @white ;
-@radiobutton-hover-border-color : #2080c3;
-@radiobutton-hover-outer-border-color : #c0e0f8;
-@radiobutton-hover-outer-border-width : 2px;
-@radiobutton-active-background-color : @state-active-color;
-@radiobutton-active-border-color : @state-active-color;
-@radiobutton-checked-background-color : @background-color-blue-base;
-@radiobutton-checked-border-color : @background-color-blue-base;
-@radiobutton-disabled-background-color : #f8f9f9;
-@radiobutton-disabled-border-color : #d5d9dd;
-@radiobutton-disabled-label-color : @state-disabled-color;
-@radiobutton-readonly-background-color : #f8f9f9;
-@radiobutton-readonly-border-color : #acb3bc;
-@radiobutton-readonly-label-color : #000;
+@radiobutton-border-style: solid;
+@radiobutton-border-radius: 3px;
+@radiobutton-default-background: @white;
+@radiobutton-default-border-color: #acb3bc;
+@radiobutton-hover-background-color: @white;
+@radiobutton-hover-border-color: #2080c3;
+@radiobutton-hover-outer-border-color: #c0e0f8;
+@radiobutton-hover-outer-border-width: 2px;
+@radiobutton-active-background-color: @state-active-color;
+@radiobutton-active-border-color: @state-active-color;
+@radiobutton-checked-background-color: @background-color-blue-base;
+@radiobutton-checked-border-color: @background-color-blue-base;
+@radiobutton-disabled-background-color: #f8f9f9;
+@radiobutton-disabled-border-color: #d5d9dd;
+@radiobutton-disabled-label-color: @state-disabled-color;
+@radiobutton-readonly-background-color: #f8f9f9;
+@radiobutton-readonly-border-color: #acb3bc;
+@radiobutton-readonly-label-color: #000;
 //Radio Button Mobile
-@radiobutton-mobile-default-background-color: @white ;
+@radiobutton-mobile-default-background-color: @white;
 @radiobutton-mobile-border-color: #acb3bc;
 @radiobutton-mobile-selected-background-color: #E4E7E9;
 @radiobutton-mobile-width-flexible: 100%;
@@ -269,32 +229,32 @@
 @dropdown-size-flexible: 100%;
 
 //Dropdown (input field)
-@dropdown-default-background : @white ;
-@dropdown-default-border-color : #acb3bc;
+@dropdown-default-background: @white;
+@dropdown-default-border-color: #acb3bc;
 @dropdown-default-text-color: #000;
 @dropdown-border-radius: 2px;
 @dropdown-icon-height: 10px;
 @dropdown-default-icon-color: #2080c3;
 @dropdown-default-padding: 10px 10px;
-@dropdown-hover-background-color : @white ;
-@dropdown-hover-border-color : #2080c3;
-@dropdown-hover-outer-border-color : #c0e0f8;
-@dropdown-hover-outer-border-width : 2px;
+@dropdown-hover-background-color: @white;
+@dropdown-hover-border-color: #2080c3;
+@dropdown-hover-outer-border-color: #c0e0f8;
+@dropdown-hover-outer-border-width: 2px;
 @dropdown-hover-text-color: #000;
 @dropdown-completed-border-color: #acb3bc;
 @dropdown-completed-text-color: #000;
-@dropdown-active-background-color : @white ;
-@dropdown-active-border-color : @state-active-color;
-@dropdown-disabled-background-color : #f8f9f9;
-@dropdown-disabled-border-color : #d5d9dd;
+@dropdown-active-background-color: @white;
+@dropdown-active-border-color: @state-active-color;
+@dropdown-disabled-background-color: #f8f9f9;
+@dropdown-disabled-border-color: #d5d9dd;
 @dropdown-disabled-text-color: #acb3bc;
 @dropdown-disabled-arrow-color: @state-disabled-color;
-@dropdown-restricted-background-color : #f8f9f9;
-@dropdown-restricted-border-color : #acb3bc;
-@dropdown-restricted-text-color : #000;
-@dropdown-readonly-background-color : #f8f9f9;
-@dropdown-readonly-border-color : #acb3bc;
-@dropdown-readonly-text-color : #000;
+@dropdown-restricted-background-color: #f8f9f9;
+@dropdown-restricted-border-color: #acb3bc;
+@dropdown-restricted-text-color: #000;
+@dropdown-readonly-background-color: #f8f9f9;
+@dropdown-readonly-border-color: #acb3bc;
+@dropdown-readonly-text-color: #000;
 @dropdown-error-inside-border: #e42226;
 @dropdown-error-outside-border: #f8c8c8;
 @dropdown-edit-error-inside-border: #e42226;
@@ -306,58 +266,57 @@
 @dropdown-default-height: 32px;
 
 //Dropdown Panel
-@dropdown-panel-default-background : @white ;
-@dropdown-panel-default-border-color : #d5d9dd;
+@dropdown-panel-default-background: @white;
+@dropdown-panel-default-border-color: #d5d9dd;
 @dropdown-panel-shadow-color: #d5d9dd;
 @dropdown-panel-border-radius: 2px;
 @dropdown-panel-hover-highlight-color: #e4e7e9;
 @dropdown-panel-hover-highlight-height: 22px;
 @dropdown-panel-active-background-color: @state-active-color;
-@dropdown-panel-active-text-color: @white ;
+@dropdown-panel-active-text-color: @white;
 @dropdown-panel-disabled-text-color: @state-disabled-color;
 @dropdown-panel-padding: 10px;
 @dropdown-combo-panel-padding-left: 8px;
 @dropdown-panel-section-separator-color: #e4e7e9;
 
-
 //Dropdown Edit (input field)
-@dropdown-edit-inner-shadow : inset 0px 1px 0px 1px rgba(172,179,188,0.40);
-@dropdown-edit-default-background : @white ;
+@dropdown-edit-inner-shadow: inset 0px 1px 0px 1px rgba(172, 179, 188, 0.40);
+@dropdown-edit-default-background: @white;
 @dropdown-edit-border-radius: 0 2px 2px 0;
-@dropdown-edit-default-border-color : #acb3bc;
+@dropdown-edit-default-border-color: #acb3bc;
 @dropdown-edit-default-text-color: #000;
-@dropdown-edit-hover-background-color : @white ;
-@dropdown-edit-hover-border-color : #2080c3;
+@dropdown-edit-hover-background-color: @white;
+@dropdown-edit-hover-border-color: #2080c3;
 @dropdown-edit-default-icon-color: #2080c3;
-@dropdown-edit-hover-outer-border-color : #c0e0f8;
-@dropdown-edit-hover-outer-border-width : 2px;
+@dropdown-edit-hover-outer-border-color: #c0e0f8;
+@dropdown-edit-hover-outer-border-width: 2px;
 @dropdown-edit-hover-text-color: #000;
-@dropdown-edit-completed-background-color: @white ;
-@dropdown-edit-completed-border-color : #acb3bc;
+@dropdown-edit-completed-background-color: @white;
+@dropdown-edit-completed-border-color: #acb3bc;
 @dropdown-edit-completed-text-color: #000;
-@dropdown-edit-active-background-color : @state-active-color;
-@dropdown-edit-active-border-color : @state-active-color;
-@dropdown-edit-disabled-background-color : #f8f9f9;
-@dropdown-edit-disabled-border-color : #d5d9dd;
-@dropdown-edit-disabled-text-color : @state-disabled-color;
-@dropdown-edit-disabled-icon-color : @state-disabled-color;
+@dropdown-edit-active-background-color: @state-active-color;
+@dropdown-edit-active-border-color: @state-active-color;
+@dropdown-edit-disabled-background-color: #f8f9f9;
+@dropdown-edit-disabled-border-color: #d5d9dd;
+@dropdown-edit-disabled-text-color: @state-disabled-color;
+@dropdown-edit-disabled-icon-color: @state-disabled-color;
 @dropdown-edit-disabled-arrow-color: @state-disabled-color;
-@dropdown-edit-restricted-background-color : #f8f9f9;
-@dropdown-edit-restricted-border-color : #acb3bc;
-@dropdown-edit-restricted-text-color : #000;
-@dropdown-edit-restricted-icon-color : @state-disabled-color;
-@dropdown-edit-readonly-background-color : #f8f9f9;
-@dropdown-edit-readonly-border-color : #acb3bc;
-@dropdown-edit-readonly-text-color : #000;
-@dropdown-edit-readonly-icon-color : #acb3bc;
+@dropdown-edit-restricted-background-color: #f8f9f9;
+@dropdown-edit-restricted-border-color: #acb3bc;
+@dropdown-edit-restricted-text-color: #000;
+@dropdown-edit-restricted-icon-color: @state-disabled-color;
+@dropdown-edit-readonly-background-color: #f8f9f9;
+@dropdown-edit-readonly-border-color: #acb3bc;
+@dropdown-edit-readonly-text-color: #000;
+@dropdown-edit-readonly-icon-color: #acb3bc;
 @dropdown-list-item-highlight-color: #e4e7e9;
 @dropdown-list-item-highlight-height: 22px;
-@dropdown-edit-item-panel-padding:5px;
+@dropdown-edit-item-panel-padding: 5px;
 @dropdown-edit-item-icon-radius: 5px;
 @dropdown-edit-item-icon-width: 10px;
 @dropdown-edit-item-icon-color: #99FF33;
 @dropdown-edit-item-margin-right: 8px;
-@dropdown-edit-item-margin-top:3px;
+@dropdown-edit-item-margin-top: 3px;
 //@dropdown-list-item-highlight-padding: 0 5px 0 5px;// -- duplicate one .. will be removed
 
 //Dropdown Size
@@ -368,27 +327,27 @@
 @dropdown-edit-size-flexible: 96.3%;
 
 //Dropdown/Dropdown Edit (Container)
-@dropdown-container-default-background : @white;
-@dropdown-container-default-border-color : #d5d9dd;
+@dropdown-container-default-background: @white;
+@dropdown-container-default-border-color: #d5d9dd;
 @dropdown-container-shadow-color: #d5d9dd;
 @dropdown-container-border-radius: 2px;
-@dropdown-container-hover-outer-border-color : #c0e0f8;
-@dropdown-container-hover-outer-border-width : 2px;
-@dropdown-container-active-background-color : @state-active-color;
-@dropdown-container-active-border-color : @state-active-color;
-@dropdown-container-disabled-background-color : #f8f9f9;
-@dropdown-container-disabled-border-color : #d5d9dd;
-@dropdown-button-background-color: @white ;
+@dropdown-container-hover-outer-border-color: #c0e0f8;
+@dropdown-container-hover-outer-border-width: 2px;
+@dropdown-container-active-background-color: @state-active-color;
+@dropdown-container-active-border-color: @state-active-color;
+@dropdown-container-disabled-background-color: #f8f9f9;
+@dropdown-container-disabled-border-color: #d5d9dd;
+@dropdown-button-background-color: @white;
 @dropdown-image-button-border-color: #acb3bc;
 @dropdown-image-button-border-radius: 0px 2px 2px 0px;
 
 //Dropdown (Text)
-@dropdown-container-text-color-default : #333;
-@dropdown-container-text-color-hover : @white ;
-@dropdown-container-text-color-disabled : @state-disabled-color;
-@dropdown-container-text-background-color-default : @white ;
-@dropdown-container-text-background-color-hover : #e4e7e9;
-@dropdown-container-text-background-color-active : @state-active-color;
+@dropdown-container-text-color-default: #333;
+@dropdown-container-text-color-hover: @white;
+@dropdown-container-text-color-disabled: @state-disabled-color;
+@dropdown-container-text-background-color-default: @white;
+@dropdown-container-text-background-color-hover: #e4e7e9;
+@dropdown-container-text-background-color-active: @state-active-color;
 
 //Date Picker variables to be decided
 
@@ -437,7 +396,7 @@
 @btn-height-medium: @text-button-height-medium;
 @btn-height-large: @text-button-height-large;
 
-@text-button-border-radius :  3px;
+@text-button-border-radius: 3px;
 @text-button-height-extra-small: 18px;
 @text-button-height-small: 24px;
 @text-button-height-medium: 32px;
@@ -446,60 +405,60 @@
 @text-button-width-small: 48px;
 @text-button-width-medium: 96px;
 @text-button-width-large: 140px;
-@text-button-width-flexible: 100%;//calc(~'100% - 30px');
+@text-button-width-flexible: 100%; //calc(~'100% - 30px');
 
 //Text Button- Primary
-@text-button-primary-font-color : #fff;
-@text-button-primary-disabled-font-color : #F8F9F9;
-@text-button-primary-default-background-color : #2080c3;
-@text-button-primary-hover-background-color : @state-hover-color;
-@text-button-primary-active-background-color : @state-active-color;
-@text-button-primary-disabled-background-color : @state-disabled-color;
+@text-button-primary-font-color: #fff;
+@text-button-primary-disabled-font-color: #F8F9F9;
+@text-button-primary-default-background-color: #2080c3;
+@text-button-primary-hover-background-color: @state-hover-color;
+@text-button-primary-active-background-color: @state-active-color;
+@text-button-primary-disabled-background-color: @state-disabled-color;
 
 //Text Button- Secondary
-@text-button-secondary-font-color : #444;
-@text-button-secondary-disabled-font-color : @state-disabled-color;
-@text-button-secondary-default-background-color : #F5F7F9;
-@text-button-secondary-default-border-color : #E4E7E9;
-@text-button-secondary-hover-background-color : #fff;
-@text-button-secondary-hover-border-color : #E4E7E9;
-@text-button-secondary-active-background-color : #E4E7E9;
-@text-button-secondary-active-border-color : #E4E7E9;
-@text-button-secondary-disabled-background-color : #F5F7F9;
-@text-button-secondary-disabled-border-color : #E4E7E9;
+@text-button-secondary-font-color: #444;
+@text-button-secondary-disabled-font-color: @state-disabled-color;
+@text-button-secondary-default-background-color: #F5F7F9;
+@text-button-secondary-default-border-color: #E4E7E9;
+@text-button-secondary-hover-background-color: #fff;
+@text-button-secondary-hover-border-color: #E4E7E9;
+@text-button-secondary-active-background-color: #E4E7E9;
+@text-button-secondary-active-border-color: #E4E7E9;
+@text-button-secondary-disabled-background-color: #F5F7F9;
+@text-button-secondary-disabled-border-color: #E4E7E9;
 
 //Text Button- Tertiary
-@text-button-tertiary-font-color : #1C6BB6;
-@text-button-tertiary-disabled-font-color : #ACB3BC;
-@text-button-tertiary-default-background-color : #fff;
-@text-button-tertiary-default-border-color : #E4E7E9;
-@text-button-tertiary-hover-background-color : #fff;
-@text-button-tertiary-hover-border-color : #2080C3;
-@text-button-tertiary-active-background-color : #fff;
-@text-button-tertiary-active-border-color : @state-active-color;
-@text-button-tertiary-disabled-background-color : #F5F7F7;
-@text-button-tertiary-disabled-border-color : #F5F7F7;
+@text-button-tertiary-font-color: #1C6BB6;
+@text-button-tertiary-disabled-font-color: #ACB3BC;
+@text-button-tertiary-default-background-color: #fff;
+@text-button-tertiary-default-border-color: #E4E7E9;
+@text-button-tertiary-hover-background-color: #fff;
+@text-button-tertiary-hover-border-color: #2080C3;
+@text-button-tertiary-active-background-color: #fff;
+@text-button-tertiary-active-border-color: @state-active-color;
+@text-button-tertiary-disabled-background-color: #F5F7F7;
+@text-button-tertiary-disabled-border-color: #F5F7F7;
 
 //Text Link
-@text-link-primary-font-color : #fff;
-@text-link-primary-default-background : #2080c3;
-@text-link-primary-hover-background-color : @state-hover-color ;
-@text-link-primary-active-background-color : @state-active-color;
-@text-link-primary-disabled-background-color : @state-disabled-color;
+@text-link-primary-font-color: #fff;
+@text-link-primary-default-background: #2080c3;
+@text-link-primary-hover-background-color: @state-hover-color;
+@text-link-primary-active-background-color: @state-active-color;
+@text-link-primary-disabled-background-color: @state-disabled-color;
 
 //Text Input Field
-@input-field-border-width : 1px;
-@input-field-border-style : solid;
-@input-field-border-radius : 2px;
-@input-field-default-background : @white;
-@input-field-default-border-color : #acb3bc;
-@input-field-hover-border-color : #2080c3;
-@input-field-hover-outer-border-color : #c0e0f8;
-@input-field-hover-outer-border-width : 2px;
-@input-field-active-background-color : @state-active-color;
-@input-field-active-border-color : @state-active-color;
-@input-field-disabled-background-color : #f8f9f9;
-@input-field-disabled-border-color : #d5d9dd;
+@input-field-border-width: 1px;
+@input-field-border-style: solid;
+@input-field-border-radius: 2px;
+@input-field-default-background: @white;
+@input-field-default-border-color: #acb3bc;
+@input-field-hover-border-color: #2080c3;
+@input-field-hover-outer-border-color: #c0e0f8;
+@input-field-hover-outer-border-width: 2px;
+@input-field-active-background-color: @state-active-color;
+@input-field-active-border-color: @state-active-color;
+@input-field-disabled-background-color: #f8f9f9;
+@input-field-disabled-border-color: #d5d9dd;
 @input-field-error-inside-border: #e42226;
 @input-field-error-outside-border: #f8c8c8;
 @input-label-required-color: #E42226;
@@ -531,32 +490,32 @@
 //Temporary color change
 @tooltip-default-background-color: #D3D3D3;
 @tooltip-default-border-color: #d5d9dd;
-@tooltip-default-text-color:#000;
-@tooltip-border-radius:2px;
-@tooltip-min-width:134px;
-@tooltip-max-width:256px;
-@tooltip-min-height:24px;
-@tooltip-max-height:90px;
+@tooltip-default-text-color: #000;
+@tooltip-border-radius: 2px;
+@tooltip-min-width: 134px;
+@tooltip-max-width: 256px;
+@tooltip-min-height: 24px;
+@tooltip-max-height: 90px;
 
 //Modal
-@modal-border-width : 1px;
-@modal-border-style : solid;
-@modal-border-radius : 3px;
-@modal-background-color : #fff;
-@modal-border-color : #acb3bc;
-@modal-section-divider-color : #acb3bc;
+@modal-border-width: 1px;
+@modal-border-style: solid;
+@modal-border-radius: 3px;
+@modal-background-color: #fff;
+@modal-border-color: #acb3bc;
+@modal-section-divider-color: #acb3bc;
 @modal-box-shadow-mixin: 0px 2px 6px 0px rgba(0, 0, 0, 0.75);
-@modal-header-background-color : #7F858C;
-@modal-header-title-size : 13px;
-@modal-header-title-color : #fff;
+@modal-header-background-color: #7F858C;
+@modal-header-title-size: 13px;
+@modal-header-title-color: #fff;
 @modal-header-title-font-weight: bold;
-@modal-header-title-padding : 5px;
-@modal-header-height : 27px;
-@modal-header-padding : 20px;
-@modal-section-padding : 20px;
-@modal-close-box-icon-height : 12px;
-@modal-close-box-icon-color : #fff;
-@modal-close-box-icon-padding : 6px;
+@modal-header-title-padding: 5px;
+@modal-header-height: 27px;
+@modal-header-padding: 20px;
+@modal-section-padding: 20px;
+@modal-close-box-icon-height: 12px;
+@modal-close-box-icon-color: #fff;
+@modal-close-box-icon-padding: 6px;
 @modal-close-box-hover-color: #444;
 @modal-light-box-background-color: #BFBFBF;
 @modal-light-box-opacity: 0.5;
@@ -628,14 +587,14 @@
 @pagination-hover-icon-arrow-height: 10px;
 @pagination-hover-icon-arrow-width: 5px;
 @pagination-hover-icon-background-color: #e4e7e9;
-@pagination-hover-icon-background-height:20px;
+@pagination-hover-icon-background-height: 20px;
 @pagination-hover-icon-background-width: 20px;
 @pagination-hover-icon-background-radius: 50%;
 @pagination-active-icon-arrow-color: #fff;
 @pagination-hover-icon-arrow-height: 20px;
 @pagination-hover-icon-arrow-width: 20px;
 @pagination-active-icon-background-color: #005fa0;
-@pagination-active-icon-background-height:20px;
+@pagination-active-icon-background-height: 20px;
 @pagination-active-icon-background-width: 20px;
 @pagination-active-icon-background-radius: 50%;
 
@@ -778,7 +737,7 @@
 @table-body-row-expanded-padding: 10px;
 @table-body-row-expanded-width: 100%;
 @table-body-row-expanded-min-height: 70px;
-@table-body-row-expanded-max-height:120px;
+@table-body-row-expanded-max-height: 120px;
 @table-body-row-expanded-default-exit-icon-color: #005fa0;
 @table-body-row-expanded-default-exit-icon-height: 12px;
 @table-body-row-expanded-default-exit-icon-width: 12px;
@@ -803,7 +762,7 @@
 @simple-grid-header-row-cell-background-color: #e4e7e9;
 @simple-grid-header-row-cell-width: 100%;
 @simple-grid-header-row-cell-padding: 0px 10px;
-@simple-grid-header-row-font-family: 'FrutigerLTPro-Roman', Helvetica, Arial, sans-serif;
+@simple-grid-header-row-font-family: @font-family-base;
 @simple-grid-header-row-font-size: 0.815rem;
 @simple-grid-header-row-font-color: #000;
 @simple-grid-body-row-container-width: 100%;
@@ -814,7 +773,7 @@
 @simple-grid-body-row-cell-background-color: #fff;
 @simple-grid-body-row-cell-width: 100%;
 @simple-grid-body-row-cell-padding: 0px 10px;
-@simple-grid-body-row-font-family: 'FrutigerLTPro-Roman', Helvetica, Arial, sans-serif;
+@simple-grid-body-row-font-family: @font-family-base;
 @simple-grid-body-row-font-size: 0.815rem;
 @simple-grid-body-row-font-color: #000;
 @none: none !important;
@@ -831,7 +790,7 @@
 @progress-bar-percentage-display-height: 14px;
 @progress-bar-percentage-display-padding: 5px;
 @progress-bar-percentage-display-box-shadow-color: #acb3bc;
-@progress-bar-percentage-display-font-family: 'FrutigerLTPro-Roman', Helvetica, Arial, sans-serif;
+@progress-bar-percentage-display-font-family: @font-family-base;
 @progress-bar-percentage-display-font-size: 0.75rem;
 @progress-bar-percentage-display-font-color: #000;
 @progress-bar-large-base-background-color: #fff;
@@ -850,14 +809,14 @@
 @progress-spinner-color: #fff;
 @progress-spinner-gray-color: #acb3bc;
 
-@progress-spinner-xsmall : 18px;
-@progress-spinner-small:24px;
+@progress-spinner-xsmall: 18px;
+@progress-spinner-small: 24px;
 @progress-spinner-medium: 30px;
 @progress-spinner-large: 36px;
 @progress-spinner-xlarge: 42px;
 
-@progress-spinner-gray-xsmall:18px;
-@progress-spinner-gray-small:24px;
+@progress-spinner-gray-xsmall: 18px;
+@progress-spinner-gray-small: 24px;
 @progress-spinner-gray-medium: 30px;
 @progress-spinner-gray-large: 36px;
 @progress-spinner-gray-xlarge: 42px;
@@ -892,17 +851,17 @@
 @tabs-panel-large-width: 240px;
 
 //text area input
-@textarea-border-radius : 2px;
-@textarea-placeholder : #acb3bc;
-@textarea-default-border-color : #acb3bc;
-@textarea-hover-border-color : #2080c3;
-@textarea-hover-outer-border-color : #c0e0f8;
-@textarea-disabled-border-color : #f8f9f9;
-@textarea-disabled-background-color : #f8f9f9;
-@textarea-default-background : @white;
-@textarea-size-medium : 128px;
-@textarea-size-large : 256px;
-@textarea-size-flexible : 100%;
+@textarea-border-radius: 2px;
+@textarea-placeholder: #acb3bc;
+@textarea-default-border-color: #acb3bc;
+@textarea-hover-border-color: #2080c3;
+@textarea-hover-outer-border-color: #c0e0f8;
+@textarea-disabled-border-color: #f8f9f9;
+@textarea-disabled-background-color: #f8f9f9;
+@textarea-default-background: @white;
+@textarea-size-medium: 128px;
+@textarea-size-large: 256px;
+@textarea-size-flexible: 100%;
 
 //scroll bar
 @scroll-bar-small: 6px;
@@ -919,16 +878,15 @@
 @close-icon-hover-background-size: 16px;
 @close-icon-hover-background-radius: 2px;
 
-
 //Color Picker
 @color-picker-no-selection-color: #E42226;
-@color-picker-disabled-background-color:#F5F7F7;
-@color-picker-disabled-border-color : #F5F7F7;
-@color-picker-disabled-font-color : #ACB3BC;
-@color-picker-hover-border-color : #2080c3;
-@color-picker-hover-outer-border-color : #c0e0f8;
-@color-picker-readonly-background-color : #f8f9f9;
-@color-picker-readonly-border-color : #acb3bc;
+@color-picker-disabled-background-color: #F5F7F7;
+@color-picker-disabled-border-color: #F5F7F7;
+@color-picker-disabled-font-color: #ACB3BC;
+@color-picker-hover-border-color: #2080c3;
+@color-picker-hover-outer-border-color: #c0e0f8;
+@color-picker-readonly-background-color: #f8f9f9;
+@color-picker-readonly-border-color: #acb3bc;
 
 //Toast
 @toast-background-color: @blue-base;
@@ -941,7 +899,6 @@
 @toast-badge-icon-background-size: 24px;
 @toast-badge-icon-size: 12px;
 
-
 //Notification Modal
 @notification-modal-background-color: @gray-warm-lighter;
 @notification-modal-badge-icon-size: 24px;
@@ -953,11 +910,6 @@
 //Colors
 @alert-orange: #FE7634;
 @alert-orange-dark: #F95741;
-
-
-
-
-
 
 //Complex Upload
 @complex-upload-container-background-color: #e4e7e9;
@@ -990,7 +942,8 @@
 @complex-upload-drop-area-hover-bottom-font-color: #8ec3e7;
 @complex-upload-container-disabled-background-color: #d5d9dd;
 @complex-upload-drop-area-disabled-background-color: #c0c6cc;
-@complex-upload-drop-area-disabled-border: 2px dashed #acb3bc; @complex-upload-drop-area-disabled-top-font-color: #acb3bc;
+@complex-upload-drop-area-disabled-border: 2px dashed #acb3bc;
+@complex-upload-drop-area-disabled-top-font-color: #acb3bc;
 @complex-upload-drop-area-disabled-bottom-font-color: #acb3bc;
 @complex-upload-drop-area-disabled-icon-background-color: #c0c6cc;
 @complex-upload-tile-background-color: #fff;
@@ -1061,7 +1014,6 @@
 @progress-bar-mini-font-size: 0.6875rem;
 @progress-bar-mini-font-weight: lighter;
 @progress-bar-mini-font-color: #000;
-
 
 //Error Handling
 @error-text-color: #E42226;
