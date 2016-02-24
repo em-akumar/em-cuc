@@ -91,29 +91,51 @@ cuc.directive('ckEditor', () => {
   };
 });
 
-cuc.directive('uiGridPrint', function () {
+cuc.directive('uiGridPrint', function ($compile,$timeout) {
   return {
     link: function (scope, element, attrs, uiGridctrl) {
+      scope._initfirst = true;
+      uiGridctrl.grid.api.core.on.rowsRendered(scope, function () {
+        if (uiGridctrl.grid.renderContainers.body.visibleRowCache.length === 0) {
+          return;
+        }
+        if (scope._initfirst) {
+          scope._head = '';
+            var rows = uiGridctrl.grid.api.core.getVisibleRows();
+            uiGridctrl.grid.api.grid.columns.map(function (col) {
+              if (typeof rows[0].entity[col.field] !== 'undefined')
+                scope._head += '<td>' + col.displayName + '</td>';
+            });
+            scope._body =[];
+            rows.forEach(function (row, rowindex) {
+              scope._body[rowindex] = [];
+              uiGridctrl.grid.api.grid.columns.map(function (col, colindex) {
+                var rowScope = scope.$new(true);
+                rowScope.row=row;
+                rowScope.col = col;
+                if (typeof row.entity[col.field] !== 'undefined' ){
+                  if( col.cellTemplate.indexOf('COL_FIELD') == -1){
+                    var temp = $compile(col.cellTemplate)(rowScope);
+                    $timeout(() =>{
+                      scope._body[rowindex][colindex] = '<td>' + angular.element(temp[0]).html() + '</td>';
+                    }, 100);
+                  }
+                  else
+                    scope._body [rowindex][colindex]= '<td>' + row.entity[col.field] + '</td>';}
+              });
+        });
+         scope._initfirst = false;
+        }
+      });
       document.querySelector(attrs.uiGridPrint).addEventListener('click', function () {
-        scope._body = '';
-        scope._head = '';
-        var rows = uiGridctrl.grid.api.core.getVisibleRows();
-        uiGridctrl.grid.api.grid.columns.map(function (col) {
-          if (typeof rows[0].entity[col.field] !== 'undefined' && typeof rows[0].entity[col.field] !== 'object')
-            scope._head += '<td>' + col.displayName + '</td>';
+        let body = '<tr>';
+        scope._body.forEach((rowitem) => {
+          body += rowitem.join('')+'</tr><tr>';
         });
-        rows.forEach(function (row) {
-          scope._body += '<tr>';
-
-          uiGridctrl.grid.api.grid.columns.map(function (col) {
-            if (typeof row.entity[col.field] !== 'undefined' && typeof row.entity[col.field] !== 'object')
-              scope._body += '<td>' + row.entity[col.field] + '</td>';
-          });
-          scope._body += '</tr>';
-        });
-        var str = element[0].querySelector('.ui-grid-canvas').innerHTML;
+        body += '</tr>';
+        //var str = element[0].querySelector('.ui-grid-canvas').innerHTML;
         window._mywindow = window.open('', '', '');
-        _mywindow.document.write('<table>' + scope._head + scope._body + '</table>');
+        _mywindow.document.write('<table>' + scope._head + body + '</table>');
         _mywindow.document.close();
         _mywindow.print();
       }.bind(this));
