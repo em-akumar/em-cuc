@@ -129,7 +129,7 @@ cuc.directive('uiGridPrint', function () {
   };
 });
 
-cuc.directive('uiGridCustomPaging', function ($compile) {
+cuc.directive('uiGridCustomPaging', function ($compile,$timeout) {
   return {
     link: function (scope, element, attrs, uiGridctrl) {
       uiGridctrl.grid.options.enablePaginationControls = false;
@@ -143,17 +143,25 @@ cuc.directive('uiGridCustomPaging', function ($compile) {
           scope._initfirst = false;
         }
       });
+
+      uiGridctrl.grid.api.core.on.filterChanged(scope, () => { $timeout(() => { initPage(scope); },200); });
       function initPage(scope) {
 
         var divPage = document.createElement('div');
         divPage.innerHTML = '<div class="em-complex-table-footer">' +
-          '<span class="em-pageview">' +
+          '<span class="em-pageview" style="display:none">' +
           '<select ng-model="_selectedVal" ng-change="_pageOnClickSelect()"> ' +
           '<option ng-selected="$first" ng-repeat="item in _pageListItems"  value="{{item.value}}">{{item.text}}</option> ' +
           '</select>' +
           '<label class="em-pageview-arrow"></label>' +
           '<span>&nbsp; of {{_pageTotalCount}}</span>' +
           '<label class="em-pageview-arrow"></label>' +
+        '</span>' +
+           '<span class="em-pageview">' +
+          '<select ng-model="_selectedPageVal" ng-change="_pageOnNumSelect()"> ' +
+          '<option  ng-repeat="item in _pageListNumItems"  value="{{item}}">{{item}}</option> ' +
+        '</select>' +
+           '<span>&nbsp; per page</span>' +
           '</span>' +
           '<nav class="em-pagination" style="display:">' +
           '<span class="em-left-arrow" style="display:">' +
@@ -170,7 +178,11 @@ cuc.directive('uiGridCustomPaging', function ($compile) {
           '<a style="opacity:0" ng-click="_rightArrow_click()">2</a>' +
           '</span>' +
           '</nav>' +
-          '</div>';
+        '</div>';
+        if(element[0].querySelector('.em-complex-table-footer')){
+          let elementToRemove = element[0].querySelector('.em-complex-table-footer').parentNode;
+         elementToRemove.parentNode.removeChild(elementToRemove );
+        }
         element[0].appendChild(divPage);
         var perpageRow = uiGridctrl.grid.options.paginationPageSize;
         var totalRow = uiGridctrl.grid.options.totalItems;
@@ -188,7 +200,8 @@ cuc.directive('uiGridCustomPaging', function ($compile) {
             text: (perpageRow * i + 1) + '-' + (maxPage - 1 == i ? totalRow : (perpageRow * (i + 1)))
           });
         }
-
+        scope._pageListNumItems = uiGridctrl.grid.options.paginationPageSizes;
+        scope._selectedPageVal =String( uiGridctrl.grid.options.paginationPageSize);
         scope._pageListItems = pageListItems;
         //selectPage.innerHTML = (html);
         scope._pageTotalCount = totalRow;
@@ -290,6 +303,11 @@ cuc.directive('uiGridCustomPaging', function ($compile) {
           changePage(val);
           selectPage.style.width = ( selectPage.options[selectPage.selectedIndex].text.length * 10) + 'px';
           uiGridctrl.grid.api.pagination.seek(Number(val));
+        }
+        scope._pageOnNumSelect =  (e)=>{
+         // uiGridctrl.grid.api.pagination
+          uiGridctrl.grid.options.paginationPageSize =scope._selectedPageVal;
+          initPage(scope);
         }
         selectPage.onchange = function (e) {
           var val = Number(e.target.value) + 1;
