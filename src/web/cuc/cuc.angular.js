@@ -94,12 +94,10 @@ cuc.directive('ckEditor', () => {
 cuc.directive('uiGridPrint', function ($compile,$timeout) {
   return {
     link: function (scope, element, attrs, uiGridctrl) {
-      scope._initfirst = true;
       uiGridctrl.grid.api.core.on.rowsRendered(scope, function () {
         if (uiGridctrl.grid.renderContainers.body.visibleRowCache.length === 0) {
           return;
         }
-        if (scope._initfirst) {
           scope._head = '';
             var rows = uiGridctrl.grid.api.core.getVisibleRows();
             uiGridctrl.grid.api.grid.columns.map(function (col) {
@@ -124,8 +122,7 @@ cuc.directive('uiGridPrint', function ($compile,$timeout) {
                     scope._body [rowindex][colindex]= '<td>' + row.entity[col.field] + '</td>';}
               });
         });
-         scope._initfirst = false;
-        }
+
       });
       document.querySelector(attrs.uiGridPrint).addEventListener('click', function () {
         let body = '<tr>';
