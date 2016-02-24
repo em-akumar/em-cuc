@@ -1,0 +1,41 @@
+@font-face {
+  font-family: 'ProximaNova-BoldIt';
+  src: url('./30765D_0_0.eot');
+  src: url('./30765D_0_0.eot?#iefix') format('embedded-opentype'), url('./30765D_0_0.woff2') format('woff2'), url('./30765D_0_0.woff') format('woff'), url('./30765D_0_0.ttf') format('truetype'), url('./30765D_0_0.svg#wf') format('svg');
+}
+
+@font-face {
+  font-family: 'ProximaNova-Bold';
+  src: url('./30765D_1_0.eot');
+  src: url('./30765D_1_0.eot?#iefix') format('embedded-opentype'), url('./30765D_1_0.woff2') format('woff2'), url('./30765D_1_0.woff') format('woff'), url('./30765D_1_0.ttf') format('truetype'), url('./30765D_1_0.svg#wf') format('svg');
+}
+
+@font-face {
+  font-family: 'ProximaNova-Regular';
+  src: url('./30765D_2_0.eot');
+  src: url('./30765D_2_0.eot?#iefix') format('embedded-opentype'), url('./30765D_2_0.woff2') format('woff2'), url('./30765D_2_0.woff') format('woff'), url('./30765D_2_0.ttf') format('truetype'), url('./30765D_2_0.svg#wf') format('svg');
+}
+
+@font-face {
+  font-family: 'ProximaNova-RegularIt';
+  src: url('./30765D_3_0.eot');
+  src: url('./30765D_3_0.eot?#iefix') format('embedded-opentype'), url('./30765D_3_0.woff2') format('woff2'), url('./30765D_3_0.woff') format('woff'), url('./30765D_3_0.ttf') format('truetype'), url('./30765D_3_0.svg#wf') format('svg');
+}
+
+@font-face {
+  font-family: 'ProximaNova-Light';
+  src: url('./30765C_0_0.eot');
+  src: url('./30765C_0_0.eot?#iefix') format('embedded-opentype'), url('./30765C_0_0.woff2') format('woff2'), url('./30765C_0_0.woff') format('woff'), url('./30765C_0_0.ttf') format('truetype'), url('./30765C_0_0.svg#wf') format('svg');
+}
+
+@font-face {
+  font-family: 'ProximaNova-LightIt';
+  src: url('./30765C_1_0.eot');
+  src: url('./30765C_1_0.eot?#iefix') format('embedded-opentype'), url('./30765C_1_0.woff2') format('woff2'), url('./30765C_1_0.woff') format('woff'), url('./30765C_1_0.ttf') format('truetype'), url('./30765C_1_0.svg#wf') format('svg');
+}
+
+@font-face {
+  font-family: 'ProximaNova-Semibold';
+  src: url('./30765B_0_0.eot');
+  src: url('./30765B_0_0.eot?#iefix') format('embedded-opentype'), url('./30765B_0_0.woff2') format('woff2'), url('./30765B_0_0.woff') format('woff'), url('./30765B_0_0.ttf') format('truetype'), url('./30765B_0_0.svg#wf') format('svg');
+}
