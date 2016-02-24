@@ -114,8 +114,9 @@ cuc.directive('uiGridPrint', function ($compile,$timeout) {
                 if (typeof row.entity[col.field] !== 'undefined' ){
                   if( col.cellTemplate.indexOf('COL_FIELD') == -1){
                     var temp = $compile(col.cellTemplate)(rowScope);
-                    $timeout(() =>{
-                      scope._body[rowindex][colindex] = '<td>' + angular.element(temp[0]).html() + '</td>';
+                    $timeout(() => {
+                      if( scope._body[rowindex])
+                        scope._body[rowindex][colindex] = '<td>' + angular.element(temp[0]).html() + '</td>';
                     }, 100);
                   }
                   else
