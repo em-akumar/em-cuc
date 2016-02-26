@@ -14,7 +14,7 @@ if(this.options !== undefined){
       this.options.sortOrder = this.options.sortOrder || 'asc';
       this.options.size = this.options.defaultSize || 'medium';
 
-      //Sort dropdown values 
+      //Sort dropdown values
       if (this.options.itemList) {
         this.options.itemList.sort((obj1, obj2) => {
           var x = obj1[this.options.sortField].toLowerCase();
@@ -135,8 +135,9 @@ if(this.options !== undefined){
       var target = e.currentTarget || e.srcElement;
 
       setTimeout(function () { // links inside dropdown-menu don't fire without a short delay
-        target.parentNode.classList.remove('open');
-      }, 200);
+        if(target.parentNode)
+          target.parentNode.classList.remove('open');
+      }, 350);
     };
   }
 
