@@ -14,7 +14,7 @@ if(this.options !== undefined){
       this.options.sortOrder = this.options.sortOrder || 'asc';
       this.options.size = this.options.defaultSize || 'medium';
 
-      //Sort dropdown values 
+      //Sort dropdown values
       if (this.options.itemList) {
         this.options.itemList.sort((obj1, obj2) => {
           var x = obj1[this.options.sortField].toLowerCase();
@@ -66,7 +66,7 @@ if(this.options !== undefined){
         if (typeof self.options.onChange === 'function') {
           self.options.onChange(e);
         }
-        self.menu.parentNode.querySelector(".btn .selectedText").innerText = value.innerText;
+        self.menu.parentNode.querySelector(".btn .selectedText").textContent  = value.textContent;
         self.menu.parentNode.querySelector(".btn .selectedText").setAttribute('value', value.parentNode.getAttribute('value'));
         if (!self.menu.parentNode.querySelector(".btn").classList.contains("completed")) {
           self.menu.parentNode.querySelector(".btn").classList.add("completed");
