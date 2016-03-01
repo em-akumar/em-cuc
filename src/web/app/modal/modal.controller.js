@@ -4,7 +4,7 @@ class ModalController {
   /* @ngInject */
   constructor(ModalService, $uibModal) {
     this.$uibModal = $uibModal;
-
+    //this.$scope = $scope;
     this.modalService = ModalService;
     // this.initialize();
   }

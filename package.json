@@ -28,22 +28,18 @@
     "externals": {
       "angular": "commonjs angular"
     },
-    "entry": {
-      "app": [
-        "./app/app.module.js"
-      ],
-      "cuc": [
-        "./cuc/cuc.js"
-      ],
-      "cuc.angular": [
-        "./cuc/cuc.angular.js"
-      ],
-      "cuc.grid": [
-        "./cuc/cuc.grid.js"
-      ],
-      "cuc.ui.bootstrap": [
-        "./cuc/cuc.ui.bootstrap.js"
-      ]
+    "styles": {
+      "app": "./app/app.less",
+      "cuc":"./cuc/cuc.less",
+      "cuc.grid":"./cuc/controls/ui-grid/ui-grid.less",
+      "cuc.ui.bootstrap":"./cuc/cuc.ui.bootstrap.less"
+    },
+    "scripts": {
+      "app":"./app/app.module.js",
+      "cuc":"./cuc/cuc.js",
+      "cuc.angular":"./cuc/cuc.angular.js",
+      "cuc.grid":"./cuc/cuc.grid.js",
+      "cuc.ui.bootstrap":"./cuc/cuc.ui.bootstrap.js"
     }
   },
   "devDependencies": {
