@@ -1,5 +1,3 @@
-import './cuc.less';
-
 /* controls being used in tpo now */
 import {Dropdown} from './controls/dropdown/dropdown';
 import {DropdownEdit} from './controls/dropdown-edit/dropdown-edit';

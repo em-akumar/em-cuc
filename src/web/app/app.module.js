@@ -12,16 +12,15 @@ import '../cuc/cuc.ui.bootstrap';
 import '../cuc/cuc.grid';
 import 'angular-messages/angular-messages.js';
 import 'angular-ui-mask/dist/mask.js';
-import './app.less';
 import '../common/utils/codepen';
 
 import buttons from './buttons/buttons.module';
 import textInput from './text-input/text-input.module';
 import textArea from './text-area/text-area.module';
 import fileUploader from './file-uploader/file-uploader.module';
-import dropdownEdit from './dropdown-edit/dropdown-edit.module';
 import grid from './grid/grid.module';
 import dropdown from './dropdown/dropdown.module';
+import dropdownEdit from './dropdown-edit/dropdown-edit.module';
 import colorPicker from './color-picker/color-picker.module';
 import modal from './modal/modal.module';
 import datepicker from './datepicker/datepicker.module';

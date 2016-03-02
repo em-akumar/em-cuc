@@ -1,79 +1,28 @@
-<div class="app controls dropdown">
-  <label>Position</label>
-  <div class="em-dropdown-label">
-  <label>Country</label> <div class="em-dropdown" options="vm.drpCountry" emc="Dropdown" ></div>
+<div class="app controls buttons">
+  <div class="demo-page-header">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1>Dropdown</h1>
+      </div>
+    </div>
   </div>
-  <br />
 
-  <div class="em-dropdown-label position-left"><label>Country</label> <div class="em-dropdown" options="vm.drpCountry" emc="Dropdown" ></div>
-  </div>
-  <br/>
-  <div class="em-dropdown-label">
-  <div class="em-dropdown" options="vm.drpCountry" emc="Dropdown" ></div>
-  <label>Country</label>
-  </div>
-  <br />
-  <div class="em-dropdown-label position-right">
-  <div class="em-dropdown" options="vm.drpCountry" emc="Dropdown" ></div>
-  <label>Country</label>
-  </div>
-  <br/>
-  <label>Disabled</label>
-  <div class="em-dropdown-label position-left">
-  <label>State</label> <div class="em-dropdown disabled" options="vm.drpState" emc="Dropdown" ></div>
-  </div>
-  <br />
-  <label>Readonly</label>
-  <div class="em-dropdown-label position-left">
-  <label>State</label> <div class="em-dropdown readonly" options="vm.drpState" emc="Dropdown" ></div>
-  </div>
-  <br />
-  <label>Restricted</label>
-  <div class="em-dropdown-label position-left">
-  <label>State</label> <div class="em-dropdown restricted" options="vm.drpState" emc="Dropdown" ></div>
-  </div>
-  <br />
-   <label>Error Handling</label>
-  <div class="em-dropdown-label position-left">
-  <label>State</label> <div class="em-dropdown error" options="vm.drpState" emc="Dropdown" ></div>
-  </div>
-  <br />
-  <label>Disabled Item</label>
-  <div class="em-dropdown-label position-left">
-  <label>State</label> <div class="em-dropdown" options="vm.drpStateDisabledItem" emc="Dropdown" ></div>
-  </div>
-  <br />
+   <uib-tabset class="controls">
+      <uib-tab heading="Default/Label Position">
+        <dropdown-default></dropdown-default>
+      </uib-tab>
 
-  <label>Divider Item</label>
-  <div class="em-dropdown-label position-left">
-  <label>State</label> <div class="em-dropdown" options="vm.drpStateDividerItem" emc="Dropdown" ></div>
-  </div>
-  <br />
+      <uib-tab heading="States">
+        <dropdown-states></dropdown-states>
+      </uib-tab>
 
-  <label>Large</label>
-  <div class="em-dropdown-label position-left">
-  <label>State</label> <div class="em-dropdown" options="vm.drpStateLarge" emc="Dropdown" ></div>
-  </div>
-  <br />
-  <label>Medium</label>
-  <div class="em-dropdown-label position-left">
-  <label>State</label> <div class="em-dropdown" options="vm.drpStateMedium" emc="Dropdown" ></div>
-  </div>
-  <br />
-  <label>Small</label>
-  <div class="em-dropdown-label position-left">
-  <label>State</label> <div class="em-dropdown" options="vm.drpStateSmall" emc="Dropdown" ></div>
-  </div>
-  <br />
-  <label>Extra Small</label>
-  <div class="em-dropdown-label position-left">
-  <label>State</label> <div class="em-dropdown" options="vm.drpStateExtraSmall" emc="Dropdown" ></div>
-  </div>
-  <br />
-  <label>Flexible</label>
-  <div class="em-dropdown-label">
-  <label>State</label> <div class="em-dropdown" options="vm.drpStateFlexible" emc="Dropdown" ></div>
-  </div>
-  <br />
+      <uib-tab heading="Sizes">
+        <dropdown-size></dropdown-size>
+      </uib-tab>
 
+      <uib-tab heading="Erro Handling">
+        <dropdown-error></dropdown-error>
+      </uib-tab>
+   </uib-tabset>
 </div>
+
