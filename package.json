@@ -24,7 +24,6 @@
   "homepage": "https://github.com/elliemaedev/em-cuc#readme",
   "ems_config": {
     "project_type": "cuc",
-    "library": "cuc",
     "index": "./index.html",
     "styles": {
       "app": "./app/app.less",
