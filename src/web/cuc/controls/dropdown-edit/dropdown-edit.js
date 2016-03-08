@@ -41,7 +41,7 @@ class DropdownEdit {
       <span class="caret"></span></button>
 			<ul class="dropdown-menu ${this.options.size}" role="menu">
 			${this.options.itemList.map((value, i) =>
-        ` ${value.divider ? '<li class="divider"></li>' : ''}<li value="${value[this.options.valueField || 'value']}" class="${value.class === undefined ? '' : value.class}"><a href="#" value="${value[this.options.valueField || 'value']}">${value.leftImage!==undefined? `<img class="em-left-icon" src="${value.leftImage}" />`: (IconFlagEdit == true) ? '<span class="em-left-icon"></span>':''} ${value[this.options.textField|| 'text']}
+        ` ${value.divider ? '<li class="divider"></li>' : ''}<li value="${value[this.options.valueField || 'value']}" class="${value.class === undefined ? '' : value.class}"><a value="${value[this.options.valueField || 'value']}">${value.leftImage!==undefined? `<img class="em-left-icon" src="${value.leftImage}" />`: (IconFlagEdit == true) ? '<span class="em-left-icon"></span>':''} ${value[this.options.textField|| 'text']}
        ${value.rightImage!==undefined? `<img class="em-right-icon" src="${value.rightImage}" />`:``}</a> </li>`
         ).join('') }
 			</ul></div></div>`;
