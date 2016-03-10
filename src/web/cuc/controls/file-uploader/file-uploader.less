@@ -184,6 +184,25 @@
   }
 }
 
+
+
+.em-single-file-uploader {
+  .file-input-hide{
+    display:none;
+  }
+  .file-input-text-button {
+    display: flex;
+    input {
+      margin-right:10px;
+    }
+  }
+}
+.em-file-upload-control-holder-focused {
+  background-color: pink !important;
+}
+
+
+//spike uploader control style
 .actionButtonHolder {
   background-color: @complex-upload-action-area-container-background-color;
   width: @complex-upload-action-area-container-width;
@@ -194,15 +213,153 @@
     display: none;
   }
 }
+.fancy-uploader {
+  width: 450px;
+  float:right;
+  display: inline-block;
+  height: 80px;
+  margin: 10px;
+}
+.fancy-uploader-label {
+  display: inline-block;
+  clear: both;
+  width: 300px;
+  height: 100%;
+  margin-right: 10px;
+  text-align: right;
+  line-height: 85px;
+}
+.fancy-uploader-button {
+  display: inline-block;
+  margin-top: 25px
+}
+.fancyDropzone{
+  border: 2px dashed #002D5B;
+  background-color: #CCE5FF;
+  text-align: left;
+}
+// SPIKE copy upload area
+.uploadedArea {
+  height: auto;
+  max-height: 240px;
+  overflow-y: auto;
+  background-color: #e4e7e9;
+  width: 100%;
+  .tileHolder {
 
-.em-single-file-uploader {
-  .file-input-hide{
-    display:none;
-  }
-  .file-input-text-button {
-    display: flex;
-    input {
-      margin-right:10px;
+    .tile {
+      /* position: relative;
+        display: table;
+        float: left;
+        width: 150px;
+        height: 50px;
+        text-align: center;
+        margin: 10px;
+        background-color: #fafafa;
+        border: 2px solid #e8e8e8;
+        border-radius: 3px;*/
+      position: relative;
+      background-color: @complex-upload-tile-background-color;
+      //width: @complex-upload-tile-width;
+      width: 240px;
+      height: @complex-upload-tile-height;
+      margin: @complex-upload-tile-margin-left @complex-upload-tile-margin-left @complex-upload-tile-margin-left 10px;
+      border: @complex-upload-tile-border;
+      border-radius: @complex-upload-tile-border-radius;
+      padding: @complex-upload-tile-padding;
+      //display: @complex-upload-tile-display;
+      display: table;
+      float: left;
+
+      .fileCloseDiv {
+        width: @close-icon-hover-background-size;
+        height: @close-icon-hover-background-size;
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        line-height: @close-icon-hover-background-size;
+        cursor: pointer;
+        text-align: center;
+        color: #444;
+        &:hover {
+          background-color: rgba(red(@close-icon-hover-background-color),
+          green(@close-icon-hover-background-color),
+          blue(@close-icon-hover-background-color),
+          @close-icon-hover-light-background-opacity);
+          border-radius: @close-icon-hover-background-radius;
+        }
+      }
+      .closeSpan {
+        color: @close-icon-color;
+        width: @close-icon-size;
+        height: @close-icon-size;
+      }
+
+      .previewDiv {
+        height: @complex-upload-tile-file-type-height;
+        width: @complex-upload-tile-file-type-width;
+        padding: @complex-upload-tile-file-type-icon-padding;
+        display: inline-block;
+        float: left;
+        background: url("../../assets/images/default-upload.svg") center center/contain no-repeat;
+        background-size: 28px 30px;
+        border: 0;
+      }
+      .fileDetails {
+        height: @complex-upload-tile-file-name-container-height;
+        width: @complex-upload-tile-file-name-container-width;
+        padding: @complex-upload-tile-file-name-container-padding;
+        font-size: @complex-upload-tile-file-name-font-size;
+        color: @complex-upload-tile-file-name-font-color;
+        text-align: left;
+        display: inline-block;
+
+        .fileSizeSpan {
+          font-size: @complex-upload-tile-file-size-font-size;
+          color: @complex-upload-tile-file-size-font-color;
+          padding: @complex-upload-tile-file-size-padding;
+          text-align: left;
+        }
+      }
+
+      .fileStatusDiv {
+        height: @complex-upload-tile-status-container-height;
+        width: @complex-upload-tile-status-container-width;
+        font-size: @complex-upload-complete-font-size;
+        color: @complex-upload-complete-font-color;
+
+        .notificationImageAtRightCorner {
+          position: relative;
+          float: right;
+          padding-right: 20px;
+
+          .tickImageSrc {
+            border: 0;
+            width: @complex-upload-complete-icon-height;
+            height: @complex-upload-complete-icon-height;
+            position: absolute;
+            border-radius: 50%;
+            top: 2px;
+            right: 0px;
+            background: @complex-upload-complete-icon-background-color url("../../assets/images/icon-checkmark-white.svg") center center/contain no-repeat;
+            background-size: 73%;
+          }
+
+          .errorImageSrc {
+            border: 0;
+            width: @complex-upload-complete-icon-height;
+            height: @complex-upload-complete-icon-height;
+            position: absolute;
+            border-radius: 50%;
+            top: 2px;
+            right: 0px;
+            background: @complex-upload-tile-error-icon-background-color url("../../assets/images/icon-exclamation-point-white.svg") center center/contain no-repeat;
+            background-size: 73%;
+          }
+
+        }
+      }
+
     }
   }
 }

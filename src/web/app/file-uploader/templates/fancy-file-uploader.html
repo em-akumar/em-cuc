@@ -1,8 +1,14 @@
-<div>
-  <div class="panel-heading em-toolbar-container"> File Uploader </div>
-  <div id="divMultiFileUpload" class="em-file-upload-control-holder"></div>
-  <div emc="FileUpload" options="vm.options" ></div>
+  <!-- File Uploader SPIKE - Simone -->
+  <h2>Fancy file uploader</h2>
+  <div class="fancy-container">
+    <div class="upload-row">
+      <div class="fancy-uploader" id="fancyUploader">
+        <div emc="FancyFileUpload" options="vm.fancyOptions" ></div>
+      </div>
+    </div>
+  </div>
   <br /><br />
+
 
   <!-- File Uploader Control Usage -->
   <div id="text-input-size-usage" class="panel panel-primary">
@@ -11,18 +17,17 @@
                 <pre class="codepen-able" data-type="html">
 //Html usage
 &lt;div id=&quot;divMultiFileUpload&quot; class=&quot;em-file-upload-control-holder&quot;&gt;&lt;/div&gt;
-&lt;div emc=&quot;FileUpload&quot; options=&quot;vm.options&quot; &gt;&lt;/div&gt;
+&lt;div emc=&quot;FileUpload&quot; options=&quot;vm.fancyOptions&quot; &gt;&lt;/div&gt;
 
 //Controller usage
-let options = {
-  controlId: 'divMultiFileUpload',
+let fancyOptions = {
+  controlId: 'fancyUploader',
   url: configUploadUrl, 
   fileType: '.jpeg,.jpg,.png',
   maxFileSize: '5120'
 };
-this.options = options;
+this.fancyOptions = fancyOptions;
 </pre>
       <!--<pre class="codepen-able" id="css-file-uploader" data-type="css"></pre>-->
     </div>
   </div>
-</div>

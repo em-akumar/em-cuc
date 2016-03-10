@@ -8,11 +8,13 @@ import {ColorPicker} from './controls/color-picker/color-picker';
 import {ProgressBar} from './controls/progress-bar/progress-bar';
 import {FileUpload} from './controls/file-uploader/file-uploader';
 import {SingleFileUpload} from './controls/file-uploader/single-file-uploader';
+import {FancyFileUpload} from './controls/file-uploader/fancy-file-uploader';
 import {ToastNotifications} from './controls/notifications/toast-notifications';
 import {ModalNotifications} from './controls/notifications/modal-notifications';
 import {SliderNotifications} from './controls/notifications/slider-notifications';
 
+
 export {
 Dropdown, DropdownEdit, TextInputField, LabelTextAreaInputField,
-DatePicker, ColorPicker, ProgressBar, FileUpload, SingleFileUpload, ToastNotifications, ModalNotifications, SliderNotifications
+DatePicker, ColorPicker, ProgressBar, FileUpload, SingleFileUpload, FancyFileUpload, ToastNotifications, ModalNotifications, SliderNotifications
 };
