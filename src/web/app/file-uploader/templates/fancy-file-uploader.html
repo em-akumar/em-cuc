@@ -24,9 +24,24 @@ let fancyOptions = {
   controlId: 'fancyUploader',
   url: configUploadUrl, 
   fileType: '.jpeg,.jpg,.png',
-  maxFileSize: '5120'
+  maxFileSize: '5120',
+  onfileUploadComplete: (e) => {
+     this.fileUploadComplete(e);
+  }
 };
 this.fancyOptions = fancyOptions;
+
+
+fileUploadComplete(e) {
+    var fileData = {};
+    fileData.fileName = e.file.name
+    fileData.fileSize = e.file.size;
+    fileData.uploadDate = e.file.lastModifiedDate;
+    fileData.uploadUser = 'Simone Qi';
+    console.log(fileData);
+    this.fileDataGroup.push(fileData);
+    console.log(this.fileDataGroup);
+  }
 </pre>
       <!--<pre class="codepen-able" id="css-file-uploader" data-type="css"></pre>-->
     </div>
