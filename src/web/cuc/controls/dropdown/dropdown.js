@@ -131,11 +131,11 @@ if(this.options !== undefined){
   }
   setSelected(value) {
     var self = this;
-    self.menu.parentNode.querySelector(".btn .selectedText").innerText = value[this.options.textField || 'text'];
+    self.menu.parentNode.querySelector(".btn .selectedText").innerHTML = value[this.options.textField || 'text'];
 				self.menu.parentNode.querySelector(".btn .selectedText").setAttribute('value', value[this.options.valueField || 'value']);
 				if (!self.menu.parentNode.querySelector(".btn").classList.contains("completed")) {
       self.menu.parentNode.querySelector(".btn").classList.add("completed");
-				}
+        }
   }
   setList() {
     var self = this;
