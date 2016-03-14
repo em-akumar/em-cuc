@@ -60,7 +60,9 @@ if(this.options !== undefined){
     self.actions();
     self.menu.setAttribute('tabindex', '0'); // Fix onblur on Chrome
     self.menu.addEventListener('click', self.toggle, false);
-    self.menu.addEventListener('blur', self.close, false);
+    self.menu.parentNode.addEventListener('click',function(e){ e.stopPropagation();},false);
+    document.addEventListener('click', self.closeit.bind(self), false);
+
     document.getElementsByTagName('html')[0].addEventListener('keydown',  ( e )=> {
       if ( e.keyCode === 27 ) {  //Closes dropdown on Esc key
         self.menu.parentNode.classList.remove('open');
@@ -140,11 +142,6 @@ if(this.options !== undefined){
 
     [].forEach.call(self.menu.parentNode.querySelectorAll(".dropdown-menu>li>a"), (value, i) => {
       value.addEventListener('click', (e) => {
-        //console.log(value.innerText);
-        if (typeof self.options.onChange === 'function') {
-          self.options.onChange(e);
-        }
-
         if (value.innerText == undefined) {
           self.menu.parentNode.querySelector(".btn .selectedText").textContent = value.textContent;
         } else {
@@ -155,6 +152,10 @@ if(this.options !== undefined){
         self.menu.parentNode.querySelector(".btn .selectedText").setAttribute('value', value.parentNode.getAttribute('value'));
         if (!self.menu.parentNode.querySelector(".btn").classList.contains("completed")) {
           self.menu.parentNode.querySelector(".btn").classList.add("completed");
+        }
+        self.toggle({currentTarget:self.menu});
+        if (typeof self.options.onChange === 'function') {
+          self.options.onChange(e);
         }
       });
 
@@ -206,6 +207,13 @@ if(this.options !== undefined){
     });
   }
 
+  closeit(e) {
+    var target = this.menu;
+      setTimeout(function () { // links inside dropdown-menu don't fire without a short delay
+        if (target.parentNode && target.parentNode !== null){
+           target.parentNode.classList.remove('open');}
+      }, 350);
+  }
   actions() {
     var self = this;
 
@@ -220,16 +228,16 @@ if(this.options !== undefined){
          //console.log(self.menu.parentNode.querySelector("li[value='" + selValue + "']"));
          self.menu.parentNode.querySelector("li[value='" + selValue + "']").classList.add('selected-text');
       }
-      e.preventDefault();
+      if(e.preventDefault)
+        e.preventDefault();
       return false;
     };
 
     self.close = function (e) {
       var target = e.currentTarget || e.srcElement;
-
       setTimeout(function () { // links inside dropdown-menu don't fire without a short delay
-         if(target.parentNode && target.parentNode !==null)
-           target.parentNode.classList.remove('open');
+        if (target.parentNode && target.parentNode !== null){
+           target.parentNode.classList.remove('open');}
       }, 350);
     };
   }
