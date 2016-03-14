@@ -228,8 +228,8 @@ if(this.options !== undefined){
       var target = e.currentTarget || e.srcElement;
 
       setTimeout(function () { // links inside dropdown-menu don't fire without a short delay
-        if(target.parentNode)
-          target.parentNode.classList.remove('open');
+         if(target.parentNode && target.parentNode !==null)
+           target.parentNode.classList.remove('open');
       }, 350);
     };
   }
