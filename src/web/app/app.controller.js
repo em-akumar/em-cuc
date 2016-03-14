@@ -19,7 +19,6 @@ export default class AppController {
       else {
         this.toggle = false;
       }
-      console.log(this.toggle);
     }.bind(this));
 
     // .initialize();
@@ -30,14 +29,12 @@ export default class AppController {
   }
 
   onresize() {
-    console.log('resize');
     this.scope.$apply();
   }
 
   /**/
 
   toggleSidebar() {
-    console.log('toggleSidebar');
     this.toggle = !this.toggle;
   }
 

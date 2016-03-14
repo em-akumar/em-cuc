@@ -1,0 +1,48 @@
+  <!-- File Uploader SPIKE - Simone -->
+  <h2>Fancy file uploader</h2>
+  <div class="fancy-container">
+    <div class="upload-row">
+      <div class="fancy-uploader" id="fancyUploader">
+        <div emc="FancyFileUpload" options="vm.fancyOptions" ></div>
+      </div>
+    </div>
+  </div>
+  <br /><br />
+
+
+  <!-- File Uploader Control Usage -->
+  <div id="text-input-size-usage" class="panel panel-primary">
+    <div class="panel-heading">File Uploader Usage</div>
+    <div class="codepen-group">
+                <pre class="codepen-able" data-type="html">
+//Html usage
+&lt;div id=&quot;divMultiFileUpload&quot; class=&quot;em-file-upload-control-holder&quot;&gt;&lt;/div&gt;
+&lt;div emc=&quot;FileUpload&quot; options=&quot;vm.fancyOptions&quot; &gt;&lt;/div&gt;
+
+//Controller usage
+let fancyOptions = {
+  controlId: 'fancyUploader',
+  url: configUploadUrl, 
+  fileType: '.jpeg,.jpg,.png',
+  maxFileSize: '5120',
+  onfileUploadComplete: (e) => {
+     this.fileUploadComplete(e);
+  }
+};
+this.fancyOptions = fancyOptions;
+
+
+fileUploadComplete(e) {
+    var fileData = {};
+    fileData.fileName = e.file.name
+    fileData.fileSize = e.file.size;
+    fileData.uploadDate = e.file.lastModifiedDate;
+    fileData.uploadUser = 'Simone Qi';
+    console.log(fileData);
+    this.fileDataGroup.push(fileData);
+    console.log(this.fileDataGroup);
+  }
+</pre>
+      <!--<pre class="codepen-able" id="css-file-uploader" data-type="css"></pre>-->
+    </div>
+  </div>

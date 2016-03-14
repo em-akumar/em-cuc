@@ -1,0 +1,128 @@
+<div class="panel-body section-subheading">
+    <div class="demo-example" data-heading="Dropdown Sizes">
+         <form role="form">
+            <div class="form-group">
+                <label>Dropdown Large</label>
+                <div class="em-dropdown" options="vm.drpStateLarge" emc="Dropdown"></div>
+           </div>
+            <div class="form-group">
+                <label>Dropdown Medium</label>
+                <div class="em-dropdown" options="vm.drpStateMedium" emc="Dropdown"></div>
+           </div>
+           <div class="form-group">
+                <label>Dropdown Small</label>
+                <div class="em-dropdown" options="vm.drpStateSmall" emc="Dropdown"></div>
+           </div>
+
+            <div class="form-group">
+                <label>Dropdown Extra Small</label>
+                <div class="em-dropdown" options="vm.drpStateExtraSmall" emc="Dropdown"></div>
+           </div>
+           <div class="form-group">
+                <label>Dropdown Flexible</label>
+                <div class="em-dropdown" options="vm.drpStateFlexible" emc="Dropdown"></div>
+           </div>
+         </form>
+    </div>
+</div>
+
+
+ <!-- Dropdown Controls Size Usage -->
+  <div  class="panel panel-primary">
+    <div class="panel-heading">Drodown Size Usage</div>
+    <div class="codepen-group">
+      <pre class="codepen-able" data-type="html"><code class="language-css"> &lt;form role=&quot;form&quot;&gt;
+            &lt;div class=&quot;form-group&quot;&gt;
+                &lt;label&gt;Dropdown Large&lt;/label&gt;
+                &lt;div class=&quot;em-dropdown&quot; options=&quot;vm.drpStateLarge&quot; emc=&quot;Dropdown&quot;&gt;&lt;/div&gt;
+           &lt;/div&gt;
+            &lt;div class=&quot;form-group&quot;&gt;
+                &lt;label&gt;Dropdown Medium&lt;/label&gt;
+                &lt;div class=&quot;em-dropdown&quot; options=&quot;vm.drpStateMedium&quot; emc=&quot;Dropdown&quot;&gt;&lt;/div&gt;
+           &lt;/div&gt;
+           &lt;div class=&quot;form-group&quot;&gt;
+                &lt;label&gt;Dropdown Small&lt;/label&gt;
+                &lt;div class=&quot;em-dropdown&quot; options=&quot;vm.drpStateSmall&quot; emc=&quot;Dropdown&quot;&gt;&lt;/div&gt;
+           &lt;/div&gt;
+
+            &lt;div class=&quot;form-group&quot;&gt;
+                &lt;label&gt;Dropdown Extra Small&lt;/label&gt;
+                &lt;div class=&quot;em-dropdown&quot; options=&quot;vm.drpStateExtraSmall&quot; emc=&quot;Dropdown&quot;&gt;&lt;/div&gt;
+           &lt;/div&gt;
+           &lt;div class=&quot;form-group&quot;&gt;
+                &lt;label&gt;Dropdown Flexible&lt;/label&gt;
+                &lt;div class=&quot;em-dropdown&quot; options=&quot;vm.drpStateFlexible&quot; emc=&quot;Dropdown&quot;&gt;&lt;/div&gt;
+           &lt;/div&gt;
+         &lt;/form&gt;</code></pre>
+      <pre class="codepen-able" data-type="css"></pre>
+      <pre class="codepen-able" data-type="js"></pre><!-- Please put this code in angular controller -->  // for Large dropdown
+    this.drpStateLarge = {
+
+      defaultText: &#39;Select One&#39;,
+      onChange: function (e) {
+        console.log(&#39;clicked&#39;);
+      },
+      defaultSize: &#39;large&#39;,
+      itemList: [{ &#39;value&#39;: 1, &#39;text&#39;: &#39;State1&#39;}, { &#39;value&#39;: 2, &#39;text&#39;: &#39;State2&#39;}]
+    };
+    // for Medium items
+    this.drpStateMedium = {
+
+      defaultText: &#39;Select One&#39;,
+      onChange: function (e) {
+        console.log(&#39;clicked&#39;);
+      },
+      defaultSize: &#39;medium&#39;,
+      itemList: [{ &#39;value&#39;: 1, &#39;text&#39;: &#39;State1&#39;}, { &#39;value&#39;: 2, &#39;text&#39;: &#39;State2&#39;}]
+    };
+     // for Small items
+    this.drpStateSmall = {
+
+      defaultText: &#39;Select One&#39;,
+      onChange: function (e) {
+        console.log(&#39;clicked&#39;);
+      },
+      defaultSize: &#39;small&#39;,
+      itemList: [{ &#39;value&#39;: 1, &#39;text&#39;: &#39;State1&#39;}, { &#39;value&#39;: 2, &#39;text&#39;: &#39;State2&#39;}]
+    };
+     // for Extra Small dropdown
+    this.drpStateExtraSmall = {
+
+      defaultText: &#39;Select One&#39;,
+      onChange: function (e) {
+        console.log(&#39;clicked&#39;);
+      },
+      defaultSize: &#39;xs&#39;,
+      itemList: [{ &#39;value&#39;: 1, &#39;text&#39;: &#39;State1&#39;}, { &#39;value&#39;: 2, &#39;text&#39;: &#39;State2&#39;}]
+    };
+     // for Flexible dropdown
+    this.drpStateFlexible = {
+
+      defaultText: &#39;Select One&#39;,
+      onChange: function (e) {
+        console.log(&#39;clicked&#39;);
+      },
+      defaultSize: &#39;flexible-width&#39;,
+      itemList: [{ &#39;value&#39;: 1, &#39;text&#39;: &#39;State1&#39;}, { &#39;value&#39;: 2, &#39;text&#39;: &#39;State2&#39;}]
+    };
+    </div>
+  </div>
+
+    <!-- Show the Dropdown Sizes classes-->
+    <div class="table-responsive em-table">
+        <table class="table table-striped table-hover">
+            <tbody><tr>
+                <th style="width:20%;">Class/Properties</th>
+                <th style="width:72%;">Description</th>
+            </tr>
+            <tr>
+                <td>.em-dropdown</td>
+                <td>This class is required. Indicates a default/standard dropdown</td>
+            </tr>
+             <tr>
+                <td>defaultSize</td>
+                <td>defaultSize property in angular control can be 'medium','large','small','xs' and 'flexible-width' e.g.  defaultSize: 'large'</td>
+            </tr>
+
+            </tbody></table>
+    </div>

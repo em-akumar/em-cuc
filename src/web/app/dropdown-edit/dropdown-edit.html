@@ -1,7 +1,28 @@
-<div class="app controls dropdown-edit">
-  <div class="em-dropdown-edit" options="vm.drpState" emc="DropdownEdit"></div>
+<div class="app controls buttons">
+  <div class="demo-page-header">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1>Dropdown Edit</h1>
+      </div>
+    </div>
+  </div>
+
+   <uib-tabset class="controls">
+      <uib-tab heading="Default/Label Position">
+        <dropdown-edit-default></dropdown-edit-default>
+      </uib-tab>
+
+      <uib-tab heading="States">
+        <dropdown-edit-states></dropdown-edit-states>
+      </uib-tab>
+
+      <uib-tab heading="Sizes">
+        <dropdown-edit-size></dropdown-edit-size>
+      </uib-tab>
+
+      <uib-tab heading="Error Handling">
+        <dropdown-edit-error></dropdown-edit-error>
+      </uib-tab>
+   </uib-tabset>
 </div>
-
-
-
 

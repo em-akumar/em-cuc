@@ -371,7 +371,7 @@ var FileUpload = function (el, opts) {
         showProgressBar(xhr, progress2); //shows progress bar
         document.getElementById('fileCloseDiv' + file.guid).addEventListener('click', function (e) {
           if(this.status != 200) {
-           this.abort();
+            this.abort();
           }
         }.bind(xhr));
         var data = new FormData();
@@ -390,7 +390,7 @@ var FileUpload = function (el, opts) {
               document.getElementById('fileUploadStatusFor' + file.guid).innerHTML = '';// it is need here to make innerHTML empty
               document.getElementById('fileUploadStatusFor' + file.guid).appendChild(showTick);
             } else
-             {
+            {
               var showExcl = document.createElement('DIV');
               showExcl.className = 'notificationImageAtRightCorner ';
               var showError = document.createTextNode('Error');
@@ -490,7 +490,7 @@ var FileUpload = function (el, opts) {
     uploadStack = [];
     invalidUploadStack = [];
     document.getElementById(filesUploadedAreaDivId).innerHTML = '';
-     document.getElementsByClassName('actionButtonHolder').innerHTML = '';
+    document.getElementsByClassName('actionButtonHolder').innerHTML = '';
     document.getElementById(cancelButtonId).parentNode.style.display = 'none';
   }
 
