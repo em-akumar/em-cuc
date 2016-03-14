@@ -226,7 +226,8 @@ if(this.options !== undefined){
       } else {
          //var selValue = self.menu.parentNode.querySelector(".btn .selectedText").getAttribute('value');
          //console.log(self.menu.parentNode.querySelector("li[value='" + selValue + "']"));
-         self.menu.parentNode.querySelector("li[value='" + selValue + "']").classList.add('selected-text');
+         if(self.menu.parentNode.querySelector("li[value='" + selValue + "']")!==null)
+          self.menu.parentNode.querySelector("li[value='" + selValue + "']").classList.add('selected-text');
       }
       if(e.preventDefault)
         e.preventDefault();
