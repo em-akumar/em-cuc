@@ -77,17 +77,18 @@ if(this.options !== undefined){
     });
 
     self.menu.addEventListener('keydown', (e) => {
+      let index = 0;
       if (e.keyCode === 40) {  // scroll dropdown option using down array key
-       //console.log("down");
         let list = self.menu.parentNode.querySelectorAll('.dropdown-menu li');
-        let index = 0;
         while (index < list.length) {
           let item = list[index];
-            if (item.classList.contains('selected-text')) {
-            if(list.length>=(index )){
+          if (item.classList.contains('selected-text')) {
+           // console.log(index, list.length);
+            if(list.length-1>index){
               item.classList.remove('selected-text');
-              list[index + 1].classList.add('selected-text');
-
+              if (list[index+1] && list[index+1] !== null) {
+                list[index + 1].classList.add('selected-text');
+              }
               break;
             }
           }
@@ -105,6 +106,7 @@ if(this.options !== undefined){
             if (item.classList.contains('selected-text')) {
             if(index>0){
               item.classList.remove('selected-text');
+
               list[index - 1].classList.add('selected-text');
               break;
             }
@@ -212,7 +214,7 @@ if(this.options !== undefined){
       setTimeout(function () { // links inside dropdown-menu don't fire without a short delay
         if (target.parentNode && target.parentNode !== null){
            target.parentNode.classList.remove('open');}
-      }, 350);
+      }, 200);
   }
   actions() {
     var self = this;
@@ -239,7 +241,7 @@ if(this.options !== undefined){
       setTimeout(function () { // links inside dropdown-menu don't fire without a short delay
         if (target.parentNode && target.parentNode !== null){
            target.parentNode.classList.remove('open');}
-      }, 350);
+      }, 200);
     };
   }
 
