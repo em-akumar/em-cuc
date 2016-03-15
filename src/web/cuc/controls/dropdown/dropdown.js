@@ -223,7 +223,7 @@ if(this.options !== undefined){
       var target = e.currentTarget || e.srcElement;
       target.parentNode.classList.toggle('open');
       var selValue = self.menu.parentNode.querySelector(".btn .selectedText").getAttribute('value');
-      if (selValue == null) {
+      if (selValue === null && self.menu.parentNode.querySelector('.dropdown-menu li:first-child')!==null) {
         self.menu.parentNode.querySelector('.dropdown-menu li:first-child').classList.add('selected-text');
       } else {
          //var selValue = self.menu.parentNode.querySelector(".btn .selectedText").getAttribute('value');
