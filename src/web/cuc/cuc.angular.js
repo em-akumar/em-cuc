@@ -181,6 +181,7 @@ cuc.directive('uiGridCustomPaging', function ($compile,$timeout) {
           '<select ng-model="_selectedPageVal" ng-change="_pageOnNumSelect()"> ' +
           '<option  ng-repeat="item in _pageListNumItems"  value="{{item}}">{{item}}</option> ' +
         '</select>' +
+        '<label class="em-pageview-arrow"></label>' +
            '<span>&nbsp; per page</span>' +
           '</span>' +
           '<nav class="em-pagination" style="display:">' +
