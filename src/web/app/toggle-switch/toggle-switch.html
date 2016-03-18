@@ -1,3 +1,17 @@
 <div class="app toggle-switch">
   <h4>This is toggle-switch view -- {{:: vm.label }}</h4>
+  <label>Basic switch</label>
+  <div class="" options="vm.optionsBase"  emc="ToggleSwitch"></div>
+  <label>Set Default Switch (false)</label>
+  <div class="" options="vm.optionsMd" control="vm.switch" emc="ToggleSwitch"></div>
+  <label>Custom Icon Switch</label>
+  <div class="select-on-off" options="vm.optionsMdText"  emc="ToggleSwitch"></div>
+  <label>Flexible Switch</label>
+  <div class="select-flex" options="vm.optionsSmFlex" emc="ToggleSwitch"></div>
+  <label>Disabled Switch</label>
+  <div class="select-flex" options="vm.optionsDisabled"  emc="ToggleSwitch"></div>
+  <label>Restricted Switch</label>
+  <div class="select-flex" options="vm.optionsReadOnly"  emc="ToggleSwitch"></div>
+  <label>Full Customized Switch</label>
+  <div class="select-full-cust" options="vm.optionsCustom" control="vm.switchCustom" emc="ToggleSwitch"></div>
 </div>

@@ -441,14 +441,18 @@
         &:focus {
           outline: none;
         }
-        &:active {
+        &.active {
           background: @solidArrowImgUrl 8px center no-repeat;
-        }
-        &:hover{
-          background: @solidArrowImgUrl 8px center no-repeat;
-          //background-position: 1px 9px;
-          & + label {
+           & + .em-pageview-arrow {
             display: inline-block;
+            background-color: @pagination-active-background-color;
+          }
+        }
+        &.hover{
+          background: @arrowImgBlue 8px center no-repeat;
+          & + .em-pageview-arrow {
+            display: inline-block;
+            background-color: @pagination-hover-icon-background-color;
           }
         }
         & + label {
