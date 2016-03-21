@@ -11,6 +11,7 @@ import withLabelTemplate from './templates/text-input-with-label.html';
 import withIconTemplate from './templates/text-input-with-icon.html';
 import labelWrappingTemplate from './templates/text-input-label-wrapping.html';
 import maskingTemplate from './templates/text-input-masking.html';
+import symbolsTemplate from './templates/text-input-symbols.html';
 
 let textInputModule = angular.module('textInput', [uiRouter]);
 
@@ -63,6 +64,12 @@ textInputModule.directive('textInputLabelWrapping', () => {
 textInputModule.directive('textInputMasking', () => {
   return {
     template: maskingTemplate
+  };
+});
+
+textInputModule.directive('textInputSymbols', () => {
+  return {
+    template: symbolsTemplate
   };
 });
 
