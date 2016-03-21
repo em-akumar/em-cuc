@@ -7,9 +7,9 @@ class ToggleSwitch {
   }
   reinit() {
      let defaultTemplate = {
-        positiveTemplate: `<div class="em-on-switch" type="switch-on"></div>`,
-        negativeTemplate: `<div class="em-off-switch" type="switch-off"></div>`,
-        switchTemplate: `<div class="em-switch" type="switch"><div class="em-switch-icon"></div></div>`,
+        positiveTemplate: `<div class="em-on-switch" ></div>`,
+        negativeTemplate: `<div class="em-off-switch" ></div>`,
+        switchTemplate: `<div class="em-switch" ><div class="em-switch-icon"></div></div>`,
         switchStateDistence: '40%',
         mode:'normal',
         size: 'sm'
@@ -33,23 +33,41 @@ class ToggleSwitch {
       this.actions();
   }
   render() {
-    this.main.innerHTML = this.startHtml + this.options.positiveTemplate + this.options.negativeTemplate + this.options.switchTemplate + this.notEditableHtml + this.endHtml;
+    this.main.innerHTML = "";
+    this.parentObj = this._getDomObj(this.startHtml + this.endHtml);
+    this.parentObj.innerHTML = this.notEditableHtml;
+
+    this.positiveObj = this._getDomObj( this.options.positiveTemplate);
+    this.negativeObj = this._getDomObj(this.options.negativeTemplate);
+    this.switchObj = this._getDomObj(this.options.switchTemplate);
+
+    this.parentObj.appendChild(this.positiveObj);
+    this.parentObj.appendChild(this.negativeObj);
+    this.parentObj.appendChild(this.switchObj);
+
+    this.main.appendChild(this.parentObj);
+
+  }
+  _getDomObj(html) {
+    let divObj = document.createElement('div');
+    divObj.innerHTML = html;
+    return divObj.childNodes[0];
   }
   switcher() {
-    var item = this.main.querySelector('[type="switch"]');
+    var item = this.switchObj;
     if(item && item!=null){
       item.classList.toggle('em-off');
       this.main.querySelector('[name="switch"][value="off"]').checked = item.classList.contains('em-off');
       this.main.querySelector('[name="switch"][value="on"]').checked = !item.classList.contains('em-off');
       if (item.classList.contains('em-off')){
         item.style.left = this.options.switchStateDistence;
-        this.main.querySelector('[type="switch-off"]').style.display = 'none';
+        this.negativeObj.style.display = 'none';
         this.main.querySelector('.em-off-opt-switch').style.display = 'none';
-        this.main.querySelector('[type="switch-on"]').style.display = ''}
+        this.positiveObj.style.display = ''}
       else{
-        this.main.querySelector('[type="switch-on"]').style.display = 'none';
+        this.positiveObj.style.display = 'none';
         this.main.querySelector('.em-on-opt-switch').style.display = 'none';
-        this.main.querySelector('[type="switch-off"]').style.display = '';
+        this.negativeObj.style.display = '';
         item.style.left = '0px';}
       if (typeof this.options.onChange === 'function') {
           this.options.onChange(!this.main.querySelector('[name="switch"][value="on"]').checked);
@@ -57,7 +75,7 @@ class ToggleSwitch {
     }
   }
   setSwitch(val) {
-    var item = this.main.querySelector('[type="switch"]');
+    var item = this.switchObj;
     if (!val) {
       item.classList.remove('em-off');
     }
@@ -69,13 +87,13 @@ class ToggleSwitch {
     this.main.querySelector('[name="switch"][value="on"]').checked = !item.classList.contains('em-off');
     if (item.classList.contains('em-off')){
         item.style.left = this.options.switchStateDistence;
-         this.main.querySelector('[type="switch-off"]').style.display = 'none';
+        this.negativeObj.style.display = 'none';
         this.main.querySelector('.em-off-opt-switch').style.display = 'none';
-        this.main.querySelector('[type="switch-on"]').style.display = ''}
+        this.positiveObj.style.display = ''}
       else{
-        this.main.querySelector('[type="switch-on"]').style.display = 'none';
+        this.positiveObj.style.display = 'none';
         this.main.querySelector('.em-on-opt-switch').style.display = 'none';
-        this.main.querySelector('[type="switch-off"]').style.display = '';
+        this.negativeObj.style.display = '';
         item.style.left = '0px';}
   }
 

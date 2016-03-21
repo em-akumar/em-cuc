@@ -2,16 +2,214 @@
   <h4>This is toggle-switch view -- {{:: vm.label }}</h4>
   <label>Basic switch</label>
   <div class="" options="vm.optionsBase"  emc="ToggleSwitch"></div>
+  <div  class="panel panel-primary">
+        <div class="panel-heading">Default Switch Usage</div>
+        <div class="codepen-group">
+            <pre class="codepen-able" data-type="html">
+              &#x3C;div class=&#x22;&#x22; options=&#x22;vm.optionsBase&#x22;  emc=&#x22;ToggleSwitch&#x22;&#x3E;&#x3C;/div&#x3E;
+            </pre>
+            <pre class="codepen-able"  data-type="css">
+            </pre>
+            <pre class="codepen-able"  data-type="js">
+               this.optionsBase = {
+                  onChange: function (val) {
+                    console.log(val);
+                  }
+              };
+            </pre>
+        </div>
+  </div>
   <label>Set Default Switch (false)</label>
   <div class="" options="vm.optionsMd" control="vm.switch" emc="ToggleSwitch"></div>
+  <div  class="panel panel-primary">
+        <div class="panel-heading">Default Switch Set to False</div>
+        <div class="codepen-group">
+            <pre class="codepen-able" data-type="html">
+              &#x3C;div class=&#x22;&#x22; options=&#x22;vm.optionsMd&#x22; control=&#x22;vm.switch&#x22; emc=&#x22;ToggleSwitch&#x22;&#x3E;&#x3C;/div&#x3E;
+            </pre>
+            <pre class="codepen-able"  data-type="css">
+            </pre>
+            <pre class="codepen-able"  data-type="js">
+               this.optionsMd = {
+                  switchStateDistence: '45%',
+                  size: 'md',
+                  onChange: function (val) {
+                    console.log(val);
+                  }
+              };
+              //-----init----
+              $timeout(() => {
+                this.switch.setSwitch(false);
+              });
+            </pre>
+        </div>
+  </div>
   <label>Custom Icon Switch</label>
   <div class="select-on-off" options="vm.optionsMdText"  emc="ToggleSwitch"></div>
+  <div  class="panel panel-primary">
+        <div class="panel-heading">Custom Icon Switch Usage</div>
+        <div class="codepen-group">
+            <pre class="codepen-able" data-type="html">
+              &#x3C;div class=&#x22;select-on-off&#x22; options=&#x22;vm.optionsMdText&#x22;  emc=&#x22;ToggleSwitch&#x22;&#x3E;&#x3C;/div&#x3E;
+            </pre>
+            <pre class="codepen-able"  data-type="css">
+              .select-on-off{
+                .switch-cust-icon{
+                  &::after{
+                    content: "\2726";
+                    position: absolute;
+                    top: 5px;
+                    left: 10px;
+                  }
+                }
+              }
+            </pre>
+            <pre class="codepen-able"  data-type="js">
+              this.optionsMdText = {
+                positiveTemplate: &#x60;&#x3C;div class=&#x22;em-on-switch&#x22; &#x3E;On&#x3C;/div&#x3E;&#x60;,
+                negativeTemplate: &#x60;&#x3C;div class=&#x22;em-off-switch&#x22; &#x3E;Off&#x3C;/div&#x3E;&#x60;,
+                switchTemplate: &#x60;&#x3C;div class=&#x22;em-switch&#x22; &#x3E;&#x3C;div class=&#x22;switch-cust-icon&#x22;&#x3E;&#x3C;/div&#x3E;&#x3C;/div&#x3E;&#x60;,
+                switchStateDistence: &#x27;45%&#x27;,
+                size: &#x27;md&#x27;,
+                onChange: function (val) {
+                  console.log(val);
+                }
+            };
+            </pre>
+        </div>
+  </div>
   <label>Flexible Switch</label>
   <div class="select-flex" options="vm.optionsSmFlex" emc="ToggleSwitch"></div>
+  <div  class="panel panel-primary">
+        <div class="panel-heading">Flexible Switch Usage</div>
+        <div class="codepen-group">
+            <pre class="codepen-able" data-type="html">
+             &#x3C;div class=&#x22;select-flex&#x22; options=&#x22;vm.optionsSmFlex&#x22; emc=&#x22;ToggleSwitch&#x22;&#x3E;&#x3C;/div&#x3E;
+            </pre>
+            <pre class="codepen-able"  data-type="css">
+               .select-flex{
+                .switch-cust-on{
+                  width: 85px;
+                  margin-top:-3px;
+                }
+                .switch-cust-off{
+                  width: 80px;
+                  margin-top:-3px;
+                }
+            }
+            </pre>
+            <pre class="codepen-able"  data-type="js">
+                this.optionsSmFlex = {
+                  positiveTemplate: &#x60;&#x3C;div class=&#x22;em-on-switch&#x22; &#x3E;&#x3C;div class=&#x22;switch-cust-on&#x22;&#x3E;Good one&#x3C;/div&#x3E;&#x3C;/div&#x3E;&#x60;,
+                  negativeTemplate: &#x60;&#x3C;div class=&#x22;em-off-switch&#x22; &#x3E;&#x3C;div class=&#x22;switch-cust-on&#x22;&#x3E;Bad one&#x3C;/div&#x3E;&#x3C;/div&#x3E;&#x60;,
+                  switchStateDistence: &#x27;75%&#x27;,
+                  size: &#x27;flex-sm&#x27;,
+                  onChange: function (val) {
+                    console.log(val);
+                  }
+              };
+            </pre>
+        </div>
+  </div>
   <label>Disabled Switch</label>
   <div class="select-flex" options="vm.optionsDisabled"  emc="ToggleSwitch"></div>
+  <div  class="panel panel-primary">
+        <div class="panel-heading">Disabled Switch Usage</div>
+        <div class="codepen-group">
+            <pre class="codepen-able" data-type="html">
+              &#x3C;div class=&#x22;select-flex&#x22; options=&#x22;vm.optionsDisabled&#x22;  emc=&#x22;ToggleSwitch&#x22;&#x3E;&#x3C;/div&#x3E;
+            </pre>
+            <pre class="codepen-able"  data-type="css">
+            </pre>
+            <pre class="codepen-able"  data-type="js">
+               this.optionsDisabled = {
+                  positiveTemplate: &#x60;&#x3C;div class=&#x22;em-on-switch&#x22; &#x3E;&#x3C;div class=&#x22;switch-cust-on&#x22;&#x3E;Good one&#x3C;/div&#x3E;&#x3C;/div&#x3E;&#x60;,
+                  negativeTemplate: &#x60;&#x3C;div class=&#x22;em-off-switch&#x22; &#x3E;&#x3C;div class=&#x22;switch-cust-on&#x22;&#x3E;Bad one&#x3C;/div&#x3E;&#x3C;/div&#x3E;&#x60;,
+                  switchStateDistence: &#x27;75%&#x27;,
+                  size: &#x27;flex-sm&#x27;,
+                mode: &#x27;disable&#x27;
+              };
+            </pre>
+        </div>
+  </div>
   <label>Restricted Switch</label>
   <div class="select-flex" options="vm.optionsReadOnly"  emc="ToggleSwitch"></div>
+   <div  class="panel panel-primary">
+        <div class="panel-heading">Restricted/Readonly Usage</div>
+        <div class="codepen-group">
+            <pre class="codepen-able" data-type="html">
+              &#x3C;div class=&#x22;select-flex&#x22; options=&#x22;vm.optionsReadOnly&#x22;  emc=&#x22;ToggleSwitch&#x22;&#x3E;&#x3C;/div&#x3E;
+            </pre>
+            <pre class="codepen-able"  data-type="css">
+            </pre>
+            <pre class="codepen-able"  data-type="js">
+               this.optionsReadOnly = {
+                positiveTemplate: &#x60;&#x3C;div class=&#x22;em-on-switch&#x22; &#x3E;&#x3C;div class=&#x22;switch-cust-on&#x22;&#x3E;Good one&#x3C;/div&#x3E;&#x3C;/div&#x3E;&#x60;,
+                negativeTemplate: &#x60;&#x3C;div class=&#x22;em-off-switch&#x22; &#x3E;&#x3C;div class=&#x22;switch-cust-on&#x22;&#x3E;Bad one&#x3C;/div&#x3E;&#x3C;/div&#x3E;&#x60;,
+                switchStateDistence: &#x27;75%&#x27;,
+                size: &#x27;flex-sm&#x27;,
+                mode: &#x27;readonly&#x27;
+              };
+            </pre>
+        </div>
+  </div>
   <label>Full Customized Switch</label>
   <div class="select-full-cust" options="vm.optionsCustom" control="vm.switchCustom" emc="ToggleSwitch"></div>
+  <div  class="panel panel-primary">
+        <div class="panel-heading">Full Customized Example</div>
+        <div class="codepen-group">
+            <pre class="codepen-able" data-type="html">
+              &#x3C;div class=&#x22;select-full-cust&#x22; options=&#x22;vm.optionsCustom&#x22; control=&#x22;vm.switchCustom&#x22; emc=&#x22;ToggleSwitch&#x22;&#x3E;&#x3C;/div&#x3E;
+            </pre>
+            <pre class="codepen-able"  data-type="css">
+              .select-full-cust{
+                .em-sunshine{
+                  width: 85px;
+                  height: 40px;
+                  background-image:  url('http://cdn.paper4pc.com/images/sunny-morning-wallpaper-1.jpg');
+                    background-size: 85px 40px;
+                    border-radius: 35%;
+                    border: 1px solid cadetblue;
+                    text-align: left;
+                    padding: 5px 5px 0 0;
+                    color: #fff;
+                }
+                .em-evening{
+                  width: 85px;
+                  height: 40px;
+                  background-image:  url('http://cdn.paper4pc.com/images/stars-night-wallpaper-2.jpg') ;
+                  background-size: 85px 40px;
+                  border-radius: 35%;
+                  border: 1px solid darkblue;
+                  text-align: right;
+                  padding: 5px 0 0 5px;
+                    color: #e6e6e6;
+                }
+                .em-sun{
+                  -webkit-transition: left 0.2s; /* Safari */
+                  transition: left 0.2s;
+                  position: absolute;
+                  top: 0px;
+                  width: 42px;
+                  height: 42px;
+                  background-image:  url('http://vignette4.wikia.nocookie.net/vsbattles/images/c/ca/Render_sun.png') ;
+                  background-size: 48px 48px;
+                  background-position: -4px;
+                }
+              }
+            </pre>
+            <pre class="codepen-able"  data-type="js">
+               this.optionsCustom = {
+                positiveTemplate: &#x60;&#x3C;div class=&#x22;em-sunshine&#x22; &#x3E;GM&#x3C;/div&#x3E;&#x60;,
+                negativeTemplate: &#x60;&#x3C;div class=&#x22;em-evening&#x22; &#x3E;GN&#x3C;/div&#x3E;&#x60;,
+                switchTemplate: &#x60;&#x3C;div class=&#x22;em-sun&#x22; &#x3E;&#x3C;/div&#x3E;&#x60;,
+                switchStateDistence: &#x27;55%&#x27;,
+                size: &#x27;flex-md&#x27;,
+                onChange: function (val) {
+                  console.log(val);
+                }
+            };
+            </pre>
+        </div>
+  </div>
 </div>
