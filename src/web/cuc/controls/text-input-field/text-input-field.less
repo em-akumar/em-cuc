@@ -263,35 +263,135 @@ input[data-restricted=true],input[data-restricted=true]:hover {
     }
 
   }
-.em-txt-dollar,.em-txt-percent,.em-txt-month {
-  position: relative;
+
+  .em-input-symbol-dollar,.em-input-symbol-percent,.em-input-symbol-months,
+  .em-input-search,.em-input-phone,.em-input-contact,.em-input-edit,.em-input-email {
+     position: relative;
+      &.em-txt-ex-sm {
+          width: @input-field-size-extra-small;
+      }
+      &.em-txt-sm {
+          width: @input-field-size-small;
+      }
+      &.em-txt-md, .em-lbl-md {
+          width: @input-field-size-medium;
+      }
+      &.em-txt-lg {
+        width: @input-field-size-large;
+      }
+      &.em-txt-flex {
+          width: @input-field-size-flexible;
+      }
+      &.em-txt-height-sm {
+          height: @input-field-smaller-height;
+      }
+  }
+  .em-input-symbol-percent input{
+    padding-right:15px;
+    padding-left:5px;
+    display: inline;
+    height: 32px;
+    line-height: 0.375rem;
+  }
+  .em-input-symbol-months input{
+      padding-right:45px;
+      padding-left:5px;
+      display: inline;
+      height: 32px;
+      line-height: 0.375rem;
   }
 
-.em-txt-dollar{
-  span.addon{
-  position: absolute;
-  transform: translate(0,-50%);
-  top:50%;
-  pointer-events:none;
-  margin-left:0.2em;
-}
-  input[type="text"], input[type="email"]{
-    padding-left: 14px;
-  }
-}
-.em-txt-percent{
-  span.addon {
+ .em-input-search input,.em-input-phone input,.em-input-contact input,.em-input-edit input,.em-input-email input{
+    padding-right:25px;
+    display: inline;
+ }
+ .em-input-search:after,.em-input-phone:after,.em-input-contact:after,.em-input-edit:after,.em-input-email:after{
     position: absolute;
-    transform: translate(0, -50%);
-    top: 50%;
-    pointer-events: none;
-    right: 0.2em;
+    top: 8px;
+    content: '';
+    right: 5px;
+ }
+
+ .em-input-search{
+   &:hover:after{
+     cursor: pointer;
+     background: url("../../assets/images/icon-search-black.svg") center right no-repeat;
+     width:16px;
+     height: 16px;
+   }
+ }
+ .em-input-contact{
+   &:hover:after{
+     cursor: pointer;
+     content: url("../../assets/images/icon-contacts-black.svg");
+     width:16px;
+     height: 16px;
+   }
+ }
+ .em-input-edit{
+   &:hover:after{
+     width:16px;
+     height: 16px;
+     cursor: pointer;
+     content: url("../../assets/images/icon-edit-pencil-black.svg");
+   }
+ }
+
+ .em-input-phone{
+   &:hover:after{
+     width:16px;
+     height: 16px;
+     cursor: pointer;
+     background: url("../../assets/images/icon-phone-black.svg");
+   }
+ }
+
+ .em-input-email{
+   &:hover:after{
+     width:16px;
+     height: 16px;
+     cursor: pointer;
+     background: url("../../assets/images/icon-email-black-16.svg");
+   }
+ }
+
+  input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+  .em-input-symbol-percent:after {
+    position: absolute;
+    top: 6px;
+    content: "%";
+    right: 5px;
+    font-size: 12px;
   }
-  input[type="text"],input[type="email"]{
-    padding-right: 1.8em;
-    text-align: right;
+  .em-input-symbol-months:after {
+    position: absolute;
+    top: 6px;
+    content: "Months";
+    right: 5px;
+    font-size: 12px;
   }
-}
+
+  .em-input-symbol-dollar input{
+    padding-left:15px;
+    padding-right:5px;
+    display: inline;
+    height: 32px;
+    line-height: 0.375rem;
+  }
+  .em-input-symbol-dollar:after {
+    position: absolute;
+    top: 6px;
+    content: "$";
+    left: 5px;
+    font-size: 14px;
+  }
+
+
 .em-txt-month {
   span.addon {
     position: absolute;
