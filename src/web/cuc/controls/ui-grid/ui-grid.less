@@ -7,6 +7,7 @@
 @disArrowImgUrl: url("../../assets/images/icon-solid-arrow-temp-white-base.svg");
 @solidArrowImgUrl: url("../../assets/images/icon-solid-arrow-white.svg");
 @checkmarkImageUrl: url("../../assets/images/icon-checkmark-white.svg");
+@arrowImgBlue: url("../../assets/images/icon-solid-arrow-blue-base.svg");
 
 //Mixins for styling  --- ToDo: need to move shared place
 .position-of-triangle-in-button(){
@@ -15,7 +16,6 @@
   left: 5px;
 }
 .common-style-for-arrow-in-pagination(){
-  background: @arrowImgUrl center center no-repeat;
   color: @pagination-icon-arrow-color;
   align: center;
   text-align: center;
@@ -26,10 +26,19 @@
   height: @pagination-active-background-height;
   width: @pagination-active-background-width;
   border-radius: @close-icon-hover-background-radius;
+  &::before{
+    content: '\25BC';
+    color:  @pagination-icon-arrow-color;
+    position: absolute;
+    display: block;
+    padding: 2px 2px 2px 3px;
+    font-size: 14px;
+  }
   &:hover {
     color: @pagination-hover-icon-arrow-color;
     background-color: @pagination-hover-icon-background-color;
     cursor: pointer;
+    border-radius: @pagination-hover-background-radius;
   }
 }
 .checkBox-common-properties{
@@ -303,11 +312,10 @@
         transform: rotate(90deg);
         .common-style-for-arrow-in-pagination;
         &.disable{
-          background: @disArrowImgUrl center center no-repeat;
           background-size: 24px;
           opacity: 0.2;
           &:hover{
-            background-color: @none;
+            background: @none;
             cursor: default;
           }
         }
@@ -317,17 +325,19 @@
           & > a {
             color: @pagination-active-font-color;
             font-size: @pagination-active-font-size;
-            font: @font-family-base;
+            font: @font-family-base;;
             text-align: center;
             vertical-align: middle;
             background-color: @pagination-active-background-color;
-            height: 19px; // Needed to override due to over sized font
-            padding: 0 6px;
+            height: @pagination-hover-background-height;
+            width: @pagination-hover-background-height;
+            padding: 0px;
             border-radius: @pagination-hover-background-radius;
             &:hover{
               background-color: @pagination-active-background-color;
               font-size: @pagination-active-font-size;
-              height: 19px;// Needed to override due to over sized font
+              height: @pagination-hover-background-height;
+              width: @pagination-hover-background-height;
             }
           }
         }
@@ -339,10 +349,13 @@
             font-size: @pagination-font-size;
             color: @pagination-font-color;
             //padding: @pagination-font-padding;
-            padding: 0px 7px;
+            padding: 0px;
             margin-left: 2px;
             text-align: center;
             vertical-align: middle;
+            height: @pagination-hover-background-height;
+            width: @pagination-hover-background-height;
+            background-color: @gray-warm-lightest;
             &:hover {
               //color: @pagination-hover-font-color;
               color: black;
@@ -352,7 +365,6 @@
               vertical-align: middle;
               //color: @gray-warm-light;
               background-color: @gray-warm-light;
-              height: @pagination-hover-background-height;
               border-radius: @pagination-hover-background-radius;
             }
           }
@@ -383,7 +395,7 @@
         transform: rotate(-90deg);
         .common-style-for-arrow-in-pagination;
         &.disable{
-          background: @disArrowImgUrl center center no-repeat;
+          //background: @disArrowImgUrl center center no-repeat;
           background-size: 24px;
           opacity: 0.2;
           &:hover{
@@ -411,8 +423,8 @@
       select {
         border: none;
         direction: rtl;
-        background: @arrowImgUrl center center no-repeat;
-        background-position: 0px;
+        background: @arrowImgBlue center center no-repeat;
+        background-position: 7px;
         background-size: @pagination-icon-arrow-height;
         -webkit-appearance: none;
         -moz-appearance: none;
@@ -429,17 +441,21 @@
         &:focus {
           outline: none;
         }
-        &:active {
-          background: @solidArrowImgUrl 0 no-repeat;
-        }
-        &:hover{
-          background: @solidArrowImgUrl 1px 9px no-repeat;
-          //background-position: 1px 9px;
-          & + label {
+        &.active {
+          background: @solidArrowImgUrl 8px center no-repeat;
+           & + .em-pageview-arrow {
             display: inline-block;
+            background-color: @pagination-active-background-color;
           }
         }
-        &+ label {
+        &.hover{
+          background: @arrowImgBlue 8px center no-repeat;
+          & + .em-pageview-arrow {
+            display: inline-block;
+            background-color: @pagination-hover-icon-background-color;
+          }
+        }
+        & + label {
           .activeIconBg;
         }
       }
@@ -470,7 +486,7 @@
         float: left;
         z-index: 11;
         position: relative;
-        left: 20px;
+        left: 27px;
         top: 0;
       }
     }

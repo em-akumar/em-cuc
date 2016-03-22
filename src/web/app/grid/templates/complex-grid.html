@@ -14,4 +14,72 @@
     ui-grid-custom-paging ui-grid-resize-columns ui-grid-auto-resize ui-grid-exporter ui-grid-column-settings ui-grid-move-columns ui-grid-save-state ui-grid-print=".btnprint" class="em-complex-grid"></div>
   </div>
   <div class="xport-location"></div>
+
+  <div  class="panel panel-primary">
+        <div class="panel-heading">Complex Grid Usage</div>
+        <div class="codepen-group">
+            <pre class="codepen-able" data-type="html">
+              &#x3C;div class=&#x22;action-button-wrapper&#x22;&#x3E;
+                  &#x3C;button class=&#x22;btn &#x22; ng-click=&#x22;vm.exportCsv()&#x22;&#x3E;
+                    &#x3C;div class=&#x22;btn em-icon em-icon-duplicate-file em-icon-md&#x22;&#x3E;&#x3C;/div&#x3E;
+                  &#x3C;/button&#x3E;
+                  &#x3C;button class=&#x22;btn btnprint&#x22;&#x3E;
+                    &#x3C;div class=&#x22;btn em-icon em-icon-print em-icon-md&#x22;&#x3E;&#x3C;/div&#x3E;
+                  &#x3C;/button&#x3E;
+                &#x3C;/div&#x3E;
+                &#x3C;div ui-grid=&#x22;vm.gridOptions&#x22; ui-grid-pinning ui-grid-selection ui-grid-pagination
+    ui-grid-custom-paging ui-grid-resize-columns ui-grid-auto-resize ui-grid-exporter ui-grid-column-settings ui-grid-move-columns ui-grid-save-state ui-grid-print=&#x22;.btnprint&#x22; class=&#x22;em-complex-grid&#x22;&#x3E;&#x3C;/div&#x3E;
+    &#x3C;div class=&#x22;xport-location&#x22;&#x3E;&#x3C;/div&#x3E;
+            </pre>
+            <pre class="codepen-able"  data-type="css">
+            </pre>
+            <pre class="codepen-able"  data-type="js">
+               init(GridService) {
+                this.gridService = GridService;
+                this.initialize();
+                this.gridRender();
+              }
+
+              // Render UI-Grid and load the options from json file
+              gridRender() {
+                this.gridOptions = gridOption;
+                this.gridOptions.onRegisterApi = function (gridApi) {
+                  this.gridApi = gridApi;
+                }.bind(this);
+              }
+              exportCsv() {
+                var myElement = angular.element(document.querySelector('.xport-location'));
+                this.gridApi.exporter.csvExport('visible', 'all', myElement);// visible or selected
+              }
+              initialize() {
+                this.gridService.resolvePromise().then((response) => {
+                  this.gridOptions.data = response;
+                  safeApply();
+                });
+              }
+              //-------value in gridOption --------------
+               {
+                "paginationPageSize": 10,
+                "paginationPageSizes":[10,20,25,35,60,100],
+                "sortEnabled": true,
+                "enableRowSelection": true,
+                "enableRowHeaderSelection": true,
+                "multiSelect": true,
+                "enableSelectAll": true,
+                "enableColumnResizing" : true,
+                "enableFiltering": true,
+                "columnDefs": [{
+                    "field": "Loan_Program_Amount",
+                    "displayName": "Amount",
+                    "width": "*"},
+                  {"field": "Date_Started",
+                  "enableColumnResizing" : false},
+                  {"field": "Estimated_Close_Date"},
+                  {"field": "Status"}
+                ]
+              };
+
+            </pre>
+        </div>
+  </div>
 </div>

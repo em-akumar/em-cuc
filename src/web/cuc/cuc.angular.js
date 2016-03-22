@@ -176,12 +176,13 @@ cuc.directive('uiGridCustomPaging', function ($compile,$timeout) {
           '<label class="em-pageview-arrow"></label>' +
           '<span>&nbsp; of {{_pageTotalCount}}</span>' +
           '<label class="em-pageview-arrow"></label>' +
-        '</span>' +
+          '</span>' +
            '<span class="em-pageview">' +
-          '<select ng-model="_selectedPageVal" ng-change="_pageOnNumSelect()"> ' +
+          '<select ng-mouseover="_onPageSelectOver($event)" ng-mouseleave="_onPageSelectLeave($event)" ng-click="_onPageSelectClick($event)" ng-model="_selectedPageVal" ng-change="_pageOnNumSelect()"> ' +
           '<option  ng-repeat="item in _pageListNumItems"  value="{{item}}">{{item}}</option> ' +
-        '</select>' +
-           '<span>&nbsp; per page</span>' +
+          '</select>' +
+          '<label class="em-pageview-arrow"></label>' +
+          '<span>&nbsp; per page</span>' +
           '</span>' +
           '<nav class="em-pagination" style="display:">' +
           '<span class="em-left-arrow" style="display:">' +
@@ -296,8 +297,8 @@ cuc.directive('uiGridCustomPaging', function ($compile,$timeout) {
             initMd = 2;
           if (initMd > maxPage - 3)
             initMd = maxPage - 3;
-          if (initMd === 1)
-            initMd++;
+          if (initMd < 2)
+            initMd = 2;
           pageMiddle.forEach(function (el) {
             el.childNodes[0].innerHTML = initMd;
             if (val === initMd)
@@ -329,6 +330,17 @@ cuc.directive('uiGridCustomPaging', function ($compile,$timeout) {
           uiGridctrl.grid.options.paginationPageSize =scope._selectedPageVal;
           initPage(scope);
         }
+         scope._onPageSelectLeave =  (e)=>{
+           e.target.classList.remove('active');
+           e.target.classList.remove('hover');
+        }
+         scope._onPageSelectClick =  (e)=>{
+           e.target.classList.remove('hover');
+           e.target.classList.add('active');
+         }
+        scope._onPageSelectOver =  (e)=>{
+           e.target.classList.add('hover');
+        }
         selectPage.onchange = function (e) {
           var val = Number(e.target.value) + 1;
           changePage(val);
@@ -337,6 +349,8 @@ cuc.directive('uiGridCustomPaging', function ($compile,$timeout) {
           uiGridctrl.grid.api.pagination.seek(Number(val));
         };
         scope._leftArrow_click = function () {
+          if (leftArrow.classList.contains('disable'))
+            return;
           if (uiGridctrl.grid.api.pagination.getPage() == 1)
             return;
           uiGridctrl.grid.api.pagination.previousPage();
@@ -380,6 +394,8 @@ cuc.directive('uiGridCustomPaging', function ($compile,$timeout) {
 
         };
         scope._rightArrow_click = function () {
+          if(rightArrow.classList.contains('disable'))
+            return;
           if (uiGridctrl.grid.api.pagination.getPage() == (maxPage))
             return;
           uiGridctrl.grid.api.pagination.nextPage();

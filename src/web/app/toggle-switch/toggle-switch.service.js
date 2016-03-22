@@ -1,4 +1,4 @@
-class ToggleswitchService {
+class ToggleSwitchService {
   /* @ngInject */
   constructor($http) {
     this.$http = $http;
@@ -8,4 +8,4 @@ class ToggleswitchService {
   }
 }
 
-export default ToggleswitchService;
+export default ToggleSwitchService;

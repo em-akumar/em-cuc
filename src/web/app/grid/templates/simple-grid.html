@@ -3,4 +3,44 @@
     <div class="panel-heading em-toolbar-container"> Simple Grid Header
     </div>
     <div ui-grid="vm.simpleGridOptions" class="em-simple-grid" ui-grid-auto-resize></div>
+    <div  class="panel panel-primary">
+        <div class="panel-heading">Simple Grid Usage</div>
+        <div class="codepen-group">
+            <pre class="codepen-able" data-type="html">
+              &#x3C;div ui-grid=&#x22;vm.simpleGridOptions&#x22; class=&#x22;em-simple-grid&#x22; ui-grid-auto-resize&#x3E;&#x3C;/div&#x3E;
+            </pre>
+            <pre class="codepen-able"  data-type="css">
+            </pre>
+            <pre class="codepen-able"  data-type="js">
+               init(GridService) {
+                this.gridService = GridService;
+                this.initialize();
+                this.gridRender();
+              }
+
+              // Render UI-Grid and load the options from json file
+              gridRender() {
+                this.simpleGridOptions = simpleGridOption;
+              }
+              initialize() {
+                this.gridService.resolvePromise().then((response) => {
+                  this.simpleGridOptions.data = response;
+                  safeApply();
+                });
+              }
+              //---value in simpleGridOption-------
+              { "enableSorting": false ,
+                "columnDefs": [{
+                    "field": "Loan_Program_Amount",
+                    "displayName": "Amount",
+                    "width": "*" },
+                  {"field": "Date_Started"},
+                  {"field": "Estimated_Close_Date"},
+                  {"field": "Status"}
+                ]
+              }
+
+            </pre>
+        </div>
+  </div>
   </div>

@@ -1,0 +1,58 @@
+.toggle-switch {
+  color: #850;
+  .select-on-off{
+    .switch-cust-icon{
+      &::after{
+        content: "\2726";
+        position: absolute;
+        top: 5px;
+        left: 10px;
+      }
+    }
+  }
+  .select-flex{
+        .switch-cust-on{
+          width: 85px;
+          margin-top:-3px;
+        }
+        .switch-cust-off{
+          width: 80px;
+          margin-top:-3px;
+        }
+    }
+  .select-full-cust{
+       .em-sunshine{
+         width: 85px;
+         height: 40px;
+         background-image:  url('http://cdn.paper4pc.com/images/sunny-morning-wallpaper-1.jpg');
+          background-size: 85px 40px;
+          border-radius: 35%;
+          border: 1px solid cadetblue;
+          text-align: left;
+          padding: 5px 5px 0 0;
+          color: #fff;
+       }
+       .em-evening{
+         width: 85px;
+         height: 40px;
+         background-image:  url('http://cdn.paper4pc.com/images/stars-night-wallpaper-2.jpg') ;
+         background-size: 85px 40px;
+         border-radius: 35%;
+         border: 1px solid darkblue;
+         text-align: right;
+         padding: 5px 0 0 5px;
+          color: #e6e6e6;
+       }
+       .em-sun{
+         -webkit-transition: left 0.2s; /* Safari */
+         transition: left 0.2s;
+         position: absolute;
+         top: 0px;
+         width: 42px;
+         height: 42px;
+         background-image:  url('http://vignette4.wikia.nocookie.net/vsbattles/images/c/ca/Render_sun.png') ;
+         background-size: 48px 48px;
+         background-position: -4px;
+       }
+    }
+ }
