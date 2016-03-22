@@ -302,42 +302,56 @@ input[data-restricted=true],input[data-restricted=true]:hover {
   }
 
  .em-input-search input,.em-input-phone input,.em-input-contact input,.em-input-edit input,.em-input-email input{
-    padding-right:30px;
+    padding-right:25px;
     display: inline;
  }
  .em-input-search:after,.em-input-phone:after,.em-input-contact:after,.em-input-edit:after,.em-input-email:after{
     position: absolute;
-    top: -3px;
+    top: 8px;
     content: '';
-    right: 10px;
+    right: 5px;
  }
+
  .em-input-search{
    &:hover:after{
      cursor: pointer;
      background: url("../../assets/images/icon-search-black.svg") center right no-repeat;
-     padding:20px;
+     width:16px;
+     height: 16px;
    }
  }
  .em-input-contact{
-   &:after{
-       right:0;
-   }
    &:hover:after{
      cursor: pointer;
      content: url("../../assets/images/icon-contacts-black.svg");
-     height: 10px;
-     padding:10px;
+     width:16px;
+     height: 16px;
    }
  }
  .em-input-edit{
-   &:after{
-       right:0;
-   }
    &:hover:after{
-     width: 32px;
-     padding:10px;
+     width:16px;
+     height: 16px;
      cursor: pointer;
      content: url("../../assets/images/icon-edit-pencil-black.svg");
+   }
+ }
+
+ .em-input-phone{
+   &:hover:after{
+     width:16px;
+     height: 16px;
+     cursor: pointer;
+     background: url("../../assets/images/icon-phone-black.svg");
+   }
+ }
+
+ .em-input-email{
+   &:hover:after{
+     width:16px;
+     height: 16px;
+     cursor: pointer;
+     background: url("../../assets/images/icon-email-black-16.svg");
    }
  }
 
