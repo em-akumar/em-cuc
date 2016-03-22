@@ -264,7 +264,7 @@ input[data-restricted=true],input[data-restricted=true]:hover {
 
   }
 
-  .em-input-symbol-dollar,.em-input-symbol-percent,.em-input-symbol-month,
+  .em-input-symbol-dollar,.em-input-symbol-percent,.em-input-symbol-months,
   .em-input-search,.em-input-phone,.em-input-contact,.em-input-edit,.em-input-email {
      position: relative;
       &.em-txt-ex-sm {
@@ -293,6 +293,14 @@ input[data-restricted=true],input[data-restricted=true]:hover {
     height: 32px;
     line-height: 0.375rem;
   }
+  .em-input-symbol-months input{
+      padding-right:45px;
+      padding-left:5px;
+      display: inline;
+      height: 32px;
+      line-height: 0.375rem;
+  }
+
  .em-input-search input,.em-input-phone input,.em-input-contact input,.em-input-edit input,.em-input-email input{
     padding-right:30px;
     display: inline;
@@ -341,8 +349,15 @@ input[data-restricted=true],input[data-restricted=true]:hover {
 
   .em-input-symbol-percent:after {
     position: absolute;
-    top: 0px;
+    top: 6px;
     content: "%";
+    right: 5px;
+    font-size: 12px;
+  }
+  .em-input-symbol-months:after {
+    position: absolute;
+    top: 6px;
+    content: "Months";
     right: 5px;
     font-size: 12px;
   }
@@ -356,7 +371,7 @@ input[data-restricted=true],input[data-restricted=true]:hover {
   }
   .em-input-symbol-dollar:after {
     position: absolute;
-    top: 0px;
+    top: 6px;
     content: "$";
     left: 5px;
     font-size: 14px;
