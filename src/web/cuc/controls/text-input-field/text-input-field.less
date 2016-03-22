@@ -265,6 +265,8 @@ input[data-restricted=true],input[data-restricted=true]:hover {
   }
 
   .em-input-symbol-dollar,.em-input-symbol-percent,.em-input-symbol-months,
+  .em-input-symbol-dollar-24,.em-input-symbol-percent-24,.em-input-symbol-months-24,
+  .em-input-search-24,.em-input-phone-24,.em-input-contact-24,.em-input-edit-24,.em-input-email-24,
   .em-input-search,.em-input-phone,.em-input-contact,.em-input-edit,.em-input-email {
      position: relative;
       &.em-txt-ex-sm {
@@ -286,19 +288,34 @@ input[data-restricted=true],input[data-restricted=true]:hover {
           height: @input-field-smaller-height;
       }
   }
-  .em-input-symbol-percent input{
-    padding-right:15px;
-    padding-left:5px;
+  .em-input-symbol-percent input,.em-input-symbol-percent-24 input{
+    padding-right:18px;
+    padding-left:8px;
     display: inline;
+  }
+  .em-input-symbol-percent input{
     height: 32px;
     line-height: 0.375rem;
   }
-  .em-input-symbol-months input{
-      padding-right:45px;
-      padding-left:5px;
+  .em-input-symbol-percent-24 input{
+      height: 24px;
+      padding-top:0;
+      padding-bottom:0;
+  }
+
+.em-input-symbol-months input,.em-input-symbol-months-24 input{
+   padding-right:45px;
+      padding-left:8px;
       display: inline;
+}
+  .em-input-symbol-months input{
       height: 32px;
       line-height: 0.375rem;
+  }
+  .em-input-symbol-months-24 input{
+      height: 24px;
+      padding-top:0;
+      padding-bottom:0;
   }
 
  .em-input-search input,.em-input-phone input,.em-input-contact input,.em-input-edit input,.em-input-email input{
@@ -311,8 +328,20 @@ input[data-restricted=true],input[data-restricted=true]:hover {
     content: '';
     right: 5px;
  }
+ .em-input-search-24 input,.em-input-phone-24 input,.em-input-contact-24 input,.em-input-edit-24 input,.em-input-email-24 input{
+   height: 24px;
+   padding-right:25px;
+ }
 
- .em-input-search{
+ .em-input-search-24:after,.em-input-phone-24:after,.em-input-contact-24:after,.em-input-edit-24:after,.em-input-email-24:after{
+    position: absolute;
+    top: 5px;
+    content: '';
+    right: 5px;
+ }
+
+
+ .em-input-search,.em-input-search-24{
    &:hover:after{
      cursor: pointer;
      background: url("../../assets/images/icon-search-black.svg") center right no-repeat;
@@ -320,7 +349,7 @@ input[data-restricted=true],input[data-restricted=true]:hover {
      height: 16px;
    }
  }
- .em-input-contact{
+ .em-input-contact,.em-input-contact-24{
    &:hover:after{
      cursor: pointer;
      content: url("../../assets/images/icon-contacts-black.svg");
@@ -328,7 +357,7 @@ input[data-restricted=true],input[data-restricted=true]:hover {
      height: 16px;
    }
  }
- .em-input-edit{
+ .em-input-edit,.em-input-edit-24{
    &:hover:after{
      width:16px;
      height: 16px;
@@ -337,7 +366,7 @@ input[data-restricted=true],input[data-restricted=true]:hover {
    }
  }
 
- .em-input-phone{
+ .em-input-phone,.em-input-phone-24{
    &:hover:after{
      width:16px;
      height: 16px;
@@ -346,7 +375,7 @@ input[data-restricted=true],input[data-restricted=true]:hover {
    }
  }
 
- .em-input-email{
+ .em-input-email,.em-input-email-24{
    &:hover:after{
      width:16px;
      height: 16px;
@@ -361,34 +390,63 @@ input[data-restricted=true],input[data-restricted=true]:hover {
       margin: 0;
     }
 
-  .em-input-symbol-percent:after {
-    position: absolute;
-    top: 6px;
-    content: "%";
-    right: 5px;
-    font-size: 12px;
+.em-input-symbol-percent:after,.em-input-symbol-percent-24:after {
+      position: absolute;
+      content: "%";
+      right: 5px;
+      font-size: 12px;
+}
+
+  .em-input-symbol-percent-24:after{
+      top: 1px;
   }
-  .em-input-symbol-months:after {
+
+  .em-input-symbol-percent:after {
+      top: 6px;
+  }
+
+  .em-input-symbol-months:after,.em-input-symbol-months-32:after {
     position: absolute;
-    top: 6px;
     content: "Months";
     right: 5px;
     font-size: 12px;
   }
 
-  .em-input-symbol-dollar input{
+  .em-input-symbol-months-24:after {
+    top: 2px;
+  }
+
+  .em-input-symbol-months:after {
+    top: 6px;
+  }
+
+ .em-input-symbol-dollar input, .em-input-symbol-dollar-24 input{
     padding-left:15px;
-    padding-right:5px;
+    padding-right:8px;
     display: inline;
+ }
+  .em-input-symbol-dollar input{
     height: 32px;
     line-height: 0.375rem;
   }
-  .em-input-symbol-dollar:after {
+  .em-input-symbol-dollar-24 input{
+      height: 24px;
+      padding-top:0;
+      padding-bottom:0;
+  }
+
+  .em-input-symbol-dollar:after,.em-input-symbol-dollar-24:after {
     position: absolute;
-    top: 6px;
     content: "$";
     left: 5px;
     font-size: 14px;
+  }
+
+.em-input-symbol-dollar:after {
+    top: 6px;
+  }
+  .em-input-symbol-dollar-24:after {
+    top: 2px;
   }
 
 
