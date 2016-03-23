@@ -11,6 +11,7 @@
   "columnDefs": [{
       "field": "Loan_Program_Amount",
       "displayName": "Amount",
+      "enableCellEdit":true,
       "width": "*"},
     {"field": "Date_Started",
     "enableColumnResizing" : false},
