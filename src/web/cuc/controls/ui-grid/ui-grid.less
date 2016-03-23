@@ -31,8 +31,8 @@
     color:  @pagination-icon-arrow-color;
     position: absolute;
     display: block;
-    padding: 2px 2px 2px 3px;
-    font-size: 14px;
+    padding: 0px 0px 0px 4px;
+    font-size: 12px;
   }
   &:hover {
     color: @pagination-hover-icon-arrow-color;
@@ -174,10 +174,11 @@
       .ui-grid-header-canvas{
         .ui-grid-header-cell-row,
         .ui-grid-row-header-cell{
-          &.ui-grid-cell,
-          &.ui-grid-header-cell{
+          .ui-grid-cell,
+          .ui-grid-header-cell{
             min-width: 40px;
             max-width: 40px;
+            padding-top: 40px;
           }
           .ui-grid-selection-row-header-buttons{
             opacity: 1;
@@ -199,6 +200,11 @@
           }
         }
       }
+    }
+  }
+  .ui-grid-render-container-body{
+    .ui-grid-header-cell{
+      font-family: @simple-grid-body-row-font-family;
     }
   }
   .ui-grid-row {
@@ -420,63 +426,69 @@
       height: 20px;
       border-right: 1px solid @gray-warm-base;
       top: 2px;
-      select {
-        border: none;
-        direction: rtl;
-        background: @arrowImgBlue center center no-repeat;
-        background-position: 7px;
-        background-size: @pagination-icon-arrow-height;
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
+      .em-page-ddl {
+        z-index:1;
         position: relative;
         display: inline-block;
-        left: 5px;
-        z-index: 12;
-        height: 20px;
-        min-width: 43px;
-        &::-ms-expand {
-          display: none;
-        }
-        &:focus {
-          outline: none;
-        }
-        &.active {
-          background: @solidArrowImgUrl 8px center no-repeat;
-           & + .em-pageview-arrow {
-            display: inline-block;
-            background-color: @pagination-active-background-color;
+        button {
+          padding:0px 3px;
+          margin-bottom: 4px;
+          height: 20px !important;
+          background: transparent;
+          font: @font-family-base;
+          font-size: @pagination-font-size;
+          color: @pagination-font-color;
+          outline:0;
+          &:active{
+            box-shadow: none;
           }
         }
-        &.hover{
-          background: @arrowImgBlue 8px center no-repeat;
-          & + .em-pageview-arrow {
-            display: inline-block;
-            background-color: @pagination-hover-icon-background-color;
+        .dropdown-menu{
+          top: 90%;
+          max-width: 55px !important;
+          min-width: 55px !important;
+          margin:auto;
+          li{
+            max-width: 50px !important;
+            margin:auto;
+            a{
+              max-width: 35px !important;
+              padding: 3px 8px;
+              margin:auto;
+              text-align: center;
+            }
           }
         }
-        & + label {
-          .activeIconBg;
+        .selectedText{
+          float: right !important;
         }
+        .caret{
+          border-top-color: @pagination-icon-arrow-color ;
+          float: left !important;
+          margin: 7px 7px 0 0;
+        }
+        &.open {
+            & + .em-pageview-arrow {
+              display: inline-block;
+              background-color: @pagination-active-background-color;
+            }
+            .caret{
+              border-top-color: @pagination-active-icon-arrow-color ;
+            }
+          }
+          &.hover{
+            & + .em-pageview-arrow {
+              display: inline-block;
+              background-color: @pagination-hover-icon-background-color;
+            }
+            .caret{
+              border-top-color: @pagination-hover-icon-arrow-color ;
+            }
+          }
       }
-      span{
-        &:active {
-          background: @solidArrowImgUrl 0 no-repeat;
-          &+ label {
-            .activeIconBg;
-          }
-        }
-        :hover + label {
-          visibility: visible;
-        }
-        span{
-          position: relative;
-          display: inline-block;
-          float: left;
-        }
-      }
-      label {
+      .em-pageview-arrow{
         align: center;
+        z-index:0 !important;
         vertical-align: middle;
         background-color: @pagination-hover-icon-background-color;
         border-radius: @pagination-hover-background-radius;
@@ -484,9 +496,8 @@
         width: @pagination-hover-icon-background-width;
         display: none;
         float: left;
-        z-index: 11;
         position: relative;
-        left: 27px;
+        left: 18px;
         top: 0;
       }
     }

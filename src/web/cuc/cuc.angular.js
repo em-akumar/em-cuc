@@ -169,7 +169,7 @@ cuc.directive('uiGridCustomPaging', function ($compile,$timeout) {
 
         var divPage = document.createElement('div');
         divPage.innerHTML = '<div class="em-complex-table-footer">' +
-          '<span class="em-pageview" style="display:none">' +
+        '<span class="em-pageview" style="display:none">' +
           '<select ng-model="_selectedVal" ng-change="_pageOnClickSelect()"> ' +
           '<option ng-selected="$first" ng-repeat="item in _pageListItems"  value="{{item.value}}">{{item.text}}</option> ' +
           '</select>' +
@@ -177,10 +177,8 @@ cuc.directive('uiGridCustomPaging', function ($compile,$timeout) {
           '<span>&nbsp; of {{_pageTotalCount}}</span>' +
           '<label class="em-pageview-arrow"></label>' +
           '</span>' +
-           '<span class="em-pageview">' +
-          '<select ng-mouseover="_onPageSelectOver($event)" ng-mouseleave="_onPageSelectLeave($event)" ng-click="_onPageSelectClick($event)" ng-model="_selectedPageVal" ng-change="_pageOnNumSelect()"> ' +
-          '<option  ng-repeat="item in _pageListNumItems"  value="{{item}}">{{item}}</option> ' +
-          '</select>' +
+           '<span class="em-pageview" ng-mouseover="_onPageSelectOver()" ng-mouseleave="_onPageSelectLeave()" >' +
+           '<div class="em-page-ddl" ng-click="_onPageSelectClick()" options="pagingSelectOptions" emc="Dropdown"></div> ' +
           '<label class="em-pageview-arrow"></label>' +
           '<span>&nbsp; per page</span>' +
           '</span>' +
@@ -221,7 +219,17 @@ cuc.directive('uiGridCustomPaging', function ($compile,$timeout) {
             text: (perpageRow * i + 1) + '-' + (maxPage - 1 == i ? totalRow : (perpageRow * (i + 1)))
           });
         }
-        scope._pageListNumItems = uiGridctrl.grid.options.paginationPageSizes;
+        scope._pageListNumItems = uiGridctrl.grid.options.paginationPageSizes.map((val) => { return { value: val.toString(), text: val.toString() };});
+        scope.pagingSelectOptions = {
+          defaultText: uiGridctrl.grid.options.paginationPageSize,
+          onChange: function (e) {
+            scope._onPageSelectLeave();
+            scope._selectedPageVal = e.target.getAttribute('value');
+            scope._pageOnNumSelect();
+          },
+          defaultSize: 'xs',
+          itemList: scope._pageListNumItems
+        };
         scope._selectedPageVal =String( uiGridctrl.grid.options.paginationPageSize);
         scope._pageListItems = pageListItems;
         //selectPage.innerHTML = (html);
@@ -331,15 +339,14 @@ cuc.directive('uiGridCustomPaging', function ($compile,$timeout) {
           initPage(scope);
         }
          scope._onPageSelectLeave =  (e)=>{
-           e.target.classList.remove('active');
-           e.target.classList.remove('hover');
+           element[0].querySelector('.em-complex-table-footer .em-page-ddl').classList.remove('hover');
         }
          scope._onPageSelectClick =  (e)=>{
-           e.target.classList.remove('hover');
-           e.target.classList.add('active');
+           element[0].querySelector('.em-complex-table-footer .em-page-ddl').classList.remove('hover');
          }
-        scope._onPageSelectOver =  (e)=>{
-           e.target.classList.add('hover');
+         scope._onPageSelectOver = (e) => {
+          if(!element[0].querySelector('.em-complex-table-footer .em-page-ddl').classList.contains('open'))
+           element[0].querySelector('.em-complex-table-footer .em-page-ddl').classList.add('hover');
         }
         selectPage.onchange = function (e) {
           var val = Number(e.target.value) + 1;
