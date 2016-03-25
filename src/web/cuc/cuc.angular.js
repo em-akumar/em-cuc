@@ -267,6 +267,20 @@ cuc.directive('uiGridCustomPaging', function ($compile,$timeout) {
               changedAct = true;
             }
           });
+          if(val<maxPage)
+          {
+            rightArrow.classList.remove('disable');
+          }
+          else{
+            rightArrow.classList.add('disable');
+          }
+           if(val>1)
+          {
+            leftArrow.classList.remove('disable');
+          }
+          else{
+            leftArrow.classList.add('disable');
+          }
           if (changedAct)
             return;
           if (val < maxPage - 2 && val > 2) {
@@ -313,6 +327,20 @@ cuc.directive('uiGridCustomPaging', function ($compile,$timeout) {
               el.classList.add('active');
             initMd++;
           });
+          if(val<maxPage)
+          {
+            rightArrow.classList.remove('disable');
+          }
+          else{
+            rightArrow.classList.add('disable');
+          }
+           if(val>1)
+          {
+            leftArrow.classList.remove('disable');
+          }
+          else{
+            leftArrow.classList.add('disable');
+          }
 
         }
 
@@ -398,7 +426,21 @@ cuc.directive('uiGridCustomPaging', function ($compile,$timeout) {
           }
           else
             leftArrow.classList.add('disable');
-
+          var val = uiGridctrl.grid.api.pagination.getPage();
+          if(val<maxPage)
+          {
+            rightArrow.classList.remove('disable');
+          }
+          else{
+            rightArrow.classList.add('disable');
+          }
+           if(val>1)
+          {
+            leftArrow.classList.remove('disable');
+          }
+          else{
+            leftArrow.classList.add('disable');
+          }
         };
         scope._rightArrow_click = function () {
           if(rightArrow.classList.contains('disable'))
@@ -442,7 +484,21 @@ cuc.directive('uiGridCustomPaging', function ($compile,$timeout) {
           }
           else
             rightArrow.classList.remove('disable');
-
+          var val = uiGridctrl.grid.api.pagination.getPage();
+         if(val<maxPage)
+          {
+            rightArrow.classList.remove('disable');
+          }
+          else{
+            rightArrow.classList.add('disable');
+          }
+           if(val>1)
+          {
+            leftArrow.classList.remove('disable');
+          }
+          else{
+            leftArrow.classList.add('disable');
+          }
 
         };
         //startPage.onclick = pageOnclick;
@@ -483,6 +539,9 @@ cuc.directive('uiGridCustomPaging', function ($compile,$timeout) {
           rightArrow.classList.add('disable');
         else
           rightArrow.classList.remove('disable');
+         if(maxPage!==1){
+            rightArrow.classList.remove('disable');
+           }
       }
     },
     restrict: 'A',

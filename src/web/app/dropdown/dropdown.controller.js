@@ -50,7 +50,7 @@ class DropdownController {
         console.log('clicked');
       },
       defaultSize: 'large',
-      itemList: [{ 'value': 1, 'text': 'State1'}, { 'value': 2, 'text': 'State2', 'divider': 'true'}]
+      itemList: [{ 'value': 1, 'text': 'State1'}, { 'value': 2, 'text': 'State2State2State2State2State2State2State2State2', 'divider': 'true'}]
     };
     // for Large dropdown
     this.drpStateLarge = {
