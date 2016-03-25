@@ -161,7 +161,7 @@ if(this.options !== undefined){
         }
       });
       value.addEventListener('mouseover', (e) => {
-        if (e.target.offsetWidth !== e.target.scrollWidth)
+        if (e.target.offsetWidth < e.target.scrollWidth)
         e.target.setAttribute('title',e.target.innerHTML);
       });
     });
