@@ -1,11 +1,11 @@
-import {emsApi} from 'ems';
 
 class DropdownEditService {
   /* @ngInject */
-  constructor() {
+  constructor($http) {
+    this.$http = $http;
   }
   resolvePromise() {
-    return emsApi.fetch('http://restcountries.eu/rest/v1/all');
+    return this.$http.get('http://restcountries.eu/rest/v1/all');
   }
 }
 

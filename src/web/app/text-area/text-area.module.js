@@ -1,5 +1,5 @@
 import angular from 'angular';
-import {uiRouter} from 'ems';
+import {uiRouter} from 'ems/core';
 
 import textAreaComponent from './text-area.component';
 import TextAreaService from './text-area.service';

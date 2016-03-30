@@ -1,5 +1,5 @@
 import angular from 'angular';
-import {uiRouter} from 'ems';
+import {uiRouter} from 'ems/core';
 
 import imageButtonComponent from './image-button.component';
 import ImageButtonService from './image-button.service';

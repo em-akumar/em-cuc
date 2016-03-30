@@ -142,7 +142,8 @@ class DatePicker {
                 "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
             ]
         };
-         if (!this._setDisabled()) {
+        if (!this._setDisabled()) {
+
             this.AddOn.addEventListener('click', () => {
                 this.viewCalendar();
             });
@@ -217,6 +218,7 @@ class DatePicker {
     }
 
     _viewCalendar() {
+
         if (this.destDateField == '' || this.destTimeField == '') {
             this.showOnlyTime = this.destDateField == '' ? true : false;
             this.showOnlyDate = this.destTimeField == '' ? true : false;
@@ -232,7 +234,15 @@ class DatePicker {
         document.getElementsByTagName('html')[0].addEventListener('click', (e) => {
             parentObj.style.display = "none";this.isVisible = false;
         });
-        this.AddOn.parentNode.addEventListener('click',  function(e) {
+        this.AddOn.parentNode.addEventListener('click', function (e) {
+
+        [].forEach.call(document.querySelectorAll(".em-calendar-pop"), (value, i) => {
+          if (value !== this.parent) {
+           value.style.display = 'none';
+           value.parentNode.isVisible = false;
+          }
+        });
+
            var event = new CustomEvent('change');
 
            if (this.destDateField != ""){
@@ -261,7 +271,8 @@ class DatePicker {
                 this.isVisible = false;
             }
         });
-        if (this.isVisible) {
+
+        if (this.isVisible && parentObj.style.display != "none" ) {
             parentObj.style.display = "none";
             this.isVisible = false;
         } else {
@@ -290,6 +301,7 @@ class DatePicker {
     _generateCalendar() {
         this.findFromDate();
         this.calendarIter = this.calendarFrom;
+
         this.findToDate();
         if (this.showOnlyDate && this.showOnlyTime) {
             this.generateCalendarTable();
@@ -306,26 +318,33 @@ class DatePicker {
 
         let dateObj = this.createDate();
         dateObj.setFullYear(this.currentMonth.getFullYear());
-        dateObj.setMonth(this.currentMonth.getMonth());
+        dateObj.setMonth(this.currentMonth.getMonth() + 1, -1);
+
         dateObj.setDate(1);
+
         if (dateObj.getDay() > 0) {
             dateObj.setDate(0);
             while (dateObj.getDay() != 0) {
                 dateObj.setDate(dateObj.getDate() - 1);
             }
         }
+
         this.calendarFrom = dateObj;
     }
     findToDate() {
         let dateObj = this.createDate();
+
         //Find last day of month
         dateObj.setFullYear(this.currentMonth.getFullYear());
         dateObj.setMonth(this.currentMonth.getMonth() + 1);
+
         dateObj.setDate(0);
+
         //Set to date to saturday of that last week of month
         while (dateObj.getDay() < 6) {
             dateObj.setDate(dateObj.getDate() + 1);
         }
+
         this.calendarTo = dateObj;
     }
     _setDisabled() {
@@ -436,6 +455,7 @@ class DatePicker {
     }
 
     _generateCalendarTable() {
+
         let parentObj = ((typeof this.parent === 'object') ? this.parent : document.getElementById(this.parent));;
         let rootTable = document.createElement('table');
         rootTable.border = "0";
@@ -443,8 +463,11 @@ class DatePicker {
         rootTable.cellSpacing = "0";
         rootTable = this.addCalendarHeader(rootTable);
         let self = this;
+
         let totalDays = parseInt((self.calendarTo.getTime() - self.calendarFrom.getTime()) / (1000 * 60 * 60 * 24)) + 1;
+        console.log('totalDays'+totalDays);
         let totalWeeks = parseInt(totalDays / 7);
+
         for (let i = 2; i <= totalWeeks + 1; i++) {
             let tableRow = rootTable.insertRow(i);
             for (let j = 0; j < 7; j++) {
@@ -457,7 +480,9 @@ class DatePicker {
                     let destTimeObj = (typeof self.destTimeField === 'object') ? self.destTimeField : document.getElementById(self.destTimeField);
 
                     //add the current date when user clicks on calendar  icon
-                    destDateObj.value = self.showCurrentDate();
+                    if(destDateObj.value === '') {
+                      destDateObj.value = self.showCurrentDate();
+                    }
 
                     cell.onclick = function() {
                         self.calendarIter = self.currentMonth;
@@ -560,6 +585,7 @@ class DatePicker {
             cell3.className = "header-arrow-left";
             //cell3.style.cursor="pointer";
             cell3.onclick = function() {
+
                 self.currentMonth.setMonth(self.currentMonth.getMonth() - 1);
                 self.parent.innerHTML = "";
                 self.generateCalendar();
@@ -583,7 +609,7 @@ class DatePicker {
         let timeParentObj = parentObj.querySelector('.table-condensed-time');
 
 
-        if (this.isVisible) {
+        if (this.isVisible && parentObj.style.display != "none") {
             dateParentObj.style.display = "none";
             if (timeParentObj === null) {
                 this.createtimePicker();

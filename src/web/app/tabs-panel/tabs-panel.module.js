@@ -1,5 +1,5 @@
 import angular from 'angular';
-import {uiRouter} from 'ems';
+import {uiRouter} from 'ems/core';
 
 import tabsPanelComponent from './tabs-panel.component';
 import TabsPanelService from './tabs-panel.service';

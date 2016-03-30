@@ -1,5 +1,5 @@
 import angular from 'angular';
-import {uiRouter} from 'ems';
+import {uiRouter} from 'ems/core';
 
 import tooltipsComponent from './tooltips.component';
 import TooltipsService from './tooltips.service';

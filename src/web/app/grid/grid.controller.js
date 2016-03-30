@@ -1,6 +1,6 @@
 import gridOption from './grid.options.json';
 import simpleGridOption from './simpleGrid.options.json';
-import {angular, safeApply} from 'ems';
+import {angular, safeApply} from 'ems/core';
 
 class GridController {
   /* @ngInject */

@@ -1,5 +1,5 @@
 import angular from 'angular';
-import {uiRouter} from 'ems';
+import {uiRouter} from 'ems/core';
 
 import toggleSwitchComponent from './toggle-switch.component';
 import ToggleSwitchService from './toggle-switch.service';

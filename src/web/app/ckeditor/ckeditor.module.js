@@ -1,5 +1,5 @@
 import angular from 'angular';
-import {uiRouter} from 'ems';
+import {uiRouter} from 'ems/core';
 
 import ckeditorComponent from './ckeditor.component';
 import CkeditorService from './ckeditor.service';
