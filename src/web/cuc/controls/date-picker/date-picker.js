@@ -315,36 +315,26 @@ class DatePicker {
         }
     }
     findFromDate() {
-
         let dateObj = this.createDate();
         dateObj.setFullYear(this.currentMonth.getFullYear());
-        dateObj.setMonth(this.currentMonth.getMonth() + 1, -1);
-
-        dateObj.setDate(1);
-
+        dateObj.setMonth(this.currentMonth.getMonth(), 1);
         if (dateObj.getDay() > 0) {
             dateObj.setDate(0);
             while (dateObj.getDay() != 0) {
                 dateObj.setDate(dateObj.getDate() - 1);
             }
         }
-
         this.calendarFrom = dateObj;
     }
     findToDate() {
         let dateObj = this.createDate();
-
         //Find last day of month
         dateObj.setFullYear(this.currentMonth.getFullYear());
-        dateObj.setMonth(this.currentMonth.getMonth() + 1);
-
-        dateObj.setDate(0);
-
+        dateObj.setMonth(this.currentMonth.getMonth() + 1, 0);
         //Set to date to saturday of that last week of month
         while (dateObj.getDay() < 6) {
             dateObj.setDate(dateObj.getDate() + 1);
         }
-
         this.calendarTo = dateObj;
     }
     _setDisabled() {
@@ -488,6 +478,7 @@ class DatePicker {
                         self.calendarIter = self.currentMonth;
                         self.calendarIter.setDate(this.innerHTML);
                         if (self.showOnlyTime) {
+
                             let timeParentObj = parentObj.querySelector('.table-condensed-time');
                             if (timeParentObj != null) {
                                 let timeCalHour = parentObj.querySelector('.calendar-hours');
@@ -495,6 +486,7 @@ class DatePicker {
                                 let timeCalAmPm = parentObj.querySelector('.calendar-toggle-period');
                                 destTimeObj.value = (timeCalHour.innerHTML.length == 1 ? '0' : '') + timeCalHour.innerHTML + ":" + (timeCalMin.innerHTML.length == 1 ? '0' : '') + timeCalMin.innerHTML + " " + timeCalAmPm.innerHTML.trim();
                             } else {
+
                                 destTimeObj.value = self.showCurrentTime();
                             }
                         }
@@ -640,8 +632,11 @@ class DatePicker {
         let self = this;
         rootTimeTable.className = "table-condensed-time";
         let timeFieldValue = (typeof this.destTimeField === 'object') ? this.destTimeField : document.getElementById(this.destTimeField);
-        if(timeFieldValue)
+
+        if(timeFieldValue && timeFieldValue == '')
           timeFieldValue.value = this.showCurrentTime();
+
+
         // add month title header on Time calender
         let tableMonthTop = rootTimeTable.insertRow(0);
         tableMonthTop.className = "months-header-picker-title";
