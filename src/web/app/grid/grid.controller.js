@@ -1,6 +1,6 @@
 import gridOption from './grid.options.json';
 import simpleGridOption from './simpleGrid.options.json';
-import {angular, safeApply} from 'ems';
+import {angular, safeApply} from 'ems/core';
 
 class GridController {
   /* @ngInject */
@@ -24,8 +24,8 @@ class GridController {
   }
   initialize() {
     this.gridService.resolvePromise().then((response) => {
-      this.gridOptions.data = response;
-      this.simpleGridOptions.data = response;
+      this.gridOptions.data = response.data;
+      this.simpleGridOptions.data = response.data;
       safeApply();
     });
   }

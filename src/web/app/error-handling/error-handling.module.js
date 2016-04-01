@@ -1,5 +1,5 @@
 import angular from 'angular';
-import {uiRouter} from 'ems';
+import {uiRouter} from 'ems/core';
 
 import errorHandlingComponent from './error-handling.component';
 import ErrorHandlingService from './error-handling.service';

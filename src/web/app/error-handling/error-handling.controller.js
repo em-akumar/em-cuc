@@ -1,4 +1,4 @@
-import {safeApply} from 'ems';
+import {safeApply} from 'ems/core';
 class ErrorHandlingController {
   /* @ngInject */
   constructor(ErrorHandlingService) {

@@ -1,5 +1,5 @@
 import angular from 'angular';
-import {uiRouter} from 'ems';
+import {uiRouter} from 'ems/core';
 
 import fileUploaderComponent from './file-uploader.component';
 import FileUploaderService from './file-uploader.service';

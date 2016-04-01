@@ -1,11 +1,11 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
-import {emsApi} from 'ems';
+//import {emsApi} from 'ems/core';
 
 import appComponent from './app.component';
 import AppService from './app.service';
 
-import '../favicon.ico';
+//import '../favicon.ico';
 
 import {cuc} from '../cuc/cuc.angular';
 import '../cuc/cuc.ui.bootstrap';
@@ -33,7 +33,7 @@ import radioButton from './radio-button/radio-button.module';
 import toggleSwitch from './toggle-switch/toggle-switch.module';
 import tooltips from './tooltips/tooltips.module';
 
-emsApi.baseUrl = 'http://localhost:9000/';
+//emsApi.baseUrl = 'http://localhost:9000/';
 
 let appModule = angular.module('app', [uiRouter, cuc.name, 'cuc', 'ui.grid', 'ui.bootstrap', 'ngMessages', 'ui.mask', buttons.name, textInput.name, textArea.name, fileUploader.name, dropdownEdit.name, grid.name, dropdown.name, colorPicker.name, modal.name, datepicker.name, checkbox.name, panel.name, errorHandling.name, imageButton.name, notifications.name, radioButton.name, toggleSwitch.name, tooltips.name]);
 

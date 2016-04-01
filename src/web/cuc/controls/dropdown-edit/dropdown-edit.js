@@ -149,6 +149,10 @@ setSelected(value){
       [].forEach.call(self.menu.parentNode.querySelectorAll(".dropdown-menu>li>img"), (element, i) => {
         element.setAttribute('src');
       });
+       element.addEventListener('mouseover', (e) => {
+        if (e.target.offsetWidth < e.target.scrollWidth)
+        e.target.setAttribute('title',e.target.innerHTML);
+      });
 
     });
 

@@ -1,5 +1,5 @@
 import angular from 'angular';
-import {uiRouter} from 'ems';
+import {uiRouter} from 'ems/core';
 
 import progressBarComponent from './progress-bar.component';
 import ProgressBarService from './progress-bar.service';

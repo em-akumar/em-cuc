@@ -1,11 +1,12 @@
-import {emsApi} from 'ems';
+
 
 class GridService {
   /* @ngInject */
-  constructor() {
+  constructor($http) {
+    this.$http = $http;
   }
   resolvePromise() {
-    return emsApi.fetch('http://www.json-generator.com/api/json/get/cqcrdXPTci');
+    return this.$http.get('http://www.json-generator.com/api/json/get/cqcrdXPTci');
   }
 }
 

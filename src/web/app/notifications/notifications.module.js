@@ -1,5 +1,5 @@
 import angular from 'angular';
-import {uiRouter} from 'ems';
+import {uiRouter} from 'ems/core';
 
 import notificationsComponent from './notifications.component';
 import NotificationsService from './notifications.service';
