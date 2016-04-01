@@ -1,7 +1,6 @@
 class ToggleSwitchController {
   /* @ngInject */
-  constructor(ToggleSwitchService , $timeout) {
-    this.label = 'Toggleswitch Controller !!';
+  constructor(ToggleSwitchService, $timeout) {
     this.toggleSwitchService = ToggleSwitchService;
     // this.initialize();
     this.optionsBase = {

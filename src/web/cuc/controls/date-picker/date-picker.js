@@ -455,9 +455,7 @@ class DatePicker {
         let self = this;
 
         let totalDays = parseInt((self.calendarTo.getTime() - self.calendarFrom.getTime()) / (1000 * 60 * 60 * 24)) + 1;
-        console.log('totalDays'+totalDays);
-        let totalWeeks = parseInt(totalDays / 7);
-
+        let totalWeeks = Math.ceil(totalDays / 7);
         for (let i = 2; i <= totalWeeks + 1; i++) {
             let tableRow = rootTable.insertRow(i);
             for (let j = 0; j < 7; j++) {

@@ -1,35 +1,46 @@
 <div class="app toggle-switch">
-  <h4>This is toggle-switch view -- {{:: vm.label }}</h4>
-  <label>Basic switch</label>
-  <div class="" options="vm.optionsBase"  emc="ToggleSwitch"></div>
-  <div  class="panel panel-primary">
-        <div class="panel-heading">Default Switch Usage</div>
-        <div class="codepen-group">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel-body">
+
+        <label>Basic switch</label>
+        <div class="" options="vm.optionsBase" emc="ToggleSwitch"></div>
+        <div class="panel panel-primary">
+          <div class="panel-heading">Default Switch Usage</div>
+          <div class="codepen-group">
             <pre class="codepen-able" data-type="html">
               &#x3C;div class=&#x22;&#x22; options=&#x22;vm.optionsBase&#x22;  emc=&#x22;ToggleSwitch&#x22;&#x3E;&#x3C;/div&#x3E;
             </pre>
-            <pre class="codepen-able"  data-type="css">
+            <pre class="codepen-able" data-type="css">
             </pre>
-            <pre class="codepen-able"  data-type="js">
+            <pre class="codepen-able" data-type="js">
                this.optionsBase = {
                   onChange: function (val) {
                     console.log(val);
                   }
               };
             </pre>
+          </div>
         </div>
+      </div>
+    </div>
   </div>
-  <label>Set Default Switch (false)</label>
-  <div class="" options="vm.optionsMd" control="vm.switch" emc="ToggleSwitch"></div>
-  <div  class="panel panel-primary">
-        <div class="panel-heading">Default Switch Set to False</div>
-        <div class="codepen-group">
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel-body">
+
+        <label>Set Default Switch (false)</label>
+        <div class="" options="vm.optionsMd" control="vm.switch" emc="ToggleSwitch"></div>
+        <div class="panel panel-primary">
+          <div class="panel-heading">Default Switch Set to False</div>
+          <div class="codepen-group">
             <pre class="codepen-able" data-type="html">
               &#x3C;div class=&#x22;&#x22; options=&#x22;vm.optionsMd&#x22; control=&#x22;vm.switch&#x22; emc=&#x22;ToggleSwitch&#x22;&#x3E;&#x3C;/div&#x3E;
             </pre>
-            <pre class="codepen-able"  data-type="css">
+            <pre class="codepen-able" data-type="css">
             </pre>
-            <pre class="codepen-able"  data-type="js">
+            <pre class="codepen-able" data-type="js">
                this.optionsMd = {
                   switchStateDistence: '45%',
                   size: 'md',
@@ -42,17 +53,24 @@
                 this.switch.setSwitch(false);
               });
             </pre>
+          </div>
         </div>
+      </div>
+    </div>
   </div>
-  <label>Custom Icon Switch</label>
-  <div class="select-on-off" options="vm.optionsMdText"  emc="ToggleSwitch"></div>
-  <div  class="panel panel-primary">
-        <div class="panel-heading">Custom Icon Switch Usage</div>
-        <div class="codepen-group">
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel-body">
+        <label>Custom Icon Switch</label>
+        <div class="select-on-off" options="vm.optionsMdText" emc="ToggleSwitch"></div>
+        <div class="panel panel-primary">
+          <div class="panel-heading">Custom Icon Switch Usage</div>
+          <div class="codepen-group">
             <pre class="codepen-able" data-type="html">
               &#x3C;div class=&#x22;select-on-off&#x22; options=&#x22;vm.optionsMdText&#x22;  emc=&#x22;ToggleSwitch&#x22;&#x3E;&#x3C;/div&#x3E;
             </pre>
-            <pre class="codepen-able"  data-type="css">
+            <pre class="codepen-able" data-type="css">
               .select-on-off{
                 .switch-cust-icon{
                   &::after{
@@ -64,7 +82,7 @@
                 }
               }
             </pre>
-            <pre class="codepen-able"  data-type="js">
+            <pre class="codepen-able" data-type="js">
               this.optionsMdText = {
                 positiveTemplate: &#x60;&#x3C;div class=&#x22;em-on-switch&#x22; &#x3E;On&#x3C;/div&#x3E;&#x60;,
                 negativeTemplate: &#x60;&#x3C;div class=&#x22;em-off-switch&#x22; &#x3E;Off&#x3C;/div&#x3E;&#x60;,
@@ -76,17 +94,24 @@
                 }
             };
             </pre>
+          </div>
         </div>
+      </div>
+    </div>
   </div>
-  <label>Flexible Switch</label>
-  <div class="select-flex" options="vm.optionsSmFlex" emc="ToggleSwitch"></div>
-  <div  class="panel panel-primary">
-        <div class="panel-heading">Flexible Switch Usage</div>
-        <div class="codepen-group">
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel-body">
+        <label>Flexible Switch</label>
+        <div class="select-flex" options="vm.optionsSmFlex" emc="ToggleSwitch"></div>
+        <div class="panel panel-primary">
+          <div class="panel-heading">Flexible Switch Usage</div>
+          <div class="codepen-group">
             <pre class="codepen-able" data-type="html">
              &#x3C;div class=&#x22;select-flex&#x22; options=&#x22;vm.optionsSmFlex&#x22; emc=&#x22;ToggleSwitch&#x22;&#x3E;&#x3C;/div&#x3E;
             </pre>
-            <pre class="codepen-able"  data-type="css">
+            <pre class="codepen-able" data-type="css">
                .select-flex{
                 .switch-cust-on{
                   width: 85px;
@@ -98,7 +123,7 @@
                 }
             }
             </pre>
-            <pre class="codepen-able"  data-type="js">
+            <pre class="codepen-able" data-type="js">
                 this.optionsSmFlex = {
                   positiveTemplate: &#x60;&#x3C;div class=&#x22;em-on-switch&#x22; &#x3E;&#x3C;div class=&#x22;switch-cust-on&#x22;&#x3E;Good one&#x3C;/div&#x3E;&#x3C;/div&#x3E;&#x60;,
                   negativeTemplate: &#x60;&#x3C;div class=&#x22;em-off-switch&#x22; &#x3E;&#x3C;div class=&#x22;switch-cust-on&#x22;&#x3E;Bad one&#x3C;/div&#x3E;&#x3C;/div&#x3E;&#x60;,
@@ -109,19 +134,26 @@
                   }
               };
             </pre>
+          </div>
         </div>
+      </div>
+    </div>
   </div>
-  <label>Disabled Switch</label>
-  <div class="select-flex" options="vm.optionsDisabled"  emc="ToggleSwitch"></div>
-  <div  class="panel panel-primary">
-        <div class="panel-heading">Disabled Switch Usage</div>
-        <div class="codepen-group">
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel-body">
+        <label>Disabled Switch</label>
+        <div class="select-flex" options="vm.optionsDisabled" emc="ToggleSwitch"></div>
+        <div class="panel panel-primary">
+          <div class="panel-heading">Disabled Switch Usage</div>
+          <div class="codepen-group">
             <pre class="codepen-able" data-type="html">
               &#x3C;div class=&#x22;select-flex&#x22; options=&#x22;vm.optionsDisabled&#x22;  emc=&#x22;ToggleSwitch&#x22;&#x3E;&#x3C;/div&#x3E;
             </pre>
-            <pre class="codepen-able"  data-type="css">
+            <pre class="codepen-able" data-type="css">
             </pre>
-            <pre class="codepen-able"  data-type="js">
+            <pre class="codepen-able" data-type="js">
                this.optionsDisabled = {
                   positiveTemplate: &#x60;&#x3C;div class=&#x22;em-on-switch&#x22; &#x3E;&#x3C;div class=&#x22;switch-cust-on&#x22;&#x3E;Good one&#x3C;/div&#x3E;&#x3C;/div&#x3E;&#x60;,
                   negativeTemplate: &#x60;&#x3C;div class=&#x22;em-off-switch&#x22; &#x3E;&#x3C;div class=&#x22;switch-cust-on&#x22;&#x3E;Bad one&#x3C;/div&#x3E;&#x3C;/div&#x3E;&#x60;,
@@ -130,19 +162,26 @@
                 mode: &#x27;disable&#x27;
               };
             </pre>
+          </div>
         </div>
+      </div>
+    </div>
   </div>
-  <label>Restricted Switch</label>
-  <div class="select-flex" options="vm.optionsReadOnly"  emc="ToggleSwitch"></div>
-   <div  class="panel panel-primary">
-        <div class="panel-heading">Restricted/Readonly Usage</div>
-        <div class="codepen-group">
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel-body">
+        <label>Restricted Switch</label>
+        <div class="select-flex" options="vm.optionsReadOnly" emc="ToggleSwitch"></div>
+        <div class="panel panel-primary">
+          <div class="panel-heading">Restricted/Readonly Usage</div>
+          <div class="codepen-group">
             <pre class="codepen-able" data-type="html">
               &#x3C;div class=&#x22;select-flex&#x22; options=&#x22;vm.optionsReadOnly&#x22;  emc=&#x22;ToggleSwitch&#x22;&#x3E;&#x3C;/div&#x3E;
             </pre>
-            <pre class="codepen-able"  data-type="css">
+            <pre class="codepen-able" data-type="css">
             </pre>
-            <pre class="codepen-able"  data-type="js">
+            <pre class="codepen-able" data-type="js">
                this.optionsReadOnly = {
                 positiveTemplate: &#x60;&#x3C;div class=&#x22;em-on-switch&#x22; &#x3E;&#x3C;div class=&#x22;switch-cust-on&#x22;&#x3E;Good one&#x3C;/div&#x3E;&#x3C;/div&#x3E;&#x60;,
                 negativeTemplate: &#x60;&#x3C;div class=&#x22;em-off-switch&#x22; &#x3E;&#x3C;div class=&#x22;switch-cust-on&#x22;&#x3E;Bad one&#x3C;/div&#x3E;&#x3C;/div&#x3E;&#x60;,
@@ -151,17 +190,25 @@
                 mode: &#x27;readonly&#x27;
               };
             </pre>
+          </div>
         </div>
+      </div>
+    </div>
   </div>
-  <label>Full Customized Switch</label>
-  <div class="select-full-cust" options="vm.optionsCustom" control="vm.switchCustom" emc="ToggleSwitch"></div>
-  <div  class="panel panel-primary">
-        <div class="panel-heading">Full Customized Example</div>
-        <div class="codepen-group">
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel-body">
+        <label>Full Customized Switch</label>
+        <div class="select-full-cust" options="vm.optionsCustom" control="vm.switchCustom" emc="ToggleSwitch"></div>
+        <br/>
+        <div class="panel panel-primary">
+          <div class="panel-heading">Full Customized Example</div>
+          <div class="codepen-group">
             <pre class="codepen-able" data-type="html">
               &#x3C;div class=&#x22;select-full-cust&#x22; options=&#x22;vm.optionsCustom&#x22; control=&#x22;vm.switchCustom&#x22; emc=&#x22;ToggleSwitch&#x22;&#x3E;&#x3C;/div&#x3E;
             </pre>
-            <pre class="codepen-able"  data-type="css">
+            <pre class="codepen-able" data-type="css">
               .select-full-cust{
                 .em-sunshine{
                   width: 85px;
@@ -198,7 +245,7 @@
                 }
               }
             </pre>
-            <pre class="codepen-able"  data-type="js">
+            <pre class="codepen-able" data-type="js">
                this.optionsCustom = {
                 positiveTemplate: &#x60;&#x3C;div class=&#x22;em-sunshine&#x22; &#x3E;GM&#x3C;/div&#x3E;&#x60;,
                 negativeTemplate: &#x60;&#x3C;div class=&#x22;em-evening&#x22; &#x3E;GN&#x3C;/div&#x3E;&#x60;,
@@ -210,6 +257,9 @@
                 }
             };
             </pre>
+          </div>
         </div>
+      </div>
+    </div>
   </div>
 </div>

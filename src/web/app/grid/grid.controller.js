@@ -24,8 +24,8 @@ class GridController {
   }
   initialize() {
     this.gridService.resolvePromise().then((response) => {
-      this.gridOptions.data = response;
-      this.simpleGridOptions.data = response;
+      this.gridOptions.data = response.data;
+      this.simpleGridOptions.data = response.data;
       safeApply();
     });
   }
