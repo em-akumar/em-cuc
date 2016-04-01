@@ -101,7 +101,7 @@ cuc.directive('uiGridPrint', function ($compile,$timeout) {
           scope._head = '';
             var rows = uiGridctrl.grid.api.core.getVisibleRows();
             uiGridctrl.grid.api.grid.columns.map(function (col) {
-              if (typeof rows[0].entity[col.field] !== 'undefined')
+              if (col.displayName !== '')
                 scope._head += '<td>' + col.displayName + '</td>';
             });
             scope._body =[];
@@ -111,16 +111,21 @@ cuc.directive('uiGridPrint', function ($compile,$timeout) {
                 var rowScope = scope.$new(true);
                 rowScope.row=row;
                 rowScope.col = col;
-                if (typeof row.entity[col.field] !== 'undefined' ){
+
+                if (col.displayName !== '' ){
                   if( col.cellTemplate.indexOf('COL_FIELD') == -1){
                     var temp = $compile(col.cellTemplate)(rowScope);
+
                     $timeout(() => {
                       if( scope._body[rowindex])
                         scope._body[rowindex][colindex] = '<td>' + angular.element(temp[0]).html() + '</td>';
                     }, 100);
                   }
-                  else
-                    scope._body [rowindex][colindex]= '<td>' + row.entity[col.field] + '</td>';}
+                  else {
+                    var colValue = row.entity[col.field] || '';
+                    scope._body [rowindex][colindex]= '<td>' + colValue  + '</td>';
+
+                     }}
               });
         });
 
@@ -598,6 +603,8 @@ cuc.directive('uiGridColumnSettings', function ($timeout) {
       scope._initMenuFirst = true;
       //call when gird rendred
       uiGridctrl.grid.api.core.on.rowsRendered(scope, function () {
+
+
         if (uiGridctrl.grid.renderContainers.body.visibleRowCache.length === 0) {
           return;
         }
