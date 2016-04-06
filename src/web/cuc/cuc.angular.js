@@ -601,9 +601,19 @@ cuc.directive('uiGridColumnSettings', function ($timeout) {
         restoreState();
       };
       scope._initMenuFirst = true;
-      //call when gird rendred
+      //restoring grid state when new row added to grid
+      uiGridctrl.grid.registerDataChangeCallback(restoreState);
+      //call when grid rendred
       uiGridctrl.grid.api.core.on.rowsRendered(scope, function () {
-
+        //todo: need to find some better way to do it, if possible
+        //add tooltip to column when text is greater than width
+        [].forEach.call(element[0].querySelectorAll('.ui-grid-cell-contents'), function (el, index) {
+          el.addEventListener('mouseover', (e) => {
+            if(e.target.offsetWidth < e.target.scrollWidth) {
+                e.target.title = e.target.innerHTML;
+            }
+          });
+        });
 
         if (uiGridctrl.grid.renderContainers.body.visibleRowCache.length === 0) {
           return;
