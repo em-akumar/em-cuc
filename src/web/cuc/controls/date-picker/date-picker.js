@@ -176,7 +176,13 @@ class DatePicker {
         this.showOnlyDate = this.destTimeField == '' ? true : false;
         this.showBoth = this.showOnlyTime == this.showOnlyDate;
         if(this.showOnlyTime || this.showBoth)
-        this.destTimeField.addEventListener("focus", () => {
+          this.destTimeField.addEventListener("focus", () => {
+            [].forEach.call(document.querySelectorAll(".em-calendar-pop"), (value, i) => {
+              if (value !== this.parent) {
+              value.style.display = 'none';
+              value.parentNode.isVisible = false;
+              }
+            });
             if (!self.isVisible) {
                 self._viewCalendar();
             }
@@ -186,7 +192,13 @@ class DatePicker {
             if(self.destTimeField != '') self.destTimeField.dispatchEvent(event);
         });
         if(this.showOnlyDate || this.showBoth)
-        this.destDateField.addEventListener("focus", () => {
+          this.destDateField.addEventListener("focus", () => {
+            [].forEach.call(document.querySelectorAll(".em-calendar-pop"), (value, i) => {
+              if (value !== this.parent) {
+              value.style.display = 'none';
+              value.parentNode.isVisible = false;
+              }
+            });
             if (!self.isVisible) {
                 self._viewCalendar();
             } else {
@@ -406,7 +418,6 @@ class DatePicker {
             str = str.split("/").map((val) => {
                 return val.trim().length == 1 ? '0' + val : val;
             }).join("").split(':').join("").split(' ').join("");
-
             str = this._aiDate(str.trim());
         }
         let val = String(Math.round(Math.pow(10, (12 - str.length)) * Number(str)));
