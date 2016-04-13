@@ -1,0 +1,35 @@
+@img-lock-locked: '../../assets/images/icon-lock-locked-locked.svg';
+@img-lock-disabled: '../../assets/images/icon-lock-locked-disabled.svg';
+@img-lock-active: '../../assets/images/icon-lock-unlocked-active.svg';
+@img-lock-default: '../../assets/images/icon-lock-unlocked-default.svg';
+
+.em-text-input-lock {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: flex-start;
+    .em-lock {
+      background-color: @white;
+      border-color: @gray-warm-darker;
+      border-top-right-radius: @input-field-border-radius;
+      border-bottom-right-radius: @input-field-border-radius;
+      height: @input-field-height;
+      border: 1px solid @gray-warm-darker;
+      &.locked {
+        background-image: url(@img-lock-locked);
+      }
+      &.disabled {
+        background-image: url(@img-lock-disabled);
+      }
+      &.active {
+        background-image: url(@img-lock-active);
+        border: 1px solid @input-field-hover-border-color;
+      }
+      &.default {
+        background-image: url(@img-lock-default);
+      }
+      &:hover{
+        border: 1px solid @input-field-hover-border-color;
+        box-shadow: 0px 0px 0px 2px @input-field-hover-outer-border-color;
+      }
+    }
+}
