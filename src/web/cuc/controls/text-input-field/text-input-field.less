@@ -56,7 +56,7 @@ input[type="email"]:hover, input[type="email"]:active, input[type="email"]:focus
 }
 
 /*override input box disabled  and readonly*/
-input[disabled], input[readonly], input[type="text"]:disabled, input[type="text"]:readonly, input[type="email"]:disabled, input[type="email"]:readonly, input[disabled]:hover, input[disabled]:focus, input[disabled]:active, input[readonly]:hover, input[readonly]:active, input[readonly]:focus{
+input[type="text"][disabled], input[type="text"][readonly], input[type="email"][disabled], input[type="email"][readonly], input[type="text"][disabled]:hover, input[type="text"][disabled]:focus, input[type="text"][disabled]:active, input[type="text"][readonly]:hover, input[type="text"][readonly]:active, input[type="text"][readonly]:focus{
     background-color: @input-field-disabled-background-color;
     border: 1px solid @input-field-disabled-border-color;
     box-shadow: none;
