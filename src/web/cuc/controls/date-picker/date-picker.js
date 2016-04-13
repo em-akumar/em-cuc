@@ -266,7 +266,8 @@ class DatePicker {
         }.bind(this));
         this.AddOn.parentNode.addEventListener('keyup', (e) => {
             if (e.keyCode === 9 || e.keyCode === 13) {
-                var val = this._autocomplete(this.destDateField.value);
+              if (this.destDateField) {
+                var val = this._autocomplete(this.destDateField.value); }
                 if (val != undefined && val.trim() != '') {
                   if (this.destDateField){
                     this.destDateField.value = val.split(' ')[0];}
