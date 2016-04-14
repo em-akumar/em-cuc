@@ -60,6 +60,7 @@ if(this.options !== undefined){
     self.actions();
     self.menu.setAttribute('tabindex', '0'); // Fix onblur on Chrome
     self.menu.addEventListener('click', self.toggle, false);
+    self.menu.addEventListener('blur', self.close, false);
     self.menu.parentNode.addEventListener('click',function(e){ e.stopPropagation();},false);
     document.addEventListener('click', self.closeit.bind(self), false);
 
@@ -190,6 +191,13 @@ if(this.options !== undefined){
       value.classList.add('disabled');
     });
 
+  }
+  setEnabled() {
+    var self = this;
+    [].forEach.call(self.menu.parentNode.querySelectorAll(".disabled .dropdown-toggle"), (value, i) => {
+      value.removeAttribute('disabled');
+      value.classList.remove('disabled');
+    });
   }
 
   setRestricted() {

@@ -6,6 +6,7 @@ class DropdownController {
     this.dropdownService = DropdownService;
     this.initialize();
     this.renderDropdown();
+
   }
 
   /* The below example of country and state, on the selection of country (on change method), it shows up states */
@@ -13,7 +14,8 @@ class DropdownController {
     this.drpCountry = {
       defaultText: 'Select',
       onChange: (e) => {
-        this.drpState.itemList = [{'value': 1, 'text': 'State1' + '-' + e.target.getAttribute('value')}, {'value': 2, 'text': 'State2' + '-' + e.target.getAttribute('value')}];
+        this.drpState.itemList = [{ 'value': 1, 'text': 'State1' + '-' + e.target.getAttribute('value') }, { 'value': 2, 'text': 'State2' + '-' + e.target.getAttribute('value') }];
+        this.setdrtpState.setEnabled();
         safeApply();
       },
       valueField: 'alpha2Code',
@@ -30,6 +32,7 @@ class DropdownController {
       },
       defaultSize: 'large'
     };
+
 
     // for Disabled items
     this.drpStateDisabledItem = {

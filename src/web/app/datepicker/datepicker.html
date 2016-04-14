@@ -1,63 +1,31 @@
 <div class="app controls datepicker">
-  <div class="form-group">
-    <div class="col-sm-3">
-      Textbox to test focus functionality
-      <input type="text" name="" placeholder="start focus from here">
-      <!-- Added date and time picker control -->
-      <label>Select Date and Time</label>
-      <div  emc="DatePicker" options="vm.dateTimePicker" class="em-date-picker input-group">
-        <span   class="input-group-addon em-calendar" ></span>
-        <input type="text" class="form-control em-txt-md  date-picker" placeholder="MM / DD / YYYY" >
-        <input type="text" class="form-control em-txt-md-time time-picker" placeholder="## : ## AM" >
-        <div class="jcalendar_parent default em-calendar-pop" style="z-index: 999;display: none;"></div>
+  <div class="demo-page-header">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1>Date Picker</h1>
       </div>
     </div>
   </div>
-  <div class="form-group">
-    <div class="col-sm-3">
-      <!-- Added date and time picker control -->
-      <label>Select Time Only</label>
-      <div  emc="DatePicker" options="vm.dateTimePickerDisabled"  class="em-date-picker input-group">
-        <span   class="input-group-addon em-calendar" ></span>
-        <input type="text" class="form-control em-txt-md-time time-picker" placeholder="## : ## AM" >
-        <div class="jcalendar_parent default em-calendar-pop" style="z-index: 999;display: none;"></div>
-      </div>
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="col-sm-3">
-      <!-- Added date and time picker control -->
-      <label>Select Date Only</label>
-      <div  emc="DatePicker" options="vm.dateTimePickerDisabled"  class="em-date-picker input-group">
-        <span   class="input-group-addon em-calendar" ></span>
-        <input type="text" class="form-control em-txt-md  date-picker" placeholder="MM / DD / YYYY" >
-        <div class="jcalendar_parent default em-calendar-pop" style="z-index: 999;display: none;"></div>
-      </div>
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="col-sm-3">
-      <!-- Added date and time picker control -->
-      <label>Select Date and Time (DIsabled)</label>
-      <div  emc="DatePicker" options="vm.dateTimePickerDisabled"  class="em-date-picker input-group disabled">
-        <span   class="input-group-addon em-calendar" ></span>
-        <input type="text" class="form-control em-txt-md  date-picker" placeholder="MM / DD / YYYY" >
-        <input type="text" class="form-control em-txt-md-time time-picker" placeholder="## : ## AM" >
-        <div class="jcalendar_parent default em-calendar-pop" style="z-index: 999;display: none;"></div>
-      </div>
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="col-sm-3">
-      <!-- Added date and time picker control -->
-      <label>Select Date and Time (Auto complete)</label>
 
-      <div emc="DatePicker" options="vm.dateTimePickerAuto" class="em-date-picker input-group ">
-        <span class="input-group-addon em-calendar"></span>
-        <input type="text" class="form-control em-txt-md  date-picker" placeholder="MM / DD / YYYY">
-        <input type="text" class="form-control em-txt-md-time time-picker" placeholder="## : ## AM">
-        <div class="jcalendar_parent default em-calendar-pop" style="z-index: 999;display: none;"></div>
-      </div>
-    </div>
-  </div>
+   <uib-tabset class="controls">
+      <uib-tab heading="Date Time">
+        <datepicker-date-time></datepicker-date-time>
+      </uib-tab>
+
+      <uib-tab heading="Date Time (Auto Complete)">
+        <datepicker-date-time-auto></datepicker-date-time-auto>
+      </uib-tab>
+
+      <uib-tab heading="Date only">
+        <datepicker-date></datepicker-date>
+      </uib-tab>
+
+      <uib-tab heading="Time Only">
+        <datepicker-time></datepicker-time>
+      </uib-tab>
+
+      <uib-tab heading="Date Time Disabled">
+        <datepicker-date-time-disabled></datepicker-date-time-disabled>
+      </uib-tab>
+   </uib-tabset>
 </div>
