@@ -11,10 +11,11 @@
   </div>
   <label>Color picker with text</label>
   <div class="em-dropdown-edit">
-    <div emc="ColorPicker" class="input-group">
-      <input type="text" placeholder="Hex #" class="form-control em-combobox medium em-input-color">
+    <div emc="ColorPicker" class="input-group" control="vm.colorControl">
+      <input type="text" placeholder="Hex #" class="form-control em-combobox medium em-input-color"
+      ng-change="vm.colorControl.setColorValue(vm.textColor)" ng-model="vm.textColor">
       <div class="input-group-btn">
-        <button type="button" class="btn btn-color-picker dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <button type="button" class="btn btn-color-picker dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
           <span class="color-holder">&nbsp;</span>
         </button>
       </div>

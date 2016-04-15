@@ -189,7 +189,19 @@ if(this.options !== undefined){
       value.setAttribute('disabled', 'disabled');
       value.classList.add('disabled');
     });
+  }
 
+  setState(value) {
+      var self = this;
+      if (value) {
+          self.menu.parentNode.classList.add('disabled');
+          self.menu.setAttribute('disabled', 'disabled');
+          self.menu.classList.add('disabled');
+      } else {
+        self.menu.parentNode.classList.remove('disabled');
+        self.menu.removeAttribute('disabled');
+        self.menu.classList.remove('disabled');
+      }
   }
 
   setRestricted() {

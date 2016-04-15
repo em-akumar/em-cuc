@@ -74,9 +74,10 @@ cuc.directive('emc', () => {
 cuc.directive('ckEditor', () => {
   return {
     require: '?ngModel',
+    scope: {'configOptions':'=config'},
     link: function ($scope, elm, attr, ngModel) {
 
-      var ck = CKEDITOR.replace(elm[0]);
+      var ck = CKEDITOR.replace(elm[0], $scope.configOptions);
 
       ck.on('pasteState', function () {
         $scope.$apply(function () {
