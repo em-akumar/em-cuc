@@ -192,13 +192,6 @@ if(this.options !== undefined){
     });
 
   }
-  setEnabled() {
-    var self = this;
-    [].forEach.call(self.menu.parentNode.querySelectorAll(".disabled .dropdown-toggle"), (value, i) => {
-      value.removeAttribute('disabled');
-      value.classList.remove('disabled');
-    });
-  }
 
   setRestricted() {
     var self = this;
