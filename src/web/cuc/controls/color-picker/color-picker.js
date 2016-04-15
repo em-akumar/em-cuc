@@ -583,6 +583,7 @@ let ColorPicker = (function (window, document, undefined) {
       element.querySelector('.green').value = '';
       element.querySelector('.blue').value = '';
       element.querySelector('.hex').value = '';
+      element.querySelector('.em-input-color').value = '',
       element.querySelector('.new').style.backgroundColor = '';
       element.querySelector('.new').classList.add('diagonal-line');
       element.querySelector('.color-holder').removeAttribute('style');
