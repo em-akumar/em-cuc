@@ -60,6 +60,7 @@ if(this.options !== undefined){
     self.actions();
     self.menu.setAttribute('tabindex', '0'); // Fix onblur on Chrome
     self.menu.addEventListener('click', self.toggle, false);
+    self.menu.addEventListener('blur', self.close, false);
     self.menu.parentNode.addEventListener('click',function(e){ e.stopPropagation();},false);
     document.addEventListener('click', self.closeit.bind(self), false);
 

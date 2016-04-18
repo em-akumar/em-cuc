@@ -189,7 +189,19 @@ setSelected(value){
       value.setAttribute('disabled', 'disabled');
       value.classList.add('disabled');
     });
+  }
 
+ setEnabled() {
+    var self = this;
+    [].forEach.call(self.menu.parentNode.querySelectorAll(".disabled .dropdown-toggle"), (value, i) => {
+      value.removeAttribute('disabled');
+      value.classList.remove('disabled');
+    });
+
+    [].forEach.call(self.combobox.parentNode.querySelectorAll(".disabled .em-combobox"), (value, i) => {
+      value.removeAttribute('disabled', 'disabled');
+      value.classList.remove('disabled');
+    });
   }
 
   setRestricted() {
