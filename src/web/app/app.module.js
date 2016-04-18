@@ -22,6 +22,7 @@ import grid from './grid/grid.module';
 import dropdown from './dropdown/dropdown.module';
 import dropdownEdit from './dropdown-edit/dropdown-edit.module';
 import colorPicker from './color-picker/color-picker.module';
+import ckEditor from './ckEditor/ckEditor.module';
 import modal from './modal/modal.module';
 import datepicker from './datepicker/datepicker.module';
 import checkbox from './checkbox/checkbox.module';
@@ -35,7 +36,7 @@ import tooltips from './tooltips/tooltips.module';
 
 //emsApi.baseUrl = 'http://localhost:9000/';
 
-let appModule = angular.module('app', [uiRouter, cuc.name, 'cuc', 'ui.grid', 'ui.bootstrap', 'ngMessages', 'ui.mask', buttons.name, textInput.name, textArea.name, fileUploader.name, dropdownEdit.name, grid.name, dropdown.name, colorPicker.name, modal.name, datepicker.name, checkbox.name, panel.name, errorHandling.name, imageButton.name, notifications.name, radioButton.name, toggleSwitch.name, tooltips.name]);
+let appModule = angular.module('app', [uiRouter, cuc.name, 'cuc', 'ui.grid', 'ui.bootstrap', 'ngMessages', 'ui.mask', buttons.name, textInput.name, textArea.name, fileUploader.name, dropdownEdit.name, grid.name, dropdown.name, colorPicker.name, modal.name, datepicker.name, checkbox.name, panel.name, errorHandling.name, imageButton.name, notifications.name, radioButton.name, toggleSwitch.name, tooltips.name, ckEditor.name]);
 
 appModule.config(($stateProvider, $urlRouterProvider) => {
   $stateProvider.state('app', {

@@ -316,6 +316,7 @@ let ColorPicker = (function (window, document, undefined) {
     };
   }
 
+
   /**
    * Return click event handler for the picker.
    * Calls ctx.callback if provided.
@@ -336,6 +337,17 @@ let ColorPicker = (function (window, document, undefined) {
     };
   }
 
+  function displayColor(self, colorValue) {
+    if (colorValue !== '') {
+      self.mainElement.querySelector('.color-holder').style.backgroundColor = '#' + colorValue;
+      self.mainElement.querySelector('.color-holder').style.backgroundImage = 'none';
+      self.mainElement.querySelector('.color-holder').classList.remove('diagonal-line');
+      integrateEM(self.mainElement, colorValue, hex2rgb(colorValue));
+    } else {
+      self.mainElement.querySelector('.color-holder').removeAttribute('style');
+    }
+  }
+
   var uniqID = 0;
 
   /**
@@ -346,6 +358,7 @@ let ColorPicker = (function (window, document, undefined) {
    * chosen color in RGB HEX format as the only argument.
    */
   function ColorPicker(mainElement, pickerElement, noColorState, callback) {
+
     let contenthtml = `<div class="dropdown-menu color-menu">
                 <div class="blocks-inline">
                   <div class="cp-default color-picker"></div>
@@ -366,7 +379,7 @@ let ColorPicker = (function (window, document, undefined) {
                   </div>
                   <div class="form-group em-lbl-left">
                     <label for="hex">Hex #</label>
-                    <input type="text" class="form-control em-txt-ex-sm hex" placeholder="" >
+                    <input type="text" class="form-control em-txt-ex-sm hex" placeholder="" maxlength="6">
                   </div>
                   <div class="form-group em-lbl-left">
                     <button class="btn no-color diagonal-line"></button>
@@ -389,31 +402,69 @@ let ColorPicker = (function (window, document, undefined) {
     mainElement.querySelector('button').parentNode.insertBefore(
       divTemp.childNodes[0], mainElement.querySelector('button').nextSibling);
     this.mainElement = mainElement;
-    document.getElementsByTagName('html')[0].addEventListener('click', function (e) { this.mainElement.querySelector('button').parentNode.classList.remove('open');}.bind(this));
+
+    document.getElementsByTagName('html')[0].addEventListener('click', function (e) {
+      this.mainElement.querySelector('button').parentNode.classList.remove('open');}.bind(this));
+
     mainElement.addEventListener('click', function (e) { e.stopPropagation();});
     document.getElementsByTagName('html')[0].addEventListener('keydown',  ( e )=> {
-      if ( e.keyCode === 27 ) { this.mainElement.querySelector('button').parentNode.classList.remove('open');}});
-    mainElement.querySelector('button').addEventListener('click', function (e) { e.target.parentNode.parentNode.classList.toggle('open');});
+        if (e.keyCode === 27) { this.mainElement.querySelector('button').parentNode.classList.remove('open'); }
+    });
+
+    mainElement.querySelector('button').addEventListener('click', function (e) {
+       // on click of one color picker close other color picker
+      [].forEach.call(document.querySelectorAll(".color-menu"), (value, i) => {
+          if (value.parentNode.parentNode !== this.mainElement) {
+            value.parentNode.classList.remove('open');
+          }
+        }); e.target.parentNode.parentNode.classList.toggle('open');
+    });
+
     var slideElement = this.mainElement.querySelector('.color-picker');
     if (this.mainElement.querySelector('.em-input-color')) {
+
       this.textBox = this.mainElement.querySelector('.em-input-color');
-      var self = this;
-      this.textBox.addEventListener('keyup', function () {
-        var input_color = self.textBox.value;
-        if (input_color !== '') {
-          self.mainElement.querySelector('.color-holder')
-          .style.backgroundColor = '#' + input_color.replace('#', '');
-          self.mainElement.querySelector('.color-holder')
-          .style.backgroundImage = 'none';
-          self.mainElement.querySelector('.color-holder')
-            .classList.remove('diagonal-line');
-          integrateEM(self.mainElement, input_color, hex2rgb(input_color));
-        } else {
-          self.mainElement.querySelector('.color-holder')
-            .removeAttribute('style');
+      //console.log(this.textBox);
+      //displayColor(this, this.textBox.value);
+        this.textBox.setAttribute('maxlength', 6);
+
+        this.textBox.addEventListener('keypress', (e) => {
+        var keycode = (e.which) ? e.which : e.keyCode;
+        if ((keycode >= 48 && keycode <= 57) ||
+            (keycode >= 65 && keycode <= 90) ||
+            (keycode >= 97 && keycode <= 122)) {
+            var hexTextValue = e.srcElement || e.target;
+            displayColor(this, hexTextValue.value);
+        } else {e.preventDefault();
+            return false;
         }
+        });
+
+
+      this.textBox.addEventListener('focusout', e => {
+       var hexTextValue = e.srcElement || e.target;
+        displayColor(this, hexTextValue.value);
       });
     }
+
+    var insideHexValue = this.mainElement.querySelector('.hex');
+    insideHexValue.addEventListener('keypress', (e) => {
+        var keycode = (e.which) ? e.which : e.keyCode;
+        if ((keycode >= 48 && keycode <= 57) ||
+            (keycode >= 65 && keycode <= 90) ||
+            (keycode >= 97 && keycode <= 122)) {
+            return true;
+        } else {
+            e.preventDefault();
+            return false;
+        }
+    });
+
+    insideHexValue.addEventListener('focusout', (e) => {
+       var hexTextValue = e.srcElement || e.target;
+       displayColor(this, hexTextValue.value);
+    });
+
     // if (!(this instanceof ColorPicker)) return new ColorPicker(mainElement,
     // pickerElement, callback);
 
@@ -431,8 +482,7 @@ let ColorPicker = (function (window, document, undefined) {
       this.slideElement = element.getElementsByClassName('slide')[0];
       this.pickerElement = element.getElementsByClassName('picker')[0];
       var slideIndicator = element.getElementsByClassName('slide-indicator')[0];
-      var pickerIndicator =
-        element.getElementsByClassName('picker-indicator')[0];
+      var pickerIndicator = element.getElementsByClassName('picker-indicator')[0];
 
       ColorPicker.fixIndicators(slideIndicator, pickerIndicator);
 
@@ -507,34 +557,41 @@ let ColorPicker = (function (window, document, undefined) {
       slideListener(this, this.slideElement, this.pickerElement));
     enableDragging(this, this.pickerElement,
       pickerListener(this, this.pickerElement));
+
   }
   function integrateEM(element, hex, rgb) {
     var oldColor = element.querySelector('.new').style.backgroundColor;
-    element.querySelector('.color-holder').style.backgroundColor =
-    'rgb(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ')';
+    if (rgb) {
+      element.querySelector('.color-holder').style.backgroundColor =
+        'rgb(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ')';
+      element.querySelector('.red').value = rgb.r;
+      element.querySelector('.green').value = rgb.g;
+      element.querySelector('.blue').value = rgb.b;
+    }
+
     element.querySelector('.color-holder').style.backgroundImage = 'none';
     element.querySelector('.new').classList.remove('diagonal-line');
     element.querySelector('.color-holder').classList.remove('diagonal-line');
-    element.querySelector('.red').value = rgb.r;
-    element.querySelector('.green').value = rgb.g;
-    element.querySelector('.blue').value = rgb.b;
     if (element.querySelector('.em-input-color')) {
-      element.querySelector('.em-input-color').value = hex.replace('#', '');
+       element.querySelector('.em-input-color').value = hex.replace('#', '');
     }
     element.querySelector('.hex').value = hex.replace('#', '');
     element.querySelector('.current').style.backgroundColor = oldColor;
-    element.querySelector('.new').style.backgroundColor = hex;
+    element.querySelector('.new').style.backgroundColor = (hex.indexOf('#') !== -1 )? hex : '#'+hex;
     element.querySelector('.no-color').addEventListener('click', function () {
       element.querySelector('.red').value = '';
       element.querySelector('.green').value = '';
       element.querySelector('.blue').value = '';
       element.querySelector('.hex').value = '';
+      element.querySelector('.em-input-color').value = '',
       element.querySelector('.new').style.backgroundColor = '';
       element.querySelector('.new').classList.add('diagonal-line');
       element.querySelector('.color-holder').removeAttribute('style');
       element.querySelector('.color-holder').classList.add('diagonal-line');
     });
   }
+
+
 
   function addEventListener(element, event, listener) {
 
@@ -632,6 +689,8 @@ let ColorPicker = (function (window, document, undefined) {
 
     return ctx;
   }
+
+  ColorPicker.prototype.setColorValue = function(colorValue) { console.log(colorValue); displayColor(this, colorValue); };
 
   /**
    * Sets color of the picker in hsv format.
