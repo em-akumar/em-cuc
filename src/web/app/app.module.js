@@ -13,7 +13,9 @@ import '../cuc/cuc.grid';
 import 'angular-messages/angular-messages.js';
 import 'angular-ui-mask/dist/mask.js';
 import '../common/utils/codepen';
+import '../cuc/cuc.block.ui';
 
+import blockui from './blockui/blockui.module';
 import buttons from './buttons/buttons.module';
 import textInput from './text-input/text-input.module';
 import textArea from './text-area/text-area.module';
@@ -36,7 +38,7 @@ import tooltips from './tooltips/tooltips.module';
 
 //emsApi.baseUrl = 'http://localhost:9000/';
 
-let appModule = angular.module('app', [uiRouter, cuc.name, 'cuc', 'ui.grid', 'ui.bootstrap', 'ngMessages', 'ui.mask', buttons.name, textInput.name, textArea.name, fileUploader.name, dropdownEdit.name, grid.name, dropdown.name, colorPicker.name, modal.name, datepicker.name, checkbox.name, panel.name, errorHandling.name, imageButton.name, notifications.name, radioButton.name, toggleSwitch.name, tooltips.name, ckEditor.name]);
+let appModule = angular.module('app', [uiRouter, cuc.name, 'cuc', 'ui.grid', 'ui.bootstrap', 'ngMessages', 'ui.mask', buttons.name, textInput.name, textArea.name, fileUploader.name, dropdownEdit.name, grid.name, dropdown.name, colorPicker.name, modal.name, datepicker.name, checkbox.name, panel.name, errorHandling.name, imageButton.name, notifications.name, radioButton.name, toggleSwitch.name, tooltips.name, ckEditor.name, blockui.name]);
 
 appModule.config(($stateProvider, $urlRouterProvider) => {
   $stateProvider.state('app', {

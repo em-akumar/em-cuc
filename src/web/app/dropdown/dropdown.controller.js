@@ -15,7 +15,6 @@ class DropdownController {
       defaultText: 'Select',
       onChange: (e) => {
         this.drpState.itemList = [{ 'value': 1, 'text': 'State1' + '-' + e.target.getAttribute('value') }, { 'value': 2, 'text': 'State2' + '-' + e.target.getAttribute('value') }];
-        this.setdrtpState.setEnabled();
         safeApply();
       },
       valueField: 'alpha2Code',

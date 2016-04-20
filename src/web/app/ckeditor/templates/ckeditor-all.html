@@ -1,0 +1,61 @@
+<!-- Error Handling drodown controls Samples -->
+<div class="panel-body section-subheading">
+    <div class="demo-example" data-heading="">
+         <form role="form">
+           <label>CK Editor with all button options</label>
+           <textarea ng-model="editor.value" ck-editor config="vm.configAll"></textarea>
+       </form>
+  </div>
+</div>
+
+  <!--  colorpicker with textbox Controls Usage -->
+  <div class="panel panel-primary">
+    <div class="panel-heading">CK Editor Usage</div>
+    <div class="codepen-group">
+      <pre class="codepen-able" data-type="html"><code class="language-css">
+        &lt;label&gt;CK Editor With All Button Options&lt;/label&gt;
+        &lt;textarea ng-model=&quot;editor.value&quot; ck-editor config=&quot;vm.configAll&quot;>&lt;/textarea&gt;
+        </code></pre>
+      <pre class="codepen-able" data-type="css"></pre>
+      <pre class="codepen-able" data-type="js">
+        this.configAll = {
+          "toolbarGroups" : [
+            { "name": 'document', "groups": [ 'mode', 'document', 'doctools' ] },
+            { "name": 'clipboard', "groups": [ 'clipboard', 'undo' ] },
+            { "name": 'editing', "groups": [ 'find', 'selection', 'spellchecker', 'editing' ] },
+            { "name": 'forms', "groups": [ 'forms' ] },
+            '/',
+            { "name": 'insert', "groups": [ 'insert' ] },
+            '/',
+            { "name": 'styles', "groups": [ 'styles' ] },
+            { "name": 'basicstyles', "groups": [ 'basicstyles', 'cleanup' ] },
+            { "name": 'paragraph', "groups": [ 'list', 'indent', 'blocks', 'align', 'bidi', 'paragraph' ] },
+            { "name": 'colors', "groups": [ 'colors' ] },
+            { "name": 'tools', "groups": [ 'tools' ] },
+            { "name": 'others', "groups": [ 'others' ] },
+            { "name": 'links', "groups": [ 'links' ] },
+            { "name": 'about', "groups": [ 'about' ] }
+          ]
+        };
+      </pre>
+
+    </div>
+  </div>
+
+    <!-- Show the Default drodown states properties-->
+    <div class="table-responsive em-table">
+        <table class="table table-striped table-hover">
+            <tbody><tr>
+                <th style="width:20%;">Class/Properties</th>
+                <th style="width:72%;">Description</th>
+            </tr>
+            <tr>
+                <td>ck-editor</td>
+                <td>This aattribute is required. Displays ckeditor</td>
+            </tr>
+            <tr>
+                <td>config</td>
+                <td>This class is required to display ckeditor options</td>
+            </tr>
+            </tbody></table>
+    </div>

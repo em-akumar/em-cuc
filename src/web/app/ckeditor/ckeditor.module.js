@@ -3,6 +3,8 @@ import {uiRouter} from 'ems/core';
 
 import ckeditorComponent from './ckeditor.component';
 import CkeditorService from './ckeditor.service';
+import ckeditorAllTemplate from './templates/ckeditor-all.html';
+import ckeditorMiniTemplate from './templates/ckeditor-mini.html';
 
 let ckeditorModule = angular.module('ckeditor', [uiRouter]);
 
@@ -15,5 +17,17 @@ ckeditorModule.config(($stateProvider) => {
 
 ckeditorModule.directive('ckeditorComponent', ckeditorComponent);
 ckeditorModule.service('CkeditorService', CkeditorService);
+
+ckeditorModule.directive('ckeditorAll', () => {
+  return {
+    template: ckeditorAllTemplate
+  };
+});
+
+ckeditorModule.directive('ckeditorMini', () => {
+  return {
+    template: ckeditorMiniTemplate
+  };
+});
 
 export default ckeditorModule;
