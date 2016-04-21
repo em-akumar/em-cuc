@@ -1,35 +1,31 @@
+
 <div class="app controls color-picker">
-   <label>Select Color</label>
-  <div class="em-dropdown-edit">
-    <div emc="ColorPicker" class="input-group">
-      <div class="input-group-btn">
-        <button type="button" class="btn btn-color-picker dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <span class="color-holder">&nbsp;</span>
-        </button>
-      </div>
-    </div>
-  </div>
-  <label>Color picker with text</label>
-  <div class="em-dropdown-edit">
-    <div emc="ColorPicker" class="input-group" control="vm.colorControl">
-      <input type="text" placeholder="Hex #" class="form-control em-combobox medium em-input-color"
-      ng-change="vm.colorControl.setColorValue(vm.textColor)" ng-model="vm.textColor">
-      <div class="input-group-btn">
-        <button type="button" class="btn btn-color-picker dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
-          <span class="color-holder">&nbsp;</span>
-        </button>
-      </div>
-    </div>
-  </div>
-  <label>Color picker disabled</label>
-  <div class="em-dropdown-edit">
-    <div emc="ColorPicker" class="input-group">
-      <div class="input-group-btn">
-        <button type="button" class="btn btn-color-picker disabled dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <span class="color-holder">&nbsp;</span>
-        </button>
+  <div class="demo-page-header">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1>Color Picker</h1>
       </div>
     </div>
   </div>
 
+   <uib-tabset class="controls">
+      <uib-tab heading="Default">
+        <colorpicker-default></colorpicker-default>
+      </uib-tab>
+
+      <uib-tab heading="With Textbox">
+        <colorpicker-textbox></colorpicker-textbox>
+      </uib-tab>
+
+      <uib-tab heading="Disabled">
+        <colorpicker-disabled></colorpicker-disabled>
+      </uib-tab>
+
+      <uib-tab heading="With Default Value">
+        <colorpicker-value></colorpicker-value>
+      </uib-tab>
+
+
+   </uib-tabset>
 </div>
+

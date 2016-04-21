@@ -1,5 +1,20 @@
 <div class="app controls ckeditor">
-   <textarea ng-model="editor.value" ck-editor config="vm.config"></textarea>
-  <br/>
-   <textarea ng-model="editor.value" ck-editor config="vm.configAll"></textarea>
+  <div class="demo-page-header">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1>Ck Editor </h1>
+      </div>
+    </div>
+  </div>
+
+   <uib-tabset class="controls">
+      <uib-tab heading="All Button Options">
+        <ckeditor-all></ckeditor-all>
+      </uib-tab>
+      <uib-tab heading="Limited Button Options">
+        <ckeditor-mini></ckeditor-mini>
+      </uib-tab>
+   </uib-tabset>
 </div>
+
+

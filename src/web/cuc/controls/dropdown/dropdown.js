@@ -193,16 +193,24 @@ if(this.options !== undefined){
   }
 
   setState(value) {
-      var self = this;
-      if (value) {
-          self.menu.parentNode.classList.add('disabled');
-          self.menu.setAttribute('disabled', 'disabled');
-          self.menu.classList.add('disabled');
-      } else {
-        self.menu.parentNode.classList.remove('disabled');
-        self.menu.removeAttribute('disabled');
-        self.menu.classList.remove('disabled');
-      }
+    var self = this;
+    if (value) {
+      self.menu.parentNode.classList.add('disabled');
+      self.menu.setAttribute('disabled', 'disabled');
+      self.menu.classList.add('disabled');
+      //add disabled to each item
+      [].forEach.call(self.menu.parentNode.querySelectorAll(".dropdown-menu li a"), (value, j) => {
+        value.classList.add('disabled');
+      });
+    } else {
+      self.menu.parentNode.classList.remove('disabled');
+      self.menu.removeAttribute('disabled');
+      self.menu.classList.remove('disabled');
+      //remove disabled to each item
+      [].forEach.call(self.menu.parentNode.querySelectorAll(".dropdown-menu li a"), (value, j) => {
+        value.classList.remove('disabled');
+      });
+    }
   }
 
   setRestricted() {

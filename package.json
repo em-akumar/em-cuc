@@ -34,14 +34,16 @@
       "app": "./app/app.less",
       "cuc": "./cuc/cuc.less",
       "cuc.grid": "./cuc/controls/ui-grid/ui-grid.less",
-      "cuc.ui.bootstrap": "./cuc/cuc.ui.bootstrap.less"
+      "cuc.ui.bootstrap": "./cuc/cuc.ui.bootstrap.less",
+      "cuc.block.ui": "./cuc/cuc.block.ui.less"
     },
     "scripts": {
       "app": "./app/app.module.js",
       "cuc": "./cuc/cuc.js",
       "cuc.angular": "./cuc/cuc.angular.js",
       "cuc.grid": "./cuc/cuc.grid.js",
-      "cuc.ui.bootstrap": "./cuc/cuc.ui.bootstrap.js"
+      "cuc.ui.bootstrap": "./cuc/cuc.ui.bootstrap.js",
+      "cuc.block.ui": "./cuc/cuc.block.ui.js"
     }
   },
   "devDependencies": {
@@ -52,6 +54,7 @@
     "angular-ui-grid": "3.0.7",
     "bootstrap": "3.3.6",
     "angular-ui-mask": "^1.7.0",
-    "angular-ui-router": "^0.2.15"
+    "angular-ui-router": "^0.2.15",
+    "angular-block-ui":"0.2.0"
   }
 }
