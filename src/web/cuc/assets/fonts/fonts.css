@@ -39,3 +39,9 @@
   src: url('./30765B_0_0.eot');
   src: url('./30765B_0_0.eot?#iefix') format('embedded-opentype'), url('./30765B_0_0.woff2') format('woff2'), url('./30765B_0_0.woff') format('woff'), url('./30765B_0_0.ttf') format('truetype'), url('./30765B_0_0.svg#wf') format('svg');
 }
+
+@font-face {
+  font-family: 'ProximaNova-Medium';
+  src: url('./31024A_2_0.eot');
+  src: url('./31024A_2_0.eot?#iefix') format('embedded-opentype'), url('./31024A_2_0.woff2') format('woff2'), url('./31024A_2_0.woff') format('woff'), url('./31024A_2_0.ttf') format('truetype');
+}
