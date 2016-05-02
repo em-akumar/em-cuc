@@ -16,14 +16,11 @@ if(this.options !== undefined){
 
       //Sort dropdown values
       if (this.options.itemList) {
-        this.options.itemList.sort((obj1, obj2) => {
-          var x = obj1[this.options.sortField].toLowerCase();
-          var y = obj2[this.options.sortField].toLowerCase();
-          if (this.options.sortOrder === 'desc') {
-            return x > y ? -1 : x < y ? 1 : 0;
+        if (this.options.sortOrder === 'asc') {
+            this.options.itemList = _.sortBy(this.options.itemList, this.options.sortField);
           } else {
-            return x < y ? -1 : x > y ? 1 : 0;
-          }});
+            this.options.itemList = _.sortBy(this.options.itemList, this.options.sortField).reverse();
+          }
       }
 
       var IconFlag = false;
