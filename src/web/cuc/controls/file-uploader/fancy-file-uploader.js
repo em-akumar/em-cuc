@@ -357,57 +357,14 @@ var FancyFileUpload= function(el, opts) {
 
   function uploadFile(file) {
     try {
-      var xhr = getXmlHttpRequestObject();
-      var xhrStatus = '';
-      var progress2 = new ProgressBar('change-style' + file.guid, {});
-      if (xhr.upload) {
-        var showTick = document.createElement('DIV');
-        var showComplete = document.createTextNode('Complete');
-        showTick.className = 'notificationImageAtRightCorner';
-        var showTickImg = document.createElement('SPAN');
-        showTickImg.className = 'tickImageSrc';
-        showTick.appendChild(showComplete);
-        showTick.appendChild(showTickImg);
-        showProgressBar(xhr, progress2); //shows progress bar
-        document.getElementById('fileCloseDiv' + file.guid).addEventListener('click', function(e) {
-          if (this.status != 200) {
-            this.abort();
-          }
-        }.bind(xhr));
+
         var data = new FormData();
 
         data.append('importFiles', file);
-        // start upload
-        xhr.onreadystatechange = function() {
-
-          if (xhr.readyState === 4) {
-            xhrStatus = xhr.status;
-
-            setFileStatus(file, xhr);
-
-            if (xhr.status === 200) {
-              uploadedStack.push(file);
-              document.getElementById('fileUploadStatusFor' + file.guid).innerHTML = '';// it is need here to make innerHTML empty
-              document.getElementById('fileUploadStatusFor' + file.guid).appendChild(showTick);
-              onfileUploadComplete({file: file, data: xhr});
-            } else {
-              var showExcl = document.createElement('DIV');
-              showExcl.className = 'notificationImageAtRightCorner ';
-              var showError = document.createTextNode('Error');
-              var showTickImg = document.createElement('SPAN');
-              showTickImg.className = 'errorImageSrc';
-              showExcl.appendChild(showError);
-              showExcl.appendChild(showTickImg);
-              if (document.getElementById('fileUploadStatusFor' + file.guid) != null) {
-                document.getElementById('fileUploadStatusFor' + file.guid).innerHTML = '';// it is need here to make innerHTML empty
-                document.getElementById('fileUploadStatusFor' + file.guid).appendChild(showExcl);
-              }
-            }
-          }
-        };
-        xhr.open('POST', saveUrl, true);
-        xhr.send(data);
-      }
+        fetch(saveurl, {
+          method: 'POST',
+          body: data
+        });
     }
     catch (e) {
       console.log(e);

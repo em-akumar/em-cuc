@@ -16,11 +16,16 @@ if(this.options !== undefined){
 
       //Sort dropdown values
       if (this.options.itemList) {
-        if (this.options.sortOrder === 'asc') {
-            this.options.itemList = _.sortBy(this.options.itemList, this.options.sortField);
-          } else {
-            this.options.itemList = _.sortBy(this.options.itemList, this.options.sortField).reverse();
+        var len = this.options.itemList.length;
+        for (var i = len-1; i>=0; i--){
+          for(var j = 1; j<=i; j++){
+            if(this.options.itemList[j-1][this.options.sortField].toLowerCase() > this.options.itemList[j][this.options.sortField].toLowerCase()){
+              var temp = this.options.itemList[j-1];
+              this.options.itemList[j-1] = this.options.itemList[j];
+              this.options.itemList[j] = temp;
+            }
           }
+        }
       }
 
       var IconFlag = false;

@@ -1,12 +1,17 @@
  <!-- text input field data format sample -->
     <div id="text-input-data-format" class="demo-example section-subheading" data-heading="Data Format">
 
-       <label for="field-label16">SSN/Passowrd</label>
+       <label for="field-label16">Passowrd</label>
          <div class="form-group">
             <div class="em-showPassword">
               <input type="password" class="form-control em-showPassword-txt" emc="TextInputField" options="vm.options" placeholder="Placeholder">
             </div>
          </div>
+
+         <div class="form-group">
+            <label>SSN</label>
+            <input type="text" name="ssn" class="form-control" placeholder="### - ## - ####" ng-model="ssn" ui-mask="999 - 99 - 9999" ui-mask-placeholder ui-mask-placeholder-char="_">
+        </div>
 
         <div class="form-group">
           <div class="em-showPassword em-txt-lg">
