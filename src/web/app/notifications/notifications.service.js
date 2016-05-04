@@ -1,5 +1,3 @@
-
-
 class NotificationsService {
   /* @ngInject */
   constructor() {
