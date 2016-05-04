@@ -32,6 +32,14 @@ class DropdownController {
       defaultSize: 'large'
     };
 
+ this.drpBranches = {
+
+      defaultText: 'Select One',
+      onChange: function (e) {
+        console.log('clicked');
+      },
+      defaultSize: 'large'
+    };
 
     // for Disabled items
     this.drpStateDisabledItem = {
@@ -108,7 +116,8 @@ class DropdownController {
 
   initialize() {
     this.dropdownService.resolvePromise().then((response) => {
-      this.drpCountry.itemList = response.data;
+      //this.drpCountry.itemList = response.data;
+      this.drpBranches.itemList = response.data;
       safeApply();
     });
   }
