@@ -31,7 +31,16 @@ class TextInputField {
       self.element.setAttribute('type','text');
       self.span_password.classList.remove('em-toggle-password');
       self.span_password.classList.add('em-toggle-show-password');
-    } else {
+    } else if (self.element.getAttribute('type') == 'ssn') {
+      if (self.element.value.indexOf('xxx') === -1) {
+        sessionStorage.setItem('ssnValue', self.element.value);
+        var temp = self.element.value.substr(0, 9);
+        self.element.value = self.element.value.replace(temp, ' xxx - xx ');
+      } else {
+        self.element.value=sessionStorage.getItem('ssnValue');
+      }
+
+    }else {
       self.element.setAttribute('type','password');
       self.span_password.classList.remove('em-toggle-show-password');
       self.span_password.classList.add('em-toggle-password');
