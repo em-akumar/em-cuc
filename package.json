@@ -36,8 +36,8 @@
       "cuc.grid": "./cuc/controls/ui-grid/ui-grid.less",
       "cuc.ui.bootstrap": "./cuc/cuc.ui.bootstrap.less",
       "cuc.block.ui": "./cuc/cuc.block.ui.less",
-      "cuc.draggable.grid.rows": "./vendor/less/cuc-draggable-rows.less",
-      "cuc.draggable.grid.rows.style": "./vendor/scss/cuc-draggable-rows.scss",
+      "cuc.draggable.grid.rows": "../../vendor/less/cuc-draggable-rows.less",
+      "cuc.draggable.grid.rows.style": "../../vendor/scss/cuc-draggable-rows.scss"
     },
     "scripts": {
       "app": "./app/app.module.js",
@@ -46,7 +46,7 @@
       "cuc.grid": "./cuc/cuc.grid.js",
       "cuc.ui.bootstrap": "./cuc/cuc.ui.bootstrap.js",
       "cuc.block.ui": "./cuc/cuc.block.ui.js",
-      "cuc.draggable.grid.rows": "./vendor/js/cuc-draggable-rows.js"
+      "cuc.draggable.grid.rows": "../../vendor/js/cuc-draggable-rows.js"
     }
   },
   "devDependencies": {

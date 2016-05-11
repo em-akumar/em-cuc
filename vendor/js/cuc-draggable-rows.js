@@ -72,10 +72,16 @@
 
     .service('uiGridDraggableRowService', ['uiGridDraggableRowsConstants', 'uiGridDraggableRowsCommon', 'uiGridDraggableRowsSettings', '$parse', function(uiGridDraggableRowsConstants, uiGridDraggableRowsCommon, uiGridDraggableRowsSettings, $parse) {
       var move = function(from, to, grid) {
-        let current = this[from];
-        let newPos = this[to];
-        this[from] = newPos;
-        this[to] = current;
+        /* Uncomment the below code if you want to
+           interchange place of dragged element and the row where its dropped
+         */
+        // let current = this[from];
+        // let newPos = this[to];
+        // this[from] = newPos;
+        // this[to] = current;
+
+        // For re-ordering all rows, use the below line
+        this.splice(to, 0, this.splice(from, 1)[0]);
       };
 
       this.prepareDraggableRow = function($scope, $element) {
