@@ -9,14 +9,16 @@
          </div>
 
          <div class="form-group">
-            <label>SSN</label>
-            <input type="text" name="ssn" class="form-control" placeholder="### - ## - ####" ng-model="ssn" ui-mask="999 - 99 - ?9?9?9?9" ui-mask-placeholder ui-mask-placeholder-char="_">
-        </div>
-
-        <div class="form-group">
           <div class="em-showPassword em-txt-lg">
             <input type="password" class="form-control em-showPassword-txt" emc="TextInputField" options="vm.optionslg" placeholder="Placeholder">
           </div>
+        </div>
+
+         <div class="form-group">
+            <label>SSN</label>
+            <div class="em-showPassword em-txt-lg">
+            <input type="ssn" name="ssn" class="form-control em-showPassword-txt" ng-model="ssn" ui-mask="999 - 99 - 9999" ui-mask-placeholder ui-mask-placeholder-char="_" emc="TextInputField" options="vm.options" />
+            </div>
         </div>
 
         <div class="form-group">
@@ -51,16 +53,23 @@
     <div id="text-input-data-format-usage" class="panel panel-primary">
         <div class="panel-heading">Text Input Field Data Format Usage</div>
         <div class="codepen-group">
-            <pre class="codepen-able" data-type="html"> &lt;label for=&quot;field-label16&quot;&gt;SSN/Passowrd&lt;/label&gt;
+            <pre class="codepen-able" data-type="html"> &lt;label for=&quot;field-label16&quot;&gt;Passowrd&lt;/label&gt;
          &lt;div class=&quot;form-group&quot;&gt;
             &lt;div class=&quot;em-showPassword&quot;&gt;
-              &lt;input type=&quot;password&quot; class=&quot;form-control em-showPassword-txt&quot; emc=&quot;TextInputField&quot; options=&quot;vm.options&quot; placeholder=&quot;Placeholder&quot;&gt;
+              &lt;input type=&quot;password&quot; class=&quot;form-control em-showPassword-txt&quot; emc=&quot;TextInputField&quot; options=&quot;vm.options&quot; ng-model=&quot;ssn&quot; ui-mask=&quot;Placeholder&quot;&gt;
             &lt;/div&gt;
          &lt;/div&gt;
 
         &lt;div class=&quot;form-group&quot;&gt;
           &lt;div class=&quot;em-showPassword em-txt-lg&quot;&gt;
-            &lt;input type=&quot;password&quot; class=&quot;form-control em-showPassword-txt&quot; emc=&quot;TextInputField&quot; options=&quot;vm.optionslg&quot; placeholder=&quot;Placeholder&quot;&gt;
+            &lt;input type=&quot;password&quot; class=&quot;form-control em-showPassword-txt&quot; emc=&quot;TextInputField&quot; options=&quot;vm.options&quot; placeholder=&quot;Placeholder&quot;&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;form-group&quot;&gt;
+        &lt;label&gt;SSN&lt;/label&gt;
+          &lt;div class=&quot;em-showPassword em-txt-lg&quot;&gt;
+            &lt;input type=&quot;ssn&quot; class=&quot;form-control em-showPassword-txt&quot; ui-mask=&quot;999 - 99 - 9999&quot; ui-mask-placeholder ui-mask-placeholder-char&quot;_&quot; emc=&quot;TextInputField&quot; options=&quot;vm.options&quot;&gt;
           &lt;/div&gt;
         &lt;/div&gt;
 

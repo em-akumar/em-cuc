@@ -18,11 +18,44 @@ class TextInputField {
 
       self.span_password.addEventListener('click', () => {
           this.addOnPassword();
-
-        }, false);
+      }, false);
+      self.element.addEventListener('blur', e => {
+        if (self.element.getAttribute('type') === 'ssn') {
+          if (self.element.value.indexOf('xxx') === -1) {
+            localStorage.setItem('ssnValue', self.element.value);
+          }
+          self.maskSSN();
+        }
+      });
+       self.element.addEventListener('focus', e => {
+        if (self.element.getAttribute('type') === 'ssn') {
+          if (self.element.value && self.element.value.indexOf('xxx') === -1) {
+            self.maskSSN();
+          }
+        }
+      });
     }
 
   }
+
+/* masking and unmasking SSN */
+  toggleMaskSSN() {
+    var self = this;
+    if (self.element.value && self.element.value.indexOf('xxx') === -1) {
+      localStorage.setItem('ssnValue',self.element.value)
+      self.maskSSN();
+     } else {
+        self.element.value=localStorage.getItem('ssnValue');
+    }
+  }
+
+  maskSSN() {
+    var self = this;
+    if (self.element.value) {
+      var temp = self.element.value.substr(0, 9);
+      self.element.value= self.element.value.replace(temp, ' xxx - xx ');
+    }
+}
 
 /* Valid of password input type, On the click of eye icon, convert into text type and vice versa */
   addOnPassword() {
@@ -31,7 +64,9 @@ class TextInputField {
       self.element.setAttribute('type','text');
       self.span_password.classList.remove('em-toggle-password');
       self.span_password.classList.add('em-toggle-show-password');
-    } else {
+    } else if (self.element.getAttribute('type') == 'ssn') {
+      self.toggleMaskSSN();
+    }else {
       self.element.setAttribute('type','password');
       self.span_password.classList.remove('em-toggle-show-password');
       self.span_password.classList.add('em-toggle-password');

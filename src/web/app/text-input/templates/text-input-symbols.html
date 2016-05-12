@@ -1,4 +1,20 @@
  <div class="demo-example" data-heading="Size">
+
+        <div class="form-group">
+          <label>Integer</label>
+              <input type="text"  ng-model="numWithoutDecimalPoint" em-txt-decimal-upto="0"/>
+        </div>
+
+        <div class="form-group">
+          <label>Floating point number(maximum 6 digits after decimal point)</label>
+              <input type="text"  ng-model="numWithDecimalPoint" em-txt-decimal-upto="6"/>
+        </div>
+
+        <div class="form-group">
+          <label>Number to accept only positive values </label>
+              <input type="text"  ng-model="decimalWithPositiveValues" em-txt-decimal-upto="5"  em-allow-negative="false"/>
+        </div>
+
         <div class="form-group">
           <label for="field-label8">Percentage Symbol</label>
           <div class="em-input-symbol-percent em-txt-md">
@@ -41,7 +57,19 @@
         <div id="text-input-size-usage" class="panel panel-primary">
             <div class="panel-heading">Text Input Field Size Usage</div>
             <div class="codepen-group">
-                <pre class="codepen-able" data-type="html"> &lt;div class=&quot;form-group&quot;&gt;
+                <pre class="codepen-able" data-type="html">
+          &lt;div class=&quot;form-group&quot;&gt;
+          &lt;label&gt;Integer&lt;/label&gt;
+              &lt;input type=&quot;text&quot; ng-model=&quot;any&quot; em-txt-decimal-upto=&quot;0&quot;&gt;
+          &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;label&gt;Floating point number(maximum 6 digits after decimal point)&lt;/label&gt;
+              &lt;input type=&quot;text&quot; ng-model=&quot;any&quot; em-txt-decimal-upto=&quot;5&quot;&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;form-group&quot;&gt;
+          &lt;label&gt;Number to accept only positive values&lt;/label&gt;
+              &lt;input type=&quot;text&quot; ng-model=&quot;any&quot; em-txt-decimal-upto=&quot;3&quot; em-allow-negative=&quot;false&quot;&gt;
+          &lt;div class=&quot;form-group&quot;&gt;
           &lt;label for=&quot;field-label8&quot;&gt;Percentage Symbol&lt;/label&gt;
           &lt;div class=&quot;em-input-symbol-percent em-txt-md&quot;&gt;
               &lt;input type=&quot;number&quot; step=&quot;any&quot; class=&quot;form-control&quot;&gt;
@@ -75,6 +103,16 @@
                 <tbody><tr>
                     <th style="width:20%;">Class</th>
                     <th style="width:72%;">Description</th>
+                </tr>
+                <tr>
+                    <td rowspan="3">.em-txt-decimal-upto</td>
+                    <td>Accepts only Integer number when .em-txt-decimal-upto="0"</td>
+                </tr>
+                <tr>
+                    <td>Accepts only Floating point number when .em-txt-decimal-upto = "&lt;number of digits after decimal point&gt;"</td>
+                </tr>
+                <tr>
+                    <td>Accepts only positive numbers when used with em-allow-negative="false"</td>
                 </tr>
                 <tr>
                     <td>.em-input-symbol-percent</td>
