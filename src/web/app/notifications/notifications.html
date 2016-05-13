@@ -1,10 +1,78 @@
-<div class="app controls notifications">
-  <div emc="SliderNotifications" options="vm.pageNotifications"></div><!-- Page Notification-->
-  <br /><br /><br />
+<div class="app controls notifications panel-body section-subheading">
+ <div class="demo-example" data-heading="Page Level Notification">
+     <div emc="SliderNotifications" options="vm.pageNotifications"></div><!-- Page Notification-->
+ </div>
 
+<div class="demo-example" data-heading="Container Level Notification">
   <div emc="SliderNotifications" options="vm.containerNotifications"></div><!-- Container Notification-->
-  <div id="error-container" style="width: 600px;">
+  <div id="error-container" style="width: 100%;">
     <p style="text-align: justify;border: 1px solid #CCC;padding:5px;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
     </p>
+   </div>
+ </div>
+
+   <!--  Notification Controls Usage -->
+  <div id="button-default-usage" class="panel panel-primary">
+    <div class="panel-heading">Notification Usage</div>
+    <div class="codepen-group">
+      <pre class="codepen-able" data-type="html">
+        <code class="language-css">&lt;div emc=&quot;SliderNotifications&quot; options=&quot;vm.Notifications&quot;&gt;&lt;/div&gt;</code>
+       </pre>
+       <pre class="codepen-able" id="js-default" data-type="js">this.Notifications = {&#13;&#10;
+      contentTmpl: '&lt;span class=&quot;alert-text-header&quot;&gt;Errors Found - &lt;/span&gt;&lt;span class=&quot;alert-text-body&quot;&gt;&amp;nbsp;Error message description.&lt;/span&gt;', // notification html template&#13;&#10;
+      closeButton: 'true',  // notification close icon 'true' , 'false'&#13;&#10;
+      sliderType: 'danger', // notification type 'error', 'success', 'warning'&#13;&#10;
+      sliderAutoClose: 'true', // notification auto close 'true', 'false'&#13;&#10;
+      sliderIconFlag: 'true' // notification image icon 'true', 'false'&#13;&#10;
+      sliderPosition: 'fixed' // Optional Notification sticky 'fixed', by default non-sticky 'relative'
+      isComplex: 'true', // Optional Notification details (complex) 'true', 'false'
+      complexTmpl: 'Complex details template will come here', //Optional notification details html template
+      containerEl: '#error-container' //Container element id, Use only if you want to display notification in container level
+    };
+       </pre>
+    </div>
   </div>
+
+    <!-- Show the button default states properties-->
+    <div class="table-responsive em-table">
+        <table class="table table-striped table-hover">
+            <tbody><tr>
+                <th style="width:20%;">Property Keys</th>
+                <th style="width:72%;">Controller Properties</th>
+            </tr>
+            <tr>
+                <td>contentTmpl</td>
+                <td>Add the ability to override the template used on the component.</td>
+            </tr>
+            <tr>
+                <td>closeButton</td>
+                <td>Show/Hide notification close icon</td>
+            </tr>
+            <tr>
+                <td>sliderType</td>
+                <td>It can be error (red color), success (Green Color) and Warning</td>
+            </tr>
+             <tr>
+                <td>sliderAutoClose</td>
+                <td>True or False, Auto Close the page or container level notification</td>
+            </tr>
+            <tr>
+                <td>sliderIconFlag</td>
+                <td>True or False, Show/Hide Slider icon page or container level notification</td>
+            </tr>
+            <tr>
+                <td>sliderPosition</td>
+                <td>Fixed for Sticky and relative for non-sticky </td>
+            </tr>
+            <tr>
+                <td>complexTmpl</td>
+                <td>Add complex details template</td>
+            </tr>
+            <tr>
+                <td>containerEl</td>
+                <td>Need container ID e.g. #error-container, Required for container level notification</td>
+            </tr>
+            </tbody></table>
+    </div>
+
 </div>
