@@ -13,26 +13,50 @@ class TextInputField {
     if (self.element) {
       //create hide/show span
       self.span_password = document.createElement('span');
-      self.span_password.setAttribute('class', 'em-toggle-password');
+      if (self.element.getAttribute('type') == 'ssn') {
+        self.span_password.setAttribute('class', 'em-toggle-show-password');
+      } else {
+        self.span_password.setAttribute('class', 'em-toggle-password');
+      }
+
       self.element.parentNode.insertBefore(self.span_password, self.element.nextSibling);
 
       self.span_password.addEventListener('click', () => {
           this.addOnPassword();
       }, false);
       self.element.addEventListener('blur', e => {
-        if (self.element.getAttribute('type') === 'ssn') {
-          if (self.element.value.indexOf('xxx') === -1) {
+        var parentDiv = (self.element.parentElement).parentElement;
+        if (self.element.getAttribute('type') === 'ssn' && /(\d{3}-\d{2}|\*{3}-\*{2})-\d{4}/.test(self.element.value)) {
+          parentDiv.classList.remove('has-error');
+          if (self.element.value.indexOf('***') === -1) {
             localStorage.setItem('ssnValue', self.element.value);
-          }
-          self.maskSSN();
-        }
-      });
-       self.element.addEventListener('focus', e => {
-        if (self.element.getAttribute('type') === 'ssn') {
-          if (self.element.value && self.element.value.indexOf('xxx') === -1) {
             self.maskSSN();
           }
+          self.span_password.classList.remove('em-toggle-show-password');
+          self.span_password.classList.add('em-toggle-password');
         }
+        else {
+          parentDiv.classList.add('has-error');
+        }
+      });
+       self.element.addEventListener('keypress', e => {
+         if (self.element.getAttribute('type') === 'ssn') {
+           var keycode = (e.which) ? e.which : e.keyCode;
+           if ((keycode >= 48 && keycode <= 57) || keycode === 8 || keycode === 8 || keycode === 9 || keycode === 37 || keycode === 39 ) {
+             return true;
+           }
+           e.preventDefault();
+           return false;
+         }
+      });
+
+      self.element.addEventListener('keydown', e => {
+        if (self.element.getAttribute('type') === 'ssn') {
+          var keycode = (e.which) ? e.which : e.keyCode;
+          if ((self.element.value.length === 3 || self.element.value.length === 6) && keycode != 8) {
+             self.element.value = self.element.value + '-';
+           }
+         }
       });
     }
 
@@ -41,8 +65,7 @@ class TextInputField {
 /* masking and unmasking SSN */
   toggleMaskSSN() {
     var self = this;
-    if (self.element.value && self.element.value.indexOf('xxx') === -1) {
-      localStorage.setItem('ssnValue',self.element.value)
+    if (self.element.value && self.element.value.indexOf('***') === -1) {
       self.maskSSN();
      } else {
         self.element.value=localStorage.getItem('ssnValue');
@@ -52,8 +75,8 @@ class TextInputField {
   maskSSN() {
     var self = this;
     if (self.element.value) {
-      var temp = self.element.value.substr(0, 9);
-      self.element.value= self.element.value.replace(temp, ' xxx - xx ');
+      var temp = self.element.value.substr(0, 6);
+      self.element.value= self.element.value.replace(temp, '***-**');
     }
 }
 
@@ -66,6 +89,14 @@ class TextInputField {
       self.span_password.classList.add('em-toggle-show-password');
     } else if (self.element.getAttribute('type') == 'ssn') {
       self.toggleMaskSSN();
+      if (self.span_password.classList.value === 'em-toggle-show-password') {
+        self.span_password.classList.remove('em-toggle-show-password');
+        self.span_password.classList.add('em-toggle-password');
+      }
+      else {
+        self.span_password.classList.remove('em-toggle-password');
+        self.span_password.classList.add('em-toggle-show-password');
+      }
     }else {
       self.element.setAttribute('type','password');
       self.span_password.classList.remove('em-toggle-show-password');

@@ -17,7 +17,7 @@
          <div class="form-group">
             <label>SSN</label>
             <div class="em-showPassword em-txt-lg">
-            <input type="ssn" name="ssn" class="form-control em-showPassword-txt" ng-model="ssn" ui-mask="999 - 99 - 9999" ui-mask-placeholder ui-mask-placeholder-char="_" emc="TextInputField" options="vm.options" />
+            <input type="ssn" class="form-control em-showPassword-txt" emc="TextInputField" options="vm.options" placeholder="###-##-###" maxlength="11"/>
             </div>
         </div>
 
@@ -67,9 +67,9 @@
         &lt;/div&gt;
 
         &lt;div class=&quot;form-group&quot;&gt;
-        &lt;label&gt;SSN&lt;/label&gt;
+          &lt;label&gt;SSN&lt;/label&gt;
           &lt;div class=&quot;em-showPassword em-txt-lg&quot;&gt;
-            &lt;input type=&quot;ssn&quot; class=&quot;form-control em-showPassword-txt&quot; ui-mask=&quot;999 - 99 - 9999&quot; ui-mask-placeholder ui-mask-placeholder-char&quot;_&quot; emc=&quot;TextInputField&quot; options=&quot;vm.options&quot;&gt;
+            &lt;input type=&quot;ssn&quot; class=&quot;form-control em-showPassword-txt&quot; emc=&quot;TextInputField&quot; options=&quot;vm.options&quot; placeholder=&quot;###-##-####&quot; maxlength=&quot;11&quot;&gt;
           &lt;/div&gt;
         &lt;/div&gt;
 

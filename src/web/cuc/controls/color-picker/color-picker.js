@@ -425,34 +425,30 @@ let ColorPicker = (function (window, document, undefined) {
     var slideElement = this.mainElement.querySelector('.color-picker');
     if (this.mainElement.querySelector('.em-input-color')) {
       this.textBox = this.mainElement.querySelector('.em-input-color');
-        this.textBox.setAttribute('maxlength', 6);
-        this.textBox.addEventListener('keypress', (e) => {
-          var keycode = (e.which) ? e.which : e.keyCode;
-          if ((keycode >= 48 && keycode <= 57) ||
-            (keycode >= 65 && keycode <= 70) ||
-            (keycode >= 97 && keycode <= 102)) {
-              var hexTextValue = e.srcElement || e.target;
-              if (keycode >= 97 && keycode <= 102) {
-                hexTextValue.value = hexTextValue.value.toUpperCase();
-              }
-              displayColor(this, hexTextValue.value);
-          } else {
-            e.preventDefault();
-            return false;
-          }
+      this.textBox.addEventListener('keypress', (e) => {
+        var keycode = (e.which) ? e.which : e.keyCode;
+        if ((keycode >= 48 && keycode <= 57) ||
+          (keycode >= 65 && keycode <= 70) ||
+          (keycode >= 97 && keycode <= 102) || keycode === 8 || keycode === 9 || keycode === 37 || keycode === 39) {
+          var hexTextValue = e.srcElement || e.target;
+          displayColor(this, hexTextValue.value);
+          return true;
+        }
+        e.preventDefault();
+        return false;
       });
-      this.textBox.addEventListener('focusout', e => {
+      this.textBox.addEventListener('blur', e => {
         var hexTextValue = e.srcElement || e.target;
         if (hexTextValue.value.length < 6) {
-          var ch = hexTextValue.value.charAt(0);
+          var ch = hexTextValue.value.charAt(0).toUpperCase();
           var len = hexTextValue.value.length;
-          while(len>0){
-            if(ch !== hexTextValue.value.charAt(len-1)){
+          while (len > 0) {
+            if (ch !== hexTextValue.value.charAt(len - 1).toUpperCase()) {
               break;
             }
             len--;
           }
-          if (len !== 0){
+          if (len !== 0) {
             while (hexTextValue.value.length < 6) {
               hexTextValue.value = "0" + hexTextValue.value;
             }
@@ -461,7 +457,8 @@ let ColorPicker = (function (window, document, undefined) {
               hexTextValue.value = hexTextValue.value + hexTextValue.value.charAt(0);
             }
           }
-       }
+        }
+        hexTextValue.value = hexTextValue.value.toUpperCase();
         displayColor(this, hexTextValue.value);
       });
     }
@@ -471,18 +468,13 @@ let ColorPicker = (function (window, document, undefined) {
         var keycode = (e.which) ? e.which : e.keyCode;
         if ((keycode >= 48 && keycode <= 57) ||
             (keycode >= 65 && keycode <= 90) ||
-          (keycode >= 97 && keycode <= 102)) {
-          var hexTextValue = e.srcElement || e.target;
-          if (keycode >= 97 && keycode <= 102) {
-            hexTextValue.value = hexTextValue.value.toUpperCase();
-          }
+          (keycode >= 97 && keycode <= 102)|| keycode === 8 || keycode === 9 || keycode === 37 || keycode === 39 ) {
             return true;
         } else {
             e.preventDefault();
             return false;
         }
     });
-
     insideHexValue.addEventListener('focusout', (e) => {
        var hexTextValue = e.srcElement || e.target;
        displayColor(this, hexTextValue.value);
