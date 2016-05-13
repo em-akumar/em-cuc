@@ -1,0 +1,21 @@
+FROM dmcginnis/nextgen-app-build:latest
+
+MAINTAINER Dominic McGinnis, dominic.mcginnis@elliemae.com
+
+ENV APP_DIR /usr/src/app
+
+RUN cd ${APP_DIR}
+
+# cache package.json and node_modules to speed up builds
+ADD package.json ${APP_DIR}/package.json
+RUN cd ${APP_DIR} && \
+	npm install
+
+# Add the source files
+ADD . ${APP_DIR}/.
+
+RUN chmod -R 777 ${APP_DIR}
+
+WORKDIR ${APP_DIR}
+
+EXPOSE 9000
