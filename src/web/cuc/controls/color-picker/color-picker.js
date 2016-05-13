@@ -333,7 +333,7 @@ let ColorPicker = (function (window, document, undefined) {
       var c = hsv2rgb(ctx);
       ctx.callback &&
       ctx.callback(c.hex, { h: ctx.h - hueOffset, s: ctx.s, v: ctx.v },
-        { r: c.r, g: c.g, b: c.b }, mouse);
+          { r: c.r, g: c.g, b: c.b }, mouse);
     };
   }
 
@@ -439,7 +439,7 @@ let ColorPicker = (function (window, document, undefined) {
       });
       this.textBox.addEventListener('blur', e => {
         var hexTextValue = e.srcElement || e.target;
-        if (hexTextValue.value.length < 6) {
+        if (hexTextValue.value.length < 6 && hexTextValue.value.length > 0) {
           var ch = hexTextValue.value.charAt(0).toUpperCase();
           var len = hexTextValue.value.length;
           while (len > 0) {
@@ -448,7 +448,7 @@ let ColorPicker = (function (window, document, undefined) {
             }
             len--;
           }
-          if (len !== 0) {
+          if (len > 0) {
             while (hexTextValue.value.length < 6) {
               hexTextValue.value = "0" + hexTextValue.value;
             }
@@ -475,7 +475,7 @@ let ColorPicker = (function (window, document, undefined) {
             return false;
         }
     });
-    insideHexValue.addEventListener('focusout', (e) => {
+    insideHexValue.addEventListener('blur', (e) => {
        var hexTextValue = e.srcElement || e.target;
        displayColor(this, hexTextValue.value);
     });
