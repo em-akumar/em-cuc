@@ -454,7 +454,7 @@ let ColorPicker = (function (window, document, undefined) {
           (keycode >= 65 && keycode <= 70) ||
           (keycode >= 97 && keycode <= 102) || keycode === 8 || keycode === 9 || keycode === 37 || keycode === 39) {
           var hexTextValue = e.srcElement || e.target;
-          displayColor(this, hexTextValue.value);
+          //displayColor(this, hexTextValue.value);
           return true;
         }
         e.preventDefault();
@@ -464,6 +464,7 @@ let ColorPicker = (function (window, document, undefined) {
       this.textBox.addEventListener('blur', e => {
         var hexTextValue = e.srcElement || e.target;
         applyValidation(hexTextValue);
+        document.querySelector('.hex').value = hexTextValue.value;
         displayColor(this, hexTextValue.value);
       });
     }
@@ -480,7 +481,7 @@ let ColorPicker = (function (window, document, undefined) {
             return false;
         }
     });
-     insideHexValue.addEventListener('keyup', (e) => {
+    insideHexValue.addEventListener('keyup', (e) => {
       var hexTextValue = e.srcElement || e.target;
         var keycode = (e.which) ? e.which : e.keyCode;
         if ((keycode >= 48 && keycode <= 57) ||
@@ -494,9 +495,6 @@ let ColorPicker = (function (window, document, undefined) {
     insideHexValue.addEventListener('blur', (e) => {
       var hexTextValue = e.srcElement || e.target;
       applyValidation(hexTextValue);
-      if (document.querySelector('.em-input-color')) {
-        document.querySelector('.em-input-color').value = hexTextValue.value;
-      }
       displayColor(this, hexTextValue.value);
     });
 
@@ -622,9 +620,9 @@ let ColorPicker = (function (window, document, undefined) {
     element.querySelector('.color-holder').style.backgroundImage = 'none';
     element.querySelector('.new').classList.remove('diagonal-line');
     element.querySelector('.color-holder').classList.remove('diagonal-line');
-    /*if (element.querySelector('.em-input-color')) {
+    if (element.querySelector('.em-input-color')) {
        element.querySelector('.em-input-color').value = hex.replace('#', '');
-    }*/
+    }
     element.querySelector('.hex').value = hex.replace('#', '');
     element.querySelector('.current').style.backgroundColor = oldColor;
     element.querySelector('.new').style.backgroundColor = (hex.indexOf('#') !== -1 )? hex : '#'+hex;
