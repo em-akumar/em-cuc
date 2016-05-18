@@ -34,6 +34,7 @@ class FileUploaderController {
       dropDirectionMsg: dropDirectionMsg,
       onfileUploadComplete: (e) => {
         this.fileUploadComplete(e);
+        console.log(e);
       }
     };
 
@@ -51,11 +52,15 @@ class FileUploaderController {
       supportedFormatsText: supportText,
       maxFileNameLength: maxFileNameLength,
       fileNameLengthErrorMessage: fileNameLengthErrorMessage,
-      dropDirectionMsg: dropDirectionMsg
+      dropDirectionMsg: dropDirectionMsg,
+      onfileUploadComplete: (e) => {
+        this.fileUploadComplete(e);
+      console.log(e)
+  }
     };
     let singleFileoptions = {
       fileInputId: 'singleUpload'
-    }
+    };
 
     // setting upload controls options
     this.options = options;
@@ -70,9 +75,9 @@ class FileUploaderController {
       var fd = new FormData();
       fd.append('file', file);
       this.$http.post('http://10.112.104.13:85/v1/formbuilder/importpackage', fd, {
-        transformRequest: angular.identity,
-        headers: {'Content-Type': undefined}
-      })
+          transformRequest: angular.identity,
+          headers: {'Content-Type': undefined}
+        })
         .success(function() {
           console.log('file uploaded successfully.');
         })
@@ -84,14 +89,14 @@ class FileUploaderController {
 
   fileUploadComplete(e) {
     var fileData = {};
-    fileData.fileName = e.file.name
+    fileData.fileName = e.file.name;
     fileData.fileSize = e.file.size;
     fileData.uploadDate = e.file.lastModifiedDate;
     fileData.uploadUser = 'Simone Qi';
     console.log(fileData);
     this.fileDataGroup.push(fileData);
-    console.log(this.fileDataGroup);
   }
 }
 
 export default FileUploaderController;
+

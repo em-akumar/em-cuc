@@ -1,6 +1,6 @@
 /* eslint-disable */
 import {ProgressBar} from '../progress-bar/progress-bar';
-var FancyFileUpload= function(el, opts) {
+var FancyFileUpload = function(el, opts) {
 
   var uploadStack = [], //upload file item store array
     invalidUploadStack = [], // invalid file item store array
@@ -159,7 +159,7 @@ var FancyFileUpload= function(el, opts) {
     // fetch FileList object
     //TODO: fetch file details needed by me
     var files = e.target.files || e.dataTransfer.files;
-    console.log(e.target);
+
     // process all File objects
     var f = '';
     if (isMultiFileUpload === true) {
@@ -200,30 +200,46 @@ var FancyFileUpload= function(el, opts) {
     fileUploadCtrl.click();
   }
 
+  //var faileduploadstack = {};
+
   function isFileValid(file) {
+    var serverFileupload;
     var isValid = true;
     //check if file extension is valid
+    //client upload failure scenarios
     if (isValid) {
       if (!isfileExtensionValid(file)) {
+        var serverFileupload = {};
         file.status = 'invalid';
+        serverFileupload.status = 'invalid';
+        serverFileupload.description = fileFilterErrorMessage;
         file.description = fileFilterErrorMessage;
         isValid = false;
+        onfileUploadComplete({file: file, data: null, fileUploadStatus: serverFileupload})
       }
     }
     //check if file name Length is valid
     if (isValid) {
       if (!isfileNameLengthValid(file)) {
+        var serverFileupload = {};
         file.status = 'invalid';
+        serverFileupload.status = 'invalid';
+        serverFileupload.description = fileNameLengthErrorMessage;
         file.description = fileNameLengthErrorMessage;
         isValid = false;
+        onfileUploadComplete({file: file, data: null, fileUploadStatus: serverFileupload})
       }
     }
     //check if file Size is valid
     if (isValid) {
       if (!isfileSizeValid(file)) {
+        var serverFileupload = {};
         file.status = 'invalid';
+        serverFileupload.status = 'invalid';
+        serverFileupload.description = fileSizeErrorMessage;
         file.description = fileSizeErrorMessage;
         isValid = false;
+        onfileUploadComplete({file: file, data: null, fileUploadStatus: serverFileupload})
       }
     }
   }
@@ -306,6 +322,7 @@ var FancyFileUpload= function(el, opts) {
       var l = 0;
       for (l = 0; l < uploadStack.length; l++) {
         if (uploadedStack.indexOf(uploadStack[l]) === -1)
+
           uploadFile(uploadStack[l]);
         else
           setProgressBar(uploadStack[l], '100');
@@ -313,7 +330,7 @@ var FancyFileUpload= function(el, opts) {
       document.getElementById(cancelButtonId).textContent = 'Close';
       document.getElementById(cancelButtonId).addEventListener('click', function() {
         document.getElementById(filesUploadedAreaDivId).innerHTML = '';
-        document.getElementById(cancelButtonWrapperId).style.display= 'none';
+        document.getElementById(cancelButtonWrapperId).style.display = 'none';
       });
     }
   }
@@ -356,6 +373,7 @@ var FancyFileUpload= function(el, opts) {
   }
 
   function uploadFile(file) {
+    var fileUploadStatus = {};
     try {
       var xhr = getXmlHttpRequestObject();
       var xhrStatus = '';
@@ -386,10 +404,12 @@ var FancyFileUpload= function(el, opts) {
             setFileStatus(file, xhr);
 
             if (xhr.status === 200) {
+              fileUploadStatus.status = 'success';
+              fileUploadStatus.description = 'server upload success';
               uploadedStack.push(file);
+              // add to element here
               document.getElementById('fileUploadStatusFor' + file.guid).innerHTML = '';// it is need here to make innerHTML empty
               document.getElementById('fileUploadStatusFor' + file.guid).appendChild(showTick);
-              onfileUploadComplete({file: file, data: xhr});
             } else {
               var showExcl = document.createElement('DIV');
               showExcl.className = 'notificationImageAtRightCorner ';
@@ -410,7 +430,16 @@ var FancyFileUpload= function(el, opts) {
       }
     }
     catch (e) {
+      //which file failed callback
+      //server upload scenario
+      fileUploadStatus.status = 'server failed';
+      fileUploadStatus.description = 'server upload failed';
       console.log(e);
+    }
+    finally {
+      // we are going to send file info after every upload of single file
+
+      onfileUploadComplete({file: file, data: xhr, fileUploadStatus: fileUploadStatus});
     }
   }
 
@@ -578,12 +607,12 @@ var FancyFileUpload= function(el, opts) {
     //TODO: make them dynamic
     label.innerHTML = 'Drag & Drop files here or ';
     label.className = 'fancy-uploader-label';
-    label.id = 'uploadLabel'+getGuid();
+    label.id = 'uploadLabel' + getGuid();
     uploadLabelId = label.id;
     var buttonHolder = document.createElement('DIV');
     buttonHolder.className = 'fancy-uploader-button';
     // ToDo :add guid
-    buttonHolder.id = 'uploadButton'+getGuid();
+    buttonHolder.id = 'uploadButton' + getGuid();
     uploadButtonId = buttonHolder.id;
     divToBind.appendChild(label);
     divToBind.appendChild(buttonHolder);
@@ -605,7 +634,7 @@ var FancyFileUpload= function(el, opts) {
     //SPIKE create close button container
     var cancelButtonWrapper = document.createElement('DIV');
     cancelButtonWrapper.className = 'clearfix actionButtonHolder';
-    cancelButtonWrapper.id = 'cancelButtonWrapperId'+getGuid();
+    cancelButtonWrapper.id = 'cancelButtonWrapperId' + getGuid();
     cancelButtonWrapperId = cancelButtonWrapper.id;
     cancelButtonWrapper.style.display = 'none';
     cancelButtonWrapper.appendChild(cancelButton);
