@@ -644,5 +644,4 @@ var FileUpload = function (el, opts) {
     initialize(opts);
   });
 };
-
 export {FileUpload};
