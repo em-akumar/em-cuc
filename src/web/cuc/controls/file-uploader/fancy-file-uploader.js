@@ -200,7 +200,7 @@ var FancyFileUpload = function(el, opts) {
     fileUploadCtrl.click();
   }
 
-  var faileduploadstack = {};
+  //var faileduploadstack = {};
 
   function isFileValid(file) {
     var serverFileupload;
@@ -438,6 +438,7 @@ var FancyFileUpload = function(el, opts) {
     }
     finally {
       // we are going to send file info after every upload of single file
+
       onfileUploadComplete({file: file, data: xhr, fileUploadStatus: fileUploadStatus});
     }
   }

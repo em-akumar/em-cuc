@@ -52,11 +52,15 @@ class FileUploaderController {
       supportedFormatsText: supportText,
       maxFileNameLength: maxFileNameLength,
       fileNameLengthErrorMessage: fileNameLengthErrorMessage,
-      dropDirectionMsg: dropDirectionMsg
+      dropDirectionMsg: dropDirectionMsg,
+      onfileUploadComplete: (e) => {
+        this.fileUploadComplete(e);
+      console.log(e)
+  }
     };
     let singleFileoptions = {
       fileInputId: 'singleUpload'
-    }
+    };
 
     // setting upload controls options
     this.options = options;

@@ -1,6 +1,6 @@
 /* eslint-disable */
 import {ProgressBar} from '../progress-bar/progress-bar';
-var FileUpload = function (el, opts) {
+var FileUpload = function(el, opts) {
 
   var uploadStack = [], //upload file item store array
     invalidUploadStack = [], // invalid file item store array
@@ -28,7 +28,8 @@ var FileUpload = function (el, opts) {
     fileNameLengthErrorMessage = '', //file name character length validation
     supportedFormatsText = '', // supported file formats for drage drop
     fileTypeIconCss = '', //type of file type icon css class name
-    dropZoneClass = ''; //css to the drag drop area
+    dropZoneClass = '', //css to the drag drop area
+    onfileUploadComplete = '';
 
   var fileUpload = {}; // to be returned to with control state when the object is to be used in IFB angularJs integration
 
@@ -56,7 +57,7 @@ var FileUpload = function (el, opts) {
     fileDropZoneCss = options.fileDropZoneCss; //css class for draggable div
     fileTypeIconCss = options.fileTypeIconCss; // type of icon for file type being uploaded
     dropDirectionMsg = options.dropDirectionMsg; // drop or drag file instruction message
-
+    onfileUploadComplete = options.onfileUploadComplete;
     initializeDragDropDivArea();
 
     //after the control has been rendered and ids have been assigned to the controls fill the fileUpload object
@@ -199,30 +200,44 @@ var FileUpload = function (el, opts) {
     fileUploadCtrl.click();
   }
 
+  //var faileduploadstack = {};
+
   function isFileValid(file) {
+    var serverFileupload;
     var isValid = true;
     //check if file extension is valid
     if (isValid) {
       if (!isfileExtensionValid(file)) {
+        var serverFileupload = {};
         file.status = 'invalid';
+        serverFileupload.status = 'invaild';
+        serverFileupload.description = fileFilterErrorMessage;
         file.description = fileFilterErrorMessage;
         isValid = false;
+        onfileUploadComplete({file: file, data: null, fileUploadStatus: serverFileupload})
       }
     }
     //check if file name Length is valid
     if (isValid) {
       if (!isfileNameLengthValid(file)) {
+        var serverFileupload = {};
         file.status = 'invalid';
+        serverFileupload.status = 'invalid';
+        serverFileupload.description = fileNameLengthErrorMessage;
         file.description = fileNameLengthErrorMessage;
         isValid = false;
+        onfileUploadComplete({file: file, data: null, fileUploadStatus: serverFileupload})
       }
     }
     //check if file Size is valid
     if (isValid) {
       if (!isfileSizeValid(file)) {
+        var serverFileupload = {};
         file.status = 'invalid';
+        serverFileupload.status = 'invalid';
         file.description = fileSizeErrorMessage;
         isValid = false;
+        onfileUploadComplete({file: file, data: null, fileUploadStatus: serverFileupload})
       }
     }
   }
@@ -261,7 +276,7 @@ var FileUpload = function (el, opts) {
   function btnUpload() {
     document.getElementById(cancelButtonId).parentNode.style.display = 'block';
     //Check validation rules
-    var i, j = 0, k=0;
+    var i, j = 0, k = 0;
     for (i = 0; i < uploadStack.length; i++) {
       isFileValid(uploadStack[i]);
 
@@ -310,7 +325,7 @@ var FileUpload = function (el, opts) {
           setProgressBar(uploadStack[l], '100');
       }
       document.getElementById(cancelButtonId).textContent = 'Close';
-      document.getElementById(cancelButtonId).addEventListener('click', function () {
+      document.getElementById(cancelButtonId).addEventListener('click', function() {
         document.getElementById('uploadShowCase').innerHTML = '';
         document.getElementsByClassName('actionButtonHolder').innerHTML = '';
         document.getElementById(cancelButtonId).parentNode.style.display = 'none';
@@ -331,7 +346,7 @@ var FileUpload = function (el, opts) {
   function showProgressBar(xhr, progress2) {
 
     // progress bar
-    xhr.upload.addEventListener('progress', function (e) {
+    xhr.upload.addEventListener('progress', function(e) {
       var uploadPercent = parseInt(e.loaded / e.total * 100, 10);
       if (uploadPercent > 0) {
         progress2.progress(uploadPercent);
@@ -356,6 +371,7 @@ var FileUpload = function (el, opts) {
   }
 
   function uploadFile(file) {
+    var fileUploadStatus = {};
     try {
       var xhr = getXmlHttpRequestObject();
       var xhrStatus = '';
@@ -369,8 +385,8 @@ var FileUpload = function (el, opts) {
         showTick.appendChild(showComplete);
         showTick.appendChild(showTickImg);
         showProgressBar(xhr, progress2); //shows progress bar
-        document.getElementById('fileCloseDiv' + file.guid).addEventListener('click', function (e) {
-          if(this.status != 200) {
+        document.getElementById('fileCloseDiv' + file.guid).addEventListener('click', function(e) {
+          if (this.status != 200) {
             this.abort();
           }
         }.bind(xhr));
@@ -378,7 +394,7 @@ var FileUpload = function (el, opts) {
 
         data.append('importFiles', file);
         // start upload
-        xhr.onreadystatechange = function () {
+        xhr.onreadystatechange = function() {
 
           if (xhr.readyState === 4) {
             xhrStatus = xhr.status;
@@ -386,11 +402,12 @@ var FileUpload = function (el, opts) {
             setFileStatus(file, xhr);
 
             if (xhr.status === 200) {
+              fileUploadStatus.status = 'success';
+              fileUploadStatus.description = 'server upload success';
               uploadedStack.push(file);
               document.getElementById('fileUploadStatusFor' + file.guid).innerHTML = '';// it is need here to make innerHTML empty
               document.getElementById('fileUploadStatusFor' + file.guid).appendChild(showTick);
-            } else
-            {
+            } else {
               var showExcl = document.createElement('DIV');
               showExcl.className = 'notificationImageAtRightCorner ';
               var showError = document.createTextNode('Error');
@@ -398,7 +415,7 @@ var FileUpload = function (el, opts) {
               showTickImg.className = 'errorImageSrc';
               showExcl.appendChild(showError);
               showExcl.appendChild(showTickImg);
-              if(document.getElementById('fileUploadStatusFor' + file.guid) != null) {
+              if (document.getElementById('fileUploadStatusFor' + file.guid) != null) {
                 document.getElementById('fileUploadStatusFor' + file.guid).innerHTML = '';// it is need here to make innerHTML empty
                 document.getElementById('fileUploadStatusFor' + file.guid).appendChild(showExcl);
               }
@@ -410,13 +427,17 @@ var FileUpload = function (el, opts) {
       }
     }
     catch (e) {
-      console.log(e);
+      fileUploadStatus.status = 'server failed';
+      fileUploadStatus.description = 'server upload failed';
+    }
+    finally {
+      onfileUploadComplete({file: file, data: xhr, fileUploadStatus: fileUploadStatus})
     }
   }
 
   function setFileStatus(file, xhr) {
     file.status = xhr.status;
-    file.serverResponseMsg = (xhr.responseText != '' )?JSON.parse(xhr.responseText) : '';
+    file.serverResponseMsg = (xhr.responseText != '' ) ? JSON.parse(xhr.responseText) : '';
     file.description = getFileUploadStatus(xhr.status);
   }
 
@@ -453,9 +474,9 @@ var FileUpload = function (el, opts) {
     var l = 0;
     //remove completed/aborted file
     for (l = 0; l < uploadStack.length; l++) {
-      if ('fileCloseDiv'+uploadStack[l].guid === (event.target.id)) {
+      if ('fileCloseDiv' + uploadStack[l].guid === (event.target.id)) {
         uploadStack.splice(l, 1);
-        elementId = event.target.id.replace('fileCloseDiv','');
+        elementId = event.target.id.replace('fileCloseDiv', '');
         fileBoxDiv = document.getElementById('tileFor' + elementId);
         fileBoxDiv.outerHTML = '';
         fileBoxDiv = null;
@@ -465,9 +486,9 @@ var FileUpload = function (el, opts) {
 
     //remove invalid file from uploaded showcase area
     for (l = 0; l < invalidUploadStack.length; l++) {
-      if ('fileCloseDiv'+invalidUploadStack[l].guid === (event.target.id)) {
+      if ('fileCloseDiv' + invalidUploadStack[l].guid === (event.target.id)) {
         invalidUploadStack.splice(l, 1);
-        elementId = event.target.id.replace('fileCloseDiv','');
+        elementId = event.target.id.replace('fileCloseDiv', '');
         fileBoxDiv = document.getElementById('tileFor' + elementId);
         fileBoxDiv.outerHTML = '';
         fileBoxDiv = null;
@@ -551,7 +572,6 @@ var FileUpload = function (el, opts) {
     dropDirectionPara.className = 'directionParaClass';
     var directionText = document.createTextNode(dropDirectionMsg);
 
-
     //select button
     var fileSelectButton = document.createElement('BUTTON');
     fileSelectButton.id = 'fileButton' + getGuid(); // ToDo :Replace by generateGUID call in Utility Class
@@ -630,7 +650,6 @@ var FileUpload = function (el, opts) {
     fileUploadCtrl.addEventListener('change', fileSelectHandler, false);
 
     var xhrRequest = getXmlHttpRequestObject();
-
     if (xhrRequest.upload) {
       var divDragDrop = document.getElementById(uploadControlDragAreaDivId);
       divDragDrop.addEventListener('dragenter', dragEnter, false);
@@ -640,7 +659,7 @@ var FileUpload = function (el, opts) {
     }
   }
 
-  angular.element(document).ready(function () {
+  angular.element(document).ready(function() {
     initialize(opts);
   });
 };
