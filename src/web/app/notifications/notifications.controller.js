@@ -18,14 +18,25 @@ class NotificationsController {
 
     // Container notification
     this.containerNotifications = {
-      contentTmpl: '<span class="alert-text-header">4&nbsp;Errors Found - </span><span class="alert-text-body">&nbsp;Error message description.</span>',
+      contentTmpl: '<span class="alert-text-header">Errors Found - </span><span class="alert-text-body">&nbsp;Error message description.</span>',
       closeButton: 'true',
       sliderType: 'success',
       sliderAutoClose: 'false',
       sliderIconFlag: 'true',
-      isComplex: 'true', // Notification details (complex) 'true', 'false'
-      complexTmpl: 'Complex details template will come here', //notification details html template
-      containerEl: '#error-container' //Container element id.
+     // isComplex: 'true', // Notification details (complex) 'true', 'false'
+     // complexTmpl: 'Complex details template will come here', // notification details html template
+      containerEl: '#abc' // Container element id.
+    };
+
+ this.containerNotifications1 = {
+      contentTmpl: '<span class="alert-text-header">Errors Found1 - </span><span class="alert-text-body">&nbsp;Error message description.</span>',
+      closeButton: 'true',
+      sliderType: 'success',
+      sliderAutoClose: 'false',
+      sliderIconFlag: 'true',
+     // isComplex: 'true', // Notification details (complex) 'true', 'false'
+     // complexTmpl: 'Complex details template will come here', // notification details html template
+      containerEl: '#abc' // Container element id.
     };
   }
   initialize() {
