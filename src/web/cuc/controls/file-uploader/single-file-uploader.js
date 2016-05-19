@@ -7,6 +7,7 @@ class SingleFileUpload {
     this.options.fileInputSize = options.fileInputSize || 'em-txt-lg';
     this.options.fileInputId = options.fileInputId || 'fileUploadCtrl' + this.getGuid();
     this.options.selectButtonText = options.selectButtonText || 'Browse Files';
+    this.onselect = options.onselect|| function(e){};
     this.init();
   }
   init() {
@@ -47,8 +48,9 @@ class SingleFileUpload {
     if (files[0]) {
       this.fileTextInput.value = files[0].name;
     }
+    this.onselect(e);
     console.log(this.fileUploadCtrl.value);
-}
+  }
 
 selectHandle() {
   this.fileUploadCtrl.click();
