@@ -333,7 +333,7 @@ let ColorPicker = (function (window, document, undefined) {
       var c = hsv2rgb(ctx);
       ctx.callback &&
       ctx.callback(c.hex, { h: ctx.h - hueOffset, s: ctx.s, v: ctx.v },
-        { r: c.r, g: c.g, b: c.b }, mouse);
+          { r: c.r, g: c.g, b: c.b }, mouse);
     };
   }
 
@@ -346,6 +346,29 @@ let ColorPicker = (function (window, document, undefined) {
     } else {
       self.mainElement.querySelector('.color-holder').removeAttribute('style');
     }
+  }
+
+  function applyValidation(hexTextValue) {
+    if (hexTextValue.value.length < 6 && hexTextValue.value.length > 0) {
+      var ch = hexTextValue.value.charAt(0).toUpperCase();
+      var len = hexTextValue.value.length;
+      while (len > 0) {
+        if (ch !== hexTextValue.value.charAt(len - 1).toUpperCase()) {
+          break;
+        }
+        len--;
+      }
+      if (len > 0) {
+        while (hexTextValue.value.length < 6) {
+          hexTextValue.value = "0" + hexTextValue.value;
+        }
+      } else {
+        while (hexTextValue.value.length < 6) {
+          hexTextValue.value = hexTextValue.value + hexTextValue.value.charAt(0);
+        }
+      }
+    }
+    hexTextValue.value = hexTextValue.value.toUpperCase();
   }
 
   var uniqID = 0;
@@ -425,43 +448,23 @@ let ColorPicker = (function (window, document, undefined) {
     var slideElement = this.mainElement.querySelector('.color-picker');
     if (this.mainElement.querySelector('.em-input-color')) {
       this.textBox = this.mainElement.querySelector('.em-input-color');
-        this.textBox.setAttribute('maxlength', 6);
-        this.textBox.addEventListener('keypress', (e) => {
-          var keycode = (e.which) ? e.which : e.keyCode;
-          if ((keycode >= 48 && keycode <= 57) ||
-            (keycode >= 65 && keycode <= 70) ||
-            (keycode >= 97 && keycode <= 102)) {
-              var hexTextValue = e.srcElement || e.target;
-              if (keycode >= 97 && keycode <= 102) {
-                hexTextValue.value = hexTextValue.value.toUpperCase();
-              }
-              displayColor(this, hexTextValue.value);
-          } else {
-            e.preventDefault();
-            return false;
-          }
+      this.textBox.addEventListener('keypress', (e) => {
+        var keycode = (e.which) ? e.which : e.keyCode;
+        if ((keycode >= 48 && keycode <= 57) ||
+          (keycode >= 65 && keycode <= 70) ||
+          (keycode >= 97 && keycode <= 102) || keycode === 8 || keycode === 9 || keycode === 37 || keycode === 39) {
+          var hexTextValue = e.srcElement || e.target;
+          //displayColor(this, hexTextValue.value);
+          return true;
+        }
+        e.preventDefault();
+        return false;
       });
-      this.textBox.addEventListener('focusout', e => {
+
+      this.textBox.addEventListener('blur', e => {
         var hexTextValue = e.srcElement || e.target;
-        if (hexTextValue.value.length < 6) {
-          var ch = hexTextValue.value.charAt(0);
-          var len = hexTextValue.value.length;
-          while(len>0){
-            if(ch !== hexTextValue.value.charAt(len-1)){
-              break;
-            }
-            len--;
-          }
-          if (len !== 0){
-            while (hexTextValue.value.length < 6) {
-              hexTextValue.value = "0" + hexTextValue.value;
-            }
-          } else {
-            while (hexTextValue.value.length < 6) {
-              hexTextValue.value = hexTextValue.value + hexTextValue.value.charAt(0);
-            }
-          }
-       }
+        applyValidation(hexTextValue);
+        document.querySelector('.hex').value = hexTextValue.value;
         displayColor(this, hexTextValue.value);
       });
     }
@@ -471,21 +474,28 @@ let ColorPicker = (function (window, document, undefined) {
         var keycode = (e.which) ? e.which : e.keyCode;
         if ((keycode >= 48 && keycode <= 57) ||
             (keycode >= 65 && keycode <= 90) ||
-          (keycode >= 97 && keycode <= 102)) {
-          var hexTextValue = e.srcElement || e.target;
-          if (keycode >= 97 && keycode <= 102) {
-            hexTextValue.value = hexTextValue.value.toUpperCase();
-          }
+          (keycode >= 97 && keycode <= 102) || keycode === 8 || keycode === 9 || keycode === 37 || keycode === 39) {
             return true;
         } else {
             e.preventDefault();
             return false;
         }
     });
-
-    insideHexValue.addEventListener('focusout', (e) => {
-       var hexTextValue = e.srcElement || e.target;
-       displayColor(this, hexTextValue.value);
+    insideHexValue.addEventListener('keyup', (e) => {
+      var hexTextValue = e.srcElement || e.target;
+        var keycode = (e.which) ? e.which : e.keyCode;
+        if ((keycode >= 48 && keycode <= 57) ||
+            (keycode >= 65 && keycode <= 90) ||
+          (keycode >= 97 && keycode <= 102) || keycode === 8 || keycode === 9 || keycode === 37 || keycode === 39) {
+          if (document.querySelector('.em-input-color')) {
+            document.querySelector('.em-input-color').value = hexTextValue.value;
+          }
+        }
+    });
+    insideHexValue.addEventListener('blur', (e) => {
+      var hexTextValue = e.srcElement || e.target;
+      applyValidation(hexTextValue);
+      displayColor(this, hexTextValue.value);
     });
 
     //select no color
@@ -610,9 +620,9 @@ let ColorPicker = (function (window, document, undefined) {
     element.querySelector('.color-holder').style.backgroundImage = 'none';
     element.querySelector('.new').classList.remove('diagonal-line');
     element.querySelector('.color-holder').classList.remove('diagonal-line');
-    /*if (element.querySelector('.em-input-color')) {
+    if (element.querySelector('.em-input-color')) {
        element.querySelector('.em-input-color').value = hex.replace('#', '');
-    }*/
+    }
     element.querySelector('.hex').value = hex.replace('#', '');
     element.querySelector('.current').style.backgroundColor = oldColor;
     element.querySelector('.new').style.backgroundColor = (hex.indexOf('#') !== -1 )? hex : '#'+hex;

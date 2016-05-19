@@ -15,6 +15,21 @@ let setVal = (obj, path, val) => {
   obj[path[i]] = val;
 };
 
+let findVal = (obj, path) => {
+  path = path.replace(/\[(\w+)\]/g, '.$1'); // convert indexes to properties
+  path = path.replace(/^\./, '');           // strip a leading dot
+  var a = path.split('.');
+  for (var i = 0, n = a.length; i < n; ++i) {
+    var k = a[i];
+    if (k in obj) {
+      obj = obj[k];
+    } else {
+      return;
+    }
+  }
+  return obj;
+};
+
 let getVal = (obj, path) => {
   var i = 0;
   if (path) {
@@ -99,35 +114,41 @@ cuc.directive('uiGridPrint', function ($compile,$timeout) {
         if (uiGridctrl.grid.renderContainers.body.visibleRowCache.length === 0) {
           return;
         }
-          scope._head = '';
-            var rows = uiGridctrl.grid.api.core.getVisibleRows();
-            uiGridctrl.grid.api.grid.columns.map(function (col) {
-              if (col.displayName !== '')
-                scope._head += '<td>' + col.displayName + '</td>';
-            });
-            scope._body =[];
-            rows.forEach(function (row, rowindex) {
-              scope._body[rowindex] = [];
-              uiGridctrl.grid.api.grid.columns.map(function (col, colindex) {
-                var rowScope = scope.$new(true);
-                rowScope.row=row;
-                rowScope.col = col;
+        scope._head = '';
+        var rows = uiGridctrl.grid.api.core.getVisibleRows();
+        uiGridctrl.grid.api.grid.columns.map(function (col) {
+          if (col.displayName !== '')
+            scope._head += '<td>' + col.displayName + '</td>';
+        });
+        scope._body = [];
+        rows.forEach(function (row, rowindex) {
+          scope._body[rowindex] = [];
+          uiGridctrl.grid.api.grid.columns.map(function (col, colindex) {
+            var rowScope = scope.$new(true);
+            rowScope.row = row;
+            rowScope.col = col;
 
-                if (col.displayName !== '' ){
-                  if( col.cellTemplate.indexOf('COL_FIELD') == -1){
-                    var temp = $compile(col.cellTemplate)(rowScope);
+            if (col.displayName !== '') {
+              if (col.cellTemplate.indexOf('COL_FIELD') == -1) {
+                var temp = $compile(col.cellTemplate)(rowScope);
 
-                    $timeout(() => {
-                      if( scope._body[rowindex])
-                        scope._body[rowindex][colindex] = '<td>' + angular.element(temp[0]).html() + '</td>';
-                    }, 100);
-                  }
-                  else {
-                    var colValue = row.entity[col.field] || '';
-                    scope._body [rowindex][colindex]= '<td>' + colValue  + '</td>';
+                $timeout(() => {
+                  if (scope._body[rowindex])
+                    scope._body[rowindex][colindex] = '<td>' + angular.element(temp[0]).html() + '</td>';
+                }, 100);
+              }
+              else {
+                var colValue = '';
+                if (!row.entity[col.field] && col.field) {
+                  colValue = findVal(row.entity, col.field);
+                } else {
+                  colValue = row.entity[col.field];
+                }
+                scope._body[rowindex][colindex] = '<td>' + colValue + '</td>';
 
-                     }}
-              });
+              }
+            }
+          });
         });
 
       });
