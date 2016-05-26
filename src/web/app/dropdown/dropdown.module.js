@@ -7,6 +7,7 @@ import dropdownDefaultTemplate from './templates/dropdown-default.html';
 import dropdownSizeTemplate from './templates/dropdown-size.html';
 import dropdownStatesTemplate from './templates/dropdown-states.html';
 import dropdownErrorTemplate from './templates/dropdown-error-handling.html';
+import dropdownHeightTemplate from './templates/dropdown-height.html';
 
 let dropdownModule = angular.module('dropdown', []);
 
@@ -35,6 +36,12 @@ dropdownModule.directive('dropdownSize', () => {
 dropdownModule.directive('dropdownStates', () => {
   return {
     template: dropdownStatesTemplate
+  };
+});
+
+dropdownModule.directive('dropdownHeight', () => {
+  return {
+    template: dropdownHeightTemplate
   };
 });
 
