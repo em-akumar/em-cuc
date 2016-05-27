@@ -3,7 +3,7 @@
   //z-index: 1;
   width: 18px;
   height: 17px;
-  margin-left:0px;
+  margin-left: 0px;
   &:checked + label:before {
     background: radial-gradient(at center, #fff 1px, @radiobutton-checked-background-color 1px);
     border: 1px solid @radiobutton-checked-border-color;
@@ -14,7 +14,7 @@
   &:disabled:active + label:before {
     background: #fff;
   }
-  & + label:after{
+  & + label:after {
     font-size: @font-size-base;
   }
 }
@@ -26,9 +26,11 @@
 .radio:not(:last-child) {
   margin-bottom: 12px;
 }
+
 .radio:last-child {
   margin-bottom: 0px;
 }
+
 .radio + .radio {
   margin-top: 0;
 }
@@ -41,8 +43,9 @@
   width: 100%;
 }
 
-.radio label{
+.radio label {
   line-height: 1.4;
+  cursor: default;
 }
 
 .radio input[type="radio"]:not([disabled]) + label {
@@ -69,7 +72,7 @@
     margin-right: 10px;
     box-sizing: border-box;
   }
-  &:after{
+  &:after {
     font-size: @font-size-base;
   }
   &:hover::before {
@@ -88,7 +91,8 @@
   }
 
 }
-.radio input[type="radio"][disabled] + label{
+
+.radio input[type="radio"][disabled] + label {
   color: @radiobutton-disabled-label-color;
   cursor: not-allowed;
   display: inline-block;
@@ -113,12 +117,13 @@
     margin-right: 10px;
     box-sizing: border-box;
   }
-  &:after{
+  &:after {
     cursor: not-allowed;
     color: @radiobutton-disabled-label-color;
     font-size: @font-size-base;
   }
 }
+
 .em-readonly.radio input[type='radio'] {
   & + label:before {
     pointer-events: none;
@@ -132,22 +137,24 @@
   }
 
   &:checked + label:before {
-    background: radial-gradient(at center, #fff 1px, #acb3bc 3px);
+    background: radial-gradient(at center, #fff 24%, #acb3bc 31%);
     border: 1px solid @gray-warm-dark;
   }
 }
+
 .em-restricted.radio input[type='radio'] {
-    background: @radiobutton-disabled-background-color;
-    border: 1px solid @radiobutton-disabled-border-color;
- & + label {
-      font-size:0;
-    }
-   & + label:after {
-      content: "******";
-      color: @radiobutton-disabled-label-color;
-      font-size: @font-size-base;
-    }
+  background: @radiobutton-disabled-background-color;
+  border: 1px solid @radiobutton-disabled-border-color;
+  & + label {
+    font-size: 0;
   }
+  & + label:after {
+    content: "******";
+    color: @radiobutton-disabled-label-color;
+    font-size: @font-size-base;
+  }
+}
+
 .em-radioError.radio input[type='radio'] {
   border: 1px solid @radiobutton-error-inside-border;
   box-shadow: 0 0 0 2px @radiobutton-error-outside-border;
@@ -160,7 +167,7 @@
     border: 1px solid @radiobutton-error-inside-border;
     box-shadow: none;
   }
-  &:hover +label::before {
+  &:hover + label::before {
     background-color: @radiobutton-default-background;
     border: 1px solid @radiobutton-error-inside-border;
     box-shadow: 0 0 0 2px @radiobutton-error-outside-border;
@@ -175,50 +182,51 @@
     box-shadow: 0 0 0 2px @radiobutton-error-outside-border;
   }
 }
-.em-radio-other-control-grp{
-  .checkbox,.em-dropdown-edit, .em-dropdown{
-    padding-left:25px;
+
+.em-radio-other-control-grp {
+  .checkbox, .em-dropdown-edit, .em-dropdown {
+    padding-left: 25px;
   }
 }
+
 .em-radio-expose-text {
   input[type=radio] {
     &:checked + label:before {
       background: none;
       content: 'Y';
-      border:none;
+      border: none;
       box-shadow: none;
     }
-    &:hover::before, &:hover + label:before{
+    &:hover::before, &:hover + label:before {
       box-shadow: none;
-      border:none;
+      border: none;
     }
   }
-  &.radio input[type="radio"]:not([disabled]) + label
-  {
-    &:hover::before{
+  &.radio input[type="radio"]:not([disabled]) + label {
+    &:hover::before {
       box-shadow: none;
-      border:none;
+      border: none;
     }
   }
 }
+
 .em-radio-expose-img {
   input[type=radio] {
     &:checked + label:before {
       background: url('../../assets/images/icon-chevron-down-active-blue-dark.svg') center center no-repeat;
       content: '';
-      border:none;
+      border: none;
       box-shadow: none;
     }
-    &:hover::before, &:hover + label:before,&:active:before + label{
+    &:hover::before, &:hover + label:before, &:active:before + label {
       box-shadow: none;
-      border:none;
+      border: none;
     }
   }
-  &.radio input[type="radio"]:not([disabled]) + label
-  {
-    &:hover::before,&:active::before{
+  &.radio input[type="radio"]:not([disabled]) + label {
+    &:hover::before, &:active::before {
       box-shadow: none;
-      border:none;
+      border: none;
     }
   }
 }
