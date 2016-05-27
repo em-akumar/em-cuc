@@ -31,26 +31,26 @@
       "angular": "angular"
     },
     "styles": {
-      "app": "./app/app.less",
-      "cuc": "./cuc/cuc.less",
-      "cuc.grid": "./cuc/controls/ui-grid/ui-grid.less",
-      "cuc.ui.bootstrap": "./cuc/cuc.ui.bootstrap.less",
-      "cuc.block.ui": "./cuc/cuc.block.ui.less",
-      "cuc.draggable.grid.rows": "../../vendor/less/cuc-draggable-rows.less",
-      "cuc.draggable.grid.rows.style": "../../vendor/scss/cuc-draggable-rows.scss"
+      "app": "./src/app/app.less",
+      "cuc": "./src/cuc/cuc.less",
+      "cuc.grid": "./src/cuc/controls/ui-grid/ui-grid.less",
+      "cuc.ui.bootstrap": "./src/cuc/cuc.ui.bootstrap.less",
+      "cuc.block.ui": "./src/cuc/cuc.block.ui.less",
+      "cuc.draggable.grid.rows": "./vendor/less/cuc-draggable-rows.less",
+      "cuc.draggable.grid.rows.style": "./vendor/scss/cuc-draggable-rows.scss"
     },
     "scripts": {
-      "app": "./app/app.module.js",
-      "cuc": "./cuc/cuc.js",
-      "cuc.angular": "./cuc/cuc.angular.js",
-      "cuc.grid": "./cuc/cuc.grid.js",
-      "cuc.ui.bootstrap": "./cuc/cuc.ui.bootstrap.js",
-      "cuc.block.ui": "./cuc/cuc.block.ui.js",
-      "cuc.draggable.grid.rows": "../../vendor/js/cuc-draggable-rows.js"
+      "app": "./src/app/app.module.js",
+      "cuc": "./src/cuc/cuc.js",
+      "cuc.angular": "./src/cuc/cuc.angular.js",
+      "cuc.grid": "./src/cuc/cuc.grid.js",
+      "cuc.ui.bootstrap": "./src/cuc/cuc.ui.bootstrap.js",
+      "cuc.block.ui": "./src/cuc/cuc.block.ui.js",
+      "cuc.draggable.grid.rows": "./vendor/js/cuc-draggable-rows.js"
     }
   },
   "devDependencies": {
-    "@elliemae/em-swift": "3.0.3",
+    "@elliemae/em-swift": "latest",
     "angular": "1.4.8",
     "angular-messages": "1.4.8",
     "angular-ui-bootstrap": "0.14.3",
@@ -58,6 +58,6 @@
     "bootstrap": "3.3.6",
     "angular-ui-mask": "^1.7.0",
     "angular-ui-router": "^0.2.15",
-    "angular-block-ui":"0.2.0"
+    "angular-block-ui": "0.2.0"
   }
 }
