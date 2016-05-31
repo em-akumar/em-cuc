@@ -88,6 +88,7 @@ var FancyFileUpload = function(el, opts) {
     var tileDivHolder, tileDiv, progressBgDiv, par, errPar, nameSpan, fileName, fileUploadStatusFor, deleteThisFileIconSpan = '';
     var crossX, previewDiv, detailsDiv, fileSizeSpan, closeDiv, progressBarDiv, fileStatusDiv, closeIcon, closeSpan = '';
     var pdiv, bdiv, pddiv, perdiv;
+    var fileExtension, fileExtNode;
     for (var i = 0; i < uploadStack.length; i++) {
       //Create main div
       tileDivHolder = document.createElement('DIV');
@@ -99,7 +100,14 @@ var FancyFileUpload = function(el, opts) {
 
       //div preview image
       previewDiv = document.createElement('DIV');
-      previewDiv.className = 'previewDiv';
+      if (fileTypeIconCss !== '') { //  Apply custom css
+        fileExtension = getExtension(uploadStack[i].name);
+        fileExtNode = document.createTextNode(fileExtension);
+        previewDiv.className = fileTypeIconCss;
+        previewDiv.appendChild(fileExtNode);
+      } else {
+        previewDiv.className = 'previewDiv';
+      }
       tileDiv.appendChild(previewDiv);
 
       //div for file name and size
@@ -107,6 +115,7 @@ var FancyFileUpload = function(el, opts) {
       detailsDiv.className = 'fileDetails clearfix';
       fileSizeSpan = document.createElement('SPAN');
       fileSizeSpan.className = 'fileSizeSpan';
+      fileSizeSpan.appendChild(document.createTextNode(getFileSizeText(uploadStack[i])));
       fileName = document.createTextNode(uploadStack[i].name);
       detailsDiv.appendChild(fileName);
       detailsDiv.appendChild(fileSizeSpan);
@@ -286,11 +295,15 @@ var FancyFileUpload = function(el, opts) {
         //need to recreate the image variable every time
         var showExcl = document.createElement('DIV');
         showExcl.className = 'notificationImageAtRightCorner ';
-        var showError = document.createTextNode('Error');
+        //  Display error message created by validation function
+        var showError = document.createTextNode(uploadStack[i].description);
         var showTickImg = document.createElement('SPAN');
         showTickImg.className = 'errorImageSrc';
         showExcl.appendChild(showError);
         showExcl.appendChild(showTickImg);
+        //  Change tile border color to red, in case of error
+        var currentTile = document.getElementById('tileFor' + uploadStack[i].guid);
+        currentTile.firstElementChild.className += " tileError";
         document.getElementById('fileUploadStatusFor' + uploadStack[i].guid).innerHTML = '';// it is need here to make innerHTML empty
         document.getElementById('fileUploadStatusFor' + uploadStack[i].guid).appendChild(showExcl);
       }
@@ -327,7 +340,7 @@ var FancyFileUpload = function(el, opts) {
         else
           setProgressBar(uploadStack[l], '100');
       }
-      document.getElementById(cancelButtonId).textContent = 'Close';
+      document.getElementById(cancelButtonId).textContent = 'Cancel';
       document.getElementById(cancelButtonId).addEventListener('click', function() {
         document.getElementById(filesUploadedAreaDivId).innerHTML = '';
         document.getElementById(cancelButtonWrapperId).style.display = 'none';
@@ -411,17 +424,21 @@ var FancyFileUpload = function(el, opts) {
               document.getElementById('fileUploadStatusFor' + file.guid).innerHTML = '';// it is need here to make innerHTML empty
               document.getElementById('fileUploadStatusFor' + file.guid).appendChild(showTick);
             } else {
-              var showExcl = document.createElement('DIV');
-              showExcl.className = 'notificationImageAtRightCorner ';
-              var showError = document.createTextNode('Error');
-              var showTickImg = document.createElement('SPAN');
-              showTickImg.className = 'errorImageSrc';
-              showExcl.appendChild(showError);
-              showExcl.appendChild(showTickImg);
-              if (document.getElementById('fileUploadStatusFor' + file.guid) != null) {
-                document.getElementById('fileUploadStatusFor' + file.guid).innerHTML = '';// it is need here to make innerHTML empty
-                document.getElementById('fileUploadStatusFor' + file.guid).appendChild(showExcl);
-              }
+                var showExcl = document.createElement('DIV');
+                showExcl.className = 'notificationImageAtRightCorner ';
+                //  Get relevant message in case of error
+                var showError = document.createTextNode(getFileUploadStatus(xhr.status));
+                var showTickImg = document.createElement('SPAN');
+                showTickImg.className = 'errorImageSrc';
+                showExcl.appendChild(showError);
+                showExcl.appendChild(showTickImg);
+                //  Change tile border color to red, in case of error
+                var currentTile = document.getElementById('tileFor' + file.guid);
+                currentTile.firstElementChild.className += " tileError";
+                if (document.getElementById('fileUploadStatusFor' + file.guid) != null) {
+                  document.getElementById('fileUploadStatusFor' + file.guid).innerHTML = '';// it is need here to make innerHTML empty
+                  document.getElementById('fileUploadStatusFor' + file.guid).appendChild(showExcl);
+                }
             }
           }
         };
@@ -570,6 +587,9 @@ var FancyFileUpload = function(el, opts) {
       case 504:
         filUploadStatusMsg = 'Gateway Timeout';
         break;
+      case 0:
+        filUploadStatusMsg = 'Connection Issue';
+        break;
       default:
         filUploadStatusMsg = 'Unknown Error';
         break;
@@ -651,7 +671,27 @@ var FancyFileUpload = function(el, opts) {
       divDragDrop.addEventListener('dragleave', dragLeave, false);
       divDragDrop.addEventListener('drop', fileSelectHandler, false);
     }
+  }
 
+  function getExtension(fileName) {
+    fileName = fileName || '';
+    var out = '';
+    var dotIndex = fileName.lastIndexOf('.');
+    if (dotIndex !== -1) {
+      out = fileName.substring(fileName.lastIndexOf('.') + 1, fileName.lastIndexOf('.') + 5);
+    }
+    return out;
+  }
+
+  function getFileSizeText(file) {
+    var fileSizeText = '';
+    var fileSize = ((file.size / 1024));
+    if (fileSize <= 10) {
+      fileSizeText = fileSize.toFixed(2) + 'KB';
+    } else {
+      fileSizeText = (fileSize/1024).toFixed(2) + 'MB';
+    }
+    return fileSizeText;
   }
 
   angular.element(document).ready(function() {

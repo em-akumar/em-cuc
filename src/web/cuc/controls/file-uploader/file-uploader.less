@@ -153,6 +153,7 @@
         color: @complex-upload-tile-file-name-font-color;
         text-align: left;
         display: inline-block;
+        line-height: 14px;
 
         .fileSizeSpan {
           font-size: @complex-upload-tile-file-size-font-size;
@@ -160,6 +161,18 @@
           padding: @complex-upload-tile-file-size-padding;
           text-align: left;
         }
+      }
+      .fileExtIcon{
+        height: @complex-upload-tile-file-type-height;
+        width: @complex-upload-tile-file-type-width;
+        padding: @complex-upload-tile-file-type-icon-padding;
+        text-align: center;
+        color: @white;
+        display: inline-block;
+        float: left;
+        font: bold 9px ProximaNova-Regular;
+        background: url('../../assets/images/icon-file-type.svg') center no-repeat;
+        line-height: 24px;
       }
 
       .fileStatusDiv {
@@ -200,6 +213,9 @@
         }
       }
 
+    }
+    .tileError{
+      border: @complex-upload-tile-error-border;
     }
   }
 }
