@@ -63,13 +63,13 @@ if(this.options !== undefined){
     self.menu.setAttribute('tabindex', '0'); // Fix onblur on Chrome
     self.menu.addEventListener('click', self.toggle, false);
     self.menu.addEventListener('blur', self.close, false);
-    self.menu.parentNode.addEventListener('click',function(e){ e.stopPropagation();},false);
-    document.addEventListener('click', self.closeit.bind(self), false);
+    //self.menu.parentNode.addEventListener('click',function(e){ e.stopPropagation();},false);
+    //document.addEventListener('click', self.closeit.bind(self), false);
 
-    document.getElementsByTagName('html')[0].addEventListener('keydown',  ( e )=> {
+  /*  document.getElementsByTagName('html')[0].addEventListener('keydown',  ( e )=> {
       if ( e.keyCode === 27 ) {  //Closes dropdown on Esc key
         self.menu.parentNode.classList.remove('open');
-    }});
+    }});*/
 
     self.menu.parentNode.querySelector('.dropdown-menu').addEventListener('mouseover', (e) => {
       let dropdownSelect = self.menu.parentNode.querySelector('.dropdown-menu li.selected-text');
@@ -81,7 +81,10 @@ if(this.options !== undefined){
 
     self.menu.addEventListener('keydown', (e) => {
       let index = 0;
-      if (e.keyCode === 40) {  // scroll dropdown option using down array key
+      if ( e.keyCode === 27 ) {  //Closes dropdown on Esc key
+        self.menu.parentNode.classList.remove('open');
+    }
+      else if (e.keyCode === 40) {  // scroll dropdown option using down array key
         let list = self.menu.parentNode.querySelectorAll('.dropdown-menu li');
         while (index < list.length) {
           let item = list[index];
@@ -100,8 +103,7 @@ if(this.options !== undefined){
           e.preventDefault();
       }
 
-      if (e.keyCode === 38) { // scroll dropdown option using up array key
-      //console.log("up");
+      else if (e.keyCode === 38) { // scroll dropdown option using up array key
         let list = self.menu.parentNode.querySelectorAll('.dropdown-menu li');
         let index = 0;
         while (index < list.length) {
@@ -118,7 +120,7 @@ if(this.options !== undefined){
         }
           e.preventDefault();
       }
-      if (e.keyCode === 13) { // select dropdwon value on enter key
+      else if (e.keyCode === 13) { // select dropdwon value on enter key
         if (!self.menu.parentNode.querySelector('li.selected-text').classList.contains("disabled")) {
           let item = self.menu.parentNode.querySelector('li.selected-text a');
           if (item.innerText == undefined) {
@@ -233,14 +235,6 @@ if(this.options !== undefined){
       value.classList.add('error');
       //self.menu.removeEventListener('blur', self.close);
     });
-  }
-
-  closeit(e) {
-    var target = this.menu;
-      setTimeout(function () { // links inside dropdown-menu don't fire without a short delay
-        if (target.parentNode && target.parentNode !== null){
-           target.parentNode.classList.remove('open');}
-      }, 200);
   }
   actions() {
     var self = this;
