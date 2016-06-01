@@ -3,7 +3,7 @@
   &.btn-primary {
     background-color: @text-button-primary-default-background-color;
     height: @btn-height-medium;
-    min-width: @btn-width-medium;
+    //min-width: @btn-width-medium;
     border-radius: @text-button-border-radius;
     padding: 8px 10px;
     box-sizing: border-box;
@@ -188,21 +188,29 @@
     .em-button-var-height(@btn-height-extra-small);
     padding: 5px;
     .em-button-text(@ft-size-small);
+    width: auto;
+    max-width: none;
   }
   &.btn-sm-var-height {
     .em-button-var-height(@btn-height-small);
     padding: 5px 10px;
     .em-button-text(@ft-size-small);
+    width: auto;
+    max-width: none;
   }
   &.btn-md-var-height {
     .em-button-var-height(@btn-height-medium);
     padding: 5px 10px;
     .em-button-text(@ft-size-base);
+    width: auto;
+    max-width: none;
   }
   &.btn-lg-var-height {
     .em-button-var-height(@btn-height-large);
     padding: 5px 10px;
     .em-button-text(@ft-size-large);
+    width: auto;
+    max-width: none;
   }
   &.btn-xs-var-width {
     .em-button-var-width(@btn-width-extra-small);
