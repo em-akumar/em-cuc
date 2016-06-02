@@ -72,6 +72,45 @@ class DropdownController {
       defaultSize: 'large',
       itemList: [{ 'value': 1, 'text': 'State1'}, { 'value': 2, 'text': 'State2'}]
     };
+    this.drpStateHeightXs = {
+
+      defaultText: 'Select One',
+      onChange: function (e) {
+        console.log('clicked');
+      },
+      defaultSize: 'xs-height',
+      itemList: [{ 'value': 1, 'text': 'State1'}, { 'value': 2, 'text': 'State2'}]
+    };
+
+    this.drpStateHeightSm = {
+
+      defaultText: 'Select One',
+      onChange: function (e) {
+        console.log('clicked');
+      },
+      defaultSize: 'sm-height',
+      itemList: [{ 'value': 1, 'text': 'State1'}, { 'value': 2, 'text': 'State2'}]
+    };
+
+    this.drpStateHeightMd = {
+
+      defaultText: 'Select One',
+      onChange: function (e) {
+        console.log('clicked');
+      },
+      defaultSize: 'md-height',
+      itemList: [{ 'value': 1, 'text': 'State1'}, { 'value': 2, 'text': 'State2'}]
+    };
+
+    this.drpStateHeightLg = {
+
+      defaultText: 'Select One',
+      onChange: function (e) {
+        console.log('clicked');
+      },
+      defaultSize: 'lg-height',
+      itemList: [{ 'value': 1, 'text': 'State1'}, { 'value': 2, 'text': 'State2'}]
+    };
     // for Medium items
     this.drpStateMedium = {
 
