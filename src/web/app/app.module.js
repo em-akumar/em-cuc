@@ -38,10 +38,11 @@ import tooltips from './tooltips/tooltips.module';
 import progressSpinner from './progress-spinner/progress-spinner.module';
 import progressBar from './progress-bar/progress-bar.module';
 import paragraph from './paragraph/paragraph.module';
+import reodropdownT from './reo-dropdown-t/reo-dropdown-t.module';
 
 //emsApi.baseUrl = 'http://localhost:9000/';
 
-let appModule = angular.module('app', [uiRouter, cuc.name, 'cuc', 'ui.grid', 'ui.bootstrap', 'ngMessages', 'ui.mask', buttons.name, textInput.name, textArea.name, fileUploader.name, dropdownEdit.name, grid.name, dropdown.name, colorPicker.name, modal.name, datepicker.name, checkbox.name, panel.name, errorHandling.name, imageButton.name, notifications.name, radioButton.name, toggleSwitch.name, tooltips.name, ckEditor.name, blockui.name, progressSpinner.name, progressBar.name, paragraph.name]);
+let appModule = angular.module('app', [uiRouter, cuc.name, 'cuc', 'ui.grid', 'ui.bootstrap', 'ngMessages', 'ui.mask', buttons.name, textInput.name, textArea.name, fileUploader.name, dropdownEdit.name, grid.name, dropdown.name, colorPicker.name, modal.name, datepicker.name, checkbox.name, panel.name, errorHandling.name, imageButton.name, notifications.name, radioButton.name, toggleSwitch.name, tooltips.name, ckEditor.name, blockui.name, progressSpinner.name, progressBar.name,  paragraph.name, reodropdownT.name]);
 
 appModule.config(($stateProvider, $urlRouterProvider) => {
   $stateProvider.state('app', {

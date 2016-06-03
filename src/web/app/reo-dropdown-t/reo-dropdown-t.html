@@ -1,0 +1,73 @@
+<div class="app controls buttons">
+  <div class="demo-page-header">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1>REO Dropdown For Tablet</h1>
+      </div>
+    </div>
+  </div>
+  <div class="demo-example">
+    <label>Dropdown Large</label>
+    <div class="em-reo-dropdown-t" options="vm.drpCountry" emc="ReoDropdown"></div>
+      <br/>
+      <label>Dropdown Medium</label>
+      <div class="em-reo-dropdown-t" options="vm.drpCountry2" emc="ReoDropdown"></div>
+    </div>
+<div id="" class="panel panel-primary">
+        <div class="panel-heading">REO dropdown control usage</div>
+        <div class="codepen-group">
+            <pre class="codepen-able" data-type="html">
+              <code>&#x3C;div class=&#x22;demo-example&#x22;&#x3E;
+    &#x3C;label&#x3E;Dropdown Large&#x3C;/label&#x3E;
+    &#x3C;div class=&#x22;em-reo-dropdown-t&#x22; options=&#x22;vm.drpCountry&#x22; emc=&#x22;ReoDropdown&#x22;&#x3E;&#x3C;/div&#x3E;
+      &#x3C;br/&#x3E;
+      &#x3C;label&#x3E;Dropdown Medium&#x3C;/label&#x3E;
+      &#x3C;div class=&#x22;em-reo-dropdown-t&#x22; options=&#x22;vm.drpCountry2&#x22; emc=&#x22;ReoDropdown&#x22;&#x3E;&#x3C;/div&#x3E;
+    &#x3C;/div&#x3E;
+
+ this.drpCountry = {
+      defaultText: &#x27;Select&#x27;,
+      onChange: (e) =&#x3E; {},
+      valueField: &#x27;text&#x27;,
+      textField: &#x27;text&#x27;,
+      defaultSize: &#x27;large&#x27;,
+      itemList: [{ &#x27;value&#x27;: 1, &#x27;text&#x27;: &#x27;State1&#x27;, &#x27;class&#x27;: &#x27;disabled&#x27; }, { &#x27;value&#x27;: 2, &#x27;text&#x27;: &#x27;State2&#x27; }]
+    };
+              </code>
+            </pre>
+        </div>
+    </div>
+<div class="table-responsive em-table">
+        <table class="table table-striped table-hover">
+            <tbody><tr>
+                <th style="width:20%;">Class/Properties</th>
+                <th style="width:72%;">Description</th>
+            </tr>
+            <tr>
+                <td>.em-reo-dropdown-t</td>
+                <td>This class is required. Indicates reo dropdown</td>
+            </tr>
+             <tr>
+                <td>defaultText</td>
+                <td>Display default selected text on the dropdown</td>
+            </tr>
+            <tr>
+                <td>onChange</td>
+                <td>Expose OnChange method, It helps to change the items on the selection</td>
+            </tr>
+            <tr>
+                <td>valueField</td>
+                <td>The value which user wants to keep or store in the database</td>
+            </tr>
+            <tr>
+                <td>textField</td>
+                <td>Display text on the selection of dropdown</td>
+            </tr>
+            <tr>
+                <td>defaultSize</td>
+                <td>Define the size of drodown</td>
+            </tr>
+            </tbody></table>
+    </div>
+</div>
+
