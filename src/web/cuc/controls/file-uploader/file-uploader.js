@@ -87,7 +87,7 @@ var FileUpload = function(el, opts) {
     //clean the area for new uploads
     uploadProgressAreaDiv.innerHTML = '';
     //get the file icons class
-    var fileIconClass = fileTypeIconCss;
+    var fileIconClass = fileTypeIconCss || '';
 
     var tileDivHolder, tileDiv, progressBgDiv, par, errPar, nameSpan, fileName, fileUploadStatusFor, deleteThisFileIconSpan = '';
     var crossX, previewDiv, detailsDiv, fileSizeSpan, closeDiv, progressBarDiv, fileStatusDiv, closeIcon, closeSpan = '';
@@ -104,10 +104,10 @@ var FileUpload = function(el, opts) {
 
       //div preview image
       previewDiv = document.createElement('DIV');
-      if (fileTypeIconCss !== '') { //  Apply custom css
+      if (fileIconClass !== '') { //  Apply custom css
         fileExtension = getExtension(uploadStack[i].name);
         fileExtNode = document.createTextNode(fileExtension);
-        previewDiv.className = fileTypeIconCss;
+        previewDiv.className = fileIconClass;
         previewDiv.appendChild(fileExtNode);
       } else {
         previewDiv.className = 'previewDiv';
