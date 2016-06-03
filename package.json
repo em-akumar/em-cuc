@@ -1,6 +1,6 @@
 {
   "name": "@elliemae/em-cuc",
-  "version": "3.2.5",
+  "version": "3.2.6",
   "description": "Ellie Mae EmCuc Development",
   "main": "index.js",
   "scripts": {
