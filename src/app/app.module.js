@@ -1,19 +1,16 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
-//import {emsApi} from 'ems/core';
 
 import appComponent from './app.component';
 import AppService from './app.service';
 
-//import '../favicon.ico';
-
-import {cuc} from '../cuc/cuc.angular';
-import '../cuc/cuc.ui.bootstrap';
-import '../cuc/cuc.grid';
-import 'angular-messages/angular-messages.js';
+import 'cuc/cuc.angular';
+import 'cuc/cuc.ui.bootstrap';
+import 'cuc/cuc.grid';
+import 'angular-messages';
 import 'angular-ui-mask/dist/mask.js';
 import '../common/utils/codepen';
-import '../cuc/cuc.block.ui';
+import 'cuc/cuc.block.ui';
 
 import blockui from './blockui/blockui.module';
 import buttons from './buttons/buttons.module';
@@ -40,6 +37,11 @@ import progressBar from './progress-bar/progress-bar.module';
 import paragraph from './paragraph/paragraph.module';
 import reodropdownT from './reo-dropdown-t/reo-dropdown-t.module';
 
+let appModule = angular.module('app', [uiRouter, 'cuc', 'ui.grid', 'ui.bootstrap', 'ngMessages', 'ui.mask',
+  buttons.name, textInput.name, textArea.name, fileUploader.name, dropdownEdit.name, grid.name, dropdown.name,
+  colorPicker.name, modal.name, datepicker.name, checkbox.name, panel.name, errorHandling.name, imageButton.name,
+  notifications.name, radioButton.name, toggleSwitch.name, tooltips.name, ckEditor.name, blockui.name,
+  progressSpinner.name, progressBar.name, paragraph.name, reodropdownT.name]);
 //emsApi.baseUrl = 'http://localhost:9000/';
 
 let appModule = angular.module('app', [uiRouter, cuc.name, 'cuc', 'ui.grid', 'ui.bootstrap', 'ngMessages', 'ui.mask', buttons.name, textInput.name, textArea.name, fileUploader.name, dropdownEdit.name, grid.name, dropdown.name, colorPicker.name, modal.name, datepicker.name, checkbox.name, panel.name, errorHandling.name, imageButton.name, notifications.name, radioButton.name, toggleSwitch.name, tooltips.name, ckEditor.name, blockui.name, progressSpinner.name, progressBar.name,  paragraph.name, reodropdownT.name]);
