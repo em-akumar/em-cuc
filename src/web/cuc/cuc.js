@@ -13,8 +13,9 @@ import {ToastNotifications} from './controls/notifications/toast-notifications';
 import {ModalNotifications} from './controls/notifications/modal-notifications';
 import {SliderNotifications} from './controls/notifications/slider-notifications';
 import {ToggleSwitch} from './controls/toggle-switch/toggle-switch';
+import { ReoDropdown } from './controls/reo-dropdown/reo-dropdown';
 
 export {
 Dropdown, DropdownEdit, TextInputField, LabelTextAreaInputField,
-DatePicker, ColorPicker, ProgressBar, FileUpload, SingleFileUpload, FancyFileUpload, ToastNotifications, ModalNotifications, SliderNotifications, ToggleSwitch
+DatePicker, ColorPicker, ProgressBar, FileUpload, SingleFileUpload, FancyFileUpload, ToastNotifications, ModalNotifications, SliderNotifications, ToggleSwitch, ReoDropdown
 };

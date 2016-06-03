@@ -1,0 +1,119 @@
+<div class="panel-body section-subheading">
+    <div class="demo-example" data-heading="Dropdown States">
+         <form role="form">
+              <div class="form-group">
+                <label>Dropdown Branches</label>
+                <div class="em-dropdown" options="vm.drpBranches" emc="Dropdown"></div>
+           </div>
+            <div class="form-group">
+                <label>Dropdown Disabled State</label>
+                <div class="em-dropdown disabled" options="vm.drpState" emc="Dropdown"></div>
+           </div>
+
+           <div class="form-group">
+                <label>Dropdown Readonly</label>
+                <div class="em-dropdown readonly" options="vm.drpState" emc="Dropdown"></div>
+           </div>
+            <div class="form-group">
+                <label>Dropdown Restricted</label>
+                <div class="em-dropdown restricted" options="vm.drpState" emc="Dropdown"></div>
+           </div>
+           <div class="form-group">
+                <label>Dropdown Disabled Item</label>
+                 <div class="em-dropdown" options="vm.drpStateDisabledItem" emc="Dropdown"></div>
+           </div>
+           <div class="form-group">
+                <label>Dropdown Divider Item</label>
+                <div class="em-dropdown" options="vm.drpStateDividerItem" emc="Dropdown"></div>
+           </div>
+        </form>
+
+
+  </div>
+</div>
+
+ <!-- Default drodown Controls Usage -->
+  <div class="panel panel-primary">
+    <div class="panel-heading">Drodown States Usage</div>
+    <div class="codepen-group">
+      <pre class="codepen-able" data-type="html"><code class="language-css">&lt;form role=&quot;form&quot;&gt;
+            &lt;div class=&quot;form-group&quot;&gt;
+                &lt;label&gt;Dropdown Disabled State&lt;/label&gt;
+                &lt;div class=&quot;em-dropdown disabled&quot; options=&quot;vm.drpState&quot; emc=&quot;Dropdown&quot;&gt;&lt;/div&gt;
+           &lt;/div&gt;
+
+           &lt;div class=&quot;form-group&quot;&gt;
+                &lt;label&gt;Dropdown Readonly&lt;/label&gt;
+                &lt;div class=&quot;em-dropdown readonly&quot; options=&quot;vm.drpState&quot; emc=&quot;Dropdown&quot;&gt;&lt;/div&gt;
+           &lt;/div&gt;
+            &lt;div class=&quot;form-group&quot;&gt;
+                &lt;label&gt;Dropdown Restricted&lt;/label&gt;
+                &lt;div class=&quot;em-dropdown restricted&quot; options=&quot;vm.drpState&quot; emc=&quot;Dropdown&quot;&gt;&lt;/div&gt;
+           &lt;/div&gt;
+           &lt;div class=&quot;form-group&quot;&gt;
+                &lt;label&gt;Dropdown Disabled Item&lt;/label&gt;
+                 &lt;div class=&quot;em-dropdown&quot; options=&quot;vm.drpStateDisabledItem&quot; emc=&quot;Dropdown&quot;&gt;&lt;/div&gt;
+           &lt;/div&gt;
+           &lt;div class=&quot;form-group&quot;&gt;
+                &lt;label&gt;Dropdown Divider Item&lt;/label&gt;
+                &lt;div class=&quot;em-dropdown&quot; options=&quot;vm.drpStateDividerItem&quot; emc=&quot;Dropdown&quot;&gt;&lt;/div&gt;
+           &lt;/div&gt;
+        &lt;/form&gt;</code></pre>
+      <pre class="codepen-able" data-type="css"></pre>
+      <pre class="codepen-able" data-type="js"><!-- Please put this code in angular controller -->// for Disabled items
+    this.drpStateDisabledItem = {
+
+      defaultText: &#39;Select One&#39;,
+      onChange: function (e) {
+        console.log(&#39;clicked&#39;);
+      },
+      defaultSize: &#39;large&#39;,
+      itemList: [{ &#39;value&#39;: 1, &#39;text&#39;: &#39;State1&#39;, &#39;class&#39;: &#39;disabled&#39; }, { &#39;value&#39;: 2, &#39;text&#39;: &#39;State2&#39; }]
+    };
+
+    // for Divider items
+    this.drpStateDividerItem = {
+
+      defaultText: &#39;Select One&#39;,
+      onChange: function (e) {
+        console.log(&#39;clicked&#39;);
+      },
+      defaultSize: &#39;large&#39;,
+      itemList: [{ &#39;value&#39;: 1, &#39;text&#39;: &#39;State1&#39;}, { &#39;value&#39;: 2, &#39;text&#39;: &#39;State2&#39;, &#39;divider&#39;: &#39;true&#39;}]
+    };</pre>
+    </div>
+  </div>
+
+    <!-- Show the Default drodown states properties-->
+    <div class="table-responsive em-table">
+        <table class="table table-striped table-hover">
+            <tbody><tr>
+                <th style="width:20%;">Class/Properties</th>
+                <th style="width:72%;">Description</th>
+            </tr>
+            <tr>
+                <td>.em-dropdown</td>
+                <td>This class is required. Indicates a default/standard dropdown</td>
+            </tr>
+             <tr>
+                <td>.disabled</td>
+                <td>Make disabled state of dropdown control</td>
+            </tr>
+            <tr>
+                <td>.readonly</td>
+                <td>Make readonly state of dropdown control</td>
+            </tr>
+            <tr>
+                <td>.restricted</td>
+                <td>Make restricted state of dropdown control</td>
+            </tr>
+            <tr>
+                <td>divider</td>
+                <td>Property helps to add the divider inside the items ('true'/'false')</td>
+            </tr>
+            <tr>
+                <td>.disabled</td>
+                <td>Make disabled item by adding the disabled class e.g. itemList: [{ &#39;value&#39;: 1, &#39;text&#39;: &#39;State1&#39;, &#39;class&#39;: &#39;disabled&#39; }</td>
+            </tr>
+            </tbody></table>
+    </div>
