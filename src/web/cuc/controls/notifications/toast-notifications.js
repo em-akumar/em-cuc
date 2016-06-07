@@ -13,7 +13,7 @@ class ToastNotifications {
     this.options.title = options.title || '';
     this.options.text = options.text || '';
     this.options.notiType = options.notiType || 'alert';
-    this.options.notiLink = options.notiLink || '#';
+    this.options.notiLink = options.notiLink || '';
 
     this.init();
   }
