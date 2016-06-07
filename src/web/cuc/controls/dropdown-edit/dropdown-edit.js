@@ -5,57 +5,60 @@ class DropdownEdit {
     this.options = options;
     this.reinit();
   }
-  reinit(){
-    if(this.options){
-    let isIcon=false;
-    if (Object.keys(this.options).length) {
-      this.options.defaultText = (this.options.defaultText === undefined) ? " " : this.options.defaultText;
-      this.options.itemList = this.options.itemList || [];
-      this.options.sortField = this.options.sortField || this.options.textField || 'text';
-      this.options.sortOrder = this.options.sortOrder || 'asc';
-      this.options.size = this.options.defaultSize || 'medium';
+  reinit() {
+    if (this.options) {
+      let isIcon = false;
+      if (Object.keys(this.options).length) {
+        this.options.defaultText = (this.options.defaultText === undefined) ? " " : this.options.defaultText;
+        this.options.itemList = this.options.itemList || [];
+        this.options.sortField = this.options.sortField || this.options.textField || 'text';
+        this.options.sortOrder = this.options.sortOrder || 'asc';
+        this.options.size = this.options.defaultSize || 'medium';
 
-      //Sort dropdown values
-      if (this.options.itemList) {
-        this.options.itemList.sort((obj1, obj2) => {
-          var x = obj1[this.options.sortField].toLowerCase();
-          var y = obj2[this.options.sortField].toLowerCase();
-          if (this.options.sortOrder === 'desc') {
-            return x > y ? -1 : x < y ? 1 : 0;
-          } else {
-            return x < y ? -1 : x > y ? 1 : 0;
-          }});
-      }
+        //Sort dropdown values
+        if (this.options.itemList) {
+          this.options.itemList.sort((obj1, obj2) => {
+            var x = obj1[this.options.sortField].toLowerCase();
+            var y = obj2[this.options.sortField].toLowerCase();
+            if (this.options.sortOrder === 'desc') {
+              return x > y ? -1 : x < y ? 1 : 0;
+            } else {
+              return x < y ? -1 : x > y ? 1 : 0;
+            }
+          });
+        }
 
-      //Check wheather any item has image in dropdown options
-      var IconFlagEdit = false;
-      for (var i = 0; i < this.options.itemList.length; i++) {
+        //Check wheather any item has image in dropdown options
+        var IconFlagEdit = false;
+        for (var i = 0; i < this.options.itemList.length; i++) {
           if (this.options.itemList[i].leftImage != undefined) {
-              IconFlagEdit = true;
-              break;
+            IconFlagEdit = true;
+            break;
           }
-      }
+        }
 
-      this.template = `<div class="input-group"><input type="text" placeholder="${this.options.defaultText}" class="form-control em-combobox selectedText ${this.options.size}">
+        this.template = `<div class="input-group"><input type="text" placeholder="${this.options.defaultText}" class="form-control em-combobox selectedText ${this.options.size}">
       <div class="btn-group-text"><button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
       <span class="caret"></span></button>
 			<ul class="dropdown-menu ${this.options.size}" role="menu">
 			${this.options.itemList.map((value, i) =>
-        ` ${value.divider ? '<li class="divider"></li>' : ''}<li value="${value[this.options.valueField || 'value']}" class="${value.class === undefined ? '' : value.class}"><a value="${value[this.options.valueField || 'value']}">${value.leftImage!==undefined? `<img class="em-left-icon" src="${value.leftImage}" />`: (IconFlagEdit == true) ? '<span class="em-left-icon"></span>':''} ${value[this.options.textField|| 'text']}
-       ${value.rightImage!==undefined? `<img class="em-right-icon" src="${value.rightImage}" />`:``}</a> </li>`
-        ).join('') }
+            ` ${value.divider ? '<li class="divider"></li>' : ''}<li value="${value[this.options.valueField || 'value']}" class="${value.class === undefined ? '' : value.class}"><a value="${value[this.options.valueField || 'value']}">${value.leftImage !== undefined ? `<img class="em-left-icon" src="${value.leftImage}" />` : (IconFlagEdit == true) ? '<span class="em-left-icon"></span>' : ''} ${value[this.options.textField || 'text']}
+       ${value.rightImage !== undefined ? `<img class="em-right-icon" src="${value.rightImage}" />` : ``}</a> </li>`
+          ).join('')}
 			</ul></div></div>`;
-      this.mainParent.innerHTML = this.template;
+        this.mainParent.innerHTML = this.template;
+      }
+      this.menu = this.mainParent.querySelector(".btn");
+      this.combobox = this.mainParent.querySelector(".em-combobox");
+      this.init();
+      this.setList();
+      this.setDisabled();
+      this.setReadonly();
+      this.setRestricted();
+      this.setError();
+      this.setDisabledItem();
+      this.trackInputChange();
     }
-    this.menu = this.mainParent.querySelector(".btn");
-    this.combobox = this.mainParent.querySelector(".em-combobox");
-    this.init();
-    this.setList();
-    this.setDisabled();
-    this.setReadonly();
-    this.setRestricted();
-    this.setError();
-    this.setDisabledItem();}
   }
   init() {
     var self = this;
@@ -63,12 +66,13 @@ class DropdownEdit {
     self.menu.setAttribute('tabindex', '0'); // Fix onblur on Chrome
     self.menu.addEventListener('click', self.toggle, false);
     self.menu.addEventListener('blur', self.close, false);
-    document.getElementsByTagName('html')[0].addEventListener('keydown',  ( e )=> {
-      if ( e.keyCode === 27 ) {  //Closes dropdown on Esc key
+    document.getElementsByTagName('html')[0].addEventListener('keydown', (e) => {
+      if (e.keyCode === 27) {  //Closes dropdown on Esc key
         self.menu.parentNode.classList.remove('open');
-    }});
+      }
+    });
 
-     self.menu.parentNode.querySelector('.dropdown-menu').addEventListener('mouseover', (e) => {
+    self.menu.parentNode.querySelector('.dropdown-menu').addEventListener('mouseover', (e) => {
       let dropdownSelect = self.menu.parentNode.querySelector('.dropdown-menu li.selected-text');
 
       if (dropdownSelect && dropdownSelect.classList.contains('selected-text')) {
@@ -81,17 +85,17 @@ class DropdownEdit {
         let index = 0;
         while (index < list.length) {
           let item = list[index];
-            if (item.classList.contains('selected-text')) {
-            if(list.length>=(index )){
+          if (item.classList.contains('selected-text')) {
+            if (list.length >= (index)) {
               item.classList.remove('selected-text');
               list[index + 1].classList.add('selected-text');
 
               break;
             }
           }
-            index++;
+          index++;
         }
-          e.preventDefault();
+        e.preventDefault();
       }
 
       if (e.keyCode === 38) { // scroll dropdown option using up array key
@@ -99,17 +103,17 @@ class DropdownEdit {
         let index = 0;
         while (index < list.length) {
           let item = list[index];
-            if (item.classList.contains('selected-text')) {
-            if(index>0){
+          if (item.classList.contains('selected-text')) {
+            if (index > 0) {
               item.classList.remove('selected-text');
               list[index - 1].classList.add('selected-text');
 
               break;
             }
           }
-            index++;
+          index++;
         }
-          e.preventDefault();
+        e.preventDefault();
       }
       if (e.keyCode === 13) { // select dropdwon value on enter key
         if (!self.menu.parentNode.querySelector('li.selected-text').classList.contains("disabled")) {
@@ -118,27 +122,38 @@ class DropdownEdit {
 
           self.combobox.parentNode.querySelector("input.form-control.em-combobox").setAttribute('value', item.parentNode.getAttribute('value'));
           if (!self.combobox.parentNode.querySelector("input.form-control.em-combobox").classList.contains("completed")) {
-           self.combobox.parentNode.querySelector("input.form-control.em-combobox").classList.add("completed");
+            self.combobox.parentNode.querySelector("input.form-control.em-combobox").classList.add("completed");
           }
         }
       }
     });
   }
-setSelected(value){
-		var self = this;
-		 self.combobox.parentNode.querySelector("input.form-control.em-combobox").value = value[this.options.textField || 'text'];;
-        self.combobox.parentNode.querySelector("input.form-control.em-combobox").setAttribute('value',  value[this.options.valueField || 'value']);
-        if (!self.combobox.parentNode.querySelector("input.form-control.em-combobox").classList.contains("completed")) {
-          self.combobox.parentNode.querySelector("input.form-control.em-combobox").classList.add("completed");
-        }
-	}
+
+
+  trackInputChange() {
+    if (typeof this.options.onChange === 'function') {
+      this.mainParent.querySelector('input').addEventListener('input', (e) => {
+        this.options.onChange(e);
+      });
+    }
+  }
+
+
+  setSelected(value) {
+    var self = this;
+    self.combobox.parentNode.querySelector("input.form-control.em-combobox").value = value[this.options.textField || 'text'];;
+    self.combobox.parentNode.querySelector("input.form-control.em-combobox").setAttribute('value', value[this.options.valueField || 'value']);
+    if (!self.combobox.parentNode.querySelector("input.form-control.em-combobox").classList.contains("completed")) {
+      self.combobox.parentNode.querySelector("input.form-control.em-combobox").classList.add("completed");
+    }
+  }
   setList() {
     var self = this;
     [].forEach.call(self.menu.parentNode.querySelectorAll(".dropdown-menu>li>a"), (element, i) => {
       element.addEventListener('click', (e) => {
-        if(typeof self.options.onChange === 'function'){
-					self.options.onChange(e);
-				}
+        if (typeof self.options.onChange === 'function') {
+          self.options.onChange(e);
+        }
         self.combobox.parentNode.querySelector("input.form-control.em-combobox").value = element.innerText || element.textContent;
         self.combobox.parentNode.querySelector("input.form-control.em-combobox").setAttribute('value', element.parentNode.getAttribute('value'));
         if (!self.combobox.parentNode.querySelector("input.form-control.em-combobox").classList.contains("completed")) {
@@ -149,9 +164,9 @@ setSelected(value){
       [].forEach.call(self.menu.parentNode.querySelectorAll(".dropdown-menu>li>img"), (element, i) => {
         element.setAttribute('src');
       });
-       element.addEventListener('mouseover', (e) => {
+      element.addEventListener('mouseover', (e) => {
         if (e.target.offsetWidth < e.target.scrollWidth)
-        e.target.setAttribute('title',e.target.innerHTML);
+          e.target.setAttribute('title', e.target.innerHTML);
       });
 
     });
@@ -171,7 +186,7 @@ setSelected(value){
     });
   }
 
-  setDisabledItem(){
+  setDisabledItem() {
     var self = this;
     [].forEach.call(self.menu.parentNode.querySelectorAll(".disabled a"), (value, j) => {
       value.classList.add('disabled');
@@ -191,7 +206,7 @@ setSelected(value){
     });
   }
 
- setEnabled() {
+  setEnabled() {
     var self = this;
     [].forEach.call(self.menu.parentNode.querySelectorAll(".disabled .dropdown-toggle"), (value, i) => {
       value.removeAttribute('disabled');
@@ -243,7 +258,7 @@ setSelected(value){
       if (selValue == '' || selValue == null) {
         self.menu.parentNode.querySelector('.dropdown-menu li:first-child').classList.add('selected-text');
       } else {
-         self.menu.parentNode.querySelector("li[value='" + selValue + "']").classList.add('selected-text');
+        self.menu.parentNode.querySelector("li[value='" + selValue + "']").classList.add('selected-text');
       }
       e.preventDefault();
       return false;
