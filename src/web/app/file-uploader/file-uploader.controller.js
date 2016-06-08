@@ -55,8 +55,8 @@ class FileUploaderController {
       dropDirectionMsg: dropDirectionMsg,
       onfileUploadComplete: (e) => {
         this.fileUploadComplete(e);
-      console.log(e)
-  }
+        console.log(e)
+      }
     };
     let singleFileoptions = {
       fileInputId: 'singleUpload'

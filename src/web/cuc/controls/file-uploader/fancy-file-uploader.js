@@ -423,6 +423,7 @@ var FancyFileUpload = function(el, opts) {
               // add to element here
               document.getElementById('fileUploadStatusFor' + file.guid).innerHTML = '';// it is need here to make innerHTML empty
               document.getElementById('fileUploadStatusFor' + file.guid).appendChild(showTick);
+              onfileUploadComplete({file: file, data: xhr, fileUploadStatus: fileUploadStatus});
             } else {
                 var showExcl = document.createElement('DIV');
                 showExcl.className = 'notificationImageAtRightCorner ';
@@ -452,11 +453,6 @@ var FancyFileUpload = function(el, opts) {
       fileUploadStatus.status = 'server failed';
       fileUploadStatus.description = 'server upload failed';
       console.log(e);
-    }
-    finally {
-      // we are going to send file info after every upload of single file
-
-      onfileUploadComplete({file: file, data: xhr, fileUploadStatus: fileUploadStatus});
     }
   }
 
