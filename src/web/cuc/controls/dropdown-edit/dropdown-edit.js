@@ -141,8 +141,14 @@ class DropdownEdit {
 
   setSelected(value) {
     var self = this;
-    self.combobox.parentNode.querySelector("input.form-control.em-combobox").value = value[this.options.textField || 'text'];;
-    self.combobox.parentNode.querySelector("input.form-control.em-combobox").setAttribute('value', value[this.options.valueField || 'value']);
+    if (typeof value === 'object' && value !== null) {
+      self.combobox.parentNode.querySelector("input.form-control.em-combobox").value = value[this.options.textField || 'text'];;
+      self.combobox.parentNode.querySelector("input.form-control.em-combobox").setAttribute('value', value[this.options.valueField || 'value']);
+    }
+    else if (value) {
+      this.mainParent.querySelector('input').value = value;
+    }
+
     if (!self.combobox.parentNode.querySelector("input.form-control.em-combobox").classList.contains("completed")) {
       self.combobox.parentNode.querySelector("input.form-control.em-combobox").classList.add("completed");
     }
