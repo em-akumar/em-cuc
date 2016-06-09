@@ -29,7 +29,7 @@ class SliderNotifications {
     var closeDiv = document.createElement('div'); //close div
     closeDiv.setAttribute('class', 'close-slider');
     closeDiv.addEventListener('click', this.closeNoti);
-    closeDiv.innerHTML = '<a href="" class="close">&times;</a>';
+    closeDiv.innerHTML = '<a class="close">&times;</a>';
 
     var iconTmpl = (this.options.sliderIconFlag === true) ? `<div class="noti-slider-icon"><span class="alert-${this.options.sliderType}-slider-icon"></span></div>` : ` `; // notification image icon div
 
