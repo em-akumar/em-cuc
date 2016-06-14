@@ -1,9 +1,9 @@
 /* eslint-disable */
-let ColorPicker = (function (window, document, undefined) {
+let ColorPicker = (function(window, document, undefined) {
 
   var type =
     (window.SVGAngle ||
-      document.implementation.hasFeature('http://www.w3.org/TR/SVG11/feature#BasicStructure', '1.1')
+    document.implementation.hasFeature('http://www.w3.org/TR/SVG11/feature#BasicStructure', '1.1')
       ? 'SVG'
       : 'VML');
   var picker;
@@ -35,11 +35,11 @@ let ColorPicker = (function (window, document, undefined) {
   function mousePosition(evt) {
     // IE:
     if (window.event && window.event.contentOverflow !== undefined) {
-      return { x: window.event.offsetX, y: window.event.offsetY };
+      return {x: window.event.offsetX, y: window.event.offsetY};
     }
     // Webkit:
     if (evt.offsetX !== undefined && evt.offsetY !== undefined) {
-      return { x: evt.offsetX, y: evt.offsetY };
+      return {x: evt.offsetX, y: evt.offsetY};
     }
     // Firefox:
     var wrapper = evt.target.parentNode.parentNode;
@@ -71,30 +71,30 @@ let ColorPicker = (function (window, document, undefined) {
   if (type === 'SVG') {
 
     slide = $('svg', {
-      xmlns: 'http://www.w3.org/2000/svg',
-      version: '1.1',
-      width: '100%',
-      height: '100%'
-    },
+        xmlns: 'http://www.w3.org/2000/svg',
+        version: '1.1',
+        width: '100%',
+        height: '100%'
+      },
       [
         $('defs', {},
-          $('linearGradient', { id: 'gradient-hsv', x1: '0%', y1: '100%', x2: '0%', y2: '0%' },
+          $('linearGradient', {id: 'gradient-hsv', x1: '0%', y1: '100%', x2: '0%', y2: '0%'},
             [
-              $('stop', { offset: '0%', 'stop-color': '#FF0000', 'stop-opacity': '1' }),
-              $('stop', { offset: '13%', 'stop-color': '#FF00FF', 'stop-opacity': '1' }),
-              $('stop', { offset: '25%', 'stop-color': '#8000FF', 'stop-opacity': '1' }),
-              $('stop', { offset: '38%', 'stop-color': '#0040FF', 'stop-opacity': '1' }),
-              $('stop', { offset: '50%', 'stop-color': '#00FFFF', 'stop-opacity': '1' }),
-              $('stop', { offset: '63%', 'stop-color': '#00FF40', 'stop-opacity': '1' }),
-              $('stop', { offset: '75%', 'stop-color': '#0BED00', 'stop-opacity': '1' }),
-              $('stop', { offset: '88%', 'stop-color': '#FFFF00', 'stop-opacity': '1' }),
-              $('stop', { offset: '100%', 'stop-color': '#FF0000', 'stop-opacity': '1' })
+              $('stop', {offset: '0%', 'stop-color': '#FF0000', 'stop-opacity': '1'}),
+              $('stop', {offset: '13%', 'stop-color': '#FF00FF', 'stop-opacity': '1'}),
+              $('stop', {offset: '25%', 'stop-color': '#8000FF', 'stop-opacity': '1'}),
+              $('stop', {offset: '38%', 'stop-color': '#0040FF', 'stop-opacity': '1'}),
+              $('stop', {offset: '50%', 'stop-color': '#00FFFF', 'stop-opacity': '1'}),
+              $('stop', {offset: '63%', 'stop-color': '#00FF40', 'stop-opacity': '1'}),
+              $('stop', {offset: '75%', 'stop-color': '#0BED00', 'stop-opacity': '1'}),
+              $('stop', {offset: '88%', 'stop-color': '#FFFF00', 'stop-opacity': '1'}),
+              $('stop', {offset: '100%', 'stop-color': '#FF0000', 'stop-opacity': '1'})
             ]
-            )
-          ),
-        $('rect', { x: '0', y: '0', width: '100%', height: '100%', fill: 'url(#gradient-hsv)' })
+          )
+        ),
+        $('rect', {x: '0', y: '0', width: '100%', height: '100%', fill: 'url(#gradient-hsv)'})
       ]
-      );
+    );
 
     picker = $('svg',
       {
@@ -236,6 +236,7 @@ let ColorPicker = (function (window, document, undefined) {
       };
     }
   }
+
   /**
    * Convert HSV representation to RGB HEX string.
    * Credits to http://www.raphaeljs.com
@@ -295,7 +296,7 @@ let ColorPicker = (function (window, document, undefined) {
       : V === g ? (b - r) / C + 2 : (r - g) / C + 4);
     H = (H % 6) * 60;
     S = C === 0 ? 0 : C / V;
-    return { h: H, s: S, v: V };
+    return {h: H, s: S, v: V};
   }
 
   /**
@@ -303,26 +304,25 @@ let ColorPicker = (function (window, document, undefined) {
    * Sets picker background color and calls ctx.callback if provided.
    */
   function slideListener(ctx, slideElement, pickerElement) {
-    return function (evt) {
+    return function(evt) {
       evt = evt || window.event;
       var mouse = mousePosition(evt);
       ctx.h = mouse.y / slideElement.offsetHeight * 360 + hueOffset;
-      var pickerColor = hsv2rgb({ h: ctx.h, s: 1, v: 1 });
-      var c = hsv2rgb({ h: ctx.h, s: ctx.s, v: ctx.v });
+      var pickerColor = hsv2rgb({h: ctx.h, s: 1, v: 1});
+      var c = hsv2rgb({h: ctx.h, s: ctx.s, v: ctx.v});
       pickerElement.style.backgroundColor = pickerColor.hex;
       ctx.callback &&
-      ctx.callback(c.hex, { h: ctx.h - hueOffset, s: ctx.s, v: ctx.v },
-        { r: c.r, g: c.g, b: c.b }, undefined, mouse);
+      ctx.callback(c.hex, {h: ctx.h - hueOffset, s: ctx.s, v: ctx.v},
+        {r: c.r, g: c.g, b: c.b}, undefined, mouse);
     };
   }
-
 
   /**
    * Return click event handler for the picker.
    * Calls ctx.callback if provided.
    */
   function pickerListener(ctx, pickerElement) {
-    return function (evt) {
+    return function(evt) {
       evt = evt || window.event;
       var mouse = mousePosition(evt);
       var width = pickerElement.offsetWidth;
@@ -332,25 +332,28 @@ let ColorPicker = (function (window, document, undefined) {
       ctx.v = (height - mouse.y) / height;
       var c = hsv2rgb(ctx);
       ctx.callback &&
-      ctx.callback(c.hex, { h: ctx.h - hueOffset, s: ctx.s, v: ctx.v },
-          { r: c.r, g: c.g, b: c.b }, mouse);
+      ctx.callback(c.hex, {h: ctx.h - hueOffset, s: ctx.s, v: ctx.v},
+        {r: c.r, g: c.g, b: c.b}, mouse);
     };
   }
 
-  function displayColor(self, colorValue) {
+  function displayColor(self, colorValue, perColor) {
     if (colorValue !== '') {
       self.mainElement.querySelector('.color-holder').style.backgroundColor = '#' + colorValue;
       self.mainElement.querySelector('.color-holder').style.backgroundImage = 'none';
       self.mainElement.querySelector('.color-holder').classList.remove('diagonal-line');
       integrateEM(self.mainElement, colorValue, hex2rgb(colorValue));
     } else {
-      self.mainElement.querySelector('.color-holder').removeAttribute('style');
+      //if no value entered on tab out values stay the same 
+      self.mainElement.querySelector('.color-holder').style.backgroundColor = '#' + colorValue;
+      self.mainElement.querySelector('.em-input-color').value = self.mainElement.querySelector('.hex').value
     }
   }
 
   function applyValidation(hexTextValue) {
     if (hexTextValue.value.length < 6 && hexTextValue.value.length > 0) {
       var ch = hexTextValue.value.charAt(0).toUpperCase();
+      var bk = hexTextValue.value.split("");
       var len = hexTextValue.value.length;
       while (len > 0) {
         if (ch !== hexTextValue.value.charAt(len - 1).toUpperCase()) {
@@ -358,11 +361,19 @@ let ColorPicker = (function (window, document, undefined) {
         }
         len--;
       }
+      // special case if three values are letters duplicate them
+      if (len > 0 && bk.length === 3 && isNaN(bk[0]) && isNaN(bk[1]) && isNaN(bk[2])) {
+        while (hexTextValue.value.length < 6) {
+          var repeatnumber = bk[0] + bk[0] + bk[1] + bk[1] + bk[2] + bk[2];
+          hexTextValue.value = repeatnumber.toUpperCase();
+        }
+      }
       if (len > 0) {
         while (hexTextValue.value.length < 6) {
           hexTextValue.value = "0" + hexTextValue.value;
         }
-      } else {
+      }
+      else {
         while (hexTextValue.value.length < 6) {
           hexTextValue.value = hexTextValue.value + hexTextValue.value.charAt(0);
         }
@@ -430,17 +441,21 @@ let ColorPicker = (function (window, document, undefined) {
       this.mainElement.querySelector('button').parentNode.classList.remove('open');
     }.bind(this));
 
-    mainElement.addEventListener('click', function (e) { e.stopPropagation();});
-    document.getElementsByTagName('html')[0].addEventListener('keydown',  ( e )=> {
-        if (e.keyCode === 27) { this.mainElement.querySelector('button').parentNode.classList.remove('open'); }
+    mainElement.addEventListener('click', function(e) {
+      e.stopPropagation();
+    });
+    document.getElementsByTagName('html')[0].addEventListener('keydown', (e)=> {
+      if (e.keyCode === 27) {
+        this.mainElement.querySelector('button').parentNode.classList.remove('open');
+      }
     });
 
     mainElement.querySelector('button').addEventListener('click', function(e) {
-       // on click of one color picker close other color picker
+      // on click of one color picker close other color picker
       [].forEach.call(document.querySelectorAll(".color-menu"), (value, i) => {
-          if (value.parentNode.parentNode !== mainElement) {
-            value.parentNode.classList.remove('open');
-          }
+        if (value.parentNode.parentNode !== mainElement) {
+          value.parentNode.classList.remove('open');
+        }
       });
       this.parentNode.classList.toggle('open');
     });
@@ -471,26 +486,26 @@ let ColorPicker = (function (window, document, undefined) {
 
     var insideHexValue = this.mainElement.querySelector('.hex');
     insideHexValue.addEventListener('keypress', (e) => {
-        var keycode = (e.which) ? e.which : e.keyCode;
-        if ((keycode >= 48 && keycode <= 57) ||
-            (keycode >= 65 && keycode <= 90) ||
-          (keycode >= 97 && keycode <= 102) || keycode === 8 || keycode === 9 || keycode === 37 || keycode === 39) {
-            return true;
-        } else {
-            e.preventDefault();
-            return false;
-        }
+      var keycode = (e.which) ? e.which : e.keyCode;
+      if ((keycode >= 48 && keycode <= 57) ||
+        (keycode >= 65 && keycode <= 90) ||
+        (keycode >= 97 && keycode <= 102) || keycode === 8 || keycode === 9 || keycode === 37 || keycode === 39) {
+        return true;
+      } else {
+        e.preventDefault();
+        return false;
+      }
     });
     insideHexValue.addEventListener('keyup', (e) => {
       var hexTextValue = e.srcElement || e.target;
-        var keycode = (e.which) ? e.which : e.keyCode;
-        if ((keycode >= 48 && keycode <= 57) ||
-            (keycode >= 65 && keycode <= 90) ||
-          (keycode >= 97 && keycode <= 102) || keycode === 8 || keycode === 9 || keycode === 37 || keycode === 39) {
-          if (document.querySelector('.em-input-color')) {
-            document.querySelector('.em-input-color').value = hexTextValue.value;
-          }
+      var keycode = (e.which) ? e.which : e.keyCode;
+      if ((keycode >= 48 && keycode <= 57) ||
+        (keycode >= 65 && keycode <= 90) ||
+        (keycode >= 97 && keycode <= 102) || keycode === 8 || keycode === 9 || keycode === 37 || keycode === 39) {
+        if (document.querySelector('.em-input-color')) {
+          document.querySelector('.em-input-color').value = hexTextValue.value;
         }
+      }
     });
     insideHexValue.addEventListener('blur', (e) => {
       var hexTextValue = e.srcElement || e.target;
@@ -505,9 +520,9 @@ let ColorPicker = (function (window, document, undefined) {
       self.mainElement.querySelector('.green').value = '';
       self.mainElement.querySelector('.blue').value = '';
       self.mainElement.querySelector('.hex').value = '';
-      if(self.mainElement.querySelector('.em-input-color'))
+      if (self.mainElement.querySelector('.em-input-color'))
         self.mainElement.querySelector('.em-input-color').value = '',
-      self.mainElement.querySelector('.new').style.backgroundColor = '';
+          self.mainElement.querySelector('.new').style.backgroundColor = '';
       self.mainElement.querySelector('.new').classList.add('diagonal-line');
       self.mainElement.querySelector('.color-holder').removeAttribute('style');
       self.mainElement.querySelector('.color-holder').classList.add('diagonal-line');
@@ -534,8 +549,8 @@ let ColorPicker = (function (window, document, undefined) {
 
       ColorPicker.fixIndicators(slideIndicator, pickerIndicator);
 
-      this.callback = function (hex, hsv, rgb, pickerCoordinate,
-        slideCoordinate) {
+      this.callback = function(hex, hsv, rgb, pickerCoordinate,
+                               slideCoordinate) {
 
         ColorPicker.positionIndicators(slideIndicator, pickerIndicator,
           slideCoordinate, pickerCoordinate);
@@ -607,6 +622,7 @@ let ColorPicker = (function (window, document, undefined) {
       pickerListener(this, this.pickerElement));
 
   }
+
   function integrateEM(element, hex, rgb) {
     var oldColor = element.querySelector('.new').style.backgroundColor;
     if (rgb) {
@@ -621,15 +637,13 @@ let ColorPicker = (function (window, document, undefined) {
     element.querySelector('.new').classList.remove('diagonal-line');
     element.querySelector('.color-holder').classList.remove('diagonal-line');
     if (element.querySelector('.em-input-color')) {
-       element.querySelector('.em-input-color').value = hex.replace('#', '');
+      element.querySelector('.em-input-color').value = hex.replace('#', '');
     }
     element.querySelector('.hex').value = hex.replace('#', '');
     element.querySelector('.current').style.backgroundColor = oldColor;
-    element.querySelector('.new').style.backgroundColor = (hex.indexOf('#') !== -1 )? hex : '#'+hex;
+    element.querySelector('.new').style.backgroundColor = (hex.indexOf('#') !== -1 ) ? hex : '#' + hex;
 
   }
-
-
 
   function addEventListener(element, event, listener) {
 
@@ -654,10 +668,16 @@ let ColorPicker = (function (window, document, undefined) {
 
     var mousedown = false;
 
-    addEventListener(element, 'mousedown', function (evt) { mousedown = true; });
-    addEventListener(element, 'mouseup', function (evt) { mousedown = false; });
-    addEventListener(element, 'mouseout', function (evt) { mousedown = false; });
-    addEventListener(element, 'mousemove', function (evt) {
+    addEventListener(element, 'mousedown', function(evt) {
+      mousedown = true;
+    });
+    addEventListener(element, 'mouseup', function(evt) {
+      mousedown = false;
+    });
+    addEventListener(element, 'mouseout', function(evt) {
+      mousedown = false;
+    });
+    addEventListener(element, 'mousemove', function(evt) {
 
       if (mousedown) {
 
@@ -666,23 +686,27 @@ let ColorPicker = (function (window, document, undefined) {
     });
   }
 
-  ColorPicker.hsv2rgb = function (hsv) {
+  ColorPicker.hsv2rgb = function(hsv) {
     var rgbHex = hsv2rgb(hsv);
     delete rgbHex.hex;
     return rgbHex;
   };
 
-  ColorPicker.hsv2hex = function (hsv) { return hsv2rgb(hsv).hex; };
+  ColorPicker.hsv2hex = function(hsv) {
+    return hsv2rgb(hsv).hex;
+  };
 
   ColorPicker.rgb2hsv = rgb2hsv;
 
-  ColorPicker.rgb2hex = function (rgb) { return hsv2rgb(rgb2hsv(rgb)).hex; };
+  ColorPicker.rgb2hex = function(rgb) {
+    return hsv2rgb(rgb2hsv(rgb)).hex;
+  };
 
-  ColorPicker.hex2hsv = function (hex) {
+  ColorPicker.hex2hsv = function(hex) {
     return rgb2hsv(ColorPicker.hex2rgb(hex));
   };
 
-  ColorPicker.hex2rgb = function (hex) {
+  ColorPicker.hex2rgb = function(hex) {
     return {
       r: parseInt(hex.substr(1, 2), 16),
       g: parseInt(hex.substr(3, 2), 16),
@@ -719,30 +743,34 @@ let ColorPicker = (function (window, document, undefined) {
     };
 
     ctx.pickerElement.style.backgroundColor =
-    hsv2rgb({ h: ctx.h, s: 1, v: 1 }).hex;
+      hsv2rgb({h: ctx.h, s: 1, v: 1}).hex;
     ctx.callback &&
-    ctx.callback(hex || c.hex, { h: ctx.h, s: ctx.s, v: ctx.v },
-      rgb || { r: c.r, g: c.g, b: c.b }, mousePicker,
+    ctx.callback(hex || c.hex, {h: ctx.h, s: ctx.s, v: ctx.v},
+      rgb || {r: c.r, g: c.g, b: c.b}, mousePicker,
       mouseSlide);
 
     return ctx;
   }
 
-  ColorPicker.prototype.setColorValue = function(colorValue) { displayColor(this, colorValue); };
+  ColorPicker.prototype.setColorValue = function(colorValue) {
+    displayColor(this, colorValue);
+  };
 
   /**
    * Sets color of the picker in hsv format.
    * @param {object} hsv Object of the form: { h: <hue>, s: <saturation>, v:
    * <value> }.
    */
-  ColorPicker.prototype.setHsv = function (hsv) { return setColor(this, hsv); };
+  ColorPicker.prototype.setHsv = function(hsv) {
+    return setColor(this, hsv);
+  };
 
   /**
    * Sets color of the picker in rgb format.
    * @param {object} rgb Object of the form: { r: <red>, g: <green>, b: <blue>
    * }.
    */
-  ColorPicker.prototype.setRgb = function (rgb) {
+  ColorPicker.prototype.setRgb = function(rgb) {
     return setColor(this, rgb2hsv(rgb), rgb);
   };
 
@@ -750,7 +778,7 @@ let ColorPicker = (function (window, document, undefined) {
    * Sets color of the picker in hex format.
    * @param {string} hex Hex color format #RRGGBB.
    */
-  ColorPicker.prototype.setHex = function (hex) {
+  ColorPicker.prototype.setHex = function(hex) {
     return setColor(this, ColorPicker.hex2hsv(hex), undefined, hex);
   };
 
@@ -765,17 +793,17 @@ let ColorPicker = (function (window, document, undefined) {
    * @param {object} mousePicker Coordinates of the mouse cursor in the picker
    * area.
    */
-  ColorPicker.positionIndicators = function (slideIndicator, pickerIndicator,
-    mouseSlide, mousePicker) {
+  ColorPicker.positionIndicators = function(slideIndicator, pickerIndicator,
+                                            mouseSlide, mousePicker) {
     if (mouseSlide) {
       slideIndicator.style.top =
-      (mouseSlide.y - slideIndicator.offsetHeight / 2) + 'px';
+        (mouseSlide.y - slideIndicator.offsetHeight / 2) + 'px';
     }
     if (mousePicker) {
       pickerIndicator.style.top =
-      (mousePicker.y - pickerIndicator.offsetHeight / 2) + 'px';
+        (mousePicker.y - pickerIndicator.offsetHeight / 2) + 'px';
       pickerIndicator.style.left =
-      (mousePicker.x - pickerIndicator.offsetWidth / 2) + 'px';
+        (mousePicker.x - pickerIndicator.offsetWidth / 2) + 'px';
     }
   };
 
@@ -783,7 +811,7 @@ let ColorPicker = (function (window, document, undefined) {
    * Helper to fix indicators - this is recommended (and needed) for dragable
    * color selection (see enabledDragging()).
    */
-  ColorPicker.fixIndicators = function (slideIndicator, pickerIndicator) {
+  ColorPicker.fixIndicators = function(slideIndicator, pickerIndicator) {
     pickerIndicator.style.pointerEvents = 'none';
     slideIndicator.style.pointerEvents = 'none';
   };
