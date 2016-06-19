@@ -1,0 +1,16 @@
+<div class="modal-header">
+  <h3 class="modal-title">Header Title</h3>
+  <button type="button" class="close" ng-click="vm.cancel()" aria-label="Close"><span class="close-icon">something</span></button>
+</div>
+<div class="modal-body">
+  <div class="modal-content">
+    <grid-component></grid-component>
+    <select>
+      <option ng-repeat="item in items">{{item}}</option>
+    </select>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+    <button class="btn btn-default" type="button" ng-click="cancel()">Cancel</button>
+  </div>
+</div>
