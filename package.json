@@ -33,6 +33,8 @@
     "styles": {
       "app": "./src/app/app.less",
       "cuc": "./src/cuc/cuc.less",
+      "cuc-tablet": "./src/cuc/cuc.tablet.scss",
+      "cuc-mobile": "./src/cuc/cuc.mobile.scss",
       "cuc.grid": "./src/cuc/controls/ui-grid/ui-grid.less",
       "cuc.ui.bootstrap": "./src/cuc/cuc.ui.bootstrap.less",
       "cuc.block.ui": "./src/cuc/cuc.block.ui.less",
@@ -42,6 +44,8 @@
     "scripts": {
       "app": ["./src/app/app.module.js"],
       "cuc": ["./src/cuc/cuc.js"],
+      "cuc-tablet": ["./src/cuc/cuc.tablet.js"],
+      "cuc-mobile": ["./src/cuc/cuc.mobile.js"],
       "cuc.angular": ["./src/cuc/cuc.angular.js"],
       "cuc.grid": ["./src/cuc/cuc.grid.js"],
       "cuc.ui.bootstrap": ["./src/cuc/cuc.ui.bootstrap.js"],
@@ -58,6 +62,8 @@
     "angular-ui-grid": "3.1.1",
     "angular-ui-mask": "1.8.4",
     "angular-ui-router": "0.3.0",
-    "bootstrap": "3.3.6"
+    "bootstrap": "3.3.6",
+    "standard": "7.1.2",
+    "ionic-sdk": "1.2.4"
   }
 }

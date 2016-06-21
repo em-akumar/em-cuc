@@ -1,0 +1,142 @@
+.btn {
+  /* override primary button */
+  &.btn-primary {
+    background-color: $curious-blue;
+    height: $btn-height;
+    border-radius: $text-button-border-radius;
+    //padding: 8px 10px;
+    box-sizing: border-box;
+    align-items: center;
+    @include font-size(regular, $font-size-base);
+    /* override primary hover button state  */
+    &:hover,
+    &.hover {
+      background-color: $havelock-blue;
+      border-color: $havelock-blue;
+    }
+    /* override primary active button state  */
+    &:active,
+    &.active,
+    &:focus,
+    &.focus,
+    &:active:hover,
+    &.active:hover {
+      background-color: $endeavour;
+      border-color: $endeavour;
+      outline: 0;
+    }
+    /* disabled the primary button */
+    &.disabled,
+    &.disabled.active,
+    &.disabled.focus,
+    &.disabled:active,
+    &.disabled:focus,
+    &.disabled:hover,
+    &[disabled],
+    &[disabled].active,
+    &[disabled].focus,
+    &[disabled]:active,
+    &[disabled]:focus,
+    &[disabled]:hover {
+      background-color: $loblolly;
+      border-color: $loblolly;
+      color: $black-haze;
+    }
+  }
+
+  /* override default button */
+  &.btn-default {
+    background-color: @text-button-secondary-default-background-color;
+    border-color: @text-button-secondary-default-border-color;
+    height: @btn-width-extra-small;
+    min-width: @btn-width-medium;
+    border-radius: @text-button-border-radius;
+    padding: 8px 10px;
+    box-sizing: border-box;
+    // display: flex; //(only changed for display)
+    align-items: center;
+    .em-button-color-text(@text-button-secondary-font-color);
+    .em-button-text(@ft-size-base);
+    /* override default hover and focus button state  */
+    &:hover,
+    &.hover {
+      background-color: @text-button-secondary-hover-background-color;
+      border-color: @text-button-secondary-hover-border-color;
+      color: @text-button-secondary-font-color;
+    }
+    /* override default active button state  */
+    &:active,
+    &.active,
+    &:focus,
+    &.focus,
+    &:active:hover,
+    &.active:hover {
+      background-color: @text-button-secondary-active-background-color;
+      border-color: @text-button-secondary-active-border-color;
+      outline: 0;
+      box-shadow: none;
+    }
+    /* disabled the default button */
+    &:disabled,
+    &.disabled,
+    &.disabled.active,
+    &.disabled.focus,
+    &.disabled:hover,
+    &[disabled],
+    &[disabled].active,
+    &[disabled].focus,
+    &[disabled].hover {
+      background-color: @text-button-secondary-disabled-background-color;
+      border-color: @text-button-secondary-disabled-border-color;
+      color: @text-button-secondary-disabled-font-color;
+    }
+  }
+
+  /* added new class for tertiary button */
+  &.em-btn-tertiary {
+    background-color: @text-button-tertiary-default-background-color;
+    border-color: @text-button-tertiary-default-border-color;
+    height: @btn-width-extra-small;
+    min-width: @btn-width-medium;
+    border-radius: @text-button-border-radius;
+    padding: 8px 10px;
+    box-sizing: border-box;
+    // display: flex; //(only changed for display)
+    align-items: center;
+    .em-button-color-text(@text-button-tertiary-font-color);
+    .em-button-text(@ft-size-base);
+    /* added new class for tertiary hover and focus button state  */
+    &.hover,
+    &:hover {
+      background-color: @text-button-tertiary-hover-background-color;
+      border-color: @text-button-tertiary-hover-border-color;
+      color: @text-button-tertiary-font-color;
+    }
+    /* added new class for tertiary active button state  */
+    &:active,
+    &.active,
+    &:focus,
+    &.focus,
+    &:active:hover,
+    &.active:hover {
+      background-color: @text-button-tertiary-active-background-color;
+      border-color: @text-button-tertiary-active-border-color;
+      color: @text-button-tertiary-font-color;
+      outline: 0;
+      box-shadow: none;
+    }
+
+    /* added new class to disabled the tertiary button */
+    &:disabled,
+    &.disabled,
+    &.disabled.active,
+    &.disabled.focus,
+    &.disabled:hover,
+    &[disabled],
+    &[disabled].active,
+    &[disabled].focus {
+      background-color: @text-button-tertiary-disabled-background-color;
+      border-color: @text-button-tertiary-disabled-border-color;
+      color: @text-button-tertiary-disabled-font-color;
+    }
+  }

@@ -9,5 +9,7 @@
   // Controls if the editor should automatically format the line after typing
   "editor.formatOnType": true,
   // When enabled, will trim trailing whitespace when you save a file.
-  "files.trimTrailingWhitespace": true
+  "files.trimTrailingWhitespace": true,
+
+   "eslint.enable": true
 }

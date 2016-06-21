@@ -1,0 +1,24 @@
+@import 'variables.scss';
+@import 'typography.scss';
+
+@function calculateRem($size) {
+  $remSize: $size / 16;
+  @return $remSize * 1rem;
+}
+
+/* font size mixin */
+@mixin font-size($familyValue:base,$sizeValue:16,$colorValue:#fff) {
+  @if ($familyValue == 'base') {
+    font-family: $font-family-base;
+  } @else if ($familyValue == 'light') {
+    font-family: $font-family-light;
+  } @else if ($familyValue == 'bold') {
+    font-family: $font-family-bold;
+  } @else if ($familyValue == 'sbold') {
+    font-family: $font-family-semibold;
+  }
+  if($sizeValue.indexOf('rem')==-1){
+    font-size: calculateRem($sizeValue);
+  }
+  color: $colorValue;
+}
