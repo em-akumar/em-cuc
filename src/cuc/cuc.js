@@ -1,4 +1,5 @@
 /* controls being used in tpo now */
+/*eslint-disable */
 import {Dropdown} from './controls/dropdown/dropdown';
 import {DropdownEdit} from './controls/dropdown-edit/dropdown-edit';
 import {TextInputField} from './controls/text-input-field/text-input-field';

@@ -1,0 +1,56 @@
+.checkbox{
+    position: relative;
+    display: block;
+    margin-top: $checkbox-margin;
+    margin-bottom: $checkbox-margin;
+    cursor: pointer;
+    input[type="checkbox"]{
+      visibility: hidden;
+     // opacity: 0;
+     // z-index: 1;
+      position: absolute;
+      &:checked + label::before{
+        background: $curious-blue-light url("../../assets/images/icon-checkmark-white.svg") center center/contain no-repeat;
+        border: 1px solid $curious-blue-light;
+        background-size: $checkbox-background-size;
+      }
+      &:hover + label::before,&:active + label::before {
+        background: 2px $curious-blue-light url("../../assets/images/icon-checkmark-white.svg") center center/contain no-repeat;
+        border: 1px solid $curious-blue-light;
+        box-shadow: 0px 0px 1px 2px $tropical-blue;
+      }
+      &:not(:checked):not(:hover) + label::before{
+        border: 1px solid $alto;
+      }
+      &:disabled + label::before{
+        background: $alabaster;
+        border: 1px solid $alto;
+        box-shadow:none;
+      }
+    }
+     :disabled + label{
+       @include font-size(regular, $font-size-base, $silver);
+      }
+    label{
+      display: inline-block;
+      vertical-align: middle;
+      position: relative;
+      padding-left:$checkbox-label-padding-left;
+      padding-bottom: $checkbox-label-padding-bottom;
+      @include font-size(regular, $font-size-base, $mine-shaft);
+      cursor: pointer;
+      line-height: 2.3;
+      &::before{
+        content: "";
+        display: inline-block;
+        background-color:$white;
+        position: absolute;
+        left: 0;
+        border-radius: $checkbox-border-radius;
+        width: $checkbox-size;
+        height: $checkbox-size;
+        border: 1px solid $alto;
+        @include transition(border 0.15s ease-in-out, color 0.15s ease-in-out);
+      }
+    }
+ }

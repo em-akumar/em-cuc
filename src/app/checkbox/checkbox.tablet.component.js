@@ -1,7 +1,7 @@
-import template from './checkbox.html';
+import template from './checkbox-tablet.html';
 import controller from './checkbox.controller';
 
-let checkboxComponent = () => {
+let checkboxTabletComponent = () => {
   return {
     restrict: 'E',
     scope: {},
@@ -12,4 +12,4 @@ let checkboxComponent = () => {
   };
 };
 
-export default checkboxComponent;
+export default checkboxTabletComponent;

@@ -1,6 +1,6 @@
 
 
-class RadioButtonService {
+class RadioService {
   /* @ngInject */
   constructor() {
   }
@@ -9,4 +9,4 @@ class RadioButtonService {
   }
 }
 
-export default RadioButtonService;
+export default RadioService;

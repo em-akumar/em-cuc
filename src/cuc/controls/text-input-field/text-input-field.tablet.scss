@@ -1,0 +1,18 @@
+/* override default input text box */
+input[type="text"], input[type="password"], input[type="number"],  input[type="email"], input[type="ssn"] {
+  height: $input-field-height;
+  border-top: 2px solid $alto;
+  border-radius: 0;
+  @include font-size(regular, $font-size-base,$black);
+  &:hover &:active, &:focus {
+    border-top: 2px solid $curious-blue-light;
+    box-shadow: 0px 0px 0px 2px $tropical-blue;
+  }
+  &[disabled],&[disabled]:hover,&[disabled]:active,&[disabled]:focus {
+    background-color: $silver;
+    border-top: 2px solid $alto;
+  }
+}
+.em-label-disabled, label {
+  @include font-size(regular, $font-size-base, $silver);
+}

@@ -1,16 +1,16 @@
-import radioButtonModule from './radio-button.module';
-import RadioButtonController from './radio-button.controller';
-import radioButtonComponent from './radio-button.component';
-import radioButtonTemplate from './radio-button.html';
+import radioModule from './radio.module';
+import RadioController from './radio.controller';
+import radioComponent from './radio.component';
+import radioTemplate from './radio.html';
 
-describe('RadioButton', () => {
+describe('Radio', () => {
   let $rootScope, makeController; // eslint-disable-line no-unused-vars
 
-  beforeEach(window.module(radioButtonModule.name));
+  beforeEach(window.module(radioModule.name));
   beforeEach(inject((_$rootScope_) => {
     $rootScope = _$rootScope_;
     makeController = () => {
-      return new RadioButtonController();
+      return new RadioController();
     };
   }));
 
@@ -30,16 +30,16 @@ describe('RadioButton', () => {
     // template specs
     // tip: use regex to ensure correct bindings are used e.g., {{  }}
     it('has label in template [REMOVE]', () => {
-      expect(radioButtonTemplate).to.match(/{{\s?::\s?vm\.label\s?}}/g);
+      expect(radioTemplate).to.match(/{{\s?::\s?vm\.label\s?}}/g);
     });
   });
 
   describe('Component', () => {
       // component/directive specs
-    let component = radioButtonComponent();
+    let component = radioComponent();
 
     it('includes the intended template', () => {
-      expect(component.template).to.equal(radioButtonTemplate);
+      expect(component.template).to.equal(radioTemplate);
     });
 
     it('uses `controllerAs` syntax', () => {
@@ -47,7 +47,7 @@ describe('RadioButton', () => {
     });
 
     it('invokes the right controller', () => {
-      expect(component.controller).to.equal(RadioButtonController);
+      expect(component.controller).to.equal(RadioController);
     });
   });
 });

@@ -1,7 +1,7 @@
-import template from './buttons.html';
+import template from './buttons.tablet.html';
 import controller from './buttons.controller';
 
-let buttonsComponent = () => {
+let buttonsTabletComponent = () => {
   return {
     restrict: 'E',
     scope: {},
@@ -12,4 +12,4 @@ let buttonsComponent = () => {
   };
 };
 
-export default buttonsComponent;
+export default buttonsTabletComponent;
