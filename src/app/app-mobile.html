@@ -1,0 +1,71 @@
+<div onresize="vm.onresize()" class="app app-border">
+  <div id="page-wrapper" ng-class="{'open': vm.toggle}" ng-cloak>
+
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+      <ul class="sidebar">
+        <li class="sidebar-main">
+          <a ng-click="vm.toggleSidebar()">
+            Dashboard
+            <span class="menu-icon glyphicon glyphicon-transfer"></span>
+          </a>
+        </li>
+        <li class="sidebar-title">
+          <a ng-click="vm.toggleCollapse()">
+              <span>Mobile Controls</span>
+          </a>
+        </li>
+        <li class="sidebar-list">
+          <a href="#/blockui">Block UI<span class="menu-icon glyphicon glyphicon-stop"></span></a>
+        </li>
+        <li class="sidebar-list">
+          <a href="#/text-input-mobile">Text Input<span class="menu-icon glyphicon glyphicon-sound-dolby"></span></a>
+        </li>
+
+        <li class="sidebar-list">
+          <a href="#">&nbsp;<span class="menu-icon glyphicon glyphicon-credit-card"></span></a>
+        </li>
+      </ul>
+      <div class="sidebar-footer">
+        <div class="col-xs-4">
+          <a href="http://githubdev.dco.elmae/elliemae/em-cuc" target="_blank">
+            Github
+          </a>
+        </div>
+        <div class="col-xs-4">
+          <a href="#" target="_blank">
+            About
+          </a>
+        </div>
+        <div class="col-xs-4">
+          <a href="#" target="_blank">
+            Support
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- End Sidebar -->
+    <div id="content-wrapper">
+      <div class="page-content">
+
+        <!-- Header Bar -->
+        <div class="row header">
+          <div class="col-xs-12">
+            <div class="meta">
+
+            </div>
+          </div>
+        </div>
+        <!-- End Header Bar -->
+
+        <!-- Main Content -->
+        <div ui-view></div>
+
+      </div><!-- End Page Content -->
+    </div><!-- End Content Wrapper -->
+  </div><!-- End Page Wrapper -->
+</div>
+
+
+
+

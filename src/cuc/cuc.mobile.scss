@@ -1,5 +1,6 @@
-@import './common/variables.tablet.scss';
+@import '~ionic-sdk/scss/ionic.scss';
+@import './common/variables.mobile.scss';
 //@import './common/shared/mixins.scss';
 //@import './common/shared/typography.scss';
 
-@import './controls/buttons/buttons.mobile';
+@import './controls/text-input-field/text-input-field.mobile.scss';

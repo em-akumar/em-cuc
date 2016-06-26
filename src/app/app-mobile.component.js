@@ -1,4 +1,4 @@
-import template from './app-tablet.html';
+import template from './app-mobile.html';
 import controller from './app.controller.js';
 import './app.less';
 
