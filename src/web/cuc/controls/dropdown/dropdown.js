@@ -65,17 +65,12 @@ class Dropdown {
     self.actions();
     self.menu.setAttribute('tabindex', '0'); // Fix onblur on Chrome
     self.menu.addEventListener('click', self.toggle, false);
-    self.menu.addEventListener('blur', self.close, false);  //when we call the blur listener with the close function it is not adding the scroll bar as apart of the div and there for closes.
+    self.menu.addEventListener('onmouseup', self.close, false);  //switched from blur to onmouseup due to blur not capturing scroll bar as apart of element
     self.menu.parentNode.addEventListener('click', function(e) {
       e.stopPropagation();
     }, false);
     document.addEventListener('click', self.closeit.bind(self), false);
-
-    /*  document.getElementsByTagName('html')[0].addEventListener('keydown',  ( e )=> {
-     if ( e.keyCode === 27 ) {  //Closes dropdown on Esc key
-     self.menu.parentNode.classList.remove('open');
-     }});*/
-
+    
     self.menu.parentNode.querySelector('.dropdown-menu').addEventListener('mouseover', (e) => {
       let dropdownSelect = self.menu.parentNode.querySelector('.dropdown-menu li.selected-text');
       if (dropdownSelect && dropdownSelect.classList.contains('selected-text')) {
@@ -93,7 +88,6 @@ class Dropdown {
         while (index < list.length) {
           let item = list[index];
           if (item.classList.contains('selected-text')) {
-            // console.log(index, list.length);
             if (list.length - 1 > index) {
               item.classList.remove('selected-text');
               if (list[index + 1] && list[index + 1] !== null) {
@@ -246,7 +240,6 @@ class Dropdown {
 
   closeit(e) {
     var target = this.menu;
-    console.log('from mouse down');
     setTimeout(function() {
       if (target.parentNode && target.parentNode !== null)
         target.parentNode.classList.remove('open');
@@ -271,11 +264,9 @@ class Dropdown {
         e.preventDefault();
       return false;
     };
-
-    //removed function due to blur force closing the menu dropdown on scroll event with use closeit() instead
+    
     self.close = function(e) {
       var target = self.menu;
-      console.log('made it here close');
       setTimeout(function() { // links inside dropdown-menu don't fire without a short delay
         if (target.parentNode && target.parentNode !== null) {
           console.log('parent node', target.parentNode);
