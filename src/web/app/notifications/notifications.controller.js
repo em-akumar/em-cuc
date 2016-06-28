@@ -5,6 +5,7 @@ class NotificationsController {
     this.renderNotification();
     // this.initialize();
   }
+
   //Page notification
   renderNotification() {
     this.pageNotifications = {
@@ -23,22 +24,24 @@ class NotificationsController {
       sliderType: 'success',
       sliderAutoClose: 'false',
       sliderIconFlag: 'true',
-     // isComplex: 'true', // Notification details (complex) 'true', 'false'
-     // complexTmpl: 'Complex details template will come here', // notification details html template
+      // isComplex: 'true', // Notification details (complex) 'true', 'false'
+      // complexTmpl: 'Complex details template will come here', // notification details html template
       containerEl: '#abc' // Container element id.
     };
 
- this.containerNotifications1 = {
+    this.containerNotifications1 = {
       contentTmpl: '<span class="alert-text-header">Errors Found1 - </span><span class="alert-text-body">&nbsp;Error message description.</span>',
       closeButton: 'true',
-      sliderType: 'success',
+      sliderType: 'disabled',
       sliderAutoClose: 'false',
       sliderIconFlag: 'true',
-     // isComplex: 'true', // Notification details (complex) 'true', 'false'
-     // complexTmpl: 'Complex details template will come here', // notification details html template
+      // isComplex: 'true', // Notification details (complex) 'true', 'false'
+      // complexTmpl: 'Complex details template will come here', // notification details html template
       containerEl: '#abc' // Container element id.
     };
+
   }
+
   initialize() {
     this.notificationsService.resolvePromise().then((response) => {
       this.data = response.data;
