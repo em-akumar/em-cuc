@@ -95,7 +95,7 @@
 //For simple grid  --- ToDo: need to optimise with common code
 .em-simple-grid{
   .ui-grid-row {
-    .ng-isolate-scope{
+   //.ng-isolate-scope{
       .ui-grid-cell{
         height: @simple-grid-header-row-container-height !important;
         border-bottom: 1px solid @table-header-row-column-separator;
@@ -108,8 +108,8 @@
           text-align: left;
           vertical-align: middle;
         }
-      }
-    }
+     }
+    //}
     &:nth-child(odd) .ui-grid-cell {
       background-color: @simple-grid-body-row-cell-background-color;
     }
@@ -209,7 +209,7 @@
   }
   .ui-grid-row {
     min-height: @simple-grid-header-row-container-height;
-    .ng-isolate-scope{
+   //.ng-isolate-scope{
       .ui-grid-cell{
         min-height: @simple-grid-header-row-container-height;
         border-bottom: 1px solid @table-header-row-column-separator;
@@ -223,7 +223,7 @@
           vertical-align: middle;
         }
       }
-    }
+   //}
     &:nth-child(odd) .ui-grid-cell {
       background-color: @simple-grid-body-row-cell-background-color;
     }
