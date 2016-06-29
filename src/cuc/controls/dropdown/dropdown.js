@@ -12,7 +12,7 @@ class Dropdown {
           this.options.itemList = this.options.itemList || [];
           this.options.sortField = this.options.sortField || this.options.textField || 'text';
           this.options.sortOrder = this.options.sortOrder || 'asc';
-          this.options.size = this.options.defaultSize || 'medium';
+          this.options.size = this.options.defaultSize || 'flexible-width';
           this.options.textField = this.options.textField || 'name';
           this.options.valueField = this.options.valueField || 'value';
 
