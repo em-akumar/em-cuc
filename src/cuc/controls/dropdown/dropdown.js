@@ -6,46 +6,48 @@ class Dropdown {
     this.reinit();
   }
   reinit() {
-if(this.options !== undefined){
-    if (Object.keys(this.options).length) {
-      this.options.defaultText = (this.options.defaultText === undefined) ? "Select One" : this.options.defaultText;
-      this.options.itemList = this.options.itemList || [];
-      this.options.sortField = this.options.sortField || this.options.textField || 'text';
-      this.options.sortOrder = this.options.sortOrder || 'asc';
-      this.options.size = this.options.defaultSize || 'medium';
+      if(this.options !== undefined) {
+        if(Object.keys(this.options).length) {
+          this.options.defaultText = (this.options.defaultText === undefined) ? "Select One" : this.options.defaultText;
+          this.options.itemList = this.options.itemList || [];
+          this.options.sortField = this.options.sortField || this.options.textField || 'text';
+          this.options.sortOrder = this.options.sortOrder || 'asc';
+          this.options.size = this.options.defaultSize || 'medium';
+          this.options.textField = this.options.textField || 'name';
+          this.options.valueField = this.options.valueField || 'value';
 
-      //Sort dropdown values
-      if (this.options.itemList) {
-        var len = this.options.itemList.length;
-        for (var i = len-1; i>=0; i--){
-          for(var j = 1; j<=i; j++){
-            if(this.options.itemList[j-1][this.options.sortField].toLowerCase() > this.options.itemList[j][this.options.sortField].toLowerCase()){
-              var temp = this.options.itemList[j-1];
-              this.options.itemList[j-1] = this.options.itemList[j];
-              this.options.itemList[j] = temp;
+          //Sort dropdown values
+          if(this.options.itemList) {
+            var len = this.options.itemList.length;
+            for(var i = len - 1; i >= 0; i--) {
+              for(var j = 1; j <= i; j++) {
+                if(this.options.itemList[j - 1][this.options.sortField].toLowerCase() > this.options.itemList[j][this.options.sortField].toLowerCase()) {
+                  var temp = this.options.itemList[j - 1];
+                  this.options.itemList[j - 1] = this.options.itemList[j];
+                  this.options.itemList[j] = temp;
+                }
+              }
             }
           }
-        }
-      }
 
-      var IconFlag = false;
-      for (var i = 0; i < this.options.itemList.length; i++) {
+          var IconFlag = false;
+          for(var i = 0; i < this.options.itemList.length; i++) {
 
-          if (this.options.itemList[i].leftImage != undefined) {
+            if(this.options.itemList[i].leftImage != undefined) {
               IconFlag = true;
               break;
+            }
           }
-      }
 
-      this.template = `<button  class="btn dropdown-toggle ${this.options.size}" type="button"  aria-haspopup="true" aria-expanded="true"><span class="selectedText pull-left ${this.options.size}">${this.options.defaultText || '&nbsp;'}</span>
-			<span class="caret"></span>
-			</button>
-			<ul class="dropdown-menu ${this.options.size}" role="menu">
-			${this.options.itemList.map((value, i) =>
+          this.template = `<button  class="btn dropdown-toggle ${this.options.size}" type="button"  aria-haspopup="true" aria-expanded="true"><span class="selectedText pull-left ${this.options.size}">${this.options.defaultText || '&nbsp;'}</span>
+      <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu ${this.options.size}" role="menu">
+      ${this.options.itemList.map((value, i) =>
         ` ${value.divider ? '<li class="divider"></li>' : ''}<li value="${value[this.options.valueField || 'value']}" class="${value.class === undefined ? '' : value.class}"><a value="${value[this.options.valueField || 'value']}">${value.leftImage!==undefined? `<img class="em-left-icon" src="${value.leftImage}" />`: (IconFlag === true) ? '<span class="em-left-icon"></span>':''} ${value[this.options.textField|| 'text']}
        ${value.rightImage!==undefined? `<img class="em-right-icon" src="${value.rightImage}" />`:``}</a> </li>`
         ).join('') }
-			</ul>`;
+      </ul>`;
       this.mainParent.innerHTML = this.template;
     }
     this.menu = this.mainParent.querySelector(".btn");
@@ -139,8 +141,8 @@ if(this.options !== undefined){
   setSelected(value) {
     var self = this;
     self.menu.parentNode.querySelector(".btn .selectedText").innerHTML = value[this.options.textField || 'text'];
-				self.menu.parentNode.querySelector(".btn .selectedText").setAttribute('value', value[this.options.valueField || 'value']);
-				if (!self.menu.parentNode.querySelector(".btn").classList.contains("completed")) {
+        self.menu.parentNode.querySelector(".btn .selectedText").setAttribute('value', value[this.options.valueField || 'value']);
+        if (!self.menu.parentNode.querySelector(".btn").classList.contains("completed")) {
       self.menu.parentNode.querySelector(".btn").classList.add("completed");
         }
   }
