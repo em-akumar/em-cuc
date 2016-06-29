@@ -337,6 +337,16 @@ let ColorPicker = (function(window, document, undefined) {
     };
   }
 
+  function loadColors(_this, colorvalue) {
+    _.each(colorvalue, function(value, key) {
+      let loadValue = value.value;
+      if (loadValue.length > 2) {
+        applyValidation(value);
+        displayColor(_this, value.value, true);
+      }
+    })
+  }
+
   function displayColor(self, colorValue, perColor) {
     if (colorValue !== '') {
       self.mainElement.querySelector('.color-holder').style.backgroundColor = '#' + colorValue;
@@ -437,6 +447,9 @@ let ColorPicker = (function(window, document, undefined) {
       divTemp.childNodes[0], mainElement.querySelector('button').nextSibling);
     this.mainElement = mainElement;
 
+    let colorvalue = document.getElementsByClassName('em-input-color');
+    loadColors(this, colorvalue);
+
     document.getElementsByTagName('html')[0].addEventListener('click', function(e) {
       this.mainElement.querySelector('button').parentNode.classList.remove('open');
     }.bind(this));
@@ -461,7 +474,7 @@ let ColorPicker = (function(window, document, undefined) {
     });
 
     var slideElement = this.mainElement.querySelector('.color-picker');
-    if (this.mainElement.querySelector('.em-input-color')) {
+    if (true) {
       this.textBox = this.mainElement.querySelector('.em-input-color');
       this.textBox.addEventListener('keypress', (e) => {
         var keycode = (e.which) ? e.which : e.keyCode;
