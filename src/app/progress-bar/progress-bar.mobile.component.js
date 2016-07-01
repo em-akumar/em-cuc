@@ -1,7 +1,7 @@
-import template from './progress-bar.html';
+import template from './progress-bar-mobile.html';
 import controller from './progress-bar.controller';
 
-let progressBarComponent = () => {
+let progressBarMobileComponent = () => {
   return {
     restrict: 'E',
     scope: {},
@@ -12,4 +12,4 @@ let progressBarComponent = () => {
   };
 };
 
-export default progressBarComponent;
+export default progressBarMobileComponent;

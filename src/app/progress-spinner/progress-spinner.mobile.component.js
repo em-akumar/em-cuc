@@ -1,7 +1,7 @@
-import template from './progress-spinner.html';
+import template from './progress-spinner-mobile.html';
 import controller from './progress-spinner.controller';
 
-let progressSpinnerComponent = () => {
+let progressSpinnerMobileComponent = () => {
   return {
     restrict: 'E',
     scope: {},
@@ -12,4 +12,4 @@ let progressSpinnerComponent = () => {
   };
 };
 
-export default progressSpinnerComponent;
+export default progressSpinnerMobileComponent;

@@ -1,7 +1,7 @@
 class ProgressBarController {
   /* @ngInject */
   constructor(ProgressBarService, $timeout) {
-    this.progressBarService = ProgressBarService;
+ /*   this.progressBarService = ProgressBarService;
     this.$timeout = $timeout;
     // this.initialize();
     this.opt =
@@ -11,7 +11,7 @@ class ProgressBarController {
       };
     this.$timeout(() => {
       this.pbar.doProgress();
-    });
+    });*/
   }
   initialize() {
     this.progressBarService.resolvePromise().then((response) => {

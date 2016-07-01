@@ -34,8 +34,8 @@ import notifications from './notifications/notifications.module';
 
 import toggleSwitch from './toggle-switch/toggle-switch.module';
 import tooltips from './tooltips/tooltips.module';
-import progressSpinner from './progress-spinner/progress-spinner.module';
-import progressBar from './progress-bar/progress-bar.module';
+import progressSpinner from './progress-spinner/progress-spinner.tablet.module';
+import progressBar from './progress-bar/progress-bar.tablet.module';
 import paragraph from './paragraph/paragraph.module';
 import reodropdownT from './reo-dropdown-t/reo-dropdown-t.module';
 

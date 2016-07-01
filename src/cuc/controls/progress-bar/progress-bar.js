@@ -1,5 +1,5 @@
 /* eslint-disable */
-class ProgressBar {
+/*class ProgressBar {
     constructor(el, options = {}) {
         this.mailEl = (typeof el === 'object') ? el : document.getElementById(el);
         this.options = options;
@@ -14,8 +14,6 @@ class ProgressBar {
         this.reverse = this.options.reverse || false;
     }
     progress(percent) {
-        // document.querySelector('.em-lightBox-progress-bar').style.left = document.querySelector('.em-lightBox-progress-bar').parentNode.offsetLeft + 'px';
-        // document.querySelector('.em-lightBox-progress-bar').style.top = document.querySelector('.em-lightBox-progress-bar').parentNode.offsetTop + 'px';
 
         if (this.progressbar != "null" || this.progressbar !== undefined) {
             this.progressbar.style.width = percent + '%';
@@ -46,4 +44,4 @@ class ProgressBar {
     }
 }
 
-export {ProgressBar};
+export {ProgressBar};*/
