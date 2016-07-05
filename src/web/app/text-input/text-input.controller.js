@@ -7,8 +7,6 @@ class TextInputController {
       defaultText: '323222322',
       onChange: (target) => {
           // ssn value chnage handler.
-console.log(target.element.value);
-        console.log(target.element.getAttribute('unmaskedval'));
       }
     }
 
