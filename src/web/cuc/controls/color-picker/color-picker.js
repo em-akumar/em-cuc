@@ -1,6 +1,5 @@
 /* eslint-disable */
-let ColorPicker = (function(window, document, undefined) {
-
+let ColorPicker = (function(window, document, opts) {
   var type =
     (window.SVGAngle ||
     document.implementation.hasFeature('http://www.w3.org/TR/SVG11/feature#BasicStructure', '1.1')
@@ -337,6 +336,8 @@ let ColorPicker = (function(window, document, undefined) {
     };
   }
 
+
+
   function displayColor(self, colorValue, perColor) {
     if (colorValue !== '') {
       self.mainElement.querySelector('.color-holder').style.backgroundColor = '#' + colorValue;
@@ -461,7 +462,7 @@ let ColorPicker = (function(window, document, undefined) {
     });
 
     var slideElement = this.mainElement.querySelector('.color-picker');
-    if (this.mainElement.querySelector('.em-input-color')) {
+    if (true) {
       this.textBox = this.mainElement.querySelector('.em-input-color');
       this.textBox.addEventListener('keypress', (e) => {
         var keycode = (e.which) ? e.which : e.keyCode;
@@ -555,11 +556,15 @@ let ColorPicker = (function(window, document, undefined) {
         ColorPicker.positionIndicators(slideIndicator, pickerIndicator,
           slideCoordinate, pickerCoordinate);
         if (this.mainElement) {
+          this.mainElement.addEventListener('click', (e) => {
+            var pickedColor = mainElement.querySelector('.em-input-color').value;
+            this.callbackSelected(pickedColor);
+          });
+
+          //callback();
 
           integrateEM(this.mainElement, hex, rgb);
         }
-        // if(pickerElement){
-        // pickerElement(hex, hsv, rgb);}
       };
 
     } else {
@@ -756,16 +761,15 @@ let ColorPicker = (function(window, document, undefined) {
     displayColor(this, colorValue);
   };
 
+  ColorPicker.prototype.setCallback = function(callback) {
+    this.callbackSelected = callback;
+  };
   /**
-   * Sets color of the picker in hsv format.
-   * @param {object} hsv Object of the form: { h: <hue>, s: <saturation>, v:
-   * <value> }.
-   */
-  ColorPicker.prototype.setHsv = function(hsv) {
+   ColorPicker.prototype.setHsv = function(hsv) {
     return setColor(this, hsv);
   };
 
-  /**
+   /**
    * Sets color of the picker in rgb format.
    * @param {object} rgb Object of the form: { r: <red>, g: <green>, b: <blue>
    * }.
