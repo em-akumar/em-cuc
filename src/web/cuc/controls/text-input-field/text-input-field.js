@@ -23,6 +23,15 @@ class TextInputField {
       if (self.element.getAttribute('type') == 'ssn') {
         self.span_password.setAttribute('class', 'em-toggle-show-password');
         self.element.setAttribute(this.ssnMaskModeAttr, this.ssnMaskModes.masked);
+
+        if (this.options !== undefined) {
+          if (Object.keys(this.options).length) {
+            this.options.defaultText = this.options.defaultText || '';
+            this.setCurrentVal(this.options.defaultText);
+          }
+        }
+
+
       } else {
         self.span_password.setAttribute('class', 'em-toggle-password');
       }
@@ -32,7 +41,7 @@ class TextInputField {
       self.span_password.addEventListener('click', () => {
           this.addOnPassword();
       }, false);
-      self.element.addEventListener('blur', e => {
+     /* self.element.addEventListener('blur', e => {
         var parentDiv = (self.element.parentElement).parentElement;
         if (self.element.getAttribute('type') === 'ssn' && /(\d{3}-\d{2}|\*{3}-\*{2})-\d{4}/.test(self.element.value)) {
           parentDiv.classList.remove('has-error');
@@ -40,7 +49,7 @@ class TextInputField {
         else {
           parentDiv.classList.add('has-error');
         }
-      });
+      });*/
 
       self.element.addEventListener('keydown', e => {
         if (self.element.getAttribute('type') === 'ssn') {
