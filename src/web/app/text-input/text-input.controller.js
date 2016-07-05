@@ -4,7 +4,12 @@ class TextInputController {
     this.textInputService = TextInputService;
 
     this.options = {
-        defaultText: '323222322'
+      defaultText: '323222322',
+      onChange: (target) => {
+          // ssn value chnage handler.
+console.log(target.element.value);
+        console.log(target.element.getAttribute('unmaskedval'));
+      }
     }
 
     // this.initialize();
