@@ -568,7 +568,6 @@ let ColorPicker = (function(window, document, opts) {
         if (this.mainElement) {
           this.mainElement.addEventListener('click', (e) => {
             var pickedColor = mainElement.querySelector('.em-input-color').value;
-            console.log('the pickker selected', pickedColor);
             this.callbackSelected(pickedColor);
           });
 
