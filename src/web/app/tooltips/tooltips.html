@@ -3,20 +3,20 @@
     <div class="col-md-12">
       <div class="panel-body">
         <label class="radio-group-header">Tooltip Control</label>
-         <p>Please use Angular UI bootstrap documention for tooltip. Please click <a href="https://angular-ui.github.io/bootstrap/#/tooltip" target="_blank">here</a></p>
+        <p>Please use Angular UI bootstrap documention for tooltip. Please click <a href="https://angular-ui.github.io/bootstrap/#/tooltip" target="_blank">here</a></p>
         <div>
-          <a href="#" uib-tooltip="I’m the tooltip text."
+          <a href="#" uib-tooltip="I’m the tooltip text.I’m the tooltip text I’m the tooltip text I’m the tooltip text I’m the tooltip text I’m the tooltip text I’m the tooltip text I’m the tooltip text I’m the tooltip text I’m the tooltip text I’m the tooltip text I’m the tooltip text I’m the tooltip text I’m the tooltip text I’m the tooltip text" tooltip-class="em-tools"
              tooltip-placement="top" tooltip-trigger="mouseenter">Tooltip Top</a>
         </div>
 
         <div class="form-group">
-            <label>Tooltip Example</label>
-            <input type="text" name="zipcode" class="form-control" uib-tooltip="I’m the tooltip text."
-             tooltip-placement="bottom" tooltip-trigger="mouseenter">
+          <label>Tooltip Example</label>
+          <input type="text" name="zipcode" class="form-control" uib-tooltip="I’m the tooltip text.I’m the tooltip text I’m the tooltip text I’m the tooltip text I’m the tooltip text I’m the tooltip text I’m the tooltip text I’m the tooltip text I’m the tooltip text I’m the tooltip text I’m the tooltip text I’m the tooltip text I’m the tooltip text I’m the tooltip text I’m the tooltip text" tooltip-class="em-tools-lg"
+                 tooltip-placement="bottom" tooltip-trigger="mouseenter">
         </div>
         <div class="form-group">
-            <button type="button" class="btn btn-primary btn-md" uib-tooltip="I’m the tooltip text."
-             tooltip-placement="right" tooltip-trigger="mouseenter">Medium</button>
+          <button type="button" class="btn btn-primary btn-md" uib-tooltip="I’m the tooltip text."
+                  tooltip-placement="right" tooltip-trigger="mouseenter">Medium</button>
         </div>
       </div>
     </div>
@@ -33,8 +33,8 @@
 
         &lt;div class=&quot;form-group&quot;&gt;
             &lt;label&gt;Tooltip Example&lt;/label&gt;
-            &lt;input type=&quot;text&quot; name=&quot;zipcode&quot; class=&quot;form-control&quot; uib-tooltip=&quot;I’m the tooltip text.&quot;
-             tooltip-placement=&quot;bottom&quot; tooltip-trigger=&quot;mouseenter&quot;&gt;
+            &lt;input type=&quot;text&quot; name=&quot;zipcode&quot; class=&quot;form-control&quot; tooltip-class=&quot;em-tools-lg&quot;
+            uib-tooltip=&quot;I’m the tooltip text.&quot;tooltip-placement=&quot;bottom&quot; tooltip-trigger=&quot;mouseenter&quot;&gt;
         &lt;/div&gt;
         &lt;div class=&quot;form-group&quot;&gt;
             &lt;button type=&quot;button&quot; class=&quot;btn btn-primary btn-md&quot; uib-tooltip=&quot;I’m the tooltip text.&quot;
@@ -42,6 +42,33 @@
         &lt;/div&gt;</code></pre>
       <pre class="codepen-able" id="css-default" data-type="css"></pre>
     </div>
+  </div>
+
+  <div class="table-responsive em-table">
+    <table class="table table-striped table-hover">
+      <tbody>
+      <tr>
+        <th style="width:20%;">Class/Properties</th>
+        <th style="width:72%;">Description</th>
+      </tr>
+      <tr>
+        <td>tooltip-class = ""</td>
+        <td>Gives you the ability to create a custom class for your tool tip or use a predefined cuc one </td>
+      </tr>
+      <tr>
+        <td>.em-tools</td>
+        <td>This class is for a small width tool tip</td>
+      </tr>
+      <tr>
+        <td>.em-tools-md</td>
+        <td>This class is for a medium width tool tip</td>
+      </tr>
+      <tr>
+        <td>.em-tools-lg</td>
+        <td>This class is for a large width tool tip</td>
+      </tr>
+      </tbody>
+    </table>
   </div>
 
 </div>
