@@ -1,6 +1,5 @@
 /* eslint-disable */
 let ColorPicker = (function(window, document, opts) {
-  console.log('opts ', opts);
   var type =
     (window.SVGAngle ||
     document.implementation.hasFeature('http://www.w3.org/TR/SVG11/feature#BasicStructure', '1.1')
@@ -567,27 +566,16 @@ let ColorPicker = (function(window, document, opts) {
         ColorPicker.positionIndicators(slideIndicator, pickerIndicator,
           slideCoordinate, pickerCoordinate);
         if (this.mainElement) {
-          console.log('pick your battles', pickerIndicator);
           this.mainElement.addEventListener('click', (e) => {
-            console.log('we made it here', e);
-            var pickedColor = pickerIndicator;
+            var pickedColor = mainElement.querySelector('.em-input-color').value;
             console.log('the pickker selected', pickedColor);
-            this.callbackSelected(e);
+            this.callbackSelected(pickedColor);
           });
 
-          callback();
-          // // if (this.mainElement.querySelector('.em-input-color')) {
-          // //     this.textBox = this.mainElement.querySelector('.em-input-color');
-          // //     this.textBox.addEventListener('keypress', function(e) {
-          // var boom = this.mainElement.querySelector('.picker-indicator');
-          // pickerIndicator.addEventListener('click', function(e) {
-          //   var pickIt = e.srcElement || e.target;
-          //   console.log('do you have your target!', pickIt)
-          // })
+          //callback();
+
           integrateEM(this.mainElement, hex, rgb);
         }
-        // if(pickerElement){
-        // pickerElement(hex, hsv, rgb);}
       };
 
     } else {

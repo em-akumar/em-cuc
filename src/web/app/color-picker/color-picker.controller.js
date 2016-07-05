@@ -14,7 +14,7 @@ class ColorPickerController {
   }
 
   notifyMe(event) {
-    console.log('Notify me' + event);
+    console.log('Notify me ' + event);
   }
 }
 export default ColorPickerController;
