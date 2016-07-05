@@ -1,6 +1,6 @@
 /* eslint-disable */
-let ColorPicker = (function(window, document, undefined) {
-
+let ColorPicker = (function(window, document, opts) {
+  console.log('opts ', opts);
   var type =
     (window.SVGAngle ||
     document.implementation.hasFeature('http://www.w3.org/TR/SVG11/feature#BasicStructure', '1.1')
@@ -447,9 +447,6 @@ let ColorPicker = (function(window, document, undefined) {
       divTemp.childNodes[0], mainElement.querySelector('button').nextSibling);
     this.mainElement = mainElement;
 
-    let colorvalue = document.getElementsByClassName('em-input-color');
-    loadColors(this, colorvalue);
-
     document.getElementsByTagName('html')[0].addEventListener('click', function(e) {
       this.mainElement.querySelector('button').parentNode.classList.remove('open');
     }.bind(this));
@@ -475,6 +472,8 @@ let ColorPicker = (function(window, document, undefined) {
 
     var slideElement = this.mainElement.querySelector('.color-picker');
     if (true) {
+      let colorvalue = document.getElementsByClassName('em-input-color');
+      loadColors(this, colorvalue);
       this.textBox = this.mainElement.querySelector('.em-input-color');
       this.textBox.addEventListener('keypress', (e) => {
         var keycode = (e.which) ? e.which : e.keyCode;
@@ -568,7 +567,23 @@ let ColorPicker = (function(window, document, undefined) {
         ColorPicker.positionIndicators(slideIndicator, pickerIndicator,
           slideCoordinate, pickerCoordinate);
         if (this.mainElement) {
+          console.log('pick your battles', pickerIndicator);
+          this.mainElement.addEventListener('click', (e) => {
+            console.log('we made it here', e);
+            var pickedColor = pickerIndicator;
+            console.log('the pickker selected', pickedColor);
+            this.callbackSelected(e);
+          });
 
+          callback();
+          // // if (this.mainElement.querySelector('.em-input-color')) {
+          // //     this.textBox = this.mainElement.querySelector('.em-input-color');
+          // //     this.textBox.addEventListener('keypress', function(e) {
+          // var boom = this.mainElement.querySelector('.picker-indicator');
+          // pickerIndicator.addEventListener('click', function(e) {
+          //   var pickIt = e.srcElement || e.target;
+          //   console.log('do you have your target!', pickIt)
+          // })
           integrateEM(this.mainElement, hex, rgb);
         }
         // if(pickerElement){
@@ -769,16 +784,15 @@ let ColorPicker = (function(window, document, undefined) {
     displayColor(this, colorValue);
   };
 
+  ColorPicker.prototype.setCallback = function(callback) {
+    this.callbackSelected = callback;
+  };
   /**
-   * Sets color of the picker in hsv format.
-   * @param {object} hsv Object of the form: { h: <hue>, s: <saturation>, v:
-   * <value> }.
-   */
-  ColorPicker.prototype.setHsv = function(hsv) {
+   ColorPicker.prototype.setHsv = function(hsv) {
     return setColor(this, hsv);
   };
 
-  /**
+   /**
    * Sets color of the picker in rgb format.
    * @param {object} rgb Object of the form: { r: <red>, g: <green>, b: <blue>
    * }.
