@@ -336,15 +336,7 @@ let ColorPicker = (function(window, document, opts) {
     };
   }
 
-  function loadColors(_this, colorvalue) {
-    _.each(colorvalue, function(value, key) {
-      let loadValue = value.value;
-      if (loadValue.length > 2) {
-        applyValidation(value);
-        displayColor(_this, value.value, true);
-      }
-    })
-  }
+
 
   function displayColor(self, colorValue, perColor) {
     if (colorValue !== '') {
@@ -471,8 +463,6 @@ let ColorPicker = (function(window, document, opts) {
 
     var slideElement = this.mainElement.querySelector('.color-picker');
     if (true) {
-      let colorvalue = document.getElementsByClassName('em-input-color');
-      loadColors(this, colorvalue);
       this.textBox = this.mainElement.querySelector('.em-input-color');
       this.textBox.addEventListener('keypress', (e) => {
         var keycode = (e.which) ? e.which : e.keyCode;
