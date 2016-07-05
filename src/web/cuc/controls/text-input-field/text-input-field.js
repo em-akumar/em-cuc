@@ -169,6 +169,11 @@ class TextInputField {
         var self = this;
         self.element.setAttribute(this.unmaskedValAttr, val);
         self.element.value = this.toSsnString(val);
+        if (this.options) {
+          if (this.options.onChange) {
+            this.options.onChange(self);
+          }
+        }
       }
 
      removeText(startIndex, endIndex) {
