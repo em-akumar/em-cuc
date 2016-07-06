@@ -248,6 +248,7 @@ cuc.directive('uiGridCustomPaging', function ($compile,$timeout) {
         }
         scope._pageListNumItems = uiGridctrl.grid.options.paginationPageSizes.map((val) => { return { value: val.toString(), text: val.toString() };});
         scope.pagingSelectOptions = {
+          sortFieldType: 'number',
           defaultText: uiGridctrl.grid.options.paginationPageSize,
           onChange: function (e) {
             scope._onPageSelectLeave();
