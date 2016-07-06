@@ -14,25 +14,44 @@ class Dropdown {
         this.options.sortField = this.options.sortField || this.options.textField || 'text';
         this.options.sortOrder = this.options.sortOrder || 'asc';
         this.options.size = this.options.defaultSize || 'medium';
+        this.sortFieldType = this.options.sortFieldType || 'text';
 
         //Sort dropdown values
-        if (this.options.itemList) {
-          var len = this.options.itemList.length;
-          for (var i = len - 1; i >= 0; i--) {
-            for (var j = 1; j <= i; j++) {
-              if (this.options.itemList[j - 1][this.options.sortField].toLowerCase() > this.options.itemList[j][this.options.sortField].toLowerCase()) {
-                var temp = this.options.itemList[j - 1];
-                this.options.itemList[j - 1] = this.options.itemList[j];
-                this.options.itemList[j] = temp;
-              }
+        this.itemList =  this.options.itemList.slice(0);
+        if (this.itemList) {
+          this.itemList = this.itemList.sort((a, b) => {
+            if (this.sortFieldType === 'number') {
+              a = Number(a[this.options.sortField]);
+              b = Number(b[this.options.sortField]);
             }
-          }
+            else {
+              a = a[this.options.sortField].toLowerCase();
+              b = b[this.options.sortField].toLowerCase();
+            }
+            if (this.options.sortOrder === 'asc')
+              return a > b;
+            else
+              return a < b;
+          });
         }
+         //this.options.itemList = this.itemList;
+        //  if (this.options.itemList) {
+        //   var len = this.options.itemList.length;
+        //   for (var i = len - 1; i >= 0; i--) {
+        //     for (var j = 1; j <= i; j++) {
+        //       if (this.options.itemList[j - 1][this.options.sortField].toLowerCase() > this.options.itemList[j][this.options.sortField].toLowerCase()) {
+        //         var temp = this.options.itemList[j - 1];
+        //         this.options.itemList[j - 1] = this.options.itemList[j];
+        //         this.options.itemList[j] = temp;
+        //       }
+        //     }
+        //   }
+        // }
 
         var IconFlag = false;
-        for (var i = 0; i < this.options.itemList.length; i++) {
+        for (var i = 0; i < this.itemList.length; i++) {
 
-          if (this.options.itemList[i].leftImage != undefined) {
+          if (this.itemList[i].leftImage != undefined) {
             IconFlag = true;
             break;
           }
@@ -42,7 +61,7 @@ class Dropdown {
 			<span class="caret"></span>
 			</button>
 			<ul class="dropdown-menu ${this.options.size}" role="menu">
-			${this.options.itemList.map((value, i) =>
+			${this.itemList.map((value, i) =>
           ` ${value.divider ? '<li class="divider"></li>' : ''}<li value="${value[this.options.valueField || 'value']}" class="${value.class === undefined ? '' : value.class}"><a value="${value[this.options.valueField || 'value']}">${value.leftImage !== undefined ? `<img class="em-left-icon" src="${value.leftImage}" />` : (IconFlag === true) ? '<span class="em-left-icon"></span>' : ''} ${value[this.options.textField || 'text']}
        ${value.rightImage !== undefined ? `<img class="em-right-icon" src="${value.rightImage}" />` : ``}</a> </li>`
         ).join('') }
@@ -70,7 +89,7 @@ class Dropdown {
       e.stopPropagation();
     }, false);
     document.addEventListener('click', self.closeit.bind(self), false);
-    
+
     self.menu.parentNode.querySelector('.dropdown-menu').addEventListener('mouseover', (e) => {
       let dropdownSelect = self.menu.parentNode.querySelector('.dropdown-menu li.selected-text');
       if (dropdownSelect && dropdownSelect.classList.contains('selected-text')) {
@@ -264,7 +283,7 @@ class Dropdown {
         e.preventDefault();
       return false;
     };
-    
+
     self.close = function(e) {
       var target = self.menu;
       setTimeout(function() { // links inside dropdown-menu don't fire without a short delay
