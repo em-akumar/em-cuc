@@ -2,6 +2,14 @@ class TextInputController {
   /* @ngInject */
   constructor(TextInputService) {
     this.textInputService = TextInputService;
+
+    this.options = {
+      defaultText: '323222322',
+      onChange: (target) => {
+          // ssn value chnage handler.
+      }
+    }
+
     // this.initialize();
     this.change_event = ($event) => {
       console.log(angular.element($event.srcElement).hasClass('locked'));

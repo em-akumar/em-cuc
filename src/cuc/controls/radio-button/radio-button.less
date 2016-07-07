@@ -5,7 +5,7 @@
   height: 17px;
   margin-left: 0px;
   &:checked + label:before {
-    background: radial-gradient(at center, #fff 1px, @radiobutton-checked-background-color 1px);
+    background: radial-gradient(at center, #fff 2px, @radiobutton-checked-background-color 3px);
     border: 1px solid @radiobutton-checked-border-color;
   }
   &:disabled + label {
@@ -45,7 +45,7 @@
 
 .radio label {
   line-height: 1.4;
-  cursor: default;
+  cursor: pointer;
 }
 
 .radio input[type="radio"]:not([disabled]) + label {
@@ -59,7 +59,7 @@
   font-size: @font-size-base;
   &:before {
     content: "";
-    cursor: pointer;
+    cursor: default;
     position: absolute;
     top: 0;
     left: 0;

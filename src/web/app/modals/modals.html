@@ -1,0 +1,59 @@
+<div class="app controls buttons">
+  <div class="row">
+    <div class="app modals">
+      <button type="button" class="btn btn-default" ng-click="vm.open('lg')">Open me!</button>
+    </div>
+    <br>
+    <!-- Default drodown Controls Usage -->
+    <div class="panel panel-primary">
+      <div class="panel-heading">Default Drodown and diffrent label position Usage</div>
+      <div class="codepen-group">
+      <pre class="codepen-able" data-type="html"><code class="language-css">
+            &lt;div&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot; ng-click=&quot;vm.open('lg')&quot;&gt;&lt;/button&gt;
+           &lt;/div&gt;
+
+           </code></pre>
+        <pre class="codepen-able" data-type="css"></pre>
+      <pre class="codepen-able" data-type="js"><!-- Please put this code in angular controller -->open(size) {
+      let modalInstance = this.$uibModal.open({
+      template: &#39;ModalTemplate&#39;,
+      controller: &#39;ModalController&#39;,
+      size: &#39;size&#39;,
+      windowClass: &#39;em-modal&#39;
+    };</pre>
+      </div>
+    </div>
+
+    <div class="table-responsive em-table">
+      <table class="table table-striped table-hover">
+        <tbody>
+        <tr>
+          <th style="width:20%;">Class/Properties</th>
+          <th style="width:72%;">Description</th>
+        </tr>
+        <tr>
+          <td>.em-modal</td>
+          <td>This class gives you header round edges</td>
+        </tr>
+        <tr>
+          <td>Template</td>
+          <td>This is where you define the template for a modal</td>
+        </tr>
+        <tr>
+          <td>Controller</td>
+          <td>Defines the controller associated with the modal</td>
+        </tr>
+        <tr>
+          <td>Size</td>
+          <td>This defines the size of the modal pop up</td>
+        </tr>
+        <tr>
+          <td>windowClass</td>
+          <td>Defines the class you would like your modal to have ex. 'em-modal'</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

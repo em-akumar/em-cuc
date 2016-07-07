@@ -22,7 +22,7 @@ import dropdown from './dropdown/dropdown.module';
 import dropdownEdit from './dropdown-edit/dropdown-edit.module';
 import colorPicker from './color-picker/color-picker.module';
 import ckEditor from './ckEditor/ckEditor.module';
-import modal from './modal/modal.module';
+import modals from './modals/modals.module';
 import datepicker from './datepicker/datepicker.module';
 import checkbox from './checkbox/checkbox.module';
 import panel from './panel/panel.module';
@@ -36,12 +36,14 @@ import progressSpinner from './progress-spinner/progress-spinner.module';
 import progressBar from './progress-bar/progress-bar.module';
 import paragraph from './paragraph/paragraph.module';
 import reodropdownT from './reo-dropdown-t/reo-dropdown-t.module';
+import icons from './icons/icons.module';
+
 
 let appModule = angular.module('app', [ uiRouter, 'cuc', 'ui.grid', 'ui.bootstrap', 'ngMessages', 'ui.mask',
   buttons.name, textInput.name, textArea.name, fileUploader.name, dropdownEdit.name, grid.name, dropdown.name,
-  colorPicker.name, modal.name, datepicker.name, checkbox.name, panel.name, errorHandling.name, imageButton.name,
+  colorPicker.name, modals.name, datepicker.name, checkbox.name, panel.name, errorHandling.name, imageButton.name,
   notifications.name, radio.name, toggleSwitch.name, tooltips.name, ckEditor.name, blockui.name,
-  progressSpinner.name, progressBar.name, paragraph.name, reodropdownT.name ]);
+  progressSpinner.name, progressBar.name, paragraph.name, reodropdownT.name, icons.name]);
 
 appModule.config(($stateProvider, $urlRouterProvider) => {
   $stateProvider.state('app', {

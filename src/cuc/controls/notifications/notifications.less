@@ -12,14 +12,14 @@
     height: 64px;
   }
   &.box-div-email {
-   height: 50px;
+    height: 50px;
   }
-    &.box-div-alert {
-        height: 50px;
-    }
-    &.box-div-notice {
-        height: 50px;
-    }
+  &.box-div-alert {
+    height: 50px;
+  }
+  &.box-div-notice {
+    height: 50px;
+  }
 }
 
 .noti-icon {
@@ -45,7 +45,7 @@
   color: @white;
 }
 
-.noti-read-more:hover , .view-all:hover{
+.noti-read-more:hover, .view-all:hover {
   color: @white;
   text-decoration: underline;
 }
@@ -283,6 +283,7 @@
     position: relative;
   }
 }
+
 .noti-details-div {
   width: 100%;
   max-height: 200px;
@@ -319,6 +320,13 @@
   padding: 4px 12px 6px 13px;
 }
 
+.alert-disabled-slider-icon {
+  background-size: @notification-modal-badge-icon-size @notification-modal-badge-icon-size;
+  border: 0;
+  background-repeat: no-repeat;
+  padding: 4px 12px 6px 13px;
+}
+
 .alert-success {
   background-color: #00B874;
 }
@@ -331,6 +339,10 @@
   background-color: #FF8A41;
 }
 
+.alert-disabled {
+  background-color: #777777;
+}
+
 .alert {
   //position: relative;
   width: 100%;
@@ -340,7 +352,7 @@
   padding: 8px 15px;
   margin-bottom: 0;
 
-  &.alert-page{
+  &.alert-page {
     text-align: center;
   }
   &.alert-container {
@@ -379,7 +391,7 @@
 
 .noti-slider-icon {
   display: inline-block;
- // background-color: @white;
+  // background-color: @white;
   width: 24px;
   height: 24px;
   border-radius: 50%;
@@ -419,25 +431,27 @@ label.checkbox-slider-noti {
 /* Error Handling Classes */
 
 .form-group.required .control-label:after {
-  content:"*";
-  color:@error-text-color;
-}
-.help-block{
-    color:@error-text-color;
-    font-family: @font-family-base;
-    font-size: @font-size-base;
-    color: @error-text-color;
-    margin-top: 5px;
-    max-width: @text-line-max-width;
-    text-align: left;
+  content: "*";
+  color: @error-text-color;
 }
 
-.error-message-icon{
-    background:url("../../assets/images/icon-badge-warning-red-medium.svg") left center/contain no-repeat;
-    background-size: 12px;
-    display: table-cell;
-  }
-.error-message{
+.help-block {
+  color: @error-text-color;
+  font-family: @font-family-base;
+  font-size: @font-size-base;
+  color: @error-text-color;
+  margin-top: 5px;
+  max-width: @text-line-max-width;
+  text-align: left;
+}
+
+.error-message-icon {
+  background: url("../../assets/images/icon-badge-warning-red-medium.svg") left center/contain no-repeat;
+  background-size: 12px;
   display: table-cell;
-  padding:5px 0 0 20px;
+}
+
+.error-message {
+  display: table-cell;
+  padding: 5px 0 0 20px;
 }
