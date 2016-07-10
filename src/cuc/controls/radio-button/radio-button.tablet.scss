@@ -12,8 +12,7 @@
       height: 28px;
       margin: 0;
       &:checked + label::before{
-       //background: radial-gradient(at center, #fff 1px, $curious-blue-light 1px);
-
+        background: transparent;
         border: 1px solid $curious-blue-light;
         background-size: $radio-background-size;
       }
@@ -35,7 +34,8 @@
      :disabled + label{
        @include font-size(regular, $font-size-base, $silver);
       }
-    label{
+
+    label,input[type="radio"]:not([disabled]) + label{
       display: inline-block;
       vertical-align: middle;
       position: relative;
@@ -44,7 +44,7 @@
       @include font-size(regular, $font-size-base, $mine-shaft);
       cursor: pointer;
       line-height: 2.3;
-      &::before{
+      &:before{
         content: "";
         display: inline-block;
         background-color:$curious-blue-light;
@@ -57,7 +57,7 @@
         @include transition(border 0.15s ease-in-out, color 0.15s ease-in-out);
       }
 
-      &::after{
+      &:after{
         display: inline-block;
           position: absolute;
           content: " ";

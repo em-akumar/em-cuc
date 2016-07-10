@@ -90,7 +90,7 @@
   }
 
     /* override tablet tertiary button */
-  &.btn-tertiary {
+  &.btn-tertiary,&.em-btn-tertiary {
     background-color: $white;
     height: $btn-height;
     border-radius: $text-button-border-radius;

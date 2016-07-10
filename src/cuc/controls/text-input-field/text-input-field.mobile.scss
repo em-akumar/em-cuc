@@ -4,10 +4,9 @@
 
   .em-toggle-password {
     position: absolute;
-    right: 0px;
-    top: 0;
+    right: 8px;
+    top: 20px;
     bottom: 0;
-    margin-right: 8px;
     cursor: pointer;
     background: url("../../assets/images/icon-visibility-true-active.svg") center right no-repeat;
     padding-right: 30px;
@@ -19,10 +18,9 @@
   }
   .em-toggle-show-password {
     position: absolute;
-    right: 0px;
-    top: 1px;
+    right: 8px;
+    top: 21px;
     bottom: 0;
-    margin-right: 8px;
     cursor: pointer;
     background: url("../../assets/images/icon-visibility-false-active.svg") center right no-repeat;
     padding-right: 30px;
