@@ -1,6 +1,5 @@
-import template from './blockui.html';
+import template from './templates/blockui.html';
 import controller from './blockui.controller';
-import './blockui.less';
 
 let blockuiComponent = () => {
   return {

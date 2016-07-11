@@ -1,4 +1,4 @@
-import template from './radio.html';
+import template from './templates/radio.html';
 import controller from './radio.controller';
 
 let radioComponent = () => {

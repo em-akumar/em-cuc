@@ -1,4 +1,4 @@
-import template from './checkbox.html';
+import template from './templates/checkbox.html';
 import controller from './checkbox.controller';
 
 let checkboxComponent = () => {

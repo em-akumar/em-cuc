@@ -1,4 +1,4 @@
-import template from './progress-spinner.html';
+import template from './templates/progress-spinner.html';
 import controller from './progress-spinner.controller';
 
 let progressSpinnerComponent = () => {

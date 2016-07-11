@@ -1,4 +1,4 @@
-import template from './radio-tablet.html';
+import template from './templates/radio-tablet.html';
 import controller from './radio.controller';
 
 let radioTabletComponent = () => {

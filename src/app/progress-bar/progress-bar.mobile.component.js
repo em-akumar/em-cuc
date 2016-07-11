@@ -1,4 +1,4 @@
-import template from './progress-bar-mobile.html';
+import template from './templates/progress-bar-mobile.html';
 import controller from './progress-bar.controller';
 
 let progressBarMobileComponent = () => {

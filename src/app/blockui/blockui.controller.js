@@ -7,9 +7,6 @@ class BlockuiController {
     this.notifyBlock = this.blockUI.instances.get('notifyBlock');
     this.noLightboxBlock = this.blockUI.instances.get('noLightboxBlock');
     this.lightboxSpinnerBlock = this.blockUI.instances.get('lightboxSpinnerBlock');
-
-
-    // this.initialize();
   }
   initialize() {
     this.BlockuiService.resolvePromise().then((response) => {
@@ -22,7 +19,6 @@ class BlockuiController {
       this.notifyBlock.stop();
     } else {
       this.notifyBlock.start('Sending Message...');
-      // this.notifyBlock.message('Sending Message...');
     }
   }
 
@@ -31,7 +27,6 @@ class BlockuiController {
       this.noLightboxBlock.stop();
     } else {
       this.noLightboxBlock.start('');
-      // this.noLightboxBlock.message('');
     }
   }
 
@@ -40,7 +35,6 @@ class BlockuiController {
       this.lightboxSpinnerBlock.stop();
     } else {
       this.lightboxSpinnerBlock.start('Sending Message...');
-      // this.lightboxSpinnerBlock.message('<span>Sending Message...</span>');
     }
   }
 
