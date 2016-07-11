@@ -31,34 +31,43 @@
       "angular": "angular"
     },
     "styles": {
-      "app": "./app/app.less",
-      "cuc": "./cuc/cuc.less",
-      "cuc.icons": "./cuc/cuc.icons.scss",
-      "cuc.grid": "./cuc/controls/ui-grid/ui-grid.less",
-      "cuc.ui.bootstrap": "./cuc/cuc.ui.bootstrap.less",
-      "cuc.block.ui": "./cuc/cuc.block.ui.less",
-      "cuc.draggable.grid.rows": "../../vendor/less/cuc-draggable-rows.less",
-      "cuc.draggable.grid.rows.style": "../../vendor/scss/cuc-draggable-rows.scss"
+      "app": "./src/app/app.less",
+      "cuc": "./src/cuc/cuc.less",
+      "cuc.tablet": "./src/cuc/cuc.tablet.scss",
+      "cuc.mobile": "./src/cuc/cuc.mobile.scss",
+      "cuc.icons": "./src/cuc/cuc.icons.scss",
+      "cuc.grid": "./src/cuc/controls/ui-grid/ui-grid.less",
+      "cuc.ui.bootstrap": "./src/cuc/cuc.ui.bootstrap.less",
+      "cuc.block.ui": "./src/cuc/cuc.block.ui.less",
+      "cuc.draggable.grid.rows": "./vendor/less/cuc-draggable-rows.less",
+      "cuc.draggable.grid.rows.style": "./vendor/scss/cuc-draggable-rows.scss"
     },
     "scripts": {
-      "app": "./app/app.module.js",
-      "cuc": "./cuc/cuc.js",
-      "cuc.angular": "./cuc/cuc.angular.js",
-      "cuc.grid": "./cuc/cuc.grid.js",
-      "cuc.ui.bootstrap": "./cuc/cuc.ui.bootstrap.js",
-      "cuc.block.ui": "./cuc/cuc.block.ui.js",
-      "cuc.draggable.grid.rows": "../../vendor/js/cuc-draggable-rows.js"
+      "app": ["./src/app/app.module.js"],
+      "app.tablet": ["./src/app/app.tablet.module.js"],
+      "app.mobile": ["./src/app/app.mobile.module.js"],
+      "cuc": ["./src/cuc/cuc.js"],
+      "cuc.mobile": ["./src/cuc/cuc.mobile.js"],
+      "cuc.angular": ["./src/cuc/cuc.angular.js"],
+      "cuc.mobile.angular": ["./src/cuc/cuc.mobile.angular.js"],
+      "cuc.grid": ["./src/cuc/cuc.grid.js"],
+      "cuc.ui.bootstrap": ["./src/cuc/cuc.ui.bootstrap.js"],
+      "cuc.block.ui": ["./src/cuc/cuc.block.ui.js"],
+      "cuc.draggable.grid.rows": ["./vendor/js/cuc-draggable-rows.js"]
     }
   },
   "devDependencies": {
     "@elliemae/em-swift": "3.0.3",
-    "angular": "1.4.8",
-    "angular-messages": "1.4.8",
+    "angular": "1.5.6",
+    "angular-block-ui": "0.2.2",
+    "angular-messages": "1.5.6",
     "angular-ui-bootstrap": "0.14.3",
-    "angular-ui-grid": "3.0.7",
+    "angular-ui-grid": "3.1.1",
+    "angular-ui-mask": "1.8.4",
+    "angular-ui-router": "0.3.0",
     "bootstrap": "3.3.6",
-    "angular-ui-mask": "^1.7.0",
-    "angular-ui-router": "^0.2.15",
-    "angular-block-ui":"0.2.0"
+    "bootstrap-sass": "3.3.6",
+    "standard": "7.1.2",
+    "ionic-sdk": "1.2.4"
   }
 }

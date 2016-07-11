@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44"><defs><style>.a{fill:#fff;}.b{fill:#e4e4e4;}.c{fill:#1394e5;}</style></defs>
+    <g id="rotateSquare">
+    <animateTransform
+        attributeType="XML"
+        attributeName="transform"
+        type="rotate"
+        from="0,22,22" to="360,22,22"
+        begin="0s" dur="0.8s"
+        repeatCount="indefinite"/>
+   <circle class="a" cx="22" cy="22" r="22"/><path class="b" d="M22,10A12,12,0,1,1,10,22,12,12,0,0,1,22,10m0-2A14,14,0,1,0,36,22,14,14,0,0,0,22,8h0Z"/><path class="c" d="M22,8v2A12,12,0,0,1,34,22h2A14,14,0,0,0,22,8Z"/>
+        
+    </g>
+   </svg>

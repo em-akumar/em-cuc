@@ -1,0 +1,140 @@
+<div onresize="vm.onresize()" class="app app-border">
+  <div id="page-wrapper" ng-class="{'open': vm.toggle}" ng-cloak>
+
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+      <ul class="sidebar">
+        <li class="sidebar-main">
+          <a ng-click="vm.toggleSidebar()">
+            Dashboard
+            <span class="menu-icon glyphicon glyphicon-transfer"></span>
+          </a>
+        </li>
+        <li class="sidebar-title">
+              <span>Web Controls</span>
+        </li>
+        <li class="sidebar-list">
+          <a href="#/blockui">Block UI<span class="menu-icon glyphicon glyphicon-stop"></span></a>
+        </li>
+        <li class="sidebar-list">
+          <a href="#/buttons">Buttons<span class="menu-icon glyphicon glyphicon-stop"></span></a>
+        </li>
+        <li class="sidebar-list">
+          <a href="#/color-picker">Color Picker<span class="menu-icon glyphicon glyphicon-text-background"></span></a>
+        </li>
+        <li class="sidebar-list">
+          <a href="#/checkbox">CheckBox<span class="menu-icon glyphicon glyphicon-check"></span></a>
+        </li>
+        <li class="sidebar-list">
+          <a href="#/ckeditor">CK Editor<span class="menu-icon glyphicon glyphicon-wrench"></span></a>
+        </li>
+        <li class="sidebar-list">
+          <a href="#/dropdown">Dropdown<span class="menu-icon glyphicon glyphicon-save"></span></a>
+        </li>
+        <li class="sidebar-list">
+          <a href="#/dropdown-edit">Dropdown Edit<span class="menu-icon glyphicon glyphicon-circle-arrow-down"></span></a>
+        </li>
+        <li class="sidebar-list">
+          <a href="#/datepicker">Date Picker<span class="menu-icon glyphicon glyphicon-calendar"></span></a>
+        </li>
+        <li class="sidebar-list">
+          <a href="#/error-handling">Error Handling<span class="menu-icon glyphicon glyphicon-circle-arrow-up"></span></a>
+        </li>
+        <li class="sidebar-list">
+          <a href="#/file-uploader">File Uploader<span class="menu-icon glyphicon glyphicon-circle-arrow-up"></span></a>
+        </li>
+        <li class="sidebar-list">
+          <a href="#/grid">Grid<span class="menu-icon glyphicon glyphicon-th"></span></a>
+        </li>
+        <li class="sidebar-list">
+          <a href="#/image-button">Image-Button<span class="menu-icon glyphicon glyphicon-th"></span></a>
+        </li>
+        <li class="sidebar-list">
+          <a href="#/modals">Modal<span class="menu-icon glyphicon glyphicon-modal-window"></span></a>
+        </li>
+        <li class="sidebar-list">
+          <a href="#/notifications">Notifications<span class="menu-icon glyphicon glyphicon-tasks"></span></a>
+        </li>
+        <li class="sidebar-list">
+          <a href="#/panel">Panel<span class="menu-icon glyphicon glyphicon-option-horizontal"></span></a>
+        </li>
+        <li class="sidebar-list">
+          <a href="#/paragraph">Paragraph<span class="menu-icon glyphicon glyphicon-option-horizontal"></span></a>
+        </li>
+        <li class="sidebar-list">
+          <a href="#/progress-bar">Progress Bar<span class="menu-icon glyphicon glyphicon-option-horizontal"></span></a>
+        </li>
+        <li class="sidebar-list">
+          <a href="#/progress-spinner">Progress Spinner<span class="menu-icon glyphicon glyphicon-option-horizontal"></span></a>
+        </li>
+        <li class="sidebar-list">
+          <a href="#/radio">Radio button<span class="menu-icon glyphicon glyphicon-ok-circle"></span></a>
+        </li>
+        <li class="sidebar-list">
+          <a href="#/reo-dropdown-t">REO Tablet<span class="menu-icon glyphicon glyphicon-minus"></span></a>
+        </li>
+        <li class="sidebar-list">
+          <a href="#/tabs-panel">Tabs Panel<span class="menu-icon glyphicon glyphicon-minus"></span></a>
+        </li>
+        <li class="sidebar-list">
+          <a href="#/text-input">Text Input<span class="menu-icon glyphicon glyphicon-sound-dolby"></span></a>
+        </li>
+        <li class="sidebar-list">
+          <a href="#/text-area">Text Area<span class="menu-icon glyphicon glyphicon-credit-card"></span></a>
+        </li>
+        <li class="sidebar-list">
+          <a href="#/toggle-switch">Toggle Switch<span class="menu-icon glyphicon glyphicon-minus"></span></a>
+        </li>
+        <li class="sidebar-list">
+          <a href="#/tooltips">Tooltips<span class="menu-icon glyphicon glyphicon-credit-card"></span></a>
+        </li>
+        <li class="sidebar-list">
+          <a href="#/icons">Icons<span class="menu-icon glyphicon glyphicon-credit-card"></span></a>
+        </li>
+        <li class="sidebar-list">
+          <a href="#">&nbsp;<span class="menu-icon glyphicon glyphicon-credit-card"></span></a>
+        </li>
+      </ul>
+      <div class="sidebar-footer">
+        <div class="col-xs-4">
+          <a href="http://githubdev.dco.elmae/elliemae/em-cuc" target="_blank">
+            Github
+          </a>
+        </div>
+        <div class="col-xs-4">
+          <a href="#" target="_blank">
+            About
+          </a>
+        </div>
+        <div class="col-xs-4">
+          <a href="#" target="_blank">
+            Support
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- End Sidebar -->
+    <div id="content-wrapper">
+      <div class="page-content">
+
+        <!-- Header Bar -->
+        <div class="row header">
+          <div class="col-xs-12">
+            <div class="meta">
+
+            </div>
+          </div>
+        </div>
+        <!-- End Header Bar -->
+
+        <!-- Main Content -->
+        <div ui-view></div>
+
+      </div><!-- End Page Content -->
+    </div><!-- End Content Wrapper -->
+  </div><!-- End Page Wrapper -->
+</div>
+
+
+
+

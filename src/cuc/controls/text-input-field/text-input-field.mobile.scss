@@ -1,0 +1,30 @@
+/* Classes for hide and show password using eye icon */
+.em-showPassword {
+  position: relative;
+
+  .em-toggle-password {
+    position: absolute;
+    right: 8px;
+    top: 20px;
+    bottom: 0;
+    cursor: pointer;
+    background: url("../../assets/images/icon-visibility-true-active.svg") center right no-repeat;
+    padding-right: 30px;
+    padding-left: 5px;
+    background-size: 20px auto;
+  }
+  .em-showPassword-txt {
+    padding-right: 30px;
+  }
+  .em-toggle-show-password {
+    position: absolute;
+    right: 8px;
+    top: 21px;
+    bottom: 0;
+    cursor: pointer;
+    background: url("../../assets/images/icon-visibility-false-active.svg") center right no-repeat;
+    padding-right: 30px;
+    padding-left: 5px;
+    background-size: 20px auto;
+  }
+}

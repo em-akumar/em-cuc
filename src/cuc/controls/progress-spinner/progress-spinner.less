@@ -1,0 +1,98 @@
+.spinner {
+  position:relative;
+  &:after {
+    content: "";
+    left: 50%;
+    margin: -20px 0 0 -20px;
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+  }
+  &:before {
+    bottom: 0;
+    content: "";
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 1;
+  }
+}
+.spinner.lightbox {
+  &:before {
+    bottom: 0;
+    content: "";
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 1;
+    background-color: @progress-bar-large-lightbox-color;
+    opacity: @progress-bar-large-lightbox-opacity;
+    height: @progress-bar-large-lightbox-height;
+    width: @progress-bar-large-lightbox-width;
+  }
+}
+/*Gray Spinner*/
+.spinner.gray {
+  &:after {
+    background: url("../../assets/images/white-oval.svg") no-repeat;
+  }
+}
+.spinner.gray.small {
+  &:after{ width:@progress-spinner-gray-small;
+    height:@progress-spinner-gray-small;
+  }
+}
+.spinner.gray.xs {
+  &:after{ width:@progress-spinner-gray-xsmall;
+    height:@progress-spinner-gray-xsmall;
+  }
+}
+.spinner.gray.medium {
+  &:after{ width:@progress-spinner-gray-medium;
+    height:@progress-spinner-gray-medium;
+  }
+}
+.spinner.gray.large {
+  &:after{ width:@progress-spinner-gray-large;
+    height:@progress-spinner-gray-large;
+  }
+}
+.spinner.gray.xlarge {
+  &:after{ width:@progress-spinner-gray-xlarge;
+    height:@progress-spinner-gray-xlarge;
+  }
+}
+/*White Spinner*/
+.spinner.white {
+  &:after {
+    background: url("../../assets/images/icon-ovalspinner-gray.svg") no-repeat;
+  }
+}
+.spinner.white.small {
+  &:after{ width:@progress-spinner-small;
+    height:@progress-spinner-small;
+  }
+}
+.spinner.white.xs {
+  &:after{ width:@progress-spinner-xsmall;
+    height:@progress-spinner-xsmall;
+  }
+}
+.spinner.white.medium {
+  &:after{ width:@progress-spinner-medium;
+    height:@progress-spinner-medium;
+  }
+}
+.spinner.white.large {
+  &:after{ width:@progress-spinner-large;
+    height:@progress-spinner-large;
+  }
+}
+.spinner.white.xlarge {
+  &:after{ width:@progress-spinner-xlarge;
+    height:@progress-spinner-xlarge;
+  }
+}
+

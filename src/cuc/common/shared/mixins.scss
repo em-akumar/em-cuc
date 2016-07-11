@@ -1,0 +1,29 @@
+
+/* font size mixin */
+@mixin font-size($familyValue:base,$sizeValue:16,$colorValue:#fff) {
+  @if ($familyValue == 'base') {
+    font-family: $font-family-base;
+  } @else if ($familyValue == 'light') {
+    font-family: $font-family-light;
+  } @else if ($familyValue == 'bold') {
+    font-family: $font-family-bold;
+  } @else if ($familyValue == 'sbold') {
+    font-family: $font-family-semibold;
+  }
+  font-size: $sizeValue;
+  color: $colorValue;
+}
+
+@mixin transition($transition...) {
+    -moz-transition:    $transition;
+    -o-transition:      $transition;
+    -webkit-transition: $transition;
+    transition:         $transition;
+}
+
+@mixin transform($degree) {
+    -moz-transform: rotate($degree);
+    -webkit-transform: rotate($degree);
+    -o-transform: rotate($degree);
+    -ms-transform: rotate($degree);
+}

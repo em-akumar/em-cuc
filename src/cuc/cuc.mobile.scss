@@ -1,0 +1,10 @@
+@import '~ionic-sdk/scss/ionic.scss';
+@import './assets/fonts/fonts.css';
+
+@import './common/variables.tablet.scss';
+@import './common/shared/mixins.scss';
+@import './common/shared/typography.scss';
+
+@import './controls/text-input-field/text-input-field.mobile.scss';
+@import './controls/progress-spinner/progress-spinner.mobile.scss';
+@import './controls/progress-bar/progress-bar.mobile.scss';

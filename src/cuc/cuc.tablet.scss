@@ -1,0 +1,14 @@
+@import '~bootstrap-sass/assets/stylesheets/_bootstrap.scss';
+@import './assets/fonts/fonts.css';
+
+@import './common/variables.tablet.scss';
+@import './common/shared/mixins.scss';
+@import './common/shared/typography.scss';
+
+@import './controls/buttons/buttons.tablet.scss';
+@import './controls/check-box/check-box.tablet.scss';
+@import './controls/radio-button/radio-button.tablet.scss';
+@import './controls/text-input-field/text-input-field.tablet.scss';
+@import './controls/increment/increment.tablet.scss';
+@import './controls/progress-spinner/progress-spinner.tablet.scss';
+@import './controls/progress-bar/progress-bar.tablet.scss';

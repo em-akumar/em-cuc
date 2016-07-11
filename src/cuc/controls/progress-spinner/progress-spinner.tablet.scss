@@ -1,0 +1,150 @@
+.em-spinner {
+  position:relative;
+  &:after {
+    content: "";
+    left: 50%;
+    margin: -20px 0 0 -20px;
+    position: absolute;
+    top: 50%;
+    text-align:center;
+    z-index: 10002;
+  }
+   &.em-loading-text{
+      &:after {
+        @include font-size(light,12, $silver-light);
+        text-align: center;
+        width: 100%;
+        position: inherit;
+        line-height: 3;
+        content: attr(data-heading);
+      }
+  }
+  &.em-loading-heading{
+     &:after {
+        @include font-size(regular,15, $white);
+        text-align: center;
+        width: 100%;
+        left: 2%;
+        line-height: 0.5;
+        content: attr(data-heading);
+      }
+  }
+
+    &.em-pagenotify-message{
+       &:after {
+      display: inline-block;
+      padding:5px 22px 0 22px;
+      border-radius: 22px;
+      height: 30px;
+      background: $black;
+      left:41.5%;
+      top:80%;
+      @include font-size(light, 12,$white);
+      content: attr(data-heading);
+       }
+  }
+
+  &.lightbox {
+    &:before {
+      bottom: 0;
+      content: "";
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: 1;
+      background-color: $black;
+      opacity: 0.75;
+      height:  100%;
+      width:  100%;
+    }
+  }
+
+  &.white {
+      &:after {
+        background: url("../../assets/images/spinner-lightbox_responsive.svg") no-repeat;
+      }
+      &.small {
+        &:after{
+          width:$spinner-height-width;
+          height:$spinner-height-width;
+        }
+    }
+  }
+}
+
+.em-notify{
+  .block-ui-container{
+    .block-ui-message-container{
+      top:65%;
+    }
+    .block-ui-message{
+      background-color: $black;
+      opacity: 0.75;
+      @include font-size(light, 12,$white);
+      font-weight:normal;
+      padding:7px 22px 0 22px;
+      border-radius: 22px;
+      height: 30px;
+    }
+  }
+}
+
+.em-no-lightbox-spinner{
+  .block-ui-container{
+    .block-ui-message-container{
+      top:35%;
+    }
+
+    .block-ui-overlay{
+      opacity:0;
+
+    }
+    .block-ui-message{
+      background-color: transparent;
+      @include font-size(regular,15, $white);
+      font-weight:normal;
+       &::after {
+        content: "";
+        background: url("../../assets/images/spinner-lightbox_responsive.svg") no-repeat;
+        width:$spinner-height-width;
+        height:$spinner-height-width;
+        padding:$block-ui-message-after-padding;
+      }
+    }
+  }
+}
+
+
+.em-lightbox-spinner{
+  .block-ui-container{
+    .block-ui-message-container{
+      top:0;
+    }
+
+    .block-ui-overlay{
+      opacity:1;
+      background: $scorpion;
+
+    }
+    .block-ui-message{
+      background-color: transparent;
+      //opacity: 0.75;
+      @include font-size(regular,15, $white);
+      font-weight:normal;
+      &:after {
+        content: "";
+        background: url("../../assets/images/spinner-lightbox_responsive.svg") no-repeat;
+        width:$spinner-height-width;
+        height:$spinner-height-width;
+        padding:$block-ui-message-after-padding;
+        position: absolute;
+        left: $block-ui-message-after-left;
+        top: $block-ui-message-after-top;
+        margin-top: $block-ui-message-after-margin-top;
+      }
+
+    }
+  }
+}
+

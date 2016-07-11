@@ -1,0 +1,135 @@
+.btn {
+  /* override tablet primary button */
+  &.btn-primary {
+    background-color: $curious-blue;
+    height: $btn-height;
+    border-radius: $text-button-border-radius;
+    border-color: $curious-blue;
+    box-sizing: border-box;
+    align-items: center;
+    @include font-size(regular, $font-size-base);
+    /* override primary hover button state  */
+  /*  &:hover,
+    &.hover {
+      background-color: $havelock-blue;
+      border-color: $havelock-blue;
+    }*/
+    /* override primary active button state  */
+    &:active,
+    &.active,
+    &:focus,
+    &.focus,
+    &:active:hover,
+    &.active:hover {
+      background-color: $venice-blue;
+      border-color: $venice-blue;
+      outline: 0;
+    }
+    /* disabled the primary button */
+    &.disabled,
+    &.disabled.active,
+    &.disabled.focus,
+    &.disabled:active,
+    &.disabled:focus,
+    &.disabled:hover,
+    &[disabled],
+    &[disabled].active,
+    &[disabled].focus,
+    &[disabled]:active,
+    &[disabled]:focus,
+    &[disabled]:hover {
+      background-color: $silver;
+      border-color: $silver;
+      color: $white;
+    }
+  }
+
+   /* override tablet secondary button */
+  &.btn-secondary {
+    background-color: $white;
+    height: $btn-height;
+    border-radius: $text-button-border-radius;
+    border: 2px solid $curious-blue;
+    box-sizing: border-box;
+    align-items: center;
+    @include font-size(regular, $font-size-base,$curious-blue);
+    /* override primary hover button state  */
+  /*  &:hover,
+    &.hover {
+      @include font-size(regular, $font-size-base, $venice-blue);
+      border: 2px solid $havelock-blue;
+    }*/
+    /* override primary active button state  */
+    &:active,
+    &.active,
+    &:focus,
+    &.focus,
+    &:active:hover,
+    &.active:hover {
+      @include font-size(regular, $font-size-base, $venice-blue);
+      border: 2px solid $venice-blue;
+      outline: 0;
+    }
+    /* disabled the primary button */
+    &.disabled,
+    &.disabled.active,
+    &.disabled.focus,
+    &.disabled:active,
+    &.disabled:focus,
+    &.disabled:hover,
+    &[disabled],
+    &[disabled].active,
+    &[disabled].focus,
+    &[disabled]:active,
+    &[disabled]:focus,
+    &[disabled]:hover {
+      @include font-size(regular, $font-size-base, $silver);
+      border: 2px solid $silver;
+      color: $silver;
+    }
+  }
+
+    /* override tablet tertiary button */
+  &.btn-tertiary,&.em-btn-tertiary {
+    background-color: $white;
+    height: $btn-height;
+    border-radius: $text-button-border-radius;
+    border: 2px solid $silver;
+    box-sizing: border-box;
+    align-items: center;
+    @include font-size(regular, $font-size-base,$curious-blue);
+    /* override primary hover button state  */
+  /*  &:hover,
+    &.hover {
+      border: 2px solid $mine-shaft;
+      @include font-size(regular, $font-size-base,$venice-blue);
+    }*/
+    /* override primary active button state  */
+    &:active,
+    &.active,
+    &:focus,
+    &.focus,
+    &:active:hover,
+    &.active:hover {
+      border: 2px solid $mine-shaft;
+      outline: 0;
+      @include font-size(regular, $font-size-base,$venice-blue);
+    }
+    /* disabled the primary button */
+    &.disabled,
+    &.disabled.active,
+    &.disabled.focus,
+    &.disabled:active,
+    &.disabled:focus,
+    &.disabled:hover,
+    &[disabled],
+    &[disabled].active,
+    &[disabled].focus,
+    &[disabled]:active,
+    &[disabled]:focus,
+    &[disabled]:hover {
+      border: 2px solid $silver;
+      @include font-size(regular, $font-size-base,$silver);
+    }
+  }
+  }
