@@ -35,7 +35,7 @@
       "cuc": "./src/cuc/cuc.less",
       "cuc.tablet": "./src/cuc/cuc.tablet.scss",
       "cuc.mobile": "./src/cuc/cuc.mobile.scss",
-      "cuc.icons": "./cuc/cuc.icons.scss",
+      "cuc.icons": "./src/cuc/cuc.icons.scss",
       "cuc.grid": "./src/cuc/controls/ui-grid/ui-grid.less",
       "cuc.ui.bootstrap": "./src/cuc/cuc.ui.bootstrap.less",
       "cuc.block.ui": "./src/cuc/cuc.block.ui.less",

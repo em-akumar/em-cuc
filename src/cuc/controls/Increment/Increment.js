@@ -5,7 +5,7 @@ class Incremental {
        this.plus = element.querySelector('.em-plus');
        this.minus = element.querySelector('.em-minus');
        this.numberIncremental = element.querySelector('.em-incremental');
-       if (this.numberIncremental.value ==='') {
+       if (this.numberIncremental !== null && this.numberIncremental.value ==='') {
          this.numberIncremental.value = 0;
        }
        this.options = options;

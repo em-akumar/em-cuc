@@ -1,0 +1,986 @@
+@import "./variables";
+@font-face {
+  font-family: 'ProximaNova-BoldIt';
+  src: url('./ProximaNovaBoldIt.eot');
+  src: url('./ProximaNovaBoldIt.eot?#iefix') format('embedded-opentype'), url('./ProximaNovaBoldIt.woff2') format('woff2'), url('./ProximaNovaBoldIt.woff') format('woff'), url('./ProximaNovaBoldIt.ttf') format('truetype'), url('./ProximaNovaBoldIt.svg#wf') format('svg');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'ProximaNova-Bold';
+  src: url('./ProximaNovaBold.eot');
+  src: url('./ProximaNovaBold.eot?#iefix') format('embedded-opentype'), url('./ProximaNovaBold.woff2') format('woff2'), url('./ProximaNovaBold.woff') format('woff'), url('./ProximaNovaBold.ttf') format('truetype'), url('./ProximaNovaBold.svg#wf') format('svg');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'ProximaNova-Regular';
+  src: url('./ProximaNovaRegular.eot');
+  src: url('./ProximaNovaRegular.eot?#iefix') format('embedded-opentype'), url('./ProximaNovaRegular.woff2') format('woff2'), url('./ProximaNovaRegular.woff') format('woff'), url('./ProximaNovaRegular.ttf') format('truetype'), url('./ProximaNovaRegular.svg#wf') format('svg');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'ProximaNova-RegularIt';
+  src: url('./ProximaNovaRegularIt.eot');
+  src: url('./ProximaNovaRegularIt.eot?#iefix') format('embedded-opentype'), url('./ProximaNovaRegularIt.woff2') format('woff2'), url('./ProximaNovaRegularIt.woff') format('woff'), url('./ProximaNovaRegularIt.ttf') format('truetype'), url('./ProximaNovaRegularIt.svg#wf') format('svg');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'ProximaNova-Light';
+  src: url('./ProximaNovaLight.eot');
+  src: url('./ProximaNovaLight.eot?#iefix') format('embedded-opentype'), url('./ProximaNovaLight.woff2') format('woff2'), url('./ProximaNovaLight.woff') format('woff'), url('./ProximaNovaLight.ttf') format('truetype'), url('./ProximaNovaLight.svg#wf') format('svg');
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: 'ProximaNova-LightIt';
+  src: url('./ProximaNovaLightIt.eot');
+  src: url('./ProximaNovaLightIt.eot?#iefix') format('embedded-opentype'), url('./ProximaNovaLightIt.woff2') format('woff2'), url('./ProximaNovaLightIt.woff') format('woff'), url('./ProximaNovaLightIt.ttf') format('truetype'), url('./ProximaNovaLightIt.svg#wf') format('svg');
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: 'ProximaNova-Semibold';
+  src: url('./ProximaNovaSemibold.eot');
+  src: url('./ProximaNovaSemibold.eot?#iefix') format('embedded-opentype'), url('./ProximaNovaSemibold.woff2') format('woff2'), url('./ProximaNovaSemibold.woff') format('woff'), url('./ProximaNovaSemibold.ttf') format('truetype'), url('./ProximaNovaSemibold.svg#wf') format('svg');
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: 'ProximaNova-Medium';
+  src: url('./ProximaNovaMedium.eot');
+  src: url('./ProximaNovaMedium.eot?#iefix') format('embedded-opentype'), url('./ProximaNovaMedium.woff2') format('woff2'), url('./ProximaNovaMedium.woff') format('woff'), url('./ProximaNovaMedium.ttf') format('truetype');
+  font-weight: 500;
+}
+
+@font-face {
+    font-family: 'em-icons';
+    src:
+        url('fonts/em-icons.woff2?cp4q85') format('woff2'),
+        url('fonts/em-icons.ttf?cp4q85') format('truetype'),
+        url('fonts/em-icons.woff?cp4q85') format('woff'),
+        url('fonts/em-icons.svg?cp4q85#em-icons') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.icon{
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'em-icons' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.checkmark-circle-green .path1 {
+    &:before {
+        content: $checkmark-circle-green-path1;
+        color: rgb(255, 255, 255);
+    }
+}
+.checkmark-circle-green .path2 {
+    &:before {
+        content: $checkmark-circle-green-path2;
+        margin-left: -1em;
+        color: rgb(0, 184, 116);
+    }
+}
+.help-circle {
+    &:before {
+        content: $help-circle;
+    }
+}
+.release-notes {
+    &:before {
+        content: $release-notes;
+    }
+}
+.dashboard-3 {
+    &:before {
+        content: $dashboard-3;
+    }
+}
+.fees-solid-black {
+    &:before {
+        content: $fees-solid-black;
+    }
+}
+.loan-products {
+    &:before {
+        content: $loan-products;
+    }
+}
+.comments {
+    &:before {
+        content: $comments;
+    }
+}
+.flag-solid {
+    &:before {
+        content: $flag-solid;
+    }
+}
+.summary {
+    &:before {
+        content: $summary;
+    }
+}
+.fees {
+    &:before {
+        content: $fees;
+    }
+}
+.form-1003 {
+    &:before {
+        content: $form-1003;
+    }
+}
+.timer-clock {
+    &:before {
+        content: $timer-clock;
+    }
+}
+.date-picker-small {
+    &:before {
+        content: $date-picker-small;
+    }
+}
+.arrow-reorder-down {
+    &:before {
+        content: $arrow-reorder-down;
+    }
+}
+.arrow-reorder-up {
+    &:before {
+        content: $arrow-reorder-up;
+    }
+}
+.upload-file {
+    &:before {
+        content: $upload-file;
+    }
+}
+.btn-perenthesis-right-black {
+    &:before {
+        content: $btn-perenthesis-right-black;
+    }
+}
+.btn-perenthesis-left-black {
+    &:before {
+        content: $btn-perenthesis-left-black;
+    }
+}
+.area-active .path1 {
+    &:before {
+        content: $area-active-path1;
+        color: rgb(82, 166, 236);
+    }
+}
+.area-active .path2 {
+    &:before {
+        content: $area-active-path2;
+        margin-left: -1em;
+        color: rgb(224, 227, 232);
+    }
+}
+.area-default .path1 {
+    &:before {
+        content: $area-default-path1;
+        color: rgb(19, 148, 229);
+    }
+}
+.area-default .path2 {
+    &:before {
+        content: $area-default-path2;
+        margin-left: -1em;
+        color: rgb(169, 177, 190);
+    }
+}
+.area-disabled {
+    &:before {
+        content: $area-disabled;
+    }
+}
+.area-hover .path1 {
+    &:before {
+        content: $area-hover-path1;
+        color: rgb(82, 166, 236);
+    }
+}
+.area-hover .path2 {
+    &:before {
+        content: $area-hover-path2;
+        margin-left: -1em;
+        color: rgb(224, 227, 232);
+    }
+}
+.bar-active {
+    &:before {
+        content: $bar-active;
+    }
+}
+.bar-default {
+    &:before {
+        content: $bar-default;
+    }
+}
+.bar-disabled {
+    &:before {
+        content: $bar-disabled;
+    }
+}
+.bar-hover {
+    &:before {
+        content: $bar-hover;
+    }
+}
+.bar-stacked-active .path1 {
+    &:before {
+        content: $bar-stacked-active-path1;
+        color: rgb(224, 227, 232);
+    }
+}
+.bar-stacked-active .path2 {
+    &:before {
+        content: $bar-stacked-active-path2;
+        margin-left: -1em;
+        color: rgb(82, 166, 236);
+    }
+}
+.bar-stacked-active .path3 {
+    &:before {
+        content: $bar-stacked-active-path3;
+        margin-left: -1em;
+        color: rgb(224, 227, 232);
+    }
+}
+.bar-stacked-active .path4 {
+    &:before {
+        content: $bar-stacked-active-path4;
+        margin-left: -1em;
+        color: rgb(82, 166, 236);
+    }
+}
+.bar-stacked-active .path5 {
+    &:before {
+        content: $bar-stacked-active-path5;
+        margin-left: -1em;
+        color: rgb(224, 227, 232);
+    }
+}
+.bar-stacked-active .path6 {
+    &:before {
+        content: $bar-stacked-active-path6;
+        margin-left: -1em;
+        color: rgb(82, 166, 236);
+    }
+}
+.bar-stacked-default .path1 {
+    &:before {
+        content: $bar-stacked-default-path1;
+        color: rgb(169, 177, 190);
+    }
+}
+.bar-stacked-default .path2 {
+    &:before {
+        content: $bar-stacked-default-path2;
+        margin-left: -1em;
+        color: rgb(19, 148, 229);
+    }
+}
+.bar-stacked-default .path3 {
+    &:before {
+        content: $bar-stacked-default-path3;
+        margin-left: -1em;
+        color: rgb(169, 177, 190);
+    }
+}
+.bar-stacked-default .path4 {
+    &:before {
+        content: $bar-stacked-default-path4;
+        margin-left: -1em;
+        color: rgb(19, 148, 229);
+    }
+}
+.bar-stacked-default .path5 {
+    &:before {
+        content: $bar-stacked-default-path5;
+        margin-left: -1em;
+        color: rgb(169, 177, 190);
+    }
+}
+.bar-stacked-default .path6 {
+    &:before {
+        content: $bar-stacked-default-path6;
+        margin-left: -1em;
+        color: rgb(19, 148, 229);
+    }
+}
+.bar-stacked-disabled {
+    &:before {
+        content: $bar-stacked-disabled;
+    }
+}
+.bar-stacked-hover .path1 {
+    &:before {
+        content: $bar-stacked-hover-path1;
+        color: rgb(224, 227, 232);
+    }
+}
+.bar-stacked-hover .path2 {
+    &:before {
+        content: $bar-stacked-hover-path2;
+        margin-left: -1em;
+        color: rgb(82, 166, 236);
+    }
+}
+.bar-stacked-hover .path3 {
+    &:before {
+        content: $bar-stacked-hover-path3;
+        margin-left: -1em;
+        color: rgb(224, 227, 232);
+    }
+}
+.bar-stacked-hover .path4 {
+    &:before {
+        content: $bar-stacked-hover-path4;
+        margin-left: -1em;
+        color: rgb(82, 166, 236);
+    }
+}
+.bar-stacked-hover .path5 {
+    &:before {
+        content: $bar-stacked-hover-path5;
+        margin-left: -1em;
+        color: rgb(224, 227, 232);
+    }
+}
+.bar-stacked-hover .path6 {
+    &:before {
+        content: $bar-stacked-hover-path6;
+        margin-left: -1em;
+        color: rgb(82, 166, 236);
+    }
+}
+.column-active {
+    &:before {
+        content: $column-active;
+    }
+}
+.column-default {
+    &:before {
+        content: $column-default;
+    }
+}
+.column-disabled {
+    &:before {
+        content: $column-disabled;
+    }
+}
+.column-hover {
+    &:before {
+        content: $column-hover;
+    }
+}
+.column-stacked-active .path1 {
+    &:before {
+        content: $column-stacked-active-path1;
+        color: rgb(224, 227, 232);
+    }
+}
+.column-stacked-active .path2 {
+    &:before {
+        content: $column-stacked-active-path2;
+        margin-left: -0.9501953125em;
+        color: rgb(82, 166, 236);
+    }
+}
+.column-stacked-active .path3 {
+    &:before {
+        content: $column-stacked-active-path3;
+        margin-left: -0.9501953125em;
+        color: rgb(224, 227, 232);
+    }
+}
+.column-stacked-active .path4 {
+    &:before {
+        content: $column-stacked-active-path4;
+        margin-left: -0.9501953125em;
+        color: rgb(82, 166, 236);
+    }
+}
+.column-stacked-active .path5 {
+    &:before {
+        content: $column-stacked-active-path5;
+        margin-left: -0.9501953125em;
+        color: rgb(224, 227, 232);
+    }
+}
+.column-stacked-active .path6 {
+    &:before {
+        content: $column-stacked-active-path6;
+        margin-left: -0.9501953125em;
+        color: rgb(82, 166, 236);
+    }
+}
+.column-stacked-default .path1 {
+    &:before {
+        content: $column-stacked-default-path1;
+        color: rgb(169, 177, 190);
+    }
+}
+.column-stacked-default .path2 {
+    &:before {
+        content: $column-stacked-default-path2;
+        margin-left: -0.9501953125em;
+        color: rgb(19, 148, 229);
+    }
+}
+.column-stacked-default .path3 {
+    &:before {
+        content: $column-stacked-default-path3;
+        margin-left: -0.9501953125em;
+        color: rgb(169, 177, 190);
+    }
+}
+.column-stacked-default .path4 {
+    &:before {
+        content: $column-stacked-default-path4;
+        margin-left: -0.9501953125em;
+        color: rgb(19, 148, 229);
+    }
+}
+.column-stacked-default .path5 {
+    &:before {
+        content: $column-stacked-default-path5;
+        margin-left: -0.9501953125em;
+        color: rgb(169, 177, 190);
+    }
+}
+.column-stacked-default .path6 {
+    &:before {
+        content: $column-stacked-default-path6;
+        margin-left: -0.9501953125em;
+        color: rgb(19, 148, 229);
+    }
+}
+.column-stacked-disabled {
+    &:before {
+        content: $column-stacked-disabled;
+    }
+}
+.column-stacked-hover .path1 {
+    &:before {
+        content: $column-stacked-hover-path1;
+        color: rgb(224, 227, 232);
+    }
+}
+.column-stacked-hover .path2 {
+    &:before {
+        content: $column-stacked-hover-path2;
+        margin-left: -0.9501953125em;
+        color: rgb(82, 166, 236);
+    }
+}
+.column-stacked-hover .path3 {
+    &:before {
+        content: $column-stacked-hover-path3;
+        margin-left: -0.9501953125em;
+        color: rgb(224, 227, 232);
+    }
+}
+.column-stacked-hover .path4 {
+    &:before {
+        content: $column-stacked-hover-path4;
+        margin-left: -0.9501953125em;
+        color: rgb(82, 166, 236);
+    }
+}
+.column-stacked-hover .path5 {
+    &:before {
+        content: $column-stacked-hover-path5;
+        margin-left: -0.9501953125em;
+        color: rgb(224, 227, 232);
+    }
+}
+.column-stacked-hover .path6 {
+    &:before {
+        content: $column-stacked-hover-path6;
+        margin-left: -0.9501953125em;
+        color: rgb(82, 166, 236);
+    }
+}
+.pie-active .path1 {
+    &:before {
+        content: $pie-active-path1;
+        color: rgb(224, 227, 232);
+    }
+}
+.pie-active .path2 {
+    &:before {
+        content: $pie-active-path2;
+        margin-left: -1em;
+        color: rgb(82, 166, 236);
+    }
+}
+.pie-default .path1 {
+    &:before {
+        content: $pie-default-path1;
+        color: rgb(169, 177, 190);
+    }
+}
+.pie-default .path2 {
+    &:before {
+        content: $pie-default-path2;
+        margin-left: -1em;
+        color: rgb(19, 148, 229);
+    }
+}
+.pie-disabled {
+    &:before {
+        content: $pie-disabled;
+    }
+}
+.pie-hover .path1 {
+    &:before {
+        content: $pie-hover-path1;
+        color: rgb(224, 227, 232);
+    }
+}
+.pie-hover .path2 {
+    &:before {
+        content: $pie-hover-path2;
+        margin-left: -1em;
+        color: rgb(82, 166, 236);
+    }
+}
+.btn-perenthesis-black {
+    &:before {
+        content: $btn-perenthesis-black;
+    }
+}
+.gripper-vertical-black {
+    &:before {
+        content: $gripper-vertical-black;
+    }
+}
+.result-black {
+    &:before {
+        content: $result-black;
+    }
+}
+.data-source-black-2 {
+    &:before {
+        content: $data-source-black-2;
+    }
+}
+.funnel-black {
+    &:before {
+        content: $funnel-black;
+    }
+}
+.phone-outline {
+    &:before {
+        content: $phone-outline;
+    }
+}
+.phone {
+    &:before {
+        content: $phone;
+    }
+}
+.export-excel {
+    &:before {
+        content: $export-excel;
+    }
+}
+.notify-user {
+    &:before {
+        content: $notify-user;
+    }
+}
+.recent-documents {
+    &:before {
+        content: $recent-documents;
+    }
+}
+.edit-document {
+    &:before {
+        content: $edit-document;
+    }
+}
+.calculator-simple {
+    &:before {
+        content: $calculator-simple;
+    }
+}
+.info-circle-fill {
+    &:before {
+        content: $info-circle-fill;
+    }
+}
+.warning-circle-fill {
+    &:before {
+        content: $warning-circle-fill;
+    }
+}
+.loan-file-favorites-star {
+    &:before {
+        content: $loan-file-favorites-star;
+    }
+}
+.root-directory {
+    &:before {
+        content: $root-directory;
+    }
+}
+.loan-file-favorites {
+    &:before {
+        content: $loan-file-favorites;
+    }
+}
+.loan-file-default {
+    &:before {
+        content: $loan-file-default;
+    }
+}
+.loan-file-blank {
+    &:before {
+        content: $loan-file-blank;
+    }
+}
+.logo-bug-white-16px {
+    &:before {
+        content: $logo-bug-white-16px;
+    }
+}
+.logo-white-130px {
+    &:before {
+        content: $logo-white-130px;
+    }
+}
+.messages-unread-black {
+    &:before {
+        content: $messages-unread-black;
+    }
+}
+.locked-extension-requested-defualt {
+    &:before {
+        content: $locked-extension-requested-defualt;
+    }
+}
+.lock-unlocked-rate-requested-defualt {
+    &:before {
+        content: $lock-unlocked-rate-requested-defualt;
+    }
+}
+.lock-unlocked-defualt {
+    &:before {
+        content: $lock-unlocked-defualt;
+    }
+}
+.lock-locked-default {
+    &:before {
+        content: $lock-locked-default;
+    }
+}
+.lock-expired-defualt {
+    &:before {
+        content: $lock-expired-defualt;
+    }
+}
+.lock-locked-rate-requested {
+    &:before {
+        content: $lock-locked-rate-requested;
+    }
+}
+.notifications-black {
+    &:before {
+        content: $notifications-black;
+    }
+}
+.snooze-black {
+    &:before {
+        content: $snooze-black;
+    }
+}
+.notify-user-black {
+    &:before {
+        content: $notify-user-black;
+    }
+}
+.view-outline-black {
+    &:before {
+        content: $view-outline-black;
+    }
+}
+.arrowhead-down-black {
+    &:before {
+        content: $arrowhead-down-black;
+    }
+}
+.arrowhead-right-black {
+    &:before {
+        content: $arrowhead-right-black;
+    }
+}
+.arrowhead-up-black {
+    &:before {
+        content: $arrowhead-up-black;
+    }
+}
+.arrowhead-left-black {
+    &:before {
+        content: $arrowhead-left-black;
+    }
+}
+.panel-open-right-black {
+    &:before {
+        content: $panel-open-right-black;
+    }
+}
+.chevron-large-left-black {
+    &:before {
+        content: $chevron-large-left-black;
+    }
+}
+.chevron-large-down-black {
+    &:before {
+        content: $chevron-large-down-black;
+    }
+}
+.chevron-large-up-black {
+    &:before {
+        content: $chevron-large-up-black;
+    }
+}
+.chevron-small-down-black {
+    &:before {
+        content: $chevron-small-down-black;
+    }
+}
+.chevron-small-left-black {
+    &:before {
+        content: $chevron-small-left-black;
+    }
+}
+.chevron-small-up-black {
+    &:before {
+        content: $chevron-small-up-black;
+    }
+}
+.messages-read-black {
+    &:before {
+        content: $messages-read-black;
+    }
+}
+.transactions-black {
+    &:before {
+        content: $transactions-black;
+    }
+}
+.credit-report-black {
+    &:before {
+        content: $credit-report-black;
+    }
+}
+.property-black {
+    &:before {
+        content: $property-black;
+    }
+}
+.coborrower-black {
+    &:before {
+        content: $coborrower-black;
+    }
+}
+.login-user-black {
+    &:before {
+        content: $login-user-black;
+    }
+}
+.tools-black {
+    &:before {
+        content: $tools-black;
+    }
+}
+.doc-copy-black {
+    &:before {
+        content: $doc-copy-black;
+    }
+}
+.edit-pencil-black {
+    &:before {
+        content: $edit-pencil-black;
+    }
+}
+.checkmark-black {
+    &:before {
+        content: $checkmark-black;
+    }
+}
+.close-small-black {
+    &:before {
+        content: $close-small-black;
+    }
+}
+.close-large-black {
+    &:before {
+        content: $close-large-black;
+    }
+}
+.help-black {
+    &:before {
+        content: $help-black;
+    }
+}
+.search-black {
+    &:before {
+        content: $search-black;
+    }
+}
+.more-options-black {
+    &:before {
+        content: $more-options-black;
+    }
+}
+.login-client-black {
+    &:before {
+        content: $login-client-black;
+    }
+}
+.folder-black {
+    &:before {
+        content: $folder-black;
+    }
+}
+.password-black {
+    &:before {
+        content: $password-black;
+    }
+}
+.contacts-black {
+    &:before {
+        content: $contacts-black;
+    }
+}
+.menu-black {
+    &:before {
+        content: $menu-black;
+    }
+}
+.date-picker-black {
+    &:before {
+        content: $date-picker-black;
+    }
+}
+.location-pin-black {
+    &:before {
+        content: $location-pin-black;
+    }
+}
+.chevron-large-right-black {
+    &:before {
+        content: $chevron-large-right-black;
+    }
+}
+.invisible-hide-black {
+    &:before {
+        content: $invisible-hide-black;
+    }
+}
+.visible-view-black {
+    &:before {
+        content: $visible-view-black;
+    }
+}
+.panel-gripper-black {
+    &:before {
+        content: $panel-gripper-black;
+    }
+}
+.panel-open-left-black {
+    &:before {
+        content: $panel-open-left-black;
+    }
+}
+.recent-items-black {
+    &:before {
+        content: $recent-items-black;
+    }
+}
+.avatar-black {
+    &:before {
+        content: $avatar-black;
+    }
+}
+.filter-black {
+    &:before {
+        content: $filter-black;
+    }
+}
+.settings-black {
+    &:before {
+        content: $settings-black;
+    }
+}
+.doc-move-black {
+    &:before {
+        content: $doc-move-black;
+    }
+}
+.print-small-black {
+    &:before {
+        content: $print-small-black;
+    }
+}
+.delete-black {
+    &:before {
+        content: $delete-black;
+    }
+}
+.messages-black {
+    &:before {
+        content: $messages-black;
+    }
+}
+.forms-black {
+    &:before {
+        content: $forms-black;
+    }
+}
+.conditions-black {
+    &:before {
+        content: $conditions-black;
+    }
+}
+.documents-black {
+    &:before {
+        content: $documents-black;
+    }
+}
+.chevron-small-right-black {
+    &:before {
+        content: $chevron-small-right-black;
+    }
+}
+.expand-diagonal-black {
+    &:before {
+        content: $expand-diagonal-black;
+    }
+}
+.nav-services-black {
+    &:before {
+        content: $nav-services-black;
+    }
+}
+
