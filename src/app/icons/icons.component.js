@@ -1,7 +1,6 @@
 import template from './icons.html';
 import controller from './icons.controller';
 import './demo.css';
-import './demo.js';
 
 let iconsComponent = () => {
   return {
