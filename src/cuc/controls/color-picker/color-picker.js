@@ -468,7 +468,7 @@ let ColorPicker = (function(window, document, opts) {
         var keycode = (e.which) ? e.which : e.keyCode;
         if ((keycode >= 48 && keycode <= 57) ||
           (keycode >= 65 && keycode <= 70) ||
-          (keycode >= 97 && keycode <= 102) || keycode === 8 || keycode === 9 || keycode === 37 || keycode === 39) {
+          (keycode >= 97 && keycode <= 102) || keycode === 8 || keycode === 9 || keycode === 37 || keycode === 39 || keycode === 46) {
           var hexTextValue = e.srcElement || e.target;
           //displayColor(this, hexTextValue.value);
           return true;
@@ -490,7 +490,7 @@ let ColorPicker = (function(window, document, opts) {
       var keycode = (e.which) ? e.which : e.keyCode;
       if ((keycode >= 48 && keycode <= 57) ||
         (keycode >= 65 && keycode <= 90) ||
-        (keycode >= 97 && keycode <= 102) || keycode === 8 || keycode === 9 || keycode === 37 || keycode === 39) {
+        (keycode >= 97 && keycode <= 102) || keycode === 8 || keycode === 9 || keycode === 37 || keycode === 39||keycode === 46) {
         return true;
       } else {
         e.preventDefault();
@@ -502,7 +502,7 @@ let ColorPicker = (function(window, document, opts) {
       var keycode = (e.which) ? e.which : e.keyCode;
       if ((keycode >= 48 && keycode <= 57) ||
         (keycode >= 65 && keycode <= 90) ||
-        (keycode >= 97 && keycode <= 102) || keycode === 8 || keycode === 9 || keycode === 37 || keycode === 39) {
+        (keycode >= 97 && keycode <= 102) || keycode === 8 || keycode === 9 || keycode === 37 || keycode === 39 || keycode === 46) {
         if (document.querySelector('.em-input-color')) {
           document.querySelector('.em-input-color').value = hexTextValue.value;
         }
