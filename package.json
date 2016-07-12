@@ -6,7 +6,12 @@
   "scripts": {
     "test": "./node_modules/.bin/protractor protractor.conf.js --suite functionaltests",
     "posttest": "./node_modules/istanbul report --include coverage/**/.json --dir reports/coverage cobertura",
-    "start": "ems"
+    "start": "ems",
+    "prepub": "ems build --lint",
+    "pub": "cd dist && mkdir web && cp *.* web/. && cd .. && npm version patch && git push --follow-tags",
+    "postpub": "npm publish",
+    "prebuild": "ems build --lint",
+    "build": "cd dist && mkdir web && cp *.* web/. && cd .."
   },
   "repository": {
     "type": "git",
