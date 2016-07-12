@@ -1,6 +1,6 @@
 {
   "name": "@elliemae/em-cuc",
-  "version": "3.3.4",
+  "version": "3.3.5",
   "description": "Ellie Mae EmCuc Development",
   "main": "index.js",
   "scripts": {
@@ -48,17 +48,39 @@
       "cuc.draggable.grid.rows.style": "./vendor/scss/cuc-draggable-rows.scss"
     },
     "scripts": {
-      "app": ["./src/app/app.module.js"],
-      "app.tablet": ["./src/app/app.tablet.module.js"],
-      "app.mobile": ["./src/app/app.mobile.module.js"],
-      "cuc": ["./src/cuc/cuc.js"],
-      "cuc.mobile": ["./src/cuc/cuc.mobile.js"],
-      "cuc.angular": ["./src/cuc/cuc.angular.js"],
-      "cuc.mobile.angular": ["./src/cuc/cuc.mobile.angular.js"],
-      "cuc.grid": ["./src/cuc/cuc.grid.js"],
-      "cuc.ui.bootstrap": ["./src/cuc/cuc.ui.bootstrap.js"],
-      "cuc.block.ui": ["./src/cuc/cuc.block.ui.js"],
-      "cuc.draggable.grid.rows": ["./vendor/js/cuc-draggable-rows.js"]
+      "app": [
+        "./src/app/app.module.js"
+      ],
+      "app.tablet": [
+        "./src/app/app.tablet.module.js"
+      ],
+      "app.mobile": [
+        "./src/app/app.mobile.module.js"
+      ],
+      "cuc": [
+        "./src/cuc/cuc.js"
+      ],
+      "cuc.mobile": [
+        "./src/cuc/cuc.mobile.js"
+      ],
+      "cuc.angular": [
+        "./src/cuc/cuc.angular.js"
+      ],
+      "cuc.mobile.angular": [
+        "./src/cuc/cuc.mobile.angular.js"
+      ],
+      "cuc.grid": [
+        "./src/cuc/cuc.grid.js"
+      ],
+      "cuc.ui.bootstrap": [
+        "./src/cuc/cuc.ui.bootstrap.js"
+      ],
+      "cuc.block.ui": [
+        "./src/cuc/cuc.block.ui.js"
+      ],
+      "cuc.draggable.grid.rows": [
+        "./vendor/js/cuc-draggable-rows.js"
+      ]
     }
   },
   "devDependencies": {
