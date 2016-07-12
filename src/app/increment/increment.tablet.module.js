@@ -16,5 +16,4 @@ incrementModule.config(($stateProvider) => {
 incrementModule.directive('incrementTabletComponent', incrementTabletComponent);
 incrementModule.service('IncrementService', IncrementService);
 
-
 export default incrementModule;

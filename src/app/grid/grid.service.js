@@ -1,5 +1,4 @@
 
-
 class GridService {
   /* @ngInject */
   constructor($http) {

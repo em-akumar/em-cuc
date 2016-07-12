@@ -1,6 +1,5 @@
 import angular from 'angular';
-import {uiRouter} from 'ems/core';
-import {atService, atComponent, atState} from 'ems/core';
+import {uiRouter, atService, atComponent, atState} from 'ems/core';
 
 import ReodropdowntService from './reo-dropdown-t.service';
 import template from './reo-dropdown-t.html';

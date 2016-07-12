@@ -2,7 +2,6 @@ import angular from 'angular';
 import {uiRouter} from 'ems/core';
 
 import datepickerComponent from './datepicker.component';
-import DatepickerService from './datepicker.service';
 import datepickerDateTimeTemplate from './templates/datepicker-date-time.html';
 import datepickerDateTimeAutoTemplate from './templates/datepicker-date-time-auto.html';
 import datepickerDateTemplate from './templates/datepicker-date.html';
@@ -19,7 +18,6 @@ datepickerModule.config(($stateProvider) => {
 });
 
 datepickerModule.directive('datepickerComponent', datepickerComponent);
-datepickerModule.service('DatepickerService', DatepickerService);
 
 datepickerModule.directive('datepickerDateTime', () => {
   return {

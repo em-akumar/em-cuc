@@ -6,7 +6,6 @@ class DropdownController {
     this.dropdownService = DropdownService;
     this.initialize();
     this.renderDropdown();
-
   }
 
   /* The below example of country and state, on the selection of country (on change method), it shows up states */
@@ -32,7 +31,7 @@ class DropdownController {
       defaultSize: 'large'
     };
 
- this.drpBranches = {
+    this.drpBranches = {
 
       defaultText: 'Select One',
       onChange: function (e) {
@@ -60,7 +59,7 @@ class DropdownController {
         console.log('clicked');
       },
       defaultSize: 'large',
-      itemList: [{ 'value': 1, 'text': 'State1'}, { 'value': 2, 'text': 'State2State2State2State2State2State2State2State2', 'divider': 'true'}]
+      itemList: [{'value': 1, 'text': 'State1'}, {'value': 2, 'text': 'State2State2State2State2State2State2State2State2', 'divider': 'true'}]
     };
     // for Large dropdown
     this.drpStateLarge = {
@@ -70,7 +69,7 @@ class DropdownController {
         console.log('clicked');
       },
       defaultSize: 'large',
-      itemList: [{ 'value': 1, 'text': 'State1'}, { 'value': 2, 'text': 'State2'}]
+      itemList: [{'value': 1, 'text': 'State1'}, {'value': 2, 'text': 'State2'}]
     };
     this.drpStateHeightXs = {
 
@@ -79,7 +78,7 @@ class DropdownController {
         console.log('clicked');
       },
       defaultSize: 'xs-height',
-      itemList: [{ 'value': 1, 'text': 'State1'}, { 'value': 2, 'text': 'State2'}]
+      itemList: [{'value': 1, 'text': 'State1'}, {'value': 2, 'text': 'State2'}]
     };
 
     this.drpStateHeightSm = {
@@ -89,7 +88,7 @@ class DropdownController {
         console.log('clicked');
       },
       defaultSize: 'sm-height',
-      itemList: [{ 'value': 1, 'text': 'State1'}, { 'value': 2, 'text': 'State2'}]
+      itemList: [{'value': 1, 'text': 'State1'}, {'value': 2, 'text': 'State2'}]
     };
 
     this.drpStateHeightMd = {
@@ -99,7 +98,7 @@ class DropdownController {
         console.log('clicked');
       },
       defaultSize: 'md-height',
-      itemList: [{ 'value': 1, 'text': 'State1'}, { 'value': 2, 'text': 'State2'}]
+      itemList: [{'value': 1, 'text': 'State1'}, {'value': 2, 'text': 'State2'}]
     };
 
     this.drpStateHeightLg = {
@@ -109,7 +108,7 @@ class DropdownController {
         console.log('clicked');
       },
       defaultSize: 'lg-height',
-      itemList: [{ 'value': 1, 'text': 'State1'}, { 'value': 2, 'text': 'State2'}]
+      itemList: [{'value': 1, 'text': 'State1'}, {'value': 2, 'text': 'State2'}]
     };
     // for Medium items
     this.drpStateMedium = {
@@ -119,7 +118,7 @@ class DropdownController {
         console.log('clicked');
       },
       defaultSize: 'medium',
-      itemList: [{ 'value': 1, 'text': 'State1'}, { 'value': 2, 'text': 'State2'}]
+      itemList: [{'value': 1, 'text': 'State1'}, {'value': 2, 'text': 'State2'}]
     };
      // for Small items
     this.drpStateSmall = {
@@ -129,7 +128,7 @@ class DropdownController {
         console.log('clicked');
       },
       defaultSize: 'small',
-      itemList: [{ 'value': 1, 'text': 'State1'}, { 'value': 2, 'text': 'State2'}]
+      itemList: [{'value': 1, 'text': 'State1'}, {'value': 2, 'text': 'State2'}]
     };
      // for Extra Small dropdown
     this.drpStateExtraSmall = {
@@ -139,7 +138,7 @@ class DropdownController {
         console.log('clicked');
       },
       defaultSize: 'xs',
-      itemList: [{ 'value': 1, 'text': 'State1'}, { 'value': 2, 'text': 'State2'}]
+      itemList: [{'value': 1, 'text': 'State1'}, {'value': 2, 'text': 'State2'}]
     };
      // for Flexible dropdown
     this.drpStateFlexible = {
@@ -149,13 +148,13 @@ class DropdownController {
         console.log('clicked');
       },
       defaultSize: 'flexible-width',
-      itemList: [{ 'value': 1, 'text': 'State1'}, { 'value': 2, 'text': 'State2'}]
+      itemList: [{'value': 1, 'text': 'State1'}, {'value': 2, 'text': 'State2'}]
     };
   }
 
   initialize() {
     this.dropdownService.resolvePromise().then((response) => {
-      //this.drpCountry.itemList = response.data;
+      // this.drpCountry.itemList = response.data;
       this.drpBranches.itemList = response.data;
       safeApply();
     });

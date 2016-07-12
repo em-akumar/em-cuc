@@ -5,8 +5,8 @@ import ParagraphComponent from './paragraph.component';
 import ParagraphService from './paragraph.service';
 
 let paragraphModule = angular.module('paragraph', [uiRouter]);
-import paragraphDisabled from './templates/paragraph-disabled.html'
-import paragraphShow from './templates/paragraph-show.html'
+import paragraphDisabled from './templates/paragraph-disabled.html';
+import paragraphShow from './templates/paragraph-show.html';
 
 paragraphModule.config(($stateProvider) => {
   $stateProvider.state('paragraph', {
@@ -15,13 +15,13 @@ paragraphModule.config(($stateProvider) => {
   });
 });
 
-paragraphModule.directive('paragraphDisabled', function() {
+paragraphModule.directive('paragraphDisabled', function () {
   return {
     template: paragraphDisabled
   };
 });
 
-paragraphModule.directive('paragraphShow', function() {
+paragraphModule.directive('paragraphShow', function () {
   return {
     template: paragraphShow
   };

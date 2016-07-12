@@ -2,7 +2,6 @@ import angular from 'angular';
 import {uiRouter} from 'ems/core';
 
 import buttonsTabletComponent from './buttons.tablet.component';
-import ButtonsService from './buttons.service';
 import buttonPrimaryTemplate from './templates/buttons-tablet-primary.html';
 import buttonSecondaryTemplate from './templates/buttons-tablet-secondary.html';
 import buttonTertiaryTemplate from './templates/buttons-tablet-tertiary.html';
@@ -17,7 +16,6 @@ buttonsTabletModule.config(($stateProvider) => {
 });
 
 buttonsTabletModule.directive('buttonsTabletComponent', buttonsTabletComponent);
-buttonsTabletModule.service('ButtonsService', ButtonsService);
 
 buttonsTabletModule.directive('buttonsTabletPrimary', () => {
   return {
@@ -30,7 +28,6 @@ buttonsTabletModule.directive('buttonsTabletSecondary', () => {
     template: buttonSecondaryTemplate
   };
 });
-
 
 buttonsTabletModule.directive('buttonsTabletTertiary', () => {
   return {

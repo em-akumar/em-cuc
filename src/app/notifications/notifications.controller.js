@@ -6,7 +6,7 @@ class NotificationsController {
     // this.initialize();
   }
 
-  //Page notification
+  // Page notification
   renderNotification() {
     this.pageNotifications = {
       contentTmpl: '<span class="alert-text-header">Errors Found - </span><span class="alert-text-body">&nbsp;Error message description.</span>', // notification html template
@@ -39,7 +39,6 @@ class NotificationsController {
       // complexTmpl: 'Complex details template will come here', // notification details html template
       containerEl: '#abc' // Container element id.
     };
-
   }
 
   initialize() {

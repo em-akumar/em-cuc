@@ -22,13 +22,11 @@ panelModule.directive('categoryBox', function () {
   };
 });
 
-
 panelModule.directive('groupBox', function () {
   return {
     template: groupBox
   };
 });
-
 
 panelModule.directive('panelUsage', function () {
   return {

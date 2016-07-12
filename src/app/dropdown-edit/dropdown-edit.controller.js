@@ -38,7 +38,7 @@ class DropdownEditController {
         console.log('clicked');
       },
       defaultSize: 'large',
-      itemList: [{ 'value': 1, 'text': 'State1'}, { 'value': 2, 'text': 'State2'}, { 'value': 3, 'text': 'State3', 'divider': 'true'}]
+      itemList: [{'value': 1, 'text': 'State1'}, {'value': 2, 'text': 'State2'}, {'value': 3, 'text': 'State3', 'divider': 'true'}]
     };
     // for Large dropdown
     this.drpStateLarge = {
@@ -48,7 +48,7 @@ class DropdownEditController {
         console.log('clicked');
       },
       defaultSize: 'large',
-      itemList: [{ 'value': 1, 'text': 'State1'}, { 'value': 2, 'text': 'State2'}]
+      itemList: [{'value': 1, 'text': 'State1'}, {'value': 2, 'text': 'State2'}]
     };
     // for Error dropdown
     this.drpStateError = {
@@ -58,7 +58,7 @@ class DropdownEditController {
         console.log('clicked');
       },
       defaultSize: 'large',
-      itemList: [{ 'value': 1, 'text': 'State1'}, { 'value': 2, 'text': 'State2'}]
+      itemList: [{'value': 1, 'text': 'State1'}, {'value': 2, 'text': 'State2'}]
     };
     // for Medium items
     this.drpStateMedium = {
@@ -68,7 +68,7 @@ class DropdownEditController {
         console.log('clicked');
       },
       defaultSize: 'medium',
-      itemList: [{ 'value': 1, 'text': 'State1'}, { 'value': 2, 'text': 'State2'}]
+      itemList: [{'value': 1, 'text': 'State1'}, {'value': 2, 'text': 'State2'}]
     };
      // for images items
     this.drpStateImages = {
@@ -77,7 +77,7 @@ class DropdownEditController {
         console.log('clicked');
       },
       defaultSize: 'medium',
-      itemList: [{ 'value': 1, 'text': 'State1' }, { 'value': 2, 'text': 'State2', leftImage:'icon-lock-locked-locked.svg', rightImage:'icon-lock-locked-locked.svg'}, { value: 'val2', text: 'Item List-2', rightImage: 'icon-lock-locked-locked.svg' }]
+      itemList: [{ 'value': 1, 'text': 'State1' }, {'value': 2, 'text': 'State2', leftImage: 'icon-lock-locked-locked.svg', rightImage: 'icon-lock-locked-locked.svg'}, { value: 'val2', text: 'Item List-2', rightImage: 'icon-lock-locked-locked.svg' }]
     };
 
      // for Small items
@@ -88,7 +88,7 @@ class DropdownEditController {
         console.log('clicked');
       },
       defaultSize: 'small',
-      itemList: [{ 'value': 1, 'text': 'State1'}, { 'value': 2, 'text': 'State2'}]
+      itemList: [{'value': 1, 'text': 'State1'}, {'value': 2, 'text': 'State2'}]
     };
      // for Extra Small dropdown
     this.drpStateExtraSmall = {
@@ -98,7 +98,7 @@ class DropdownEditController {
         console.log('clicked');
       },
       defaultSize: 'xs',
-      itemList: [{ 'value': 1, 'text': 'State1'}, { 'value': 2, 'text': 'State2'}]
+      itemList: [{'value': 1, 'text': 'State1'}, {'value': 2, 'text': 'State2'}]
     };
      // for Flexible dropdown
     this.drpStateFlexible = {
@@ -108,7 +108,7 @@ class DropdownEditController {
         console.log('clicked');
       },
       defaultSize: 'flexible-width',
-      itemList: [{ 'value': 1, 'text': 'State1'}, { 'value': 2, 'text': 'State2'}]
+      itemList: [{'value': 1, 'text': 'State1'}, {'value': 2, 'text': 'State2'}]
     };
   }
   initialize() {

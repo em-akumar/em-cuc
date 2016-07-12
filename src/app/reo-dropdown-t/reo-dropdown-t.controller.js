@@ -17,7 +17,7 @@ class ReodropdowntController {
     this.drpCountry2 = {
       defaultText: 'Select',
       onChange: (selected) => {
-        console.log("this is from controller log");
+        console.log('this is from controller log');
         console.log(selected);
       },
       valueField: 'value',

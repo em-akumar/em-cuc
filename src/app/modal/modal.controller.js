@@ -2,10 +2,10 @@ import modalTemplate from './modalTemplate.html';
 
 class ModalController {
   /* @ngInject */
-  constructor(ModalService, $uibModal) {
+  constructor(ModalService, $uibModal, $scope) {
     this.$uibModal = $uibModal;
-    //this.$scope = $scope;
     this.modalService = ModalService;
+    this.$scope = $scope;
     // this.initialize();
   }
 
@@ -29,7 +29,7 @@ class ModalController {
     });
 
     modalInstance.result.then(function (selectedItem) {
-      $scope.selected = selectedItem;
+      this.$scope.selected = selectedItem;
     }, function () {
       console.log('Modal dismissed at: ' + new Date());
     });

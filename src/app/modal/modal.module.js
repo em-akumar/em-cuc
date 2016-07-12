@@ -1,6 +1,4 @@
 import angular from 'angular';
-import {uiRouter} from 'ems/core';
-
 import modalComponent from './modal.component';
 import ModalService from './modal.service';
 

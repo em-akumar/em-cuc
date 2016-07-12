@@ -7,21 +7,16 @@ export default class AppController {
     let mobileView = 992;
     let IsToggle = true;
 
-    this.scope.$watch(this.getWidth, function(newValue, oldValue) {
+    this.scope.$watch(this.getWidth, function (newValue, oldValue) {
       if (newValue >= mobileView) {
         if (angular.isDefined(IsToggle)) {
-          this.toggle = !IsToggle ? false : true;
-        }
-        else {
-          this.toggle = true;
-        }
-      }
-      else {
-        this.toggle = false;
-      }
-    }.bind(this));
+          if (IsToggle) {
+            this.toggle = true;
+          } else { this.toggle = false; }
 
-    // .initialize();
+          // this.toggle = !IsToggle ? false : true;
+        } else { this.toggle = true; } } else { this.toggle = false; }
+    }.bind(this));
   }
 
   getWidth() {
@@ -39,10 +34,8 @@ export default class AppController {
   }
 
   initialize() {
-
     this.appService.resolvePromise().then((response) => {
       this.data = response.data;
     });
-
   }
 }

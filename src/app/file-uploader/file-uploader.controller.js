@@ -1,3 +1,4 @@
+import angular from 'angular';
 class FileUploaderController {
   /* @ngInject */
   constructor(FileUploaderService, $http) {
@@ -8,15 +9,15 @@ class FileUploaderController {
   }
 
   fileUploaderRender() {
-    let configUploadUrl = 'http://10.112.104.13:85/v1/formbuilder/importpackage',
-      fileFilterErrorMessage = '! Upload failed: Invalid file extension.',
-      maxFileNameLength = '50',
-      fileNameLengthErrorMessage = 'File name too long, Max 50 chars.',
-      dropDirectionMsg = 'Drop files to upload or  ',
-      fileTypeIconCss = 'fileExtIcon',
-      supportText = '[Supported File Format: .jpeg, .jpg, .png]',
-      fileMaxSize = '5120',   //  size in KBs
-      invalidFileMsg = 'File size exceeds maximum allowed size';
+    let configUploadUrl = 'http://10.112.104.13:85/v1/formbuilder/importpackage';
+    let fileFilterErrorMessage = '! Upload failed: Invalid file extension.';
+    let maxFileNameLength = '50';
+    let fileNameLengthErrorMessage = 'File name too long, Max 50 chars.';
+    let dropDirectionMsg = 'Drop files to upload or  ';
+    let fileTypeIconCss = 'fileExtIcon';
+    let supportText = '[Supported File Format: .jpeg, .jpg, .png]';
+    let fileMaxSize = '5120';   //  size in KBs
+    let invalidFileMsg = 'File size exceeds maximum allowed size';
 
     let fancyOptions = {
       controlId: 'fancyUploader',
@@ -55,7 +56,7 @@ class FileUploaderController {
       dropDirectionMsg: dropDirectionMsg,
       onfileUploadComplete: (e) => {
         this.fileUploadComplete(e);
-        console.log(e)
+        console.log(e);
       }
     };
     let singleFileoptions = {
@@ -72,16 +73,16 @@ class FileUploaderController {
     if (document.getElementById('singleUpload').files.length > 0) {
       console.log(document.getElementById('singleUpload').files[0]);
       var file = document.getElementById('singleUpload').files[0];
-      var fd = new FormData();
+      var fd = new window.FormData();
       fd.append('file', file);
       this.$http.post('http://10.112.104.13:85/v1/formbuilder/importpackage', fd, {
-          transformRequest: angular.identity,
-          headers: {'Content-Type': undefined}
-        })
-        .success(function() {
+        transformRequest: angular.identity,
+        headers: {'Content-Type': undefined}
+      })
+        .success(function () {
           console.log('file uploaded successfully.');
         })
-        .error(function() {
+        .error(function () {
           console.log('Error uploading file');
         });
     }
