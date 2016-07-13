@@ -1,4 +1,4 @@
-FROM dmcginnis/nextgen-app-build:3.0.13
+FROM dmcginnis/nextgen-app-build:4.3.1
 
 MAINTAINER Dominic McGinnis, dominic.mcginnis@elliemae.com
 
