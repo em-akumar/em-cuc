@@ -24,7 +24,7 @@ import grid from './grid/grid.module';
 import dropdown from './dropdown/dropdown.module';
 import dropdownEdit from './dropdown-edit/dropdown-edit.module';
 import colorPicker from './color-picker/color-picker.module';
-import ckEditor from './ckEditor/ckEditor.module';
+import ckeditor from './ckeditor/ckeditor.module';
 import modal from './modal/modal.module';
 import datepicker from './datepicker/datepicker.module';
 import panel from './panel/panel.module';
@@ -42,7 +42,7 @@ import reodropdownT from './reo-dropdown-t/reo-dropdown-t.module';
 let appTabletModule = angular.module('app', [ uiRouter, 'cuc', 'ui.grid', 'ui.bootstrap', 'ngMessages', 'ui.mask',
   buttonsTablet.name, textInput.name, incrementTablet.name, textArea.name, fileUploader.name, dropdownEdit.name, grid.name, dropdown.name,
   colorPicker.name, modal.name, datepicker.name, checkboxTablet.name, panel.name, errorHandling.name, imageButton.name,
-  notifications.name, radioTablet.name, toggleSwitch.name, tooltips.name, ckEditor.name, blockui.name,
+  notifications.name, radioTablet.name, toggleSwitch.name, tooltips.name, ckeditor.name, blockui.name,
   progressSpinner.name, progressBar.name, paragraph.name, reodropdownT.name ]);
 
 appTabletModule.config(($stateProvider, $urlRouterProvider) => {
