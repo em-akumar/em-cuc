@@ -1,10 +1,6 @@
 class ParagraphService {
   /* @ngInject */
-  constructor() {
-  }
-
   resolvePromise() {
-    //return this.$http.get('app.json');
   }
 }
 

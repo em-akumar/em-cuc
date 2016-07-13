@@ -1,5 +1,4 @@
 import angular from 'angular';
-import {uiRouter} from 'ems/core';
 
 import dropdownComponent from './dropdown.component';
 import DropdownService from './dropdown.service';

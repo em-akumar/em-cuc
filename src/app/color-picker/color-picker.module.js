@@ -1,5 +1,4 @@
 import angular from 'angular';
-import {uiRouter} from 'ems/core';
 
 import colorPickerComponent from './color-picker.component';
 import ColorPickerService from './color-picker.service';

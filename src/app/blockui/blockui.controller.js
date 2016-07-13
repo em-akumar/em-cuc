@@ -1,7 +1,6 @@
 class BlockuiController {
   /* @ngInject */
-  constructor(BlockuiService, blockUI, $timeout) {
-    this.BlockuiService = BlockuiService;
+  constructor(blockUI, $timeout) {
     this.blockUI = blockUI;
     this.$timeout = $timeout;
     this.notifyBlock = this.blockUI.instances.get('notifyBlock');
@@ -9,9 +8,6 @@ class BlockuiController {
     this.lightboxSpinnerBlock = this.blockUI.instances.get('lightboxSpinnerBlock');
   }
   initialize() {
-    this.BlockuiService.resolvePromise().then((response) => {
-      this.data = response.data;
-    });
   }
 
   toggleBlockNotify() {

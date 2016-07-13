@@ -1,5 +1,4 @@
 import angular from 'angular';
-import {uiRouter} from 'ems/core';
 
 import dropdownEditComponent from './dropdown-edit.component';
 import DropdownEditService from './dropdown-edit.service';
@@ -20,7 +19,6 @@ dropdownEditModule.config(($stateProvider) => {
 
 dropdownEditModule.directive('dropdownEditComponent', dropdownEditComponent);
 dropdownEditModule.service('DropdownEditService', DropdownEditService);
-
 
 dropdownEditModule.directive('dropdownEditDefault', () => {
   return {

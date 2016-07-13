@@ -38,7 +38,6 @@ import paragraph from './paragraph/paragraph.module';
 import reodropdownT from './reo-dropdown-t/reo-dropdown-t.module';
 import icons from './icons/icons.module';
 
-
 let appModule = angular.module('app', [ uiRouter, 'cuc', 'ui.grid', 'ui.bootstrap', 'ngMessages', 'ui.mask',
   buttons.name, textInput.name, textArea.name, fileUploader.name, dropdownEdit.name, grid.name, dropdown.name,
   colorPicker.name, modals.name, datepicker.name, checkbox.name, panel.name, errorHandling.name, imageButton.name,

@@ -1,3 +1,4 @@
+import angular from 'angular';
 class TextInputController {
   /* @ngInject */
   constructor(TextInputService) {
@@ -8,7 +9,7 @@ class TextInputController {
       onChange: (target) => {
           // ssn value chnage handler.
       }
-    }
+    };
 
     // this.initialize();
     this.change_event = ($event) => {
@@ -18,7 +19,7 @@ class TextInputController {
       } else {
         angular.element($event.srcElement).removeClass('active').addClass('locked').next('div').find('input').attr('readonly', true);
       }
-    }
+    };
   }
   initialize() {
     this.textInputService.resolvePromise().then((response) => {

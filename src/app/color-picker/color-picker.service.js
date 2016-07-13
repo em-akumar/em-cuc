@@ -1,11 +1,8 @@
 
-
 class ColorPickerService {
   /* @ngInject */
-  constructor() {
-  }
   resolvePromise() {
-    //return emsApi.fetch('app.json');
+    // return emsApi.fetch('app.json');
   }
 }
 

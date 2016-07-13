@@ -1,4 +1,5 @@
-(function() {
+import angular from 'angular';
+(function () {
   'use strict';
 
   angular.module('ui.grid.draggable-rows', ['ui.grid'])
@@ -14,18 +15,18 @@
       POSITION_BELOW: 'below',
       publicEvents: {
         draggableRows: {
-          rowDragged: function(scope, info, rowElement) {},
-          rowDropped: function(scope, info, targetElement) {},
-          rowOverRow: function(scope, info, rowElement) {},
-          rowEnterRow: function(scope, info, rowElement) {},
-          rowLeavesRow: function(scope, info, rowElement) {},
-          rowFinishDrag: function(scope) {},
-          beforeRowMove: function(scope, from, to, data) {}
+          rowDragged: function (scope, info, rowElement) {},
+          rowDropped: function (scope, info, targetElement) {},
+          rowOverRow: function (scope, info, rowElement) {},
+          rowEnterRow: function (scope, info, rowElement) {},
+          rowLeavesRow: function (scope, info, rowElement) {},
+          rowFinishDrag: function (scope) {},
+          beforeRowMove: function (scope, from, to, data) {}
         }
       }
     })
 
-    .factory('uiGridDraggableRowsCommon', [function() {
+    .factory('uiGridDraggableRowsCommon', [function () {
       return {
         draggedRow: null,
         draggedRowEntity: null,
@@ -38,13 +39,13 @@
       };
     }])
 
-    .factory('uiGridDraggableRowsSettings', [function() {
+    .factory('uiGridDraggableRowsSettings', [function () {
       return {
         dragDisabled: false
       };
     }])
 
-    .service('uiGridDraggableRowsService', ['uiGridDraggableRowsConstants', 'uiGridDraggableRowsCommon' , 'uiGridDraggableRowsSettings', function(uiGridDraggableRowsConstants, uiGridDraggableRowsCommon, uiGridDraggableRowsSettings) {
+    .service('uiGridDraggableRowsService', ['uiGridDraggableRowsConstants', 'uiGridDraggableRowsCommon', 'uiGridDraggableRowsSettings', function (uiGridDraggableRowsConstants, uiGridDraggableRowsCommon, uiGridDraggableRowsSettings) {
       var publicMethods = {
         dragndrop: {
           setDragDisabled: function setDragDisabled(status) {
@@ -53,25 +54,25 @@
         }
       };
 
-      this.initializeGrid = function(grid, $scope, $element) {
+      this.initializeGrid = function (grid, $scope, $element) {
         grid.api.registerEventsFromObject(uiGridDraggableRowsConstants.publicEvents);
         grid.api.registerMethodsFromObject(publicMethods);
 
-        grid.api.draggableRows.on.rowFinishDrag($scope, function() {
-          angular.forEach($element[0].querySelectorAll('.' + uiGridDraggableRowsConstants.ROW_OVER_CLASS), function(row) {
+        grid.api.draggableRows.on.rowFinishDrag($scope, function () {
+          angular.forEach($element[0].querySelectorAll('.' + uiGridDraggableRowsConstants.ROW_OVER_CLASS), function (row) {
             row.classList.remove(uiGridDraggableRowsConstants.ROW_OVER_CLASS);
             row.classList.remove(uiGridDraggableRowsConstants.ROW_OVER_ABOVE_CLASS);
             row.classList.remove(uiGridDraggableRowsConstants.ROW_OVER_BELOW_CLASS);
           });
-          angular.forEach($element[0].querySelectorAll('.' + uiGridDraggableRowsConstants.ROW_TARGET_CLASS), function(row) {
+          angular.forEach($element[0].querySelectorAll('.' + uiGridDraggableRowsConstants.ROW_TARGET_CLASS), function (row) {
             row.classList.remove(uiGridDraggableRowsConstants.ROW_TARGET_CLASS);
           });
         });
       };
     }])
 
-    .service('uiGridDraggableRowService', ['uiGridDraggableRowsConstants', 'uiGridDraggableRowsCommon', 'uiGridDraggableRowsSettings', '$parse', function(uiGridDraggableRowsConstants, uiGridDraggableRowsCommon, uiGridDraggableRowsSettings, $parse) {
-      var move = function(from, to, grid) {
+    .service('uiGridDraggableRowService', ['uiGridDraggableRowsConstants', 'uiGridDraggableRowsCommon', 'uiGridDraggableRowsSettings', '$parse', function (uiGridDraggableRowsConstants, uiGridDraggableRowsCommon, uiGridDraggableRowsSettings, $parse) {
+      var move = function (from, to, grid) {
         /* Uncomment the below code if you want to
            interchange place of dragged element and the row where its dropped
          */
@@ -84,14 +85,14 @@
         this.splice(to, 0, this.splice(from, 1)[0]);
       };
 
-      this.prepareDraggableRow = function($scope, $element) {
+      this.prepareDraggableRow = function ($scope, $element) {
         var grid = $scope.grid;
         var row = $element[0];
         var hasHandle = $scope.grid.options.useUiGridDraggableRowsHandle;
         var currentTarget = null;
         var handle = null;
 
-        var data = function() {
+        var data = function () {
           if (angular.isString(grid.options.data)) {
             return $parse(grid.options.data)(grid.appScope);
           }
@@ -101,11 +102,11 @@
 
         // issue #16
         if (grid.api.hasOwnProperty('edit')) {
-          grid.api.edit.on.beginCellEdit(null, function() {
+          grid.api.edit.on.beginCellEdit(null, function () {
             row.setAttribute('draggable', false);
           });
 
-          grid.api.edit.on.afterCellEdit(null, function() {
+          grid.api.edit.on.afterCellEdit(null, function () {
             row.setAttribute('draggable', true);
           });
         }
@@ -121,7 +122,7 @@
             handle = null;
           },
 
-          onDragOverEventListener: function(e) {
+          onDragOverEventListener: function (e) {
             if (e.preventDefault) {
               e.preventDefault();
             }
@@ -139,7 +140,6 @@
 
               $element.removeClass(uiGridDraggableRowsConstants.ROW_OVER_BELOW_CLASS);
               $element.addClass(uiGridDraggableRowsConstants.ROW_OVER_ABOVE_CLASS);
-
             } else {
               uiGridDraggableRowsCommon.position = uiGridDraggableRowsConstants.POSITION_BELOW;
 
@@ -150,7 +150,7 @@
             grid.api.draggableRows.raise.rowOverRow(uiGridDraggableRowsCommon, this);
           },
 
-          onDragStartEventListener: function(e) {
+          onDragStartEventListener: function (e) {
             if (uiGridDraggableRowsSettings.dragDisabled || (hasHandle && !handle)) {
               e.preventDefault();
               e.stopPropagation();
@@ -171,7 +171,7 @@
             grid.api.draggableRows.raise.rowDragged(uiGridDraggableRowsCommon, this);
           },
 
-          onDragLeaveEventListener: function() {
+          onDragLeaveEventListener: function () {
             this.classList.remove(uiGridDraggableRowsConstants.ROW_TARGET_CLASS);
 
             this.classList.remove(uiGridDraggableRowsConstants.ROW_OVER_CLASS);
@@ -181,17 +181,17 @@
             grid.api.draggableRows.raise.rowLeavesRow(uiGridDraggableRowsCommon, this);
           },
 
-          onDragEnterEventListener: function() {
+          onDragEnterEventListener: function () {
             grid.api.draggableRows.raise.rowEnterRow(uiGridDraggableRowsCommon, this);
           },
 
-          onDragEndEventListener: function() {
+          onDragEndEventListener: function () {
             grid.api.draggableRows.raise.rowFinishDrag();
           },
 
-          onDropEventListener: function(e) {
+          onDropEventListener: function (e) {
             var isTargetDroppable;
-            var dragHandlePresent = grid.options.useUiGridDraggableRowsHandle;
+            // var dragHandlePresent = grid.options.useUiGridDraggableRowsHandle;
             var draggedRow = uiGridDraggableRowsCommon.draggedRow;
 
             if (e.stopPropagation) {
@@ -211,7 +211,7 @@
             uiGridDraggableRowsCommon.targetRow = this;
 
             // check if the targetRow has row handle
-            isTargetDroppable = angular.element(uiGridDraggableRowsCommon.targetRow.querySelector('.'+uiGridDraggableRowsConstants.ROW_HANDLE_CLASS)).length > 0;
+            isTargetDroppable = angular.element(uiGridDraggableRowsCommon.targetRow.querySelector('.' + uiGridDraggableRowsConstants.ROW_HANDLE_CLASS)).length > 0;
 
             uiGridDraggableRowsCommon.targetRowEntity = $scope.$parent.$parent.row.entity;
 
@@ -224,12 +224,11 @@
               if (uiGridDraggableRowsCommon.fromIndex < uiGridDraggableRowsCommon.toIndex) {
                 uiGridDraggableRowsCommon.toIndex -= 1;
               }
-
             } else if (uiGridDraggableRowsCommon.fromIndex >= uiGridDraggableRowsCommon.toIndex) {
-              //uiGridDraggableRowsCommon.toIndex += 1;
+              // uiGridDraggableRowsCommon.toIndex += 1;
             }
 
-            $scope.$apply(function() {
+            $scope.$apply(function () {
               move.apply(data(), [uiGridDraggableRowsCommon.fromIndex, uiGridDraggableRowsCommon.toIndex, grid]);
             });
 
@@ -253,15 +252,15 @@
       };
     }])
 
-    .directive('uiGridDraggableRow', ['uiGridDraggableRowService', function(uiGridDraggableRowService) {
+    .directive('uiGridDraggableRow', ['uiGridDraggableRowService', function (uiGridDraggableRowService) {
       return {
         restrict: 'ACE',
         scope: {
           grid: '='
         },
-        compile: function() {
+        compile: function () {
           return {
-            pre: function($scope, $element) {
+            pre: function ($scope, $element) {
               uiGridDraggableRowService.prepareDraggableRow($scope, $element);
             }
           };
@@ -269,16 +268,16 @@
       };
     }])
 
-    .directive('uiGridDraggableRows', ['uiGridDraggableRowsService', function(uiGridDraggableRowsService) {
+    .directive('uiGridDraggableRows', ['uiGridDraggableRowsService', function (uiGridDraggableRowsService) {
       return {
         restrict: 'A',
         replace: true,
         priority: 0,
         require: 'uiGrid',
         scope: false,
-        compile: function() {
+        compile: function () {
           return {
-            pre: function($scope, $element, $attrs, uiGridCtrl) {
+            pre: function ($scope, $element, $attrs, uiGridCtrl) {
               uiGridDraggableRowsService.initializeGrid(uiGridCtrl.grid, $scope, $element);
             }
           };

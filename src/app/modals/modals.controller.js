@@ -2,9 +2,9 @@ import modalTemplate from './modalTemplate.html';
 
 class modalsController {
   /* @ngInject */
-  constructor(modalsService, $uibModal) {
+  constructor(modalsService, $uibModal, $scope) {
     this.$uibModal = $uibModal;
-    //this.$scope = $scope;
+    this.$scope = $scope;
     this.modalsService = modalsService;
     // this.initialize();
   }
@@ -16,12 +16,12 @@ class modalsController {
       /* @ngInject */
       controllerAs: 'vm',
       /* @ngInject */
-      controller: function($scope, $uibModalInstance) {
-        $scope.ok = function() {
+      controller: ($scope, $uibModalInstance) => {
+        $scope.ok = () => {
           $uibModalInstance.dismiss('ok');
         };
 
-        $scope.cancel = function() {
+        $scope.cancel = () => {
           $uibModalInstance.dismiss('cancel');
         };
       },
@@ -29,9 +29,9 @@ class modalsController {
       windowClass: 'em-modal'
     });
 
-    modalInstance.result.then(function(selectedItem) {
-      $scope.selected = selectedItem;
-    }, function() {
+    modalInstance.result.then((selectedItem) => {
+      this.$scope.selected = selectedItem;
+    }, function () {
       console.log('Modal dismissed at: ' + new Date());
     });
   }

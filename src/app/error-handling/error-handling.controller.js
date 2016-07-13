@@ -24,14 +24,14 @@ class ErrorHandlingController {
       }
     };
   }
-renderMaritalStatus1() {
-  this.drpMarital1 = {
-    defaultText: '',
-    itemList: [{value: 'M', text: 'Male'}, {value: 'F', text: 'Female'}],
-    defaultSize: 'flexible-width'
+  renderMaritalStatus1() {
+    this.drpMarital1 = {
+      defaultText: '',
+      itemList: [{value: 'M', text: 'Male'}, {value: 'F', text: 'Female'}],
+      defaultSize: 'flexible-width'
 
-  };
-}
+    };
+  }
 
   /* Render date of birth datepicker control */
   renderDateOfBirth() {
