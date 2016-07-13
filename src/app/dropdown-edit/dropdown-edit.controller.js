@@ -77,7 +77,8 @@ class DropdownEditController {
         console.log('clicked');
       },
       defaultSize: 'medium',
-      itemList: [{ 'value': 1, 'text': 'State1' }, {'value': 2, 'text': 'State2', leftImage: 'icon-lock-locked-locked.svg', rightImage: 'icon-lock-locked-locked.svg'}, { value: 'val2', text: 'Item List-2', rightImage: 'icon-lock-locked-locked.svg' }]
+      itemList: [{'value': 1, 'text': 'State1'}, {'value': 2, 'text': 'State2'}]
+     // itemList: [{ 'value': 1, 'text': 'State1' }, {'value': 2, 'text': 'State2', leftImage: 'icon-lock-locked-locked.svg', rightImage: 'icon-lock-locked-locked.svg'}, { value: 'val2', text: 'Item List-2', rightImage: 'icon-lock-locked-locked.svg' }]
     };
 
      // for Small items

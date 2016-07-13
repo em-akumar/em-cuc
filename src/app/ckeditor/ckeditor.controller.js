@@ -1,7 +1,6 @@
 class CkeditorController {
   /* @ngInject */
-  constructor(CkeditorService) {
-    this.ckeditorService = CkeditorService;
+  constructor() {
     this.ckEditors = [];
     this.configAll = {
       'toolbarGroups': [
@@ -47,9 +46,6 @@ class CkeditorController {
   }
 
   initialize() {
-    this.ckeditorService.resolvePromise().then((response) => {
-      this.data = response.data;
-    });
   }
 }
 
