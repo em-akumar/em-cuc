@@ -1,5 +1,5 @@
 /* eslint-disable */
-/*class ProgressBar {
+class ProgressBar {
     constructor(el, options = {}) {
         this.mailEl = (typeof el === 'object') ? el : document.getElementById(el);
         this.options = options;
@@ -44,4 +44,4 @@
     }
 }
 
-export {ProgressBar};*/
+export {ProgressBar};

@@ -1,7 +1,6 @@
 class DatepickerController {
   /* @ngInject */
-  constructor(DatepickerService) {
-    this.datepickerService = DatepickerService;
+  constructor() {
     // added DatePicker
     this.dateTimePicker = {
       disabledDates: ['12/14/2015', '12/15/2015', '12/16/2015'],
@@ -20,9 +19,6 @@ class DatepickerController {
   }
 
   initialize() {
-    this.datepickerService.resolvePromise().then((response) => {
-      this.data = response.data;
-    });
   }
 }
 
