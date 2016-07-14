@@ -15,6 +15,7 @@ class Dropdown {
         this.options.sortOrder = this.options.sortOrder || 'asc';
         this.options.size = this.options.defaultSize || 'medium';
         this.sortFieldType = this.options.sortFieldType || 'text';
+        this.defaultValue = this.options.defaultValue || false;
 
         //Sort dropdown values
         this.itemList =  this.options.itemList.slice(0);
@@ -76,6 +77,14 @@ class Dropdown {
       this.setRestricted();
       this.setError();
       this.setDisabledItem();
+      this.defaultValue !== false ? this.defaultSelected() : null;
+    }
+  }
+
+  defaultSelected() {
+    this.options.defaultValue ? this.setSelected(this.defaultValue) : null;
+    for ( let value of this.itemList ) {
+      this.defaultValue === value[this.options.valueField || 'value'] ? this.setSelected(value) : null;
     }
   }
 
