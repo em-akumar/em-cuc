@@ -193,17 +193,15 @@
     width: @dropdown-size-flexible;
     min-width: auto;
   }
-
   ul.dropdown-menu {
     background-color: @dropdown-panel-default-background;
     border: 1px solid @dropdown-panel-default-border-color;
     box-shadow: 0 2px 5px 0 @dropdown-panel-shadow-color;
     border-radius: @dropdown-panel-border-radius;
     padding: @dropdown-panel-padding;
-    max-height: 340px;
+    max-height: 200px;
     overflow-y: auto;
     min-width: none;
-
     li {
       &:hover {
         color: @dropdown-panel-hover-highlight-color;
@@ -260,6 +258,13 @@
     }
     .divider {
       margin: 5px 0;
+    }
+  }
+  &.open-top {
+    ul {
+      &.dropdown-menu {
+        transform: translateY(~"calc(-100% - 38px)");
+      }
     }
   }
 }

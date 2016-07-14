@@ -53,13 +53,13 @@ class DropdownController {
 
     // for Divider items
     this.drpStateDividerItem = {
-
+      defaultValue: 2,
       defaultText: 'Select One',
       onChange: function (e) {
         console.log('clicked');
       },
       defaultSize: 'large',
-      itemList: [{'value': 1, 'text': 'State1'}, {'value': 2, 'text': 'State2State2State2State2State2State2State2State2', 'divider': 'true'}]
+      itemList: [{'value': 1, 'text': 'State1'}, {'value': 3, 'text': 'State3'}, {'value': 2, 'text': 'State4', 'divider': 'true'}]
     };
     // for Large dropdown
     this.drpStateLarge = {
