@@ -5,7 +5,7 @@ class TextInputController {
     this.textInputService = TextInputService;
     this.numWithCurrencyValue = 1224432453242;
     this.options = {
-      defaultText: '323222322',
+      defaultText: '323-22-2322',
       onChange: (target) => {
           // ssn value chnage handler.
       }

@@ -1,5 +1,5 @@
 /* override default input text box */
-input[type="text"], input[type="password"], input[type="ssn"], input[type="number"],  input[type="email"], input[type="ssn"] {
+input[type="text"], input[type="password"], input[type="ssn"], input[type="number"],  input[type="email"]{
   height: $input-field-height;
  // border-top: 2px solid $alto;
   border-radius: 0;
@@ -24,4 +24,36 @@ input[type="text"], input[type="password"], input[type="ssn"], input[type="numbe
 
 .em-input-symbol-months:after{
   top:14px;
+}
+
+.em-ssn-showPassword {
+  position: relative;
+
+  .em-toggle-password {
+    position: absolute;
+    right: 8px;
+    height:40px;
+    bottom: 0;
+    margin-right:20px;
+    cursor: pointer;
+    background: url("../../assets/images/icon-visibility-true-active.svg") center right no-repeat;
+    padding-right: 30px;
+    padding-left: 5px;
+    background-size: 20px auto;
+  }
+  .em-showPassword-txt {
+    padding-right: 30px;
+  }
+  .em-toggle-show-password {
+    position: absolute;
+    right: 8px;
+    height:39px;
+    margin-right:20px;
+    bottom: 0;
+    cursor: pointer;
+    background: url("../../assets/images/icon-visibility-false-active.svg") center right no-repeat;
+    padding-right: 30px;
+    padding-left: 5px;
+    background-size: 20px auto;
+  }
 }

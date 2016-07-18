@@ -31,7 +31,6 @@ class TextInputField {
           }
         }
 
-
       } else {
         self.span_password.setAttribute('class', 'em-toggle-password');
       }

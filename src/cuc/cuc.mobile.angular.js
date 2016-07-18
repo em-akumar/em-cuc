@@ -98,12 +98,14 @@ cucm.directive('format', ['$filter', ($filter) => {
             });
 
             elem.bind('keyup', (event) => {
-                var plainNumber = elem.val().replace(/[^\d|\-+|\.+]/g, '');
-                if($filter(attrs.format)(plainNumber) ==='$0.00' || $filter(attrs.format)(plainNumber) ==='0'){
-                    $filter(attrs.format)(plainNumber).val = '';
-                }
-                elem.val($filter(attrs.format)(plainNumber));
-            });
+            var plainNumber = elem.val().replace(/[^\d|\-+|\.+]/g, '');
+            if ($filter(attrs.format)(plainNumber) === '0') {
+              elem.val('');
+            }
+            else {
+              elem.val($filter(attrs.format)(plainNumber));
+            }
+          });
         }
     };
 }]);

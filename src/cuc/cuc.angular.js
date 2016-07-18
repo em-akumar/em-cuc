@@ -794,10 +794,12 @@ cuc.directive('format', ['$filter', ($filter) => {
 
             elem.bind('keyup', (event) => {
                 var plainNumber = elem.val().replace(/[^\d|\-+|\.+]/g, '');
-                if($filter(attrs.format)(plainNumber) ==='0'){
-                   $filter(attrs.format)(plainNumber).val = '';
+                if ($filter(attrs.format)(plainNumber) === '0') {
+                  elem.val('');
                 }
-                elem.val($filter(attrs.format)(plainNumber));
+                else {
+                  elem.val($filter(attrs.format)(plainNumber));
+                }
             });
         }
     };
