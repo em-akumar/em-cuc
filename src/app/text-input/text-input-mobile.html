@@ -8,15 +8,38 @@
   </div>
 
     <!-- text input field data format sample -->
-    <div id="text-input-data-format" class="demo-example section-subheading" data-heading="Data Format">
+    <div id="text-input-data-format" class="demo-example section-subheading mobile-demo-input" data-heading="Data Format">
        <label for="field-label16">Passowrd</label>
         <div class="item item-input em-showPassword">
               <input type="password" placeholder="Password" class="em-showPassword-txt" emcm="TextInputField">
         </div>
     </div>
-    <br/>
-    <br />
-    <!-- Text input field label data format  Usage -->
+
+ <div id="text-input-data-format" class="demo-example section-subheading mobile-demo-input" data-heading="Number Format">
+   <div class="list">
+     <label class="item item-input item-stacked-label">
+          <span class="input-label">Currency filter</span>
+          <label class="item-input-wrapper">
+            <i class="icon placeholder-icon">$</i>
+            <input type="text" ng-model="vm.numWithCurrencyValue" format="number">
+          </label>
+      </label>
+   </div>
+ </div>
+
+
+ <div id="text-input-data-format" class="demo-example section-subheading mobile-demo-input" data-heading="SSN">
+   <div class="list">
+     <div class="item item-input item-stacked-label">
+          <label class="input-label">SSN Input Text Field</label>
+          <div class="item-input-wrapper em-showPassword">
+            <input type="ssn" class="em-showPassword-txt" emcm="TextInputField" options="vm.options" maxlength="11"/>
+            </div>
+      </div>
+   </div>
+ </div>
+
+ <!-- Text input field label data format  Usage -->
     <div id="text-input-data-format-usage" class="panel panel-primary">
         <div class="panel-heading">Text Input Field Data Format Usage</div>
         <div class="codepen-group">

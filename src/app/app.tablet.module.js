@@ -17,7 +17,7 @@ import buttonsTablet from './buttons/buttons.tablet.module';
 import checkboxTablet from './checkbox/checkbox.tablet.module';
 import radioTablet from './radio/radio.tablet.module';
 import incrementTablet from './increment/increment.tablet.module';
-import textInput from './text-input/text-input.module';
+import textInput from './text-input/text-input.tablet.module';
 import textArea from './text-area/text-area.module';
 import fileUploader from './file-uploader/file-uploader.module';
 import grid from './grid/grid.module';

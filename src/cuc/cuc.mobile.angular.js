@@ -86,5 +86,27 @@ cucm.directive('emcm', () => {
   };
 });
 
+// Directive for formatting input in currency format.
+cucm.directive('format', ['$filter', ($filter) => {
+    return {
+        require: '?ngModel',
+        link: function (scope, elem, attrs, ctrl) {
+            if (!ctrl) return;
+
+            ctrl.$formatters.unshift((a) => {
+                return $filter(attrs.format)(ctrl.$modelValue)
+            });
+
+            elem.bind('keyup', (event) => {
+                var plainNumber = elem.val().replace(/[^\d|\-+|\.+]/g, '');
+                if($filter(attrs.format)(plainNumber) ==='$0.00' || $filter(attrs.format)(plainNumber) ==='0'){
+                    $filter(attrs.format)(plainNumber).val = '';
+                }
+                elem.val($filter(attrs.format)(plainNumber));
+            });
+        }
+    };
+}]);
+
 
 export {cucm};

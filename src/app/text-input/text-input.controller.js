@@ -3,7 +3,7 @@ class TextInputController {
   /* @ngInject */
   constructor(TextInputService) {
     this.textInputService = TextInputService;
-
+    this.numWithCurrencyValue = 1224432453242;
     this.options = {
       defaultText: '323222322',
       onChange: (target) => {

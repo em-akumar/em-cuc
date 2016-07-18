@@ -1,18 +1,21 @@
- <div class="demo-example" data-heading="Size">
+ <div class="demo-example" data-heading="Tablet Input Text Field">
 
         <div class="form-group">
-          <label>Integer</label>
-              <input type="text"  ng-model="numWithoutDecimalPoint" em-txt-decimal-upto="0"/>
+          <label>Tablet Control</label>
+              <input type="text" class="form-control em-txt-md" />
         </div>
 
         <div class="form-group">
-          <label>Floating point number(maximum 6 digits after decimal point)</label>
-              <input type="text"  ng-model="numWithDecimalPoint" em-txt-decimal-upto="6"/>
-        </div>
+            <div class="em-showPassword em-txt-lg">
+              <input type="password" class="form-control em-showPassword-txt" emc="TextInputField" options="vm.options" placeholder="Placeholder">
+            </div>
+         </div>
 
-        <div class="form-group">
-          <label>Number to accept only positive values </label>
-              <input type="text"  ng-model="decimalWithPositiveValues" em-txt-decimal-upto="5"  em-allow-negative="false"/>
+         <div class="form-group">
+            <label>SSN</label>
+            <div class="em-showPassword em-txt-lg">
+            <input type="ssn" class="form-control em-showPassword-txt" emc="TextInputField" options="vm.options" placeholder="###-##-###" maxlength="11"/>
+            </div>
         </div>
 
         <div class="form-group">
@@ -21,36 +24,21 @@
               <input type="number" step="any" class="form-control">
           </div>
         </div>
-        <div class="form-group">
-          <label for="field-label8">Percentage Symbol with different height</label>
-          <div class="em-input-symbol-percent-24 em-txt-md">
-              <input type="number" step="any" class="form-control">
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="field-label8">Percentage Symbol Flex</label>
-          <div class="em-input-symbol-percent em-txt-flex">
-              <input type="number" step="any" class="form-control">
-          </div>
-        </div>
+
          <div class="form-group">
           <label for="field-label8">Dollar Symbol</label>
           <div class="em-input-symbol-dollar em-txt-md">
               <input type="number" step="any" class="form-control">
           </div>
         </div>
-        <div class="form-group">
-          <label for="field-label8">Dollar Symbol with different height</label>
-          <div class="em-input-symbol-dollar-24 em-txt-md">
-              <input type="number" step="any" class="form-control">
-          </div>
-        </div>
+
         <div class="form-group">
           <label for="field-label8">Dollar Symbol with currency formatting</label>
           <div class="em-input-symbol-dollar em-txt-md">
               <input type="text" ng-model="vm.numWithCurrencyValue" format="number" />
           </div>
         </div>
+
         <div class="form-group">
           <label for="field-label8">Months Symbol</label>
           <div class="em-input-symbol-months em-txt-md">
