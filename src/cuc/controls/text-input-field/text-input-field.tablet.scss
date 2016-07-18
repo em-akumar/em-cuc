@@ -1,18 +1,59 @@
 /* override default input text box */
-input[type="text"], input[type="password"], input[type="number"],  input[type="email"], input[type="ssn"] {
+input[type="text"], input[type="password"], input[type="ssn"], input[type="number"],  input[type="email"]{
   height: $input-field-height;
-  border-top: 2px solid $alto;
+ // border-top: 2px solid $alto;
   border-radius: 0;
   @include font-size(regular, $font-size-base,$black);
   &:hover &:active, &:focus {
-    border-top: 2px solid $curious-blue-light;
+    border-top: 1px solid $curious-blue-light;
     box-shadow: 0px 0px 0px 2px $tropical-blue;
   }
   &[disabled],&[disabled]:hover,&[disabled]:active,&[disabled]:focus {
     background-color: $silver;
-    border-top: 2px solid $alto;
+    border-top: 1px solid $alto;
   }
 }
 .em-label-disabled, label {
   @include font-size(regular, $font-size-base, $silver);
+}
+
+.em-input-symbol-dollar:after, .em-input-symbol-dollar-24:after,.em-input-symbol-percent-24:after, .em-input-symbol-percent:after{
+   top: 12px;
+   font-size: 13px;
+}
+
+.em-input-symbol-months:after{
+  top:14px;
+}
+
+.em-ssn-showPassword {
+  position: relative;
+
+  .em-toggle-password {
+    position: absolute;
+    right: 8px;
+    height:40px;
+    bottom: 0;
+    margin-right:20px;
+    cursor: pointer;
+    background: url("../../assets/images/icon-visibility-true-active.svg") center right no-repeat;
+    padding-right: 30px;
+    padding-left: 5px;
+    background-size: 20px auto;
+  }
+  .em-showPassword-txt {
+    padding-right: 30px;
+  }
+  .em-toggle-show-password {
+    position: absolute;
+    right: 8px;
+    height:39px;
+    margin-right:20px;
+    bottom: 0;
+    cursor: pointer;
+    background: url("../../assets/images/icon-visibility-false-active.svg") center right no-repeat;
+    padding-right: 30px;
+    padding-left: 5px;
+    background-size: 20px auto;
+  }
 }
