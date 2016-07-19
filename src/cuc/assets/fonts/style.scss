@@ -81,6 +81,12 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.lock-outline {
+    &:before {
+        content: $lock-outline;
+    }
+}
+
 .checkmark-circle-green .path1 {
     &:before {
         content: $checkmark-circle-green-path1;
