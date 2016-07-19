@@ -189,21 +189,21 @@ class MultiSelectDropdown {
   }
 
   actions() {
-
-    this.toggle = function(e, selection, unSelectedValue) {
+    var self = this;
+    self.toggle = function(e, selection, unSelectedValue) {
       var target = e.currentTarget || e.srcElement;
       target.parentNode.classList.add('open');
-      var selValue = unSelectedValue || this.menu.parentNode.querySelector(".btn .selectedText").getAttribute('value');
-        if (this.menu.parentNode.querySelector("li[value='" + selValue + "']") &&
-          !this.menu.parentNode.querySelector("li[value='" + selValue + "']").classList.contains('selected-check') ) {
-          this.menu.parentNode.querySelector("li[value='" + selValue + "']").classList.add('selected-text');
-          this.menu.parentNode.querySelector("li[value='" + selValue + "']").classList.add('selected-check');
-          this.menu.parentNode.querySelector("li[value='" + selValue + "'] a input").checked= true;
+      var selValue = unSelectedValue || self.menu.parentNode.querySelector(".btn .selectedText").getAttribute('value');
+        if (self.menu.parentNode.querySelector("li[value='" + selValue + "']") &&
+          !self.menu.parentNode.querySelector("li[value='" + selValue + "']").classList.contains('selected-check') ) {
+          self.menu.parentNode.querySelector("li[value='" + selValue + "']").classList.add('selected-text');
+          self.menu.parentNode.querySelector("li[value='" + selValue + "']").classList.add('selected-check');
+          self.menu.parentNode.querySelector("li[value='" + selValue + "'] a input").checked= true;
         }
-        else if(selection && this.menu.parentNode.querySelector("li[value='" + selValue + "']").classList.contains('selected-check')){
-          this.menu.parentNode.querySelector("li[value='" + selValue + "'] a input").checked= false;
-          this.menu.parentNode.querySelector("li[value='" + selValue + "']").classList.remove('selected-text');
-          this.menu.parentNode.querySelector("li[value='" + selValue + "']").classList.remove('selected-check');
+        else if(selection && self.menu.parentNode.querySelector("li[value='" + selValue + "']").classList.contains('selected-check')){
+          self.menu.parentNode.querySelector("li[value='" + selValue + "'] a input").checked= false;
+          self.menu.parentNode.querySelector("li[value='" + selValue + "']").classList.remove('selected-text');
+          self.menu.parentNode.querySelector("li[value='" + selValue + "']").classList.remove('selected-check');
         }
       if (e.preventDefault)
         e.preventDefault();
