@@ -7,9 +7,9 @@ class MultiSelectDropdown {
   }
 
   reinit() {
-    if (this.options !== undefined) {
+    if (this.options) {
       if (Object.keys(this.options).length) {
-        this.options.defaultText = (this.options.defaultText === undefined) ? "Select One" : this.options.defaultText;
+        this.options.defaultText = (!this.options.defaultText) ? "Select One" : this.options.defaultText;
         this.options.itemList = this.options.itemList || [];
         this.options.selectedOptions = this.options.selectedOptions || [];
         this.options.sortField = this.options.sortField || this.options.textField || 'text';
@@ -37,9 +37,10 @@ class MultiSelectDropdown {
         }
 
         var IconFlag = false;
+
         for (var i = 0; i < this.itemList.length; i++) {
 
-          if (this.itemList[i].leftImage != undefined) {
+          if (this.itemList[i].leftImage) {
             IconFlag = true;
             break;
           }
@@ -51,11 +52,11 @@ class MultiSelectDropdown {
 			<ul class="dropdown-menu ${this.options.size}" role="menu">
 
 			${this.itemList.map((value, i) =>
-            ` ${value.divider ? '<li class="divider"></li>' : ''}<li value="${value[this.options.valueField || 'value']}" class="${value.class === undefined ? '' : value.class}">
-          <a value="${value[this.options.valueField || 'value']}">${value.leftImage !== undefined ? `<img class="em-left-icon" src="${value.leftImage}" />` : (IconFlag === true) ? '<span class="em-left-icon"></span>' : ''} ${value[this.options.textField || 'text']}
-       ${value.rightImage !== undefined ? `<img class="em-right-icon" src="${value.rightImage}" />` : ``}
+            ` ${value.divider ? '<li class="divider"></li>' : ''}<li value="${value[this.options.valueField || 'value']}" class="${!value.class ? '' : value.class}">
+          <a value="${value[this.options.valueField || 'value']}">${value.leftImage ? `<img class="em-left-icon" src="${value.leftImage}" />` : (IconFlag === true) ? '<span class="em-left-icon"></span>' : ''} ${value[this.options.textField || 'text']}
+       ${value.rightImage ? `<img class="em-right-icon" src="${value.rightImage}" />` : ``}
        <input class="em-right-checkbox" type="checkbox" ${value.check == false ? '' : 'checked'}/> </a> </li>`
-        ).join('') }
+        ).join('')}
 			</ul>`;
         this.mainParent.innerHTML = this.template;
       }
@@ -71,50 +72,48 @@ class MultiSelectDropdown {
   }
 
   init() {
-    var self = this;
-    self.actions();
-    self.menu.setAttribute('tabindex', '0'); // Fix onblur on Chrome
-    self.menu.addEventListener('click', self.toggle, false);
-    self.menu.addEventListener('onmouseup', self.close, false);  //switched from blur to onmouseup due to blur not capturing scroll bar as apart of element
-    self.menu.parentNode.addEventListener('click', function(e) {
+    this.actions();
+    this.menu.setAttribute('tabindex', '0'); // Fix onblur on Chrome
+    this.menu.addEventListener('click', this.toggle, false);
+    this.menu.addEventListener('onmouseup', this.close, false);  //switched from blur to onmouseup due to blur not capturing scroll bar as apart of element
+    this.menu.parentNode.addEventListener('click', function(e) {
       e.stopPropagation();
     }, false);
-    document.addEventListener('click', self.closeit.bind(self), false);
+    document.addEventListener('click', this.closeit.bind(this), false);
   }
 
   setList() {
-    var self = this;
-    [].forEach.call(self.menu.parentNode.querySelectorAll(".dropdown-menu>li>a"), (value, i) => {
+    [].forEach.call(this.menu.parentNode.querySelectorAll(".dropdown-menu>li>a"), (value, i) => {
       value.addEventListener('click', (e) => {
         var clickedOption = value.parentNode.getAttribute('value');
-        if(self.options.selectedOptions.length == 0 || self.options.selectedOptions.indexOf(clickedOption) == -1) {
-          self.options.selectedOptions.push(clickedOption);
-          self.menu.parentNode.querySelector(".btn .selectedText").setAttribute('value', self.options.selectedOptions);
-          if (!self.menu.parentNode.querySelector(".btn").classList.contains("completed")) {
-            self.menu.parentNode.querySelector(".btn").classList.add("completed");
+        if(this.options.selectedOptions.length == 0 || this.options.selectedOptions.indexOf(clickedOption) == -1) {
+          this.options.selectedOptions.push(clickedOption);
+          this.menu.parentNode.querySelector(".btn .selectedText").setAttribute('value', this.options.selectedOptions);
+          if (!this.menu.parentNode.querySelector(".btn").classList.contains("completed")) {
+            this.menu.parentNode.querySelector(".btn").classList.add("completed");
           }
         }
         else{
-          var index=self.options.selectedOptions.indexOf(clickedOption);
+          var index=this.options.selectedOptions.indexOf(clickedOption);
           if(index > -1){
-            self.options.selectedOptions.splice(index, 1);
+            this.options.selectedOptions.splice(index, 1);
           }
-          self.menu.parentNode.querySelector(".btn .selectedText").setAttribute('value', self.options.selectedOptions);
+          this.menu.parentNode.querySelector(".btn .selectedText").setAttribute('value', this.options.selectedOptions);
         }
-        self.toggle({currentTarget: self.menu}, true, clickedOption);
-        if(self.menu.parentNode.querySelectorAll(".dropdown-menu li[class='selected-text selected-check']").length > 1){
-          self.menu.parentNode.querySelector(".btn .selectedText").innerText= 'Multiple Selected'
-        }else if(self.options.selectedOptions.indexOf(clickedOption) > -1){
-          self.menu.parentNode.querySelector(".btn .selectedText").innerText = value.innerText;
-        }else if(self.options.selectedOptions.length === 1){
-          self.menu.parentNode.querySelector(".btn .selectedText").innerText =
-            self.menu.parentNode.querySelector("li[value='" + self.options.selectedOptions[0] + "']").innerText;
-        }else if((self.options.selectedOptions.length === 0  && self.options.selectedOptions.indexOf(clickedOption) == -1)
-          || value.innerText == undefined) {
-          self.menu.parentNode.querySelector(".btn .selectedText").textContent = self.options.defaultText;
+        this.toggle({currentTarget: this.menu}, true, clickedOption);
+        if(this.menu.parentNode.querySelectorAll(".dropdown-menu li[class='selected-text selected-check']").length > 1){
+          this.menu.parentNode.querySelector(".btn .selectedText").innerText= 'Multiple Selected'
+        }else if(this.options.selectedOptions.indexOf(clickedOption) > -1){
+          this.menu.parentNode.querySelector(".btn .selectedText").innerText = value.innerText;
+        }else if(this.options.selectedOptions.length === 1){
+          this.menu.parentNode.querySelector(".btn .selectedText").innerText =
+            this.menu.parentNode.querySelector("li[value='" + this.options.selectedOptions[0] + "']").innerText;
+        }else if((this.options.selectedOptions.length === 0  && this.options.selectedOptions.indexOf(clickedOption) == -1)
+          || !value.innerText) {
+          this.menu.parentNode.querySelector(".btn .selectedText").textContent = this.options.defaultText;
         }
-        if (typeof self.options.onChange === 'function') {
-          self.options.onChange(e);
+        if (typeof this.options.onChange === 'function') {
+          this.options.onChange(e);
         }
       });
       value.addEventListener('mouseover', (e) => {
@@ -122,59 +121,53 @@ class MultiSelectDropdown {
           e.target.setAttribute('title', e.target.innerHTML);
       });
     });
-
   }
 
   setReadonly() {
-    var self = this;
-    [].forEach.call(self.menu.parentNode.querySelectorAll(".readonly .btn"), (value, i) => {
+    [].forEach.call(this.menu.parentNode.querySelectorAll(".readonly .btn"), (value, i) => {
       value.setAttribute('disabled', 'disabled');
       value.classList.add('readonly');
     });
   }
 
   setDisabledItem() {
-    var self = this;
-    [].forEach.call(self.menu.parentNode.querySelectorAll(".disabled a"), (value, j) => {
+    [].forEach.call(this.menu.parentNode.querySelectorAll(".disabled a"), (value, j) => {
       value.classList.add('disabled');
     });
   }
 
   setDisabled() {
-    var self = this;
-    [].forEach.call(self.menu.parentNode.querySelectorAll(".disabled .dropdown-toggle"), (value, i) => {
+    [].forEach.call(this.menu.parentNode.querySelectorAll(".disabled .dropdown-toggle"), (value, i) => {
       value.setAttribute('disabled', 'disabled');
       value.classList.add('disabled');
     });
   }
 
   setState(value) {
-    var self = this;
     if (value) {
-      self.menu.parentNode.classList.add('disabled');
-      self.menu.setAttribute('disabled', 'disabled');
-      self.menu.classList.add('disabled');
+      this.menu.parentNode.classList.add('disabled');
+      this.menu.setAttribute('disabled', 'disabled');
+      this.menu.classList.add('disabled');
       //add disabled to each item
-      [].forEach.call(self.menu.parentNode.querySelectorAll(".dropdown-menu li a"), (value, j) => {
+      [].forEach.call(this.menu.parentNode.querySelectorAll(".dropdown-menu li a"), (value, j) => {
         value.classList.add('disabled');
       });
     } else {
-      self.menu.parentNode.classList.remove('disabled');
-      self.menu.removeAttribute('disabled');
-      self.menu.classList.remove('disabled');
+      this.menu.parentNode.classList.remove('disabled');
+      this.menu.removeAttribute('disabled');
+      this.menu.classList.remove('disabled');
       //remove disabled to each item
-      [].forEach.call(self.menu.parentNode.querySelectorAll(".dropdown-menu li a"), (value, j) => {
+      [].forEach.call(this.menu.parentNode.querySelectorAll(".dropdown-menu li a"), (value, j) => {
         value.classList.remove('disabled');
       });
     }
   }
 
   setRestricted() {
-    var self = this;
-    [].forEach.call(self.menu.parentNode.querySelectorAll(".restricted .dropdown-menu li a"), (value, i) => {
+    [].forEach.call(this.menu.parentNode.querySelectorAll(".restricted .dropdown-menu li a"), (value, i) => {
       value.innerHTML = '&#183;&#183;&#183;&#183;&#183;&#183;';
     });
-    [].forEach.call(self.menu.parentNode.querySelectorAll(".restricted .dropdown-toggle"), (value, i) => {
+    [].forEach.call(this.menu.parentNode.querySelectorAll(".restricted .dropdown-toggle"), (value, i) => {
       value.setAttribute('disabled', 'disabled');
       value.classList.add('restricted');
       value.getElementsByTagName('span')[0].innerHTML = "&#183;&#183;&#183;&#183;&#183;&#183;";
@@ -182,50 +175,45 @@ class MultiSelectDropdown {
   }
 
   setError() {
-    var self = this;
-    [].forEach.call(self.menu.parentNode.querySelectorAll(".error .btn"), (value, i) => {
+    [].forEach.call(this.menu.parentNode.querySelectorAll(".error .btn"), (value, i) => {
       value.classList.add('error');
-      //self.menu.removeEventListener('blur', self.close);
     });
   }
 
   closeit(e) {
     var target = this.menu;
     setTimeout(function() {
-      if (target.parentNode && target.parentNode !== null)
+      if (target.parentNode)
         target.parentNode.classList.remove('open');
     }, 50);
   }
 
   actions() {
-    var self = this;
 
-    self.toggle = function(e, selection, unSelectedValue) {
+    this.toggle = function(e, selection, unSelectedValue) {
       var target = e.currentTarget || e.srcElement;
       target.parentNode.classList.add('open');
-      var selValue = unSelectedValue || self.menu.parentNode.querySelector(".btn .selectedText").getAttribute('value');
-        if (self.menu.parentNode.querySelector("li[value='" + selValue + "']") !== null &&
-          !self.menu.parentNode.querySelector("li[value='" + selValue + "']").classList.contains('selected-check') ) {
-          self.menu.parentNode.querySelector("li[value='" + selValue + "']").classList.add('selected-text');
-          self.menu.parentNode.querySelector("li[value='" + selValue + "']").classList.add('selected-check');
-          self.menu.parentNode.querySelector("li[value='" + selValue + "'] a input").checked= true;
+      var selValue = unSelectedValue || this.menu.parentNode.querySelector(".btn .selectedText").getAttribute('value');
+        if (this.menu.parentNode.querySelector("li[value='" + selValue + "']") &&
+          !this.menu.parentNode.querySelector("li[value='" + selValue + "']").classList.contains('selected-check') ) {
+          this.menu.parentNode.querySelector("li[value='" + selValue + "']").classList.add('selected-text');
+          this.menu.parentNode.querySelector("li[value='" + selValue + "']").classList.add('selected-check');
+          this.menu.parentNode.querySelector("li[value='" + selValue + "'] a input").checked= true;
         }
-        else if(selection && self.menu.parentNode.querySelector("li[value='" + selValue + "']").classList.contains('selected-check')){
-          //self.menu.parentNode.querySelector(".btn .selectedText").removeAttribute('value');
-          //self.menu.parentNode.querySelector(".btn .selectedText").innerHTML=self.options.defaultText;
-          self.menu.parentNode.querySelector("li[value='" + selValue + "'] a input").checked= false;
-          self.menu.parentNode.querySelector("li[value='" + selValue + "']").classList.remove('selected-text');
-          self.menu.parentNode.querySelector("li[value='" + selValue + "']").classList.remove('selected-check');
+        else if(selection && this.menu.parentNode.querySelector("li[value='" + selValue + "']").classList.contains('selected-check')){
+          this.menu.parentNode.querySelector("li[value='" + selValue + "'] a input").checked= false;
+          this.menu.parentNode.querySelector("li[value='" + selValue + "']").classList.remove('selected-text');
+          this.menu.parentNode.querySelector("li[value='" + selValue + "']").classList.remove('selected-check');
         }
       if (e.preventDefault)
         e.preventDefault();
       return false;
     };
 
-    self.close = function(e) {
-      var target = self.menu;
+    close = function(e) {
+      var target = this.menu;
       setTimeout(function() { // links inside dropdown-menu don't fire without a short delay
-        if (target.parentNode && target.parentNode !== null) {
+        if (target.parentNode) {
           target.parentNode.classList.remove('open');
         }
       }, 200);
