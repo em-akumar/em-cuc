@@ -27,6 +27,7 @@ class TextInputField {
         if (this.options !== undefined) {
           if (Object.keys(this.options).length) {
             this.options.defaultText = this.options.defaultText || '';
+            this.options.defaultText = this.options.defaultText.replace(/-/g, '');
             this.setCurrentVal(this.options.defaultText);
           }
         }
