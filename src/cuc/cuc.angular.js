@@ -792,11 +792,22 @@ cuc.directive('format', ['$filter', ($filter) => {
 
       elem.bind('keyup', (event) => {
         var plainNumber = elem.val().replace(/[^\d|\-+|\.+]/g, '');
-        if ($filter(attrs.format)(plainNumber) === '0') {
-          elem.val('');
+        //Checking for '.'(dot)
+        if(event.keyCode === 190){
+          if(plainNumber.split('.').length === 2){
+            elem.val(plainNumber);
+          }
+          else{
+            event.preventDefault();
+          }
         }
-        else {
-          elem.val($filter(attrs.format)(plainNumber));
+        else{
+          if ($filter(attrs.format)(plainNumber) === '0') {
+            elem.val('');
+          }
+          else {
+            elem.val($filter(attrs.format)(plainNumber));
+          }
         }
       });
     }
