@@ -550,5 +550,9 @@ input[type="text"]:-ms-input-placeholder, input[type="number"]:-ms-input-placeho
   padding-left: 5px;
   padding-right: 5px;
 }
+/* Hide key symbol in safari */
+input::-webkit-auto-fill-button {
+  opacity:0 !important;
+}
 
 
