@@ -1,58 +1,93 @@
- <!-- text input field data format sample -->
-    <div id="text-input-data-format" class="demo-example section-subheading" data-heading="Data Format">
+<!-- text input field data format sample -->
+<div id="text-input-data-format" class="demo-example section-subheading" data-heading="Data Format">
 
-       <label for="field-label16">Password</label>
-         <div class="form-group">
-            <div class="em-showPassword">
-              <input type="password" class="form-control em-showPassword-txt" emc="TextInputField" options="vm.options" placeholder="Placeholder">
-            </div>
-         </div>
+  <label for="field-label16">Password</label>
 
-         <div class="form-group">
-          <div class="em-showPassword em-txt-lg">
-            <input type="password" class="form-control em-showPassword-txt" emc="TextInputField" options="vm.optionslg" placeholder="Placeholder">
-          </div>
-        </div>
-
-         <div class="form-group">
-            <label>SSN</label>
-            <div class="em-showPassword em-txt-lg">
-            <input type="ssn" class="form-control em-showPassword-txt" emc="TextInputField" options="vm.options" placeholder="###-##-###" maxlength="11"/>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label>ZIP Code</label>
-            <input type="text" name="zipcode" class="form-control" placeholder="##### - ####" ng-model="zipcode" ui-mask="99999 - 9999" ui-mask-placeholder ui-mask-placeholder-char="_">
-        </div>
-
-        <div class="form-group">
-            <label>Tax ID</label>
-            <input type="text" name="taxID" class="form-control" placeholder="## - #####" ui-mask="99 - 99999" ng-model="taxID"  ui-mask-placeholder ui-mask-placeholder-char="_">
-        </div>
-
-        <div class="form-group">
-            <label class="em-label-disabled">Phone</label>
-            <input type="text" name="phone" class="form-control" placeholder="### - ### - ####" ui-mask="999 - 999 - 9999" ng-model="phone"  ui-mask-placeholder ui-mask-placeholder-char="_">
-        </div>
-
-        <label>Percentage Rate</label>
-        <div class="input-group">
-          <input type="text" name="percentage" class="form-control" ui-mask="99.999 %" placeholder="00.000 %" ng-model="percentage"  ui-mask-placeholder ui-mask-placeholder-char="_">
-        </div>
-
-        <label for="field-label17">Dollar Value</label>
-        <div class="input-group">
-          <input type="text" name="dollar" class="form-control" ui-mask="$ 99,999.99" placeholder="$ 00,000.00" ng-model="dollar"  ui-mask-placeholder ui-mask-placeholder-char="_">
-        </div>
-
+  <div class="form-group">
+    <div class="em-showPassword">
+      <input type="password" class="form-control em-showPassword-txt" emc="TextInputField" options="vm.options"
+             placeholder="Placeholder">
     </div>
-    <br/>
-    <br />
-    <!-- Text input field label data format  Usage -->
-    <div id="text-input-data-format-usage" class="panel panel-primary">
-        <div class="panel-heading">Text Input Field Data Format Usage</div>
-        <div class="codepen-group">
+  </div>
+
+  <div class="form-group">
+    <div class="em-showPassword em-txt-lg">
+      <input type="password" class="form-control em-showPassword-txt" emc="TextInputField" options="vm.optionslg"
+             placeholder="Placeholder">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>SSN</label>
+
+    <div class="em-showPassword em-txt-lg">
+      <input type="ssn" class="form-control em-showPassword-txt" emc="TextInputField" options="vm.options"
+             placeholder="###-##-###" maxlength="11"/>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>ZIP Code</label>
+    <input type="text" name="zipcode" class="form-control" placeholder="##### - ####" ng-model="zipcode"
+           ui-mask="99999 - 9999" ui-mask-placeholder ui-mask-placeholder-char="_">
+  </div>
+
+  <div class="form-group">
+    <label>Tax ID</label>
+    <input type="text" name="taxID" class="form-control" placeholder="## - #####" ui-mask="99 - 99999" ng-model="taxID"
+           ui-mask-placeholder ui-mask-placeholder-char="_">
+  </div>
+
+  <div class="form-group">
+    <label class="em-label-disabled">Phone</label>
+    <input type="text" name="phone" class="form-control" placeholder="### - ### - ####" ui-mask="999 - 999 - 9999"
+           ng-model="phone" ui-mask-placeholder ui-mask-placeholder-char="_">
+  </div>
+
+  <label>Percentage Rate</label>
+
+  <div class="input-group">
+    <input type="text" name="percentage" class="form-control" ui-mask="99.999 %" placeholder="00.000 %"
+           ng-model="percentage" ui-mask-placeholder ui-mask-placeholder-char="_">
+  </div>
+
+
+  <div class="form-group">
+    <label for="field-label17">Dollar Value</label>
+
+    <div class="input-group">
+      <input type="text" name="dollar" class="form-control" ui-mask="$ 99,999.99" placeholder="$ 00,000.00"
+             ng-model="dollar" ui-mask-placeholder ui-mask-placeholder-char="_">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Mobile Number With Extension</label>
+
+    <div class="input-group">
+      <input type="text" name="phone" class="form-control" placeholder="123-456-1234 1234"
+             ng-model="mobileWithExtension" format-phone
+             extension="true">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Mobile Number Without Extension</label>
+
+    <div class="input-group">
+      <input type="text" name="phone" class="form-control" placeholder="123-456-1234" ng-model="mobileWithoutExtension"
+             format-phone
+             extension="false">
+    </div>
+  </div>
+
+</div>
+<br/>
+<br/>
+<!-- Text input field label data format  Usage -->
+<div id="text-input-data-format-usage" class="panel panel-primary">
+  <div class="panel-heading">Text Input Field Data Format Usage</div>
+  <div class="codepen-group">
             <pre class="codepen-able" data-type="html"> &lt;label for=&quot;field-label16&quot;&gt;Password&lt;/label&gt;
          &lt;div class=&quot;form-group&quot;&gt;
             &lt;div class=&quot;em-showPassword&quot;&gt;
@@ -96,7 +131,29 @@
         &lt;label for=&quot;field-label17&quot;&gt;Dollar Value&lt;/label&gt;
         &lt;div class=&quot;input-group&quot;&gt;
           &lt;input type=&quot;text&quot; name=&quot;dollar&quot; class=&quot;form-control&quot; ui-mask=&quot;$ 99,999.99&quot; placeholder=&quot;$ 00,000.00&quot; ng-model=&quot;dollar&quot;  ui-mask-placeholder ui-mask-placeholder-char=&quot;_&quot;&gt;
-        &lt;/div&gt;</pre>
-            <pre class="codepen-able" id="css-text-input-data-format" data-type="css"></pre>
-        </div>
-    </div>
+        &lt;/div&gt;
+
+        &lt;div class=&quot;form-group&quot;&gt;
+            &lt;label&gt;Mobile Number With Extension&lt;/label&gt;
+
+            &lt;div class=&quot;input-group&quot;&gt;
+                &lt;input type=&quot;text&quot; name=&quot;phone&quot; class=&quot;form-control&quot; placeholder=&quot;123-456-1234 1234&quot;
+                    ng-model=&quot;mobileWithExtension&quot; format-phone
+                    extension=&quot;true&quot;&gt;
+              &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;form-group&quot;&gt;
+            &lt;label&gt;Mobile Number Without Extension&lt;/label&gt;
+
+            &lt;div class=&quot;input-group&quot;&gt;
+                &lt;input type=&quot;text&quot; name=&quot;phone&quot; class=&quot;form-control&quot; placeholder=&quot;123-456-1234&quot; ng-model=&quot;mobileWithoutExtension&quot;
+                format-phone
+                extension=&quot;false&quot;&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+            </pre>
+    <pre class="codepen-able" id="css-text-input-data-format" data-type="css"></pre>
+  </div>
+</div>
