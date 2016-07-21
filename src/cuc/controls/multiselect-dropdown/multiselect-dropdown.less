@@ -1,3 +1,5 @@
+@dropdown-selected-color: #1394E5;
+
 .em-multiselect-dropdown {
   position: relative;
   &.completed {
@@ -206,22 +208,38 @@
 
     li {
       &:hover {
-        color: @dropdown-panel-hover-highlight-color;
+        background-color: @dropdown-selected-color;
+        color: @dropdown-active-background-color;
       }
       &:focus {
-        background-color: @dropdown-panel-active-background-color;
-        color: @dropdown-panel-active-text-color;
+        background-color: @dropdown-selected-color;
+        color: @dropdown-active-background-color;
       }
       &.disabled {
         pointer-events: none;
       }
       &.selected-text {
-        background-color: @dropdown-list-item-highlight-color;
+        background-color: @dropdown-selected-color;
+        color: @dropdown-active-background-color;
       }
-
     }
     li > a {
       //font-size: @font-size-base;
+      .checkbox {
+        margin: 0;
+      }
+      label {
+        font-family: proxima-nova;
+        font-size: 13px;
+        font-weight: normal;
+        text-align: left;
+        vertical-align: middle;
+      }
+      .checkbox input[type="checkbox"]:checked + label::before {
+        background: @dropdown-selected-color url("../../assets/images/icon-checkmark-white.svg") center center/contain no-repeat;
+        border: 1px solid @checkbox-checked-border-color;
+        background-size: 93%;
+      }
       font: @font-family-base;
       color: @black;
       text-align: left;
@@ -233,11 +251,12 @@
       cursor: hand;
 
       &:focus, &:hover {
-        background-color: @dropdown-list-item-highlight-color;
+        background-color: @dropdown-selected-color;
+        color: @dropdown-active-background-color;
       }
       &:active {
-        background-color: @dropdown-panel-active-background-color;
-        color: @dropdown-panel-active-text-color;
+        background-color: @dropdown-selected-color;
+        color: @dropdown-active-background-color;
       }
       &.disabled {
         color: @dropdown-panel-disabled-text-color;
@@ -253,13 +272,6 @@
       .em-right-icon {
         width: @dropdown-edit-item-icon-width;
         height: @dropdown-edit-item-icon-width;
-        position: relative;
-        float: right;
-        margin-left: 8px;
-      }
-      .em-right-checkbox {
-        width: 15px;
-        height: 15px;
         position: relative;
         float: right;
         margin-left: 8px;

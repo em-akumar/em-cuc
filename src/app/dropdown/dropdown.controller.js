@@ -49,7 +49,14 @@ class DropdownController {
       },
       defaultSize: 'large'
     };
+    this.drpCitiesTest = {
 
+      defaultText: 'Select Multiple',
+      onChange: function (e) {
+        console.log('clicked');
+      },
+      defaultSize: 'large'
+    };
     // for Disabled items
     this.drpStateDisabledItem = {
 
@@ -171,6 +178,7 @@ class DropdownController {
         arrayItem.check= false;
       });
       this.drpCities.itemList = response.data;
+      this.drpCitiesTest.itemList = response.data;
       safeApply();
     });
   }
