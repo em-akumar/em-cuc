@@ -114,7 +114,7 @@ class MultiSelectDropdown {
             this.options.selectedOptionsText.splice(selectedOptionIndex, 1);
           }
           this.menu.parentNode.querySelector(".btn .selectedText").setAttribute('value', this.options.selectedOptions);
-          this.menu.parentNode.querySelector('div').setAttribute('title', this.options.selectedOptionsText);
+          this.menu.setAttribute('title', this.options.selectedOptionsText);
         }
         this.toggle({currentTarget: this.menu}, true, clickedOption);
         if (this.menu.parentNode.querySelectorAll(".dropdown-menu li[class='selected-text selected-check']").length > 1) {
@@ -129,7 +129,7 @@ class MultiSelectDropdown {
           this.menu.parentNode.querySelector(".btn .selectedText").textContent = this.options.defaultText;
         }
         if (typeof this.options.onChange === 'function') {
-          this.options.onChange(e);
+          this.options.onChange(e, this.options.selectedOptions, this.options.selectedOptionsText);
         }
       });
       value.addEventListener('mouseover', (e) => {
