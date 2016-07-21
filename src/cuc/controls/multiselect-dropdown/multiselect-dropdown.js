@@ -107,7 +107,7 @@ class MultiSelectDropdown {
         }
         else {
           var index = this.options.selectedOptions.indexOf(clickedOption);
-          var selectedOptionIndex = this.options.selectedOptions.indexOf(selectedOptionText);
+          var selectedOptionIndex = this.options.selectedOptions.indexOf(selectedOptionText.trim());
 
           if (index > -1) {
             this.options.selectedOptions.splice(index, 1);
