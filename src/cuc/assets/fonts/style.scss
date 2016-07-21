@@ -679,29 +679,29 @@
         content: $messages-unread;
     }
 }
-.locked-extension-requested-defualt {
+.locked-extension-requested {
     &:before {
-        content: $locked-extension-requested-defualt;
+        content: $locked-extension-requested;
     }
 }
-.lock-unlocked-rate-requested-defualt {
+.lock-unlocked-rate-requested {
     &:before {
-        content: $lock-unlocked-rate-requested-defualt;
+        content: $lock-unlocked-rate-requested;
     }
 }
-.lock-unlocked-defualt {
+.lock-unlocked {
     &:before {
-        content: $lock-unlocked-defualt;
+        content: $lock-unlocked;
     }
 }
-.lock-locked-default {
+.lock-locked {
     &:before {
-        content: $lock-locked-default;
+        content: $lock-locked;
     }
 }
-.lock-expired-defualt {
+.lock-expired {
     &:before {
-        content: $lock-expired-defualt;
+        content: $lock-expired;
     }
 }
 .lock-locked-rate-requested {
