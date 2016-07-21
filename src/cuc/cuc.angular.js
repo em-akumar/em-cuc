@@ -89,7 +89,7 @@ cuc.directive('emc', () => {
 cuc.directive('ckEditor', () => {
   return {
     require: '?ngModel',
-    scope: {'configOptions':'=config'},
+    scope: {'configOptions': '=config'},
     link: function ($scope, elm, attr, ngModel) {
 
       var ck = CKEDITOR.replace(elm[0], $scope.configOptions);
@@ -107,7 +107,7 @@ cuc.directive('ckEditor', () => {
   };
 });
 
-cuc.directive('uiGridPrint', function ($compile,$timeout) {
+cuc.directive('uiGridPrint', function ($compile, $timeout) {
   return {
     link: function (scope, element, attrs, uiGridctrl) {
       uiGridctrl.grid.api.core.on.rowsRendered(scope, function () {
@@ -155,7 +155,7 @@ cuc.directive('uiGridPrint', function ($compile,$timeout) {
       document.querySelector(attrs.uiGridPrint).addEventListener('click', function () {
         let body = '<tr>';
         scope._body.forEach((rowitem) => {
-          body += rowitem.join('')+'</tr><tr>';
+          body += rowitem.join('') + '</tr><tr>';
         });
         body += '</tr>';
         //var str = element[0].querySelector('.ui-grid-canvas').innerHTML;
@@ -176,7 +176,7 @@ cuc.directive('uiGridPrint', function ($compile,$timeout) {
   };
 });
 
-cuc.directive('uiGridCustomPaging', function ($compile,$timeout) {
+cuc.directive('uiGridCustomPaging', function ($compile, $timeout) {
   return {
     link: function (scope, element, attrs, uiGridctrl) {
       uiGridctrl.grid.options.enablePaginationControls = false;
@@ -191,43 +191,47 @@ cuc.directive('uiGridCustomPaging', function ($compile,$timeout) {
         }
       });
 
-      uiGridctrl.grid.api.core.on.filterChanged(scope, () => { $timeout(() => { initPage(scope); },200); });
+      uiGridctrl.grid.api.core.on.filterChanged(scope, () => {
+        $timeout(() => {
+          initPage(scope);
+        }, 200);
+      });
       function initPage(scope) {
 
         var divPage = document.createElement('div');
         divPage.innerHTML = '<div class="em-complex-table-footer">' +
         '<span class="em-pageview" style="display:none">' +
-          '<select ng-model="_selectedVal" ng-change="_pageOnClickSelect()"> ' +
-          '<option ng-selected="$first" ng-repeat="item in _pageListItems"  value="{{item.value}}">{{item.text}}</option> ' +
-          '</select>' +
-          '<label class="em-pageview-arrow"></label>' +
-          '<span>&nbsp; of {{_pageTotalCount}}</span>' +
-          '<label class="em-pageview-arrow"></label>' +
-          '</span>' +
-           '<span class="em-pageview" ng-mouseover="_onPageSelectOver()" ng-mouseleave="_onPageSelectLeave()" >' +
-           '<div class="em-page-ddl" ng-click="_onPageSelectClick()" options="pagingSelectOptions" emc="Dropdown"></div> ' +
-          '<label class="em-pageview-arrow"></label>' +
-          '<span>&nbsp; per page</span>' +
-          '</span>' +
-          '<nav class="em-pagination" style="display:">' +
-          '<span class="em-left-arrow" style="display:">' +
-          '<a style="opacity:0" ng-click="_leftArrow_click()">0</a>' +
-          '</span>' +
-          '<ul class="pagination">' +
-          '<li class="active" ng-click="_pageOnClick($event)" style="display:"><a>0</a></li>' +
-          '<li style="display:"><i>...</i></li>' +
-          '<li ng-click="_pageOnClick($event)"><a>1</a></li> <li class="" ng-click="_pageOnClick($event)"><a>2</a></li> <li ng-click="_pageOnClick($event)" class=""><a>3</a></li>' +
-          '<li style="display:"><i>...</i></li>' +
-          '<li style="display:" ng-click="_pageOnClick($event)"><a>20</a></li>' +
-          '</ul>' +
-          '<span class="em-right-arrow" style="display:">' +
-          '<a style="opacity:0" ng-click="_rightArrow_click()">2</a>' +
-          '</span>' +
-          '</nav>' +
+        '<select ng-model="_selectedVal" ng-change="_pageOnClickSelect()"> ' +
+        '<option ng-selected="$first" ng-repeat="item in _pageListItems"  value="{{item.value}}">{{item.text}}</option> ' +
+        '</select>' +
+        '<label class="em-pageview-arrow"></label>' +
+        '<span>&nbsp; of {{_pageTotalCount}}</span>' +
+        '<label class="em-pageview-arrow"></label>' +
+        '</span>' +
+        '<span class="em-pageview" ng-mouseover="_onPageSelectOver()" ng-mouseleave="_onPageSelectLeave()" >' +
+        '<div class="em-page-ddl" ng-click="_onPageSelectClick()" options="pagingSelectOptions" emc="Dropdown"></div> ' +
+        '<label class="em-pageview-arrow"></label>' +
+        '<span>&nbsp; per page</span>' +
+        '</span>' +
+        '<nav class="em-pagination" style="display:">' +
+        '<span class="em-left-arrow" style="display:">' +
+        '<a style="opacity:0" ng-click="_leftArrow_click()">0</a>' +
+        '</span>' +
+        '<ul class="pagination">' +
+        '<li class="active" ng-click="_pageOnClick($event)" style="display:"><a>0</a></li>' +
+        '<li style="display:"><i>...</i></li>' +
+        '<li ng-click="_pageOnClick($event)"><a>1</a></li> <li class="" ng-click="_pageOnClick($event)"><a>2</a></li> <li ng-click="_pageOnClick($event)" class=""><a>3</a></li>' +
+        '<li style="display:"><i>...</i></li>' +
+        '<li style="display:" ng-click="_pageOnClick($event)"><a>20</a></li>' +
+        '</ul>' +
+        '<span class="em-right-arrow" style="display:">' +
+        '<a style="opacity:0" ng-click="_rightArrow_click()">2</a>' +
+        '</span>' +
+        '</nav>' +
         '</div>';
-        if(element[0].querySelector('.em-complex-table-footer')){
+        if (element[0].querySelector('.em-complex-table-footer')) {
           let elementToRemove = element[0].querySelector('.em-complex-table-footer').parentNode;
-         elementToRemove.parentNode.removeChild(elementToRemove );
+          elementToRemove.parentNode.removeChild(elementToRemove);
         }
         element[0].appendChild(divPage);
         var perpageRow = uiGridctrl.grid.options.paginationPageSize;
@@ -246,7 +250,9 @@ cuc.directive('uiGridCustomPaging', function ($compile,$timeout) {
             text: (perpageRow * i + 1) + '-' + (maxPage - 1 == i ? totalRow : (perpageRow * (i + 1)))
           });
         }
-        scope._pageListNumItems = uiGridctrl.grid.options.paginationPageSizes.map((val) => { return { value: val.toString(), text: val.toString() };});
+        scope._pageListNumItems = uiGridctrl.grid.options.paginationPageSizes.map((val) => {
+          return {value: val.toString(), text: val.toString()};
+        });
         scope.pagingSelectOptions = {
           sortFieldType: 'number',
           defaultText: uiGridctrl.grid.options.paginationPageSize,
@@ -258,7 +264,7 @@ cuc.directive('uiGridCustomPaging', function ($compile,$timeout) {
           defaultSize: 'xs',
           itemList: scope._pageListNumItems
         };
-        scope._selectedPageVal =String( uiGridctrl.grid.options.paginationPageSize);
+        scope._selectedPageVal = String(uiGridctrl.grid.options.paginationPageSize);
         scope._pageListItems = pageListItems;
         //selectPage.innerHTML = (html);
         scope._pageTotalCount = totalRow;
@@ -295,18 +301,16 @@ cuc.directive('uiGridCustomPaging', function ($compile,$timeout) {
               changedAct = true;
             }
           });
-          if(val<maxPage)
-          {
+          if (val < maxPage) {
             rightArrow.classList.remove('disable');
           }
-          else{
+          else {
             rightArrow.classList.add('disable');
           }
-           if(val>1)
-          {
+          if (val > 1) {
             leftArrow.classList.remove('disable');
           }
-          else{
+          else {
             leftArrow.classList.add('disable');
           }
           if (changedAct)
@@ -355,18 +359,16 @@ cuc.directive('uiGridCustomPaging', function ($compile,$timeout) {
               el.classList.add('active');
             initMd++;
           });
-          if(val<maxPage)
-          {
+          if (val < maxPage) {
             rightArrow.classList.remove('disable');
           }
-          else{
+          else {
             rightArrow.classList.add('disable');
           }
-           if(val>1)
-          {
+          if (val > 1) {
             leftArrow.classList.remove('disable');
           }
-          else{
+          else {
             leftArrow.classList.add('disable');
           }
 
@@ -389,20 +391,20 @@ cuc.directive('uiGridCustomPaging', function ($compile,$timeout) {
           selectPage.style.width = ( selectPage.options[selectPage.selectedIndex].text.length * 10) + 'px';
           uiGridctrl.grid.api.pagination.seek(Number(val));
         }
-        scope._pageOnNumSelect =  (e)=>{
-         // uiGridctrl.grid.api.pagination
-          uiGridctrl.grid.options.paginationPageSize =scope._selectedPageVal;
+        scope._pageOnNumSelect = (e)=> {
+          // uiGridctrl.grid.api.pagination
+          uiGridctrl.grid.options.paginationPageSize = scope._selectedPageVal;
           initPage(scope);
         }
-         scope._onPageSelectLeave =  (e)=>{
-           element[0].querySelector('.em-complex-table-footer .em-page-ddl').classList.remove('hover');
+        scope._onPageSelectLeave = (e)=> {
+          element[0].querySelector('.em-complex-table-footer .em-page-ddl').classList.remove('hover');
         }
-         scope._onPageSelectClick =  (e)=>{
-           element[0].querySelector('.em-complex-table-footer .em-page-ddl').classList.remove('hover');
-         }
-         scope._onPageSelectOver = (e) => {
-          if(!element[0].querySelector('.em-complex-table-footer .em-page-ddl').classList.contains('open'))
-           element[0].querySelector('.em-complex-table-footer .em-page-ddl').classList.add('hover');
+        scope._onPageSelectClick = (e)=> {
+          element[0].querySelector('.em-complex-table-footer .em-page-ddl').classList.remove('hover');
+        }
+        scope._onPageSelectOver = (e) => {
+          if (!element[0].querySelector('.em-complex-table-footer .em-page-ddl').classList.contains('open'))
+            element[0].querySelector('.em-complex-table-footer .em-page-ddl').classList.add('hover');
         }
         selectPage.onchange = function (e) {
           var val = Number(e.target.value) + 1;
@@ -455,23 +457,21 @@ cuc.directive('uiGridCustomPaging', function ($compile,$timeout) {
           else
             leftArrow.classList.add('disable');
           var val = uiGridctrl.grid.api.pagination.getPage();
-          if(val<maxPage)
-          {
+          if (val < maxPage) {
             rightArrow.classList.remove('disable');
           }
-          else{
+          else {
             rightArrow.classList.add('disable');
           }
-           if(val>1)
-          {
+          if (val > 1) {
             leftArrow.classList.remove('disable');
           }
-          else{
+          else {
             leftArrow.classList.add('disable');
           }
         };
         scope._rightArrow_click = function () {
-          if(rightArrow.classList.contains('disable'))
+          if (rightArrow.classList.contains('disable'))
             return;
           if (uiGridctrl.grid.api.pagination.getPage() == (maxPage))
             return;
@@ -513,18 +513,16 @@ cuc.directive('uiGridCustomPaging', function ($compile,$timeout) {
           else
             rightArrow.classList.remove('disable');
           var val = uiGridctrl.grid.api.pagination.getPage();
-         if(val<maxPage)
-          {
+          if (val < maxPage) {
             rightArrow.classList.remove('disable');
           }
-          else{
+          else {
             rightArrow.classList.add('disable');
           }
-           if(val>1)
-          {
+          if (val > 1) {
             leftArrow.classList.remove('disable');
           }
-          else{
+          else {
             leftArrow.classList.add('disable');
           }
 
@@ -567,9 +565,9 @@ cuc.directive('uiGridCustomPaging', function ($compile,$timeout) {
           rightArrow.classList.add('disable');
         else
           rightArrow.classList.remove('disable');
-         if(maxPage!==1){
-            rightArrow.classList.remove('disable');
-           }
+        if (maxPage !== 1) {
+          rightArrow.classList.remove('disable');
+        }
       }
     },
     restrict: 'A',
@@ -632,8 +630,8 @@ cuc.directive('uiGridColumnSettings', function ($timeout) {
         //add tooltip to column when text is greater than width
         [].forEach.call(element[0].querySelectorAll('.ui-grid-cell-contents'), function (el, index) {
           el.addEventListener('mouseover', (e) => {
-            if(e.target.offsetWidth < e.target.scrollWidth) {
-                e.target.title = e.target.innerHTML;
+            if (e.target.offsetWidth < e.target.scrollWidth) {
+              e.target.title = e.target.innerHTML;
             }
           });
         });
@@ -732,77 +730,165 @@ cuc.directive('uiGridColumnSettings', function ($timeout) {
 });
 
 cuc.directive('emTxtDecimalUpto', function () {
-    return {
-      restrict: 'EA',
-        require: 'ngModel',
-        link: function (scope, element, attrs, ngModel) {
-           scope.$watch(attrs.ngModel, function(newValue, oldValue) {
-             var spiltArray = String(newValue).split("");
+  return {
+    restrict: 'EA',
+    require: 'ngModel',
+    link: function (scope, element, attrs, ngModel) {
+      scope.$watch(attrs.ngModel, function (newValue, oldValue) {
+        var spiltArray = String(newValue).split("");
 
-              /*To allow only positive decimals*/
-              if(attrs.emAllowNegative == "false") {
-                if(spiltArray[0] == '-') {
-                  newValue = newValue ? newValue.replace("-", "") : "";
-                  ngModel.$setViewValue(newValue);
-                  ngModel.$render();
-                }
-             }
-
-              /*to restrict number of digits after decimal points*/
-              if (attrs.emTxtDecimalUpto == 0) {
-                if (newValue) {
-                  newValue = newValue.replace(".", "");
-                  ngModel.$setViewValue(newValue);
-                  ngModel.$render();
-                }
-
-              }else {
-                   var n = String(newValue).split(".");
-                   if(n[1]) {
-                      var n2 = n[1].slice(0, attrs.emTxtDecimalUpto);
-                      newValue = [n[0], n2].join(".");
-                      ngModel.$setViewValue(newValue);
-                      ngModel.$render();
-                   }
-              }
-
-
-              if (spiltArray.length === 0) return;
-              if (spiltArray.length === 1 && (spiltArray[0] == '-' || spiltArray[0] === '.' )) return;
-              if (spiltArray.length === 2 && newValue === '-.') return;
-
-                /*Check it is number or not.*/
-                if (isNaN(newValue)) {
-                  ngModel.$setViewValue(oldValue || '');
-                  ngModel.$render();
-                }
-            });
+        /*To allow only positive decimals*/
+        if (attrs.emAllowNegative == "false") {
+          if (spiltArray[0] == '-') {
+            newValue = newValue ? newValue.replace("-", "") : "";
+            ngModel.$setViewValue(newValue);
+            ngModel.$render();
+          }
         }
-    };
+
+        /*to restrict number of digits after decimal points*/
+        if (attrs.emTxtDecimalUpto == 0) {
+          if (newValue) {
+            newValue = newValue.replace(".", "");
+            ngModel.$setViewValue(newValue);
+            ngModel.$render();
+          }
+
+        } else {
+          var n = String(newValue).split(".");
+          if (n[1]) {
+            var n2 = n[1].slice(0, attrs.emTxtDecimalUpto);
+            newValue = [n[0], n2].join(".");
+            ngModel.$setViewValue(newValue);
+            ngModel.$render();
+          }
+        }
+
+
+        if (spiltArray.length === 0) return;
+        if (spiltArray.length === 1 && (spiltArray[0] == '-' || spiltArray[0] === '.' )) return;
+        if (spiltArray.length === 2 && newValue === '-.') return;
+
+        /*Check it is number or not.*/
+        if (isNaN(newValue)) {
+          ngModel.$setViewValue(oldValue || '');
+          ngModel.$render();
+        }
+      });
+    }
+  };
 });
 
 // Directive for formatting input in currency format.
 cuc.directive('format', ['$filter', ($filter) => {
-    return {
-        require: '?ngModel',
-        link: function (scope, elem, attrs, ctrl) {
-            if (!ctrl) return;
+  return {
+    require: '?ngModel',
+    link: function (scope, elem, attrs, ctrl) {
+      if (!ctrl) {
+        return;
+      }
 
-            ctrl.$formatters.unshift((a) => {
-                return $filter(attrs.format)(ctrl.$modelValue)
-            });
+      ctrl.$formatters.unshift((a) => {
+        return $filter(attrs.format)(ctrl.$modelValue)
+      });
 
-            elem.bind('keyup', (event) => {
-                var plainNumber = elem.val().replace(/[^\d|\-+|\.+]/g, '');
-                if ($filter(attrs.format)(plainNumber) === '0') {
-                  elem.val('');
-                }
-                else {
-                  elem.val($filter(attrs.format)(plainNumber));
-                }
-            });
+      let formatNumber = (plainNumber, format)=> {
+        return $filter(format)(plainNumber) === '0' ? '' : $filter(format)(plainNumber);
+      };
+
+      elem.bind('blur', (event) => {
+        let plainNumber = elem.val().replace(/[^\d|\-+|\.+]/g, '');
+        elem.val(formatNumber(plainNumber, attrs.format));
+      });
+
+      elem.bind('keyup', (event) => {
+        let plainNumber = elem.val().replace(/[^\d|\-+|\.+]/g, '');
+        let key = event.keyCode;
+        //Checking for '.'(dot)
+        if (key === 190) {
+          if (plainNumber.split('.').length === 2) {
+            elem.val(plainNumber);
+          }
+          else {
+            event.preventDefault();
+          }
         }
-    };
+        else {
+          if (key == 91 || (15 < key && key < 19) || (37 <= key && key <= 40)) {
+            return;
+          }
+          else {
+            elem.val(formatNumber(plainNumber, attrs.format));
+          }
+        }
+      });
+    }
+  };
 }]);
+
+// Directive for formatting US mobile number with and without extension.
+// <input type="text" ng-model="Phone" em-format-phone extension="true"/>
+// Result : 982-346-6168 1234
+// <input type="text" ng-model="Phone" em-format-phone extension="false"/>
+// Result : 982-346-6168
+cuc.directive('emFormatPhone', ['$filter', '$browser', ($filter, $browser)=> {
+  return {
+    require: 'ngModel',
+    restrict: 'A',
+    link: ($scope, $element, $attrs, ngModelCtrl)=> {
+      let isExtension = $attrs.extension === 'true';
+      var listener = ()=> {
+        let value = $element.val().replace(/[^0-9]/g, '');
+        $element.val($filter('emPhone')(value, isExtension, false));
+      };
+
+      ngModelCtrl.$parsers.push((viewValue)=> {
+        let len = isExtension ? 14 : 10;
+        return viewValue.replace(/[^0-9]/g, '').slice(0, len);
+      });
+
+      // This runs when the model gets updated on the scope directly and keeps our view in sync
+      ngModelCtrl.$render = ()=> {
+        $element.val($filter('emPhone')(ngModelCtrl.$viewValue.replace(/[^0-9]/g, ''), isExtension, false));
+      };
+
+      $element.bind('change', listener);
+      $element.bind('keydown', (event)=> {
+        let key = event.keyCode;
+        // If the keys include the CTRL, SHIFT, ALT, or META keys, or the arrow keys, do nothing.
+        // This lets us support copy and paste too
+        if (key == 91 || (15 < key && key < 19) || (37 <= key && key <= 40)) {
+          return;
+        }
+        $browser.defer(listener); // Have to do this or changes don't get picked up properly
+      });
+
+      $element.bind('paste cut', () => {
+        $browser.defer(listener);
+      });
+    }
+  }
+}]);
+
+cuc.filter('emPhone', ()=> {
+  return (phone, type) => {
+    if (!phone) {
+      return '';
+    }
+
+    let number = phone.replace(/[^0-9]/g, '');
+
+    if (number.length > 10 && type) {
+      number = `${number.slice(0, 3)}-${number.slice(3, 6)}-${number.slice(6, 10)} ${number.slice(10, 14)}`;
+    }
+    else if (number.length > 6) {
+      number = `${number.slice(0, 3)}-${number.slice(3, 6)}-${number.slice(6, 10)}`;
+    }
+    else if (number.length > 3) {
+      number = `${number.slice(0, 3)}-${number.slice(3, 6)}`;
+    }
+    return number;
+  };
+});
 
 export {cuc};
