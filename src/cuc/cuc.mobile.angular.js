@@ -88,45 +88,57 @@ cucm.directive('emcm', () => {
 
 // Directive for formatting input in currency format.
 cucm.directive('format', ['$filter', ($filter) => {
-    return {
-        require: '?ngModel',
-        link: function (scope, elem, attrs, ctrl) {
-            if (!ctrl) return;
+  return {
+    require: '?ngModel',
+    link: function (scope, elem, attrs, ctrl) {
+      if (!ctrl) {
+        return;
+      }
 
-            ctrl.$formatters.unshift((a) => {
-                return $filter(attrs.format)(ctrl.$modelValue)
-            });
+      ctrl.$formatters.unshift((a) => {
+        return $filter(attrs.format)(ctrl.$modelValue)
+      });
 
-            elem.bind('keyup', (event) => {
-            var plainNumber = elem.val().replace(/[^\d|\-+|\.+]/g, '');
-              //Checking for '.'(dot)
-              if(event.keyCode === 190){
-                if(plainNumber.split('.').length === 2){
-                  elem.val(plainNumber);
-                }
-                else{
-                  event.preventDefault();
-                }
-              }
-              else{
-                if ($filter(attrs.format)(plainNumber) === '0') {
-                  elem.val('');
-                }
-                else {
-                  elem.val($filter(attrs.format)(plainNumber));
-                }
-              }
-          });
+      let formatNumber = (plainNumber, format)=> {
+        return $filter(format)(plainNumber) === '0' ? '' : $filter(format)(plainNumber);
+      };
+
+      elem.bind('blur', (event) => {
+        let plainNumber = elem.val().replace(/[^\d|\-+|\.+]/g, '');
+        elem.val(formatNumber(plainNumber, attrs.format));
+      });
+
+      elem.bind('keyup', (event) => {
+        let plainNumber = elem.val().replace(/[^\d|\-+|\.+]/g, '');
+        let key = event.keyCode;
+        //Checking for '.'(dot)
+        if (key === 190) {
+          if (plainNumber.split('.').length === 2) {
+            elem.val(plainNumber);
+          }
+          else {
+            event.preventDefault();
+          }
         }
-    };
+        else {
+          if (key == 91 || (15 < key && key < 19) || (37 <= key && key <= 40)) {
+            return;
+          }
+          else {
+            elem.val(formatNumber(plainNumber, attrs.format));
+          }
+        }
+      });
+    }
+  };
 }]);
 
 // Directive for formatting US mobile number with and without extension.
-// <input type="text" ng-model="Phone" format-phone extension="true"/>
+// <input type="text" ng-model="Phone" em-format-phone extension="true"/>
 // Result : 982-346-6168 1234
-// <input type="text" ng-model="Phone" format-phone extension="false"/>
+// <input type="text" ng-model="Phone" em-format-phone extension="false"/>
 // Result : 982-346-6168
-cucm.directive('formatPhone', ['$filter', '$browser', ($filter, $browser)=> {
+cucm.directive('emFormatPhone', ['$filter', '$browser', ($filter, $browser)=> {
   return {
     require: 'ngModel',
     restrict: 'A',
@@ -134,7 +146,7 @@ cucm.directive('formatPhone', ['$filter', '$browser', ($filter, $browser)=> {
       let isExtension = $attrs.extension === 'true';
       var listener = ()=> {
         let value = $element.val().replace(/[^0-9]/g, '');
-        $element.val($filter('phone')(value, isExtension, false));
+        $element.val($filter('emPhone')(value, isExtension, false));
       };
 
       ngModelCtrl.$parsers.push((viewValue)=> {
@@ -144,7 +156,7 @@ cucm.directive('formatPhone', ['$filter', '$browser', ($filter, $browser)=> {
 
       // This runs when the model gets updated on the scope directly and keeps our view in sync
       ngModelCtrl.$render = ()=> {
-        $element.val($filter('phone')(ngModelCtrl.$viewValue.replace(/[^0-9]/g, ''), isExtension, false));
+        $element.val($filter('emPhone')(ngModelCtrl.$viewValue.replace(/[^0-9]/g, ''), isExtension, false));
       };
 
       $element.bind('change', listener);
@@ -165,22 +177,22 @@ cucm.directive('formatPhone', ['$filter', '$browser', ($filter, $browser)=> {
   }
 }]);
 
-cucm.filter('phone', ()=> {
-  return (tel, type) => {
-    if (!tel) {
+cucm.filter('emPhone', ()=> {
+  return (phone, type) => {
+    if (!phone) {
       return '';
     }
 
-    let number = tel.replace(/[^0-9]/g, '');
+    let number = phone.replace(/[^0-9]/g, '');
 
     if (number.length > 10 && type) {
-      number = number.slice(0, 3) + '-' + number.slice(3, 6) + '-' + number.slice(6, 10) + ' ' + number.slice(10, 14);
+      number = `${number.slice(0, 3)}-${number.slice(3, 6)}-${number.slice(6, 10)} ${number.slice(10, 14)}`;
     }
     else if (number.length > 6) {
-      number = number.slice(0, 3) + '-' + number.slice(3, 6) + '-' + number.slice(6, 10);
+      number = `${number.slice(0, 3)}-${number.slice(3, 6)}-${number.slice(6, 10)}`;
     }
     else if (number.length > 3) {
-      number = number.slice(0, 3) + '-' + number.slice(3, 6);
+      number = `${number.slice(0, 3)}-${number.slice(3, 6)}`;
     }
     return number;
   };
