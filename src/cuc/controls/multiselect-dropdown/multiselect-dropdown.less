@@ -195,7 +195,10 @@
     width: @dropdown-size-flexible;
     min-width: auto;
   }
-
+  .em-checkbox-right label::before {
+    position: relative;
+  float: right;
+  }
   ul.dropdown-menu {
     background-color: @dropdown-panel-default-background;
     border: 1px solid @dropdown-panel-default-border-color;
@@ -228,6 +231,9 @@
       .checkbox {
         margin: 0;
       }
+      .em-checkbox-right label{
+        width: 90%;
+      }
       label {
         font-family: proxima-nova;
         font-size: 13px;
@@ -235,6 +241,8 @@
         text-align: left;
         vertical-align: middle;
       }
+
+
       .checkbox input[type="checkbox"]:checked + label::before {
         background: @dropdown-selected-color url("../../assets/images/icon-checkmark-white.svg") center center/contain no-repeat;
         border: 1px solid @checkbox-checked-border-color;

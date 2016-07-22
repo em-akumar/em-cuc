@@ -48,17 +48,20 @@ class MultiSelectDropdown {
         }
         this.checkBoxPosition = this.mainParent.parentNode.querySelector('div').getAttribute('checkbox');
         this.isCheckBox = this.checkBoxPosition === 'left' || this.checkBoxPosition === 'right';
+        this.checkboxAllignment= this.checkBoxPosition === 'left' ?  '<div class="checkbox" >' : '<div class="checkbox em-checkbox-right" >';
         this.template = `<button  class="btn dropdown-toggle ${this.options.size}" type="button"  aria-haspopup="true" aria-expanded="true"><span class="selectedText pull-left ${this.options.size}">${this.options.defaultText || '&nbsp;'}</span>
 			<span class="caret"></span>
 			</button>
 			<ul class="dropdown-menu ${this.options.size}" role="menu">
 
 			${this.itemList.map((value, i) =>
-            ` ${value.divider ? '<li class="divider"></li>' : ''}<li value="${value[this.options.valueField || 'value']}" class="${!value.class ? '' : value.class}">
+            ` ${value.divider ? '<li class="divider"></li>' : ''}<li value="${value[this.options.valueField || 'value']}"
+              ${value.check ? 'class="selected-text selected-check"' : ''}
+             class="${!value.class ? '' : value.class}">
           <a value="${value[this.options.valueField || 'value']}">${value.leftImage ? `<img class="em-left-icon"
           src="${value.leftImage}" />` : (IconFlag === true) ? '<span class="em-left-icon"></span>' : ''}
-          ${this.isCheckBox ? `<div class="checkbox">
-            <input class="em-right-checkbox" id="${value[this.options.valueField || 'value']}" type="checkbox" ${value.check == false ? '' : 'checked'}/>
+          ${this.isCheckBox ? `${this.checkboxAllignment}
+            <input id="${value[this.options.valueField || 'value']}" type="checkbox" ${value.check ? 'checked' : ''}/>
             <label for="${value[this.options.valueField || 'value']}">${value[this.options.textField || 'text']}</label>
         </div>`: `${value[this.options.textField || 'text']}`}
        ${value.rightImage ? `<img class="em-right-icon" src="${value.rightImage}" />` : ``}
@@ -215,6 +218,7 @@ class MultiSelectDropdown {
       var selector = this.menu.parentNode;
       target.parentNode.classList.add('open');
       var selValue = unSelectedValue || selector.querySelector(".btn .selectedText").getAttribute('value');
+      selValue = selValue ? selValue.replace(/'/g, "\\'") : selValue;
       var selectedValue = selector.querySelector("li[value='" + selValue + "']");
       if (selectedValue && !selectedValue.classList.contains('selected-check')) {
         selectedValue.classList.add('selected-text');
