@@ -2,6 +2,8 @@
 import angular from 'angular';
 import * as emcm from './cuc.mobile';
 
+import reoDropdownListComponent from './controls/reo-dropdown-list/reo-dropdown.component.js';
+
 let setVal = (obj, path, val) => {
   if (path === '') {
     return;
@@ -197,5 +199,9 @@ cucm.filter('emPhone', ()=> {
     return number;
   };
 });
+
+// Directive for reoDropdownList
+//<reo-dropdown-list title="Loan Terms" name="LoanTerms" onchange="vm.onChangeLoanTerms(updated)" options="vm.objLoanTerms"></reo-dropdown-list>
+cucm.directive('reoDropdownList', reoDropdownListComponent);
 
 export {cucm};
