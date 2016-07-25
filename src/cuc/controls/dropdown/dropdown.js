@@ -93,6 +93,7 @@ class Dropdown {
     self.actions();
     self.menu.setAttribute('tabindex', '0'); // Fix onblur on Chrome
     self.menu.addEventListener('click', self.toggle, false);
+    self.menu.addEventListener('focus', self.toggle, false);
     self.menu.addEventListener('onmouseup', self.close, false);  //switched from blur to onmouseup due to blur not capturing scroll bar as apart of element
     self.menu.parentNode.addEventListener('click', function(e) {
       e.stopPropagation();
