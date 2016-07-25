@@ -201,7 +201,26 @@
     padding: @dropdown-panel-padding;
     max-height: 200px;
     overflow-y: auto;
-    min-width: none;
+    &.large {
+      min-width: @dropdown-size-large;
+      width: auto;
+    }
+    &.small {
+      min-width: @dropdown-size-small;
+      width: auto;
+    }
+    &.medium {
+      min-width: @dropdown-size-medium;
+      width: auto;
+    }
+    &.xs {
+      min-width: @dropdown-size-extra-small;
+      width: auto;
+    }
+    &.flexible-width {
+      min-width: @dropdown-size-flexible;
+      width: auto;
+    }
     li {
       &:hover {
         color: @dropdown-panel-hover-highlight-color;
