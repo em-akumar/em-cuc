@@ -7,26 +7,121 @@
     </div>
   </div>
 
-    <!-- text input field data format sample -->
-    <div id="text-input-data-format" class="demo-example section-subheading" data-heading="Data Format">
-       <label for="field-label16">Passowrd</label>
-        <div class="item item-input em-showPassword">
-              <input type="password" placeholder="Password" class="em-showPassword-txt" emcm="TextInputField">
-        </div>
+  <!-- text input field data format sample -->
+  <div id="text-input-data-format" class="demo-example section-subheading mobile-demo-input" data-heading="Data Format">
+    <label for="field-label16">Password</label>
+
+    <div class="item item-input em-showPassword">
+      <input type="password" placeholder="Password" class="em-showPassword-txt" emcm="TextInputField">
     </div>
-    <br/>
-    <br />
-    <!-- Text input field label data format  Usage -->
-    <div id="text-input-data-format-usage" class="panel panel-primary">
-        <div class="panel-heading">Text Input Field Data Format Usage</div>
-        <div class="codepen-group">
-            <pre class="codepen-able" data-type="html"> &lt;label for=&quot;field-label16&quot;&gt;Passowrd&lt;/label&gt;
-        &lt;div class=&quot;item item-input em-showPassword&quot;&gt;
-              &lt;input type=&quot;password&quot; placeholder=&quot;Password&quot; class=&quot;em-showPassword-txt&quot; emcm=&quot;TextInputField&quot;&gt;
+  </div>
+
+  <div id="text-input-data-format" class="demo-example section-subheading mobile-demo-input"
+       data-heading="Number Format">
+    <div class="list">
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Currency filter</span>
+        <label class="item-input-wrapper">
+          <i class="icon placeholder-icon">$</i>
+          <input type="text" ng-model="vm.numWithCurrencyValue" format="number">
+        </label>
+      </label>
+    </div>
+  </div>
+
+  <div id="text-input-data-format" class="demo-example section-subheading mobile-demo-input" data-heading="SSN">
+    <div class="list">
+      <div class="item item-input item-stacked-label">
+        <label class="input-label">SSN Input Text Field</label>
+
+        <div class="item-input-wrapper em-showPassword">
+          <input type="ssn" class="em-showPassword-txt" emcm="TextInputField" options="vm.options" maxlength="11"/>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="text-input-data-format" class="demo-example section-subheading mobile-demo-input"
+       data-heading="Mobile With Extension">
+    <div class="item item-input">
+      <input type="text" class="em-showPassword-txt" placeholder="123-456-1234 1234"
+             ng-model="mobileWithExtension"
+             em-format-phone
+             extension="true">
+    </div>
+  </div>
+
+  <div id="text-input-data-format" class="demo-example section-subheading mobile-demo-input"
+       data-heading="Mobile Without Extension">
+    <div class="item item-input">
+      <input type="text" class="em-showPassword-txt" placeholder="123-456-1234"
+             ng-model="mobileWithoutExtension"
+             em-format-phone
+             extension="false">
+    </div>
+  </div>
+
+  <!-- Text input field label data format  Usage -->
+  <div id="text-input-data-format-usage" class="panel panel-primary">
+    <div class="panel-heading">Text Input Field Data Format Usage</div>
+    <div class="codepen-group">
+      <pre class="codepen-able" data-type="html">
+
+&lt;div id=&quot;text-input-data-format&quot; class=&quot;demo-example section-subheading mobile-demo-input&quot; data-heading=&quot;Data Format&quot;&gt;
+    &lt;label for=&quot;field-label16&quot;&gt;Password&lt;/label&gt;
+
+    &lt;div class=&quot;item item-input em-showPassword&quot;&gt;
+      &lt;input type=&quot;password&quot; placeholder=&quot;Password&quot; class=&quot;em-showPassword-txt&quot; emcm=&quot;TextInputField&quot;&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div id=&quot;text-input-data-format&quot; class=&quot;demo-example section-subheading mobile-demo-input&quot;
+       data-heading=&quot;Number Format&quot;&gt;
+    &lt;div class=&quot;list&quot;&gt;
+      &lt;label class=&quot;item item-input item-stacked-label&quot;&gt;
+        &lt;span class=&quot;input-label&quot;&gt;Currency filter&lt;/span&gt;
+        &lt;label class=&quot;item-input-wrapper&quot;&gt;
+          &lt;i class=&quot;icon placeholder-icon&quot;&gt;$&lt;/i&gt;
+          &lt;input type=&quot;text&quot; ng-model=&quot;vm.numWithCurrencyValue&quot; format=&quot;number&quot;&gt;
+        &lt;/label&gt;
+      &lt;/label&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div id=&quot;text-input-data-format&quot; class=&quot;demo-example section-subheading mobile-demo-input&quot; data-heading=&quot;SSN&quot;&gt;
+    &lt;div class=&quot;list&quot;&gt;
+      &lt;div class=&quot;item item-input item-stacked-label&quot;&gt;
+        &lt;label class=&quot;input-label&quot;&gt;SSN Input Text Field&lt;/label&gt;
+
+        &lt;div class=&quot;item-input-wrapper em-showPassword&quot;&gt;
+          &lt;input type=&quot;ssn&quot; class=&quot;em-showPassword-txt&quot; emcm=&quot;TextInputField&quot; options=&quot;vm.options&quot; maxlength=&quot;11&quot;/&gt;
         &lt;/div&gt;
-        </pre>
-            <pre class="codepen-able" id="css-text-input-data-format" data-type="css"></pre>
-        </div>
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div id=&quot;text-input-data-format&quot; class=&quot;demo-example section-subheading mobile-demo-input&quot;
+       data-heading=&quot;Mobile With Extension&quot;&gt;
+    &lt;div class=&quot;item item-input&quot;&gt;
+      &lt;input type=&quot;text&quot; class=&quot;em-showPassword-txt&quot; placeholder=&quot;123-456-1234 1234&quot;
+             ng-model=&quot;mobileWithExtension&quot;
+             em-format-phone
+             extension=&quot;true&quot;&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div id=&quot;text-input-data-format&quot; class=&quot;demo-example section-subheading mobile-demo-input&quot;
+       data-heading=&quot;Mobile Without Extension&quot;&gt;
+    &lt;div class=&quot;item item-input&quot;&gt;
+      &lt;input type=&quot;text&quot; class=&quot;em-showPassword-txt&quot; placeholder=&quot;123-456-1234&quot;
+             ng-model=&quot;mobileWithoutExtension&quot;
+             em-format-phone
+             extension=&quot;false&quot;&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+      </pre>
+      <pre class="codepen-able" id="css-text-input-data-format" data-type="css"></pre>
     </div>
+  </div>
 </div>
 

@@ -15,8 +15,9 @@ import 'angular-messages';
 import textInput from './text-input/text-input.mobile.module';
 import progressSpinner from './progress-spinner/progress-spinner.mobile.module';
 import progressBar from './progress-bar/progress-bar.mobile.module';
+import multiSelector from './multi-selector/multi-selector.module';
 
-let appMobileModule = angular.module('app', [uiRouter, 'cucm', 'ionic', textInput.name, progressSpinner.name, progressBar.name]);
+let appMobileModule = angular.module('app', [uiRouter, 'cucm', 'ionic', textInput.name, progressSpinner.name, progressBar.name,multiSelector.name]);
 
 appMobileModule.config(($stateProvider, $urlRouterProvider) => {
   $stateProvider.state('app', {

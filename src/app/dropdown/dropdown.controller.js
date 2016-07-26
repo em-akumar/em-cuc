@@ -40,6 +40,20 @@ class DropdownController {
       defaultSize: 'large'
     };
 
+    this.drpCities = {
+      defaultText: 'Select Multiple',
+      onChange: function (e, selectedId, selectedText) {
+        console.log('clicked selected Text '+ selectedText);
+      },
+      defaultSize: 'large'
+    };
+    this.drpCitiesTest = {
+      defaultText: 'Select Multiple',
+      onChange: function (e, selectedId, selectedText) {
+        console.log('clicked '+ selectedId);
+      },
+      defaultSize: 'large'
+    };
     // for Disabled items
     this.drpStateDisabledItem = {
 
@@ -156,6 +170,12 @@ class DropdownController {
     this.dropdownService.resolvePromise().then((response) => {
       // this.drpCountry.itemList = response.data;
       this.drpBranches.itemList = response.data;
+      response.data.forEach(function (arrayItem)
+      {
+        arrayItem.check= false;
+      });
+      this.drpCities.itemList = response.data;
+      this.drpCitiesTest.itemList = response.data;
       safeApply();
     });
   }
