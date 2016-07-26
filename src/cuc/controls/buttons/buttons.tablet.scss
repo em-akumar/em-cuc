@@ -9,11 +9,11 @@
     align-items: center;
     @include font-size(regular, $font-size-base);
     /* override primary hover button state  */
-  /*  &:hover,
+    &:hover,
     &.hover {
-      background-color: $havelock-blue;
-      border-color: $havelock-blue;
-    }*/
+      background-color: $curious-blue;
+      border-color: $curious-blue;
+    }
     /* override primary active button state  */
     &:active,
     &.active,
@@ -54,11 +54,11 @@
     align-items: center;
     @include font-size(regular, $font-size-base,$curious-blue);
     /* override primary hover button state  */
-  /*  &:hover,
+   &:hover,
     &.hover {
-      @include font-size(regular, $font-size-base, $venice-blue);
-      border: 2px solid $havelock-blue;
-    }*/
+      background-color: $white;
+      border-color: $curious-blue;
+    }
     /* override primary active button state  */
     &:active,
     &.active,
@@ -99,11 +99,11 @@
     align-items: center;
     @include font-size(regular, $font-size-base,$curious-blue);
     /* override primary hover button state  */
-  /*  &:hover,
+   &:hover,
     &.hover {
-      border: 2px solid $mine-shaft;
-      @include font-size(regular, $font-size-base,$venice-blue);
-    }*/
+      background-color: $white;
+      border-color: $silver;
+    }
     /* override primary active button state  */
     &:active,
     &.active,

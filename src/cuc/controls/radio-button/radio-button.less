@@ -50,7 +50,7 @@
 
 .radio input[type="radio"]:not([disabled]) + label {
   color: @black;
-  display: inline-block;
+  display: inherit;
   width: calc(100% - 22px);
   max-width: @text-line-max-width;
   padding-left: 21px;
@@ -68,7 +68,7 @@
     width: @radiobutton-width;
     height: @radiobutton-width;
     border-radius: 50%;
-    display: inline-block;
+    display: inherit;
     margin-right: 10px;
     box-sizing: border-box;
   }
@@ -95,7 +95,7 @@
 .radio input[type="radio"][disabled] + label {
   color: @radiobutton-disabled-label-color;
   cursor: not-allowed;
-  display: inline-block;
+  display: inherit;
   width: calc(100% - 22px);
   max-width: @text-line-max-width;
   padding-left: 21px;
@@ -113,7 +113,7 @@
     width: @radiobutton-width;
     height: @radiobutton-width;
     border-radius: 50%;
-    display: inline-block;
+    display: inherit;
     margin-right: 10px;
     box-sizing: border-box;
   }

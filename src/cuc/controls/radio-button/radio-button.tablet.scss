@@ -1,6 +1,6 @@
 .radio{
     position: relative;
-    display: block;
+    display: inherit;
     margin-top: $radio-margin;
     margin-bottom: $radio-margin;
     cursor: pointer;
@@ -36,7 +36,7 @@
       }
 
     label,input[type="radio"]:not([disabled]) + label{
-      display: inline-block;
+      display: inherit;
       vertical-align: middle;
       position: relative;
       padding-left:$radio-label-padding-left;
@@ -46,7 +46,7 @@
       line-height: 2.3;
       &:before{
         content: "";
-        display: inline-block;
+        display: inherit;
         background-color:$curious-blue-light;
         position: absolute;
         left: 0;
@@ -58,7 +58,7 @@
       }
 
       &:after{
-        display: inline-block;
+        display: inherit;
           position: absolute;
           content: " ";
           width: 12px;
