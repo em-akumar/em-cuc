@@ -556,10 +556,7 @@ let ColorPicker = (function(window, document, opts) {
         ColorPicker.positionIndicators(slideIndicator, pickerIndicator,
           slideCoordinate, pickerCoordinate);
         if (this.mainElement) {
-          this.mainElement.addEventListener('click', (e) => {
-            var pickedColor = mainElement.querySelector('.em-input-color').value;
-            this.callbackSelected(pickedColor);
-          });
+
 
           //callback();
 
@@ -644,6 +641,12 @@ let ColorPicker = (function(window, document, opts) {
     if (element.querySelector('.em-input-color')) {
       element.querySelector('.em-input-color').value = hex.replace('#', '');
     }
+    var event = document.createEvent('Event');
+    event.initEvent('change', true, true);
+    element.addEventListener('change', function(e) {
+    },false);
+
+    element.querySelector('.em-input-color').dispatchEvent(event);
     element.querySelector('.hex').value = hex.replace('#', '');
     element.querySelector('.current').style.backgroundColor = oldColor;
     element.querySelector('.new').style.backgroundColor = (hex.indexOf('#') !== -1 ) ? hex : '#' + hex;
@@ -761,9 +764,6 @@ let ColorPicker = (function(window, document, opts) {
     displayColor(this, colorValue);
   };
 
-  ColorPicker.prototype.setCallback = function(callback) {
-    this.callbackSelected = callback;
-  };
   /**
    ColorPicker.prototype.setHsv = function(hsv) {
     return setColor(this, hsv);
