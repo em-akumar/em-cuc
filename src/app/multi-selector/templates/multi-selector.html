@@ -1,0 +1,65 @@
+<div class="app controls buttons">
+  <div class="demo-page-header">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1>MultiSelector For Mobile</h1>
+      </div>
+    </div>
+  </div>
+  <div class="demo-example">
+    <label>Default MultiSelector Dropdown</label>
+    <multi-selector class="em-reo-dropdown-t"
+                       title="Default"
+                       onChange="vm.onChange(update)"
+                       options="vm.options">
+    </multi-selector>
+    <br/>
+    <label>Pre-Selected MultiSelector Dropdown</label>
+    <multi-selector class="em-reo-dropdown-t"
+                    title="Pre-Selected"
+                    onChange="vm.onChange(update)"
+                    options="vm.optionsPreSelected"
+                    selected="vm.selected">
+    </multi-selector>
+  </div>
+  <div id="" class="panel panel-primary">
+    <div class="panel-heading">MultiSelector dropdown control usage</div>
+    <div class="codepen-group">
+            <pre class="codepen-able" data-type="html">
+              <code>
+                &lt;label&gt;Default MultiSelector Dropdown&lt;/label&gt;
+                &lt;multi-selector class=&quot;em-reo-dropdown-t&quot;
+                    title=&quot;Default&quot;
+                    onChange=&quot;vm.onChange(update)&quot;
+                    options=&quot;vm.options&quot;&gt;
+                &lt;/multi-selector&gt;
+                &lt;br/&gt;
+                &lt;label&gt;Pre-Selected MultiSelector Dropdown&lt;/label&gt;
+                &lt;multi-selector class=&quot;em-reo-dropdown-t&quot;
+                title=&quot;Pre-Selected&quot;
+                    onChange=&quot;vm.onChange(update)&quot;
+                    options=&quot;vm.optionsPreSelected&quot;
+                    selected=&quot;vm.selected&quot;&gt;
+                &lt;/multi-selector&gt;
+
+                this.options = [
+                    {text: &#x27;Item1&#x27;, value: &#x27;Item1&#x27;},
+                    {text: &#x27;Item2&#x27;, value: &#x27;Item2&#x27;},
+                    {text: &#x27;Item3&#x27;, value: &#x27;Item3&#x27;}
+                    ];
+                this.optionsPreSelected = [
+                    {text: &#x27;Item1&#x27;, value: &#x27;Item1&#x27;},
+                    {text: &#x27;Item2&#x27;, value: &#x27;Item2&#x27;},
+                    {text: &#x27;Item3&#x27;, value: &#x27;Item3&#x27;}
+                    ];
+                this.onChange = (update)=&gt; {
+                    console.log(update);
+                    };
+                this.selected=[];
+                this.selected.push(this.optionsPreSelected[0]);
+              </code>
+            </pre>
+    </div>
+  </div>
+</div>
+

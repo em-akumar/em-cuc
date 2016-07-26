@@ -2,7 +2,7 @@
 import angular from 'angular';
 import * as emcm from './cuc.mobile';
 
-import reoDropdownListComponent from './controls/reo-dropdown-list/reo-dropdown.component.js';
+import multiSelectorComponent from './controls/multi-selector/multi-selector.component.js';
 
 let setVal = (obj, path, val) => {
   if (path === '') {
@@ -200,8 +200,8 @@ cucm.filter('emPhone', ()=> {
   };
 });
 
-// Directive for reoDropdownList
-//<reo-dropdown-list title="Loan Terms" name="LoanTerms" onchange="vm.onChangeLoanTerms(updated)" options="vm.objLoanTerms"></reo-dropdown-list>
-cucm.directive('reoDropdownList', reoDropdownListComponent);
+// Directive for multiSelector
+//<multi-selector title="Loan Terms" name="LoanTerms" onchange="vm.onChangeLoanTerms(updated)" options="vm.objLoanTerms"></multi-selector>
+cucm.directive('multiSelector', multiSelectorComponent);
 
 export {cucm};

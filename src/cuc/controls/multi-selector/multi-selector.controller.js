@@ -1,6 +1,6 @@
-import optionsModalTemplate from './templates/reo-dropdown-modal.mobile.html';
+import optionsModalTemplate from './templates/multi-selector-modal.mobile.html';
 
-class ReodropdownListController {
+class MultiSelectorController {
   /* @ngInject */
   constructor($ionicModal, $scope) {
     this.ionicModal = $ionicModal;
@@ -16,7 +16,9 @@ class ReodropdownListController {
     this.check_status = false;
 
     // check modal biding
-    this.selected = this.selected || '';
+    this.selected = this.selectedArray = this.selected || '';
+    this._checkStatus();
+    this._initializePreSelect();
   }
 
   toggleOptionModal() {
@@ -39,13 +41,19 @@ class ReodropdownListController {
     let commaSeperated = [];
     // create comma seperated values
     for (let item of this.selectedArray) {
-      commaSeperated.push(item.text);
+      commaSeperated.push(item);
     }
-    commaSeperated = commaSeperated.join(',');
+    //commaSeperated = commaSeperated.join(',');
     this.selected = commaSeperated;
 
-    this.onchange !== undefined ? this.onchange({ updated: commaSeperated }) : '';
+    this.onchange !== undefined ? this.onchange({updated: commaSeperated}) : '';
 
+    this._checkStatus();
+
+    this.toggleOptionModal();
+  }
+
+  _checkStatus() {
     if (this.selectedArray.length > 0) {
       this.defaultTitle = `${this.selectedArray.length} selected`;
       this.check_status = true;
@@ -53,9 +61,15 @@ class ReodropdownListController {
       this.defaultTitle = 'Select';
       this.check_status = false;
     }
+  }
 
-    this.toggleOptionModal();
+  _initializePreSelect() {
+    this.checkboxModel = [];
+    for (let item of this.options) {
+      let isPreSelected = this.selected.indexOf(item) > -1 ? true : false;
+      this.checkboxModel.push(isPreSelected);
+    }
   }
 }
 
-export default ReodropdownListController;
+export default MultiSelectorController;

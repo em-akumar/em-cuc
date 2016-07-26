@@ -2,10 +2,10 @@
  * Created by kmurudkar on 7/25/2016.
  */
 
-import template from './templates/reo-dropdown.mobile.html';
-import controller from './reo-dropdown.controller.js';
+import template from './templates/multi-selector.mobile.html';
+import controller from './multi-selector.controller.js';
 
-let reoDropdownListComponent = () => {
+let multiSelectorComponent = () => {
   return {
     restrict: 'E',
     scope: {
@@ -21,5 +21,5 @@ let reoDropdownListComponent = () => {
   };
 };
 
-export default reoDropdownListComponent;
+export default multiSelectorComponent;
 
