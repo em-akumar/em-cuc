@@ -1,6 +1,6 @@
  .radio input[type="radio"]:not([disabled]) + label {
   color: $black;
-  display: inline-block;
+  display: inline;
   width: calc(100% - 28px);
   max-width: $radio-size;
   padding-left:$radio-label-padding-left;
@@ -19,7 +19,7 @@
     height: $radio-size;
     border: 1px solid $alto;
     border-radius: $radio-border-radius;
-    display: inline-block;
+    display:  inline;
     margin-right: 10px;
     box-sizing: border-box;
   }
