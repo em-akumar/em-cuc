@@ -41,7 +41,6 @@ class DropdownController {
     };
 
     this.drpCities = {
-
       defaultText: 'Select Multiple',
       onChange: function (e, selectedId, selectedText) {
         console.log('clicked selected Text '+ selectedText);
@@ -49,7 +48,6 @@ class DropdownController {
       defaultSize: 'large'
     };
     this.drpCitiesTest = {
-
       defaultText: 'Select Multiple',
       onChange: function (e, selectedId, selectedText) {
         console.log('clicked '+ selectedId);
