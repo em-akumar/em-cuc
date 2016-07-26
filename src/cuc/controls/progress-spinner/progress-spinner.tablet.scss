@@ -36,7 +36,8 @@
       padding:5px 22px 0 22px;
       border-radius: 22px;
       height: 30px;
-      background: $black;
+      background: $cod-gray;
+      opacity: 0.75;
       left:41.5%;
       top:80%;
       @include font-size(light, 12,$white);
@@ -53,7 +54,7 @@
       right: 0;
       top: 0;
       z-index: 1;
-      background-color: $black;
+      background-color: $cod-gray;
       opacity: 0.75;
       height:  100%;
       width:  100%;
@@ -123,8 +124,8 @@
     }
 
     .block-ui-overlay{
-      opacity:1;
-      background: $scorpion;
+      opacity:0.75;
+      background: $cod-gray;
 
     }
     .block-ui-message{
