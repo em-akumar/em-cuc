@@ -8,13 +8,13 @@
     box-sizing: border-box;
     align-items: center;
     @include font-size(regular, $font-size-base);
-
+    /* override primary hover button state  */
     &:hover,
     &.hover {
       background-color: $curious-blue;
       border-color: $curious-blue;
     }
-
+    /* override primary active button state  */
     &:active,
     &.active {
       background-color: $venice-blue;
@@ -43,6 +43,13 @@
     box-sizing: border-box;
     align-items: center;
     @include font-size(regular, $font-size-base,$curious-blue);
+    /* override primary hover button state  */
+   &:hover,
+    &.hover {
+      background-color: $white;
+      border-color: $curious-blue;
+    }
+    /* override primary active button state  */
     &:active,
     &.active, {
       @include font-size(regular, $font-size-base, $venice-blue);
