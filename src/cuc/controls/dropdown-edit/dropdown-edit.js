@@ -37,7 +37,7 @@ class DropdownEdit {
           }
         }
 
-        this.template = `<div class="input-group"><input type="text" placeholder="${this.options.defaultText}" class="form-control em-combobox selectedText ${this.options.size}">
+        this.template = `<div class="input-group"><input type="text" placeholder="${this.options.defaultText}" class="form-control em-combobox selectedText ${this.options.size}" tabindex="-1">
       <div class="btn-group-text"><button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
       <span class="caret"></span></button>
 			<ul class="dropdown-menu ${this.options.size}" role="menu">
@@ -65,7 +65,13 @@ class DropdownEdit {
     self.actions();
     self.menu.setAttribute('tabindex', '0'); // Fix onblur on Chrome
     self.menu.addEventListener('click', self.toggle, false);
-    self.menu.addEventListener('blur', self.close, false);
+    self.menu.addEventListener('focus', self.open, false);
+
+    self.menu.parentNode.addEventListener('click', function(e) {
+      e.stopPropagation();
+    }, false);
+    document.addEventListener('click', self.closeit.bind(self), false);
+
     document.getElementsByTagName('html')[0].addEventListener('keydown', (e) => {
       if (e.keyCode === 27) {  //Closes dropdown on Esc key
         self.menu.parentNode.classList.remove('open');
@@ -252,6 +258,14 @@ class DropdownEdit {
     });
   }
 
+  closeit(e) {
+    var target = this.menu;
+    setTimeout(function() {
+      if (target.parentNode && target.parentNode !== null)
+        target.parentNode.classList.remove('open');
+    }, 50);
+  }
+
   actions() {
     var self = this;
 
@@ -268,6 +282,13 @@ class DropdownEdit {
       }
       e.preventDefault();
       return false;
+    };
+
+    self.open = function(e) {
+      var target = e.currentTarget || e.srcElement;
+      setTimeout(function () { // links inside dropdown-menu don't fire without a short delay
+        target.parentNode.classList.add('open');
+      }, 200);
     };
 
     self.close = function (e) {
