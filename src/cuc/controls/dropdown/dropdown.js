@@ -94,6 +94,7 @@ class Dropdown {
     self.menu.setAttribute('tabindex', '0'); // Fix onblur on Chrome
     self.menu.addEventListener('click', self.toggle, false);
     self.menu.addEventListener('focus', self.open, false);
+    self.menu.addEventListener('blur', self.close, false);
     //self.menu.addEventListener('onmouseup', self.close, false);  //switched from blur to onmouseup due to blur not capturing scroll bar as apart of element
     self.menu.parentNode.addEventListener('click', function(e) {
       e.stopPropagation();
@@ -280,8 +281,6 @@ class Dropdown {
 
     self.toggle = function(e) {
       var target = e.currentTarget || e.srcElement;
-      console.log('toggle');
-      console.log(e);
       target.parentNode.classList.toggle('open');
       var selValue = self.menu.parentNode.querySelector(".btn .selectedText").getAttribute('value');
       if (selValue === null && self.menu.parentNode.querySelector('.dropdown-menu li:first-child') !== null) {
@@ -298,11 +297,9 @@ class Dropdown {
 
     self.open = function(e) {
       var target = self.menu;
-       console.log('open');
-      console.log(e);
       setTimeout(function() { // links inside dropdown-menu don't fire without a short delay
         if (target.parentNode && target.parentNode !== null) {
-          console.log('parent node', target.parentNode);
+          //console.log('parent node', target.parentNode);
           target.parentNode.classList.add('open');
         }
       }, 200);
@@ -312,8 +309,19 @@ class Dropdown {
       var target = self.menu;
       setTimeout(function() { // links inside dropdown-menu don't fire without a short delay
         if (target.parentNode && target.parentNode !== null) {
-          console.log('parent node', target.parentNode);
+         // console.log('parent node', target.parentNode);
           target.parentNode.classList.remove('open');
+        }
+      }, 200);
+    };
+
+    self.closeMain = function(e) {
+      var target = self.menu.parentNode;
+      console.log(target);
+      setTimeout(function() { // links inside dropdown-menu don't fire without a short delay
+        if (target && target !== null) {
+          //console.log('parent node', target.parentNode);
+          target.classList.remove('open');
         }
       }, 200);
     };

@@ -66,7 +66,7 @@ class DropdownEdit {
     self.menu.setAttribute('tabindex', '0'); // Fix onblur on Chrome
     self.menu.addEventListener('click', self.toggle, false);
     self.menu.addEventListener('focus', self.open, false);
-
+    self.menu.addEventListener('blur', self.close, false);
     self.menu.parentNode.addEventListener('click', function(e) {
       e.stopPropagation();
     }, false);
