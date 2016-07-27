@@ -5,6 +5,7 @@ import appTabletComponent from './app-tablet.component';
 import AppService from './app.service';
 
 import 'cuc/cuc.angular';
+import '@elliemae/em-field-formatters/dist/web/fieldFormatters';
 import 'cuc/cuc.ui.bootstrap';
 import 'cuc/cuc.grid';
 import 'angular-messages';
@@ -39,7 +40,7 @@ import progressBar from './progress-bar/progress-bar.tablet.module';
 import paragraph from './paragraph/paragraph.module';
 import reodropdownT from './reo-dropdown-t/reo-dropdown-t.module';
 
-let appTabletModule = angular.module('app', [ uiRouter, 'cuc', 'ui.grid', 'ui.bootstrap', 'ngMessages', 'ui.mask',
+let appTabletModule = angular.module('app', [ uiRouter, 'cuc', 'fieldFormatters', 'ui.grid', 'ui.bootstrap', 'ngMessages', 'ui.mask',
   buttonsTablet.name, textInput.name, incrementTablet.name, textArea.name, fileUploader.name, dropdownEdit.name, grid.name, dropdown.name,
   colorPicker.name, modal.name, datepicker.name, checkboxTablet.name, panel.name, errorHandling.name, imageButton.name,
   notifications.name, radioTablet.name, toggleSwitch.name, tooltips.name, ckeditor.name, blockui.name,

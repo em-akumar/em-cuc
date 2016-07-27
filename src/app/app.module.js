@@ -5,6 +5,7 @@ import appComponent from './app.component';
 import AppService from './app.service';
 
 import 'cuc/cuc.angular';
+import '@elliemae/em-field-formatters/dist/web/fieldFormatters';
 import 'cuc/cuc.ui.bootstrap';
 import 'cuc/cuc.grid';
 import 'angular-messages';
@@ -38,7 +39,7 @@ import paragraph from './paragraph/paragraph.module';
 import reodropdownT from './reo-dropdown-t/reo-dropdown-t.module';
 import icons from './icons/icons.module';
 
-let appModule = angular.module('app', [ uiRouter, 'cuc', 'ui.grid', 'ui.bootstrap', 'ngMessages', 'ui.mask',
+let appModule = angular.module('app', [ uiRouter, 'cuc', 'fieldFormatters', 'ui.grid', 'ui.bootstrap', 'ngMessages', 'ui.mask',
   buttons.name, textInput.name, textArea.name, fileUploader.name, dropdownEdit.name, grid.name, dropdown.name,
   colorPicker.name, modals.name, datepicker.name, checkbox.name, panel.name, errorHandling.name, imageButton.name,
   notifications.name, radio.name, toggleSwitch.name, tooltips.name, ckeditor.name, blockui.name,

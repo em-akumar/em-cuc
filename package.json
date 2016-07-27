@@ -82,7 +82,7 @@
   "devDependencies": {
     "@elliemae/em-swift": "3.0.3",
     "@elliemae/em-iconfont": "0.0.2",
-    "@elliemae/em-field-formatters": "0.0.1",
+    "@elliemae/em-field-formatters": "0.0.2",
     "angular": "1.5.6",
     "angular-block-ui": "0.2.2",
     "angular-messages": "1.5.6",
