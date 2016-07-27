@@ -180,16 +180,24 @@ cuc.directive('uiGridCustomPaging', function ($compile,$timeout) {
   return {
     link: function (scope, element, attrs, uiGridctrl) {
       uiGridctrl.grid.options.enablePaginationControls = false;
-      scope._initfirst = true;
+      scope._initRowCount = uiGridctrl.grid.options.totalItems;
       uiGridctrl.grid.api.core.on.rowsRendered(scope, function () {
-        if (uiGridctrl.grid.renderContainers.body.visibleRowCache.length === 0) {
-          return;
-        }
-        if (scope._initfirst) {
+        // This if block does not reset when rows to display
+        // if (uiGridctrl.grid.renderContainers.body.visibleRowCache.length === 0) {
+        //   return;
+        // }
+         if (scope._initRowCount !== uiGridctrl.grid.options.totalItems) {
           initPage(scope);
-          scope._initfirst = false;
-        }
+          scope._initRowCount = uiGridctrl.grid.options.totalItems;
+         }
       });
+      // Custom event to trigger reInit on demand
+      if (uiGridctrl.grid.api.pagination) {
+					uiGridctrl.grid.api.pagination.reinitPager = () => {
+						initPage(scope);
+					}
+				}
+
 
       uiGridctrl.grid.api.core.on.filterChanged(scope, () => { $timeout(() => { initPage(scope); },200); });
       function initPage(scope) {
@@ -224,7 +232,9 @@ cuc.directive('uiGridCustomPaging', function ($compile,$timeout) {
           '<a style="opacity:0" ng-click="_rightArrow_click()">2</a>' +
           '</span>' +
           '</nav>' +
-        '</div>';
+          '</div>';
+        // Added to update page = 1 in UI Grid
+        if(uiGridctrl.grid.api.pagination.getPage() !== 1) uiGridctrl.grid.api.pagination.seek(1);
         if(element[0].querySelector('.em-complex-table-footer')){
           let elementToRemove = element[0].querySelector('.em-complex-table-footer').parentNode;
          elementToRemove.parentNode.removeChild(elementToRemove );
@@ -391,8 +401,15 @@ cuc.directive('uiGridCustomPaging', function ($compile,$timeout) {
         }
         scope._pageOnNumSelect =  (e)=>{
          // uiGridctrl.grid.api.pagination
-          uiGridctrl.grid.options.paginationPageSize =scope._selectedPageVal;
-          initPage(scope);
+          // This prevent unnecessary initPage calls
+          let executeInitPage = true;
+          if (maxPage === 1 && scope._selectedPageVal >= uiGridctrl.grid.options.paginationPageSize) {
+            if (uiGridctrl.grid.options.paginationPageSize >= totalRow) executeInitPage = false;
+          }
+          if (executeInitPage) {
+            uiGridctrl.grid.options.paginationPageSize =scope._selectedPageVal;
+            initPage(scope);
+          }
         }
          scope._onPageSelectLeave =  (e)=>{
            element[0].querySelector('.em-complex-table-footer .em-page-ddl').classList.remove('hover');
