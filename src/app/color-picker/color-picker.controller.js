@@ -9,12 +9,12 @@ class ColorPickerController {
   initialize() {
     this.$timeout(() => {
       this.colorControl.setColorValue('000000');
-      this.colorTest.setCallback(this.notifyMe);
+      //this.colorTest.setCallback(this.notifyMe);
     }, 0);
   }
 
-  notifyMe(event) {
-    console.log('Notify me ' + event);
-  }
+  // notifyMe(event) {
+  //   console.log('Notify me ' + event);
+  // }
 }
 export default ColorPickerController;
