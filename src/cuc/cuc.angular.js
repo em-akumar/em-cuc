@@ -182,21 +182,21 @@ cuc.directive('uiGridCustomPaging', function ($compile, $timeout) {
       uiGridctrl.grid.options.enablePaginationControls = false;
       scope._initRowCount = uiGridctrl.grid.options.totalItems;
       uiGridctrl.grid.api.core.on.rowsRendered(scope, function () {
-        // This if block does not reset when rows to display
+        // This if block does not reset when rows to display becomes 0
         // if (uiGridctrl.grid.renderContainers.body.visibleRowCache.length === 0) {
         //   return;
         // }
-         if (scope._initRowCount !== uiGridctrl.grid.options.totalItems) {
+        if (scope._initRowCount !== uiGridctrl.grid.options.totalItems) {
           initPage(scope);
           scope._initRowCount = uiGridctrl.grid.options.totalItems;
-         }
+        }
       });
       // Custom event to trigger reInit on demand
       if (uiGridctrl.grid.api.pagination) {
-					uiGridctrl.grid.api.pagination.reinitPager = () => {
-						initPage(scope);
-					}
-				}
+        uiGridctrl.grid.api.pagination.reinitPager = () => {
+          initPage(scope);
+        }
+      }
 
 
       uiGridctrl.grid.api.core.on.filterChanged(scope, () => {
@@ -216,8 +216,8 @@ cuc.directive('uiGridCustomPaging', function ($compile, $timeout) {
         '<span>&nbsp; of {{_pageTotalCount}}</span>' +
         '<label class="em-pageview-arrow"></label>' +
         '</span>' +
-          '<span class="em-pageview" ng-mouseover="_onPageSelectOver()" ng-mouseleave="_onPageSelectLeave()" >' +
-          '<div class="em-page-ddl" ng-click="_onPageSelectClick()" options="pagingSelectOptions" emc="Dropdown"></div> ' +
+        '<span class="em-pageview" ng-mouseover="_onPageSelectOver()" ng-mouseleave="_onPageSelectLeave()" >' +
+        '<div class="em-page-ddl" ng-click="_onPageSelectClick()" options="pagingSelectOptions" emc="Dropdown"></div> ' +
         '<label class="em-pageview-arrow"></label>' +
         '<span>&nbsp; per page</span>' +
         '</span>' +
@@ -402,7 +402,6 @@ cuc.directive('uiGridCustomPaging', function ($compile, $timeout) {
           uiGridctrl.grid.api.pagination.seek(Number(val));
         }
         scope._pageOnNumSelect =  (e)=>{
-         // uiGridctrl.grid.api.pagination
           // Prevent unnecessary initPage calls
           let executeInitPage = true;
           if (maxPage === 1 && scope._selectedPageVal >= uiGridctrl.grid.options.paginationPageSize) {
