@@ -403,14 +403,10 @@ cuc.directive('uiGridCustomPaging', function ($compile, $timeout) {
         }
         scope._pageOnNumSelect =  (e)=>{
           // Prevent unnecessary initPage calls
-          let executeInitPage = true;
-          if (maxPage === 1 && scope._selectedPageVal >= uiGridctrl.grid.options.paginationPageSize) {
-            if (uiGridctrl.grid.options.paginationPageSize >= totalRow) executeInitPage = false;
-          }
-          if (executeInitPage) {
-            uiGridctrl.grid.options.paginationPageSize =scope._selectedPageVal;
+          if (!(maxPage === 1 && parseInt(scope._selectedPageVal) >= totalRow)) {
+            uiGridctrl.grid.options.paginationPageSize = scope._selectedPageVal;
             initPage(scope);
-          }
+					}
         }
         scope._onPageSelectLeave = (e)=> {
           element[0].querySelector('.em-complex-table-footer .em-page-ddl').classList.remove('hover');
