@@ -159,19 +159,21 @@
     padding: @dropdown-default-padding;
     max-height: 340px;
     overflow-y: auto;
-    min-width: none;
-
     &.large {
-      width:@dropdown-edit-size-large+30px;
+      min-width:@dropdown-edit-size-large+30px;
+      width: auto;
     }
     &.small {
-      width:@dropdown-edit-size-small+30px;
+      min-width:@dropdown-edit-size-small+30px;
+      width: auto;
     }
     &.medium {
-      width:@dropdown-edit-size-medium+30px;
+      min-width:@dropdown-edit-size-medium+30px;
+      width: auto;
     }
     &.xs {
-      width:@dropdown-edit-size-extra-small+30px;
+      min-width:@dropdown-edit-size-extra-small+30px;
+      width: auto;
     }
     &.flexible-width {
       width: 100%;

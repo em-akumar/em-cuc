@@ -180,16 +180,24 @@ cuc.directive('uiGridCustomPaging', function ($compile, $timeout) {
   return {
     link: function (scope, element, attrs, uiGridctrl) {
       uiGridctrl.grid.options.enablePaginationControls = false;
-      scope._initfirst = true;
+      scope._initRowCount = uiGridctrl.grid.options.totalItems;
       uiGridctrl.grid.api.core.on.rowsRendered(scope, function () {
-        if (uiGridctrl.grid.renderContainers.body.visibleRowCache.length === 0) {
-          return;
-        }
-        if (scope._initfirst) {
+        // This if block does not reset when rows to display becomes 0
+        // if (uiGridctrl.grid.renderContainers.body.visibleRowCache.length === 0) {
+        //   return;
+        // }
+        if (scope._initRowCount !== uiGridctrl.grid.options.totalItems) {
           initPage(scope);
-          scope._initfirst = false;
+          scope._initRowCount = uiGridctrl.grid.options.totalItems;
         }
       });
+      // Custom event to trigger reInit on demand
+      if (uiGridctrl.grid.api.pagination) {
+        uiGridctrl.grid.api.pagination.reinitPager = () => {
+          initPage(scope);
+        }
+      }
+
 
       uiGridctrl.grid.api.core.on.filterChanged(scope, () => {
         $timeout(() => {
@@ -229,7 +237,9 @@ cuc.directive('uiGridCustomPaging', function ($compile, $timeout) {
         '</span>' +
         '</nav>' +
         '</div>';
-        if (element[0].querySelector('.em-complex-table-footer')) {
+        // Added to update page = 1 in UI Grid
+        if(uiGridctrl.grid.api.pagination.getPage() !== 1) uiGridctrl.grid.api.pagination.seek(1);
+        if(element[0].querySelector('.em-complex-table-footer')){
           let elementToRemove = element[0].querySelector('.em-complex-table-footer').parentNode;
           elementToRemove.parentNode.removeChild(elementToRemove);
         }
@@ -391,10 +401,12 @@ cuc.directive('uiGridCustomPaging', function ($compile, $timeout) {
           selectPage.style.width = ( selectPage.options[selectPage.selectedIndex].text.length * 10) + 'px';
           uiGridctrl.grid.api.pagination.seek(Number(val));
         }
-        scope._pageOnNumSelect = (e)=> {
-          // uiGridctrl.grid.api.pagination
-          uiGridctrl.grid.options.paginationPageSize = scope._selectedPageVal;
-          initPage(scope);
+        scope._pageOnNumSelect =  (e)=>{
+          // Prevent unnecessary initPage calls
+          if (!(maxPage === 1 && parseInt(scope._selectedPageVal) >= totalRow)) {
+            uiGridctrl.grid.options.paginationPageSize = scope._selectedPageVal;
+            initPage(scope);
+					}
         }
         scope._onPageSelectLeave = (e)=> {
           element[0].querySelector('.em-complex-table-footer .em-page-ddl').classList.remove('hover');
