@@ -59,7 +59,7 @@ class Dropdown {
         }
 
         this.template = `<button  class="btn dropdown-toggle ${this.options.size}" type="button"  aria-haspopup="true" aria-expanded="true"><span class="selectedText pull-left ${this.options.size}">${this.options.defaultText || '&nbsp;'}</span>
-			<span class="caret"></span>
+			<span class="caret-box"><span class="caret"></span></span>
 			</button>
 			<ul class="dropdown-menu ${this.options.size}" role="menu">
 			${this.itemList.map((value, i) =>
