@@ -13,6 +13,14 @@
     .caret {
       margin-top: 12px;
     }
+     &:hover {
+      border:  $curious-blue-light;
+      box-shadow: 0 0 0 2px $tropical-blue;
+      .caret-box {
+          border-left: 1px solid $curious-blue-light;
+      }
+    }
+
     .selectedText {
       font-size: $font-size-medium;
       color: $black;
@@ -33,7 +41,7 @@
         width: calc(98% - 30px);
       }
     }
-
+  }
     ul.dropdown-menu {
       li {
         &:hover {
@@ -48,6 +56,7 @@
         }
         &.selected-text {
           background-color: $curious-blue-light;
+          color: $white;
         }
       }
       li > a {
@@ -58,6 +67,7 @@
         }
         &:hover {
           background-color: $curious-blue-light;
+          color: $white;
         }
         &:active {
           background-color: $curious-blue-light;
@@ -65,5 +75,4 @@
         }
       }
     }
-  }
 }
