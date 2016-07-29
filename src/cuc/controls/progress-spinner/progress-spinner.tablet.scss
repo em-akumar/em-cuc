@@ -36,12 +36,22 @@
       padding:5px 22px 0 22px;
       border-radius: 22px;
       height: 30px;
-      background: $cod-gray;
+       background: $cod-gray;
       opacity: 0.75;
       left:41.5%;
       top:80%;
       @include font-size(light, 12,$white);
       content: attr(data-heading);
+       }
+
+       @keyframes removed-item-animation {
+          0% {
+            opacity: 1;
+          }
+
+          100% {
+            opacity: 0;
+          }
        }
   }
 
