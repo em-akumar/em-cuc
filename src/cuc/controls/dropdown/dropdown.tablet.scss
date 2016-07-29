@@ -3,12 +3,13 @@
     height: $dropdown-default-height;
     padding: 0;
     .caret-box {
-      width: 30px;
+      width: 40px;
       float: right;
       border-left: 1px solid $silver;
       height: $dropdown-default-height;
-      padding: 5px 10px;
+      padding: 5px 15px;
       border-radius: 2px;
+
     }
     .caret {
       margin-top: 12px;
@@ -26,19 +27,19 @@
       color: $black;
       padding: 10px;
       &.large {
-        width: calc(93% - 30px);
+        width: calc(93% - 40px);
       }
       &.small {
-        width: calc(83% - 30px);
+        width: calc(83% - 40px);
       }
       &.medium {
-        width: calc(90% - 30px);
+        width: calc(90% - 40px);
       }
       &.xs {
-          width: calc(73% - 30px);
+          width: calc(73% - 40px);
       }
       &.flexible-width {
-        width: calc(98% - 30px);
+        width: calc(98% - 40px);
       }
     }
   }
@@ -56,7 +57,10 @@
         }
         &.selected-text {
           background-color: $curious-blue-light;
-          color: $white;
+          a {
+            color: $white;
+          }
+
         }
       }
       li > a {
