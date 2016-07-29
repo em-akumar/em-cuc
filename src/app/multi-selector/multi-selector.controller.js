@@ -16,9 +16,9 @@ class MultiSelectorController {
       {text: 'Item2', value: 'Item2'},
       {text: 'Item3', value: 'Item3'}
     ];
-    this.onChange = (update)=> {
+    this.onChange = (updated)=> {
       console.log('this is from controller log');
-      console.log(update);
+      console.log(updated);
     };
     this.selected=[];
     this.selected.push(this.optionsPreSelected[0]);

@@ -89,7 +89,7 @@ cucm.directive('emcm', () => {
 });
 
 // Directive for multiSelector
-//<multi-selector title="Loan Terms" name="LoanTerms" onchange="vm.onChangeLoanTerms(updated)" options="vm.objLoanTerms"></multi-selector>
+//<multi-selector title="Loan Terms" name="LoanTerms" on-done="vm.onChangeLoanTerms(updated)" options="vm.objLoanTerms"></multi-selector>
 cucm.directive('multiSelector', multiSelectorComponent);
 
 export {cucm};
