@@ -403,7 +403,7 @@ cuc.directive('uiGridCustomPaging', function ($compile, $timeout) {
         }
         scope._pageOnNumSelect =  (e)=>{
           // Prevent unnecessary initPage calls
-          if (!(maxPage === 1 && parseInt(scope._selectedPageVal) >= totalRow)) {
+          if (!(maxPage <= 1 && parseInt(scope._selectedPageVal) >= totalRow)) {
             uiGridctrl.grid.options.paginationPageSize = scope._selectedPageVal;
             initPage(scope);
 					}
@@ -577,7 +577,7 @@ cuc.directive('uiGridCustomPaging', function ($compile, $timeout) {
           rightArrow.classList.add('disable');
         else
           rightArrow.classList.remove('disable');
-        if (maxPage !== 1) {
+        if (maxPage > 1) {
           rightArrow.classList.remove('disable');
         }
       }
