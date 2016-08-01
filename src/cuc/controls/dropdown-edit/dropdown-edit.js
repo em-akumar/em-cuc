@@ -292,6 +292,8 @@ class DropdownEdit {
     };
 
     self.close = function (e) {
+       if (document.activeElement.tagName === 'DIV') // Do not close the dropdown if clicked on scroll bar
+        return false;
       var target = e.currentTarget || e.srcElement;
 
       setTimeout(function () { // links inside dropdown-menu don't fire without a short delay
