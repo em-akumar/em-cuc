@@ -1,0 +1,26 @@
+<div class="reo-mobile item">
+  <label class="item-input item-stacked-label">
+          <div class="input-label" ng-bind="vm.title"></div>
+  </label>
+  <label class="item item-checkbox" ng-class="{true: 'selection'}[vm.selectedArray != undefined && vm.selectedArray.length > 0]" ng-click="vm.toggleOptionModal()">
+    <div class="checkbox checkbox-input-hidden disable-pointer-events checkbox-circle">
+      <input type="checkbox" ng-checked="vm.check_status">
+      <i class="checkbox-icon"></i>
+    </div>
+    <div class="item-content disable-pointer-events">
+      <span class="reo-label" ng-bind="vm.defaultTitle"></span>
+    </div>
+  </label>
+  <div class="item-selected" ng-if="vm.selectedArray != undefined && vm.selectedArray.length > 0">
+      <span class="item item-icon-left" ng-repeat="sItem in vm.selectedArray">
+          <i class="icon ion-checkmark"></i>
+          {{sItem.text}}
+      </span>
+  </div>
+  <div class="item-selected" ng-if="vm.selectedArray == undefined || vm.selectedArray.length <= 0">
+      <span class="item item-icon-left" ng-repeat="sItem in vm.selectedArray">
+          <i class="icon ion-checkmark"></i>
+          No Option Available
+      </span>
+  </div>
+</div>
