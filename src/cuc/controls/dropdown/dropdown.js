@@ -307,6 +307,8 @@ class Dropdown {
 
     self.close = function(e) {
       var target = self.menu;
+      if (document.activeElement.tagName === 'DIV') // Do not close the dropdown if clicked on scroll bar
+        return false;
       setTimeout(function() { // links inside dropdown-menu don't fire without a short delay
         if (target.parentNode && target.parentNode !== null) {
          // console.log('parent node', target.parentNode);
