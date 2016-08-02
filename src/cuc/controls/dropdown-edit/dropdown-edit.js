@@ -18,8 +18,8 @@ class DropdownEdit {
         //Sort dropdown values
         if (this.options.itemList) {
           this.options.itemList.sort((obj1, obj2) => {
-            var x = obj1[this.options.sortField].toLowerCase();
-            var y = obj2[this.options.sortField].toLowerCase();
+            let x = obj1[this.options.sortField].toLowerCase();
+            let y = obj2[this.options.sortField].toLowerCase();
             if (this.options.sortOrder === 'desc') {
               return x > y ? -1 : x < y ? 1 : 0;
             } else {
@@ -29,8 +29,8 @@ class DropdownEdit {
         }
 
         //Check wheather any item has image in dropdown options
-        var IconFlagEdit = false;
-        for (var i = 0; i < this.options.itemList.length; i++) {
+        let IconFlagEdit = false;
+        for (let i = 0; i < this.options.itemList.length; i++) {
           if (this.options.itemList[i].leftImage != undefined) {
             IconFlagEdit = true;
             break;
@@ -61,15 +61,15 @@ class DropdownEdit {
     }
   }
   init() {
-    var self = this;
+    let self = this;
     self.actions();
     self.menu.setAttribute('tabindex', '0'); // Fix onblur on Chrome
     self.menu.addEventListener('click', self.toggle, false);
     self.menu.addEventListener('focus', self.open, false);
     self.menu.addEventListener('blur', self.close, false);
-    self.menu.parentNode.addEventListener('click', function(e) {
+    self.menu.parentNode.addEventListener('click', (e) => {
       e.stopPropagation();
-    }, false);
+    });
     document.addEventListener('click', self.closeit.bind(self), false);
 
     document.getElementsByTagName('html')[0].addEventListener('keydown', (e) => {
@@ -146,7 +146,7 @@ class DropdownEdit {
 
 
   setSelected(value) {
-    var self = this;
+    let self = this;
     if (typeof value === 'object' && value !== null) {
       self.combobox.parentNode.querySelector("input.form-control.em-combobox").value = value[this.options.textField || 'text'];;
       self.combobox.parentNode.querySelector("input.form-control.em-combobox").setAttribute('value', value[this.options.valueField || 'value']);
@@ -160,7 +160,7 @@ class DropdownEdit {
     }
   }
   setList() {
-    var self = this;
+    let self = this;
     [].forEach.call(self.menu.parentNode.querySelectorAll(".dropdown-menu>li>a"), (element, i) => {
       element.addEventListener('click', (e) => {
         if (typeof self.options.onChange === 'function') {
@@ -186,7 +186,7 @@ class DropdownEdit {
   }
 
   setReadonly() {
-    var self = this;
+    let self = this;
     [].forEach.call(self.menu.parentNode.querySelectorAll(".readonly .btn"), (value, i) => {
       value.setAttribute('disabled', 'disabled');
       value.classList.add('readonly');
@@ -199,14 +199,14 @@ class DropdownEdit {
   }
 
   setDisabledItem() {
-    var self = this;
+    let self = this;
     [].forEach.call(self.menu.parentNode.querySelectorAll(".disabled a"), (value, j) => {
       value.classList.add('disabled');
     });
   }
 
   setDisabled() {
-    var self = this;
+    let self = this;
     [].forEach.call(self.menu.parentNode.querySelectorAll(".disabled .dropdown-toggle"), (value, i) => {
       value.setAttribute('disabled', 'disabled');
       value.classList.add('disabled');
@@ -219,7 +219,7 @@ class DropdownEdit {
   }
 
   setEnabled() {
-    var self = this;
+    let self = this;
     [].forEach.call(self.menu.parentNode.querySelectorAll(".disabled .dropdown-toggle"), (value, i) => {
       value.removeAttribute('disabled');
       value.classList.remove('disabled');
@@ -232,7 +232,7 @@ class DropdownEdit {
   }
 
   setRestricted() {
-    var self = this;
+    let self = this;
     [].forEach.call(self.menu.parentNode.querySelectorAll(".restricted .btn"), (value, i) => {
       value.setAttribute('disabled', 'disabled');
       value.classList.add('restricted');
@@ -247,7 +247,7 @@ class DropdownEdit {
   }
 
   setError() {
-    var self = this;
+    let self = this;
     [].forEach.call(self.menu.parentNode.querySelectorAll(".error .btn"), (value, i) => {
       value.classList.add('error');
       self.menu.removeEventListener('blur', self.close);
@@ -259,7 +259,7 @@ class DropdownEdit {
   }
 
   closeit(e) {
-    var target = this.menu;
+    let target = this.menu;
     setTimeout(function() {
       if (target.parentNode && target.parentNode !== null)
         target.parentNode.classList.remove('open');
@@ -267,13 +267,13 @@ class DropdownEdit {
   }
 
   actions() {
-    var self = this;
+    let self = this;
 
     self.toggle = function (e) {
-      var target = e.currentTarget || e.srcElement;
+      let target = e.currentTarget || e.srcElement;
       target.parentNode.classList.toggle('open');
 
-      var selValue = self.combobox.parentNode.querySelector("input.form-control.em-combobox").getAttribute('value');
+      let selValue = self.combobox.parentNode.querySelector("input.form-control.em-combobox").getAttribute('value');
       console.log(selValue);
       if (selValue == '' || selValue == null) {
         self.menu.parentNode.querySelector('.dropdown-menu li:first-child').classList.add('selected-text');
@@ -285,7 +285,7 @@ class DropdownEdit {
     };
 
     self.open = function(e) {
-      var target = e.currentTarget || e.srcElement;
+      let target = e.currentTarget || e.srcElement;
       setTimeout(function () { // links inside dropdown-menu don't fire without a short delay
         target.parentNode.classList.add('open');
       }, 200);
@@ -294,7 +294,7 @@ class DropdownEdit {
     self.close = function (e) {
        if (document.activeElement.tagName === 'DIV') // Do not close the dropdown if clicked on scroll bar
         return false;
-      var target = e.currentTarget || e.srcElement;
+      let target = e.currentTarget || e.srcElement;
 
       setTimeout(function () { // links inside dropdown-menu don't fire without a short delay
         target.parentNode.classList.remove('open');
@@ -303,7 +303,7 @@ class DropdownEdit {
   }
 
   static load() {
-    var DropdownsEdit = document.querySelectorAll('[class="em-dropdown-edit"]');
+    let DropdownsEdit = document.querySelectorAll('[class="em-dropdown-edit"]');
     [].forEach.call(DropdownsEdit, function (item, index) {
       return new DropdownEdit(item);
     });

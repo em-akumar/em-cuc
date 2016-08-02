@@ -35,22 +35,9 @@ class Dropdown {
               return a < b;
           });
         }
-         //this.options.itemList = this.itemList;
-        //  if (this.options.itemList) {
-        //   var len = this.options.itemList.length;
-        //   for (var i = len - 1; i >= 0; i--) {
-        //     for (var j = 1; j <= i; j++) {
-        //       if (this.options.itemList[j - 1][this.options.sortField].toLowerCase() > this.options.itemList[j][this.options.sortField].toLowerCase()) {
-        //         var temp = this.options.itemList[j - 1];
-        //         this.options.itemList[j - 1] = this.options.itemList[j];
-        //         this.options.itemList[j] = temp;
-        //       }
-        //     }
-        //   }
-        // }
 
-        var IconFlag = false;
-        for (var i = 0; i < this.itemList.length; i++) {
+        let IconFlag = false;
+        for (let i = 0; i < this.itemList.length; i++) {
 
           if (this.itemList[i].leftImage != undefined) {
             IconFlag = true;
@@ -89,16 +76,16 @@ class Dropdown {
   }
 
   init() {
-    var self = this;
+    let self = this;
     self.actions();
     self.menu.setAttribute('tabindex', '0'); // Fix onblur on Chrome
     self.menu.addEventListener('click', self.toggle, false);
     self.menu.addEventListener('focus', self.open, false);
     self.menu.addEventListener('blur', self.close, false);
     //self.menu.addEventListener('onmouseup', self.close, false);  //switched from blur to onmouseup due to blur not capturing scroll bar as apart of element
-    self.menu.parentNode.addEventListener('click', function(e) {
+    self.menu.parentNode.addEventListener('click', (e) => {
       e.stopPropagation();
-    }, false);
+    });
     document.addEventListener('click', self.closeit.bind(self), false);
 
     self.menu.parentNode.querySelector('.dropdown-menu').addEventListener('mouseover', (e) => {
@@ -166,7 +153,7 @@ class Dropdown {
   }
 
   setSelected(value) {
-    var self = this;
+    let self = this;
     self.menu.parentNode.querySelector(".btn .selectedText").innerHTML = value[this.options.textField || 'text'];
     self.menu.parentNode.querySelector(".btn .selectedText").setAttribute('value', value[this.options.valueField || 'value']);
     if (!self.menu.parentNode.querySelector(".btn").classList.contains("completed")) {
@@ -176,7 +163,7 @@ class Dropdown {
 
   setList() {
 
-    var self = this;
+    let self = this;
 
     [].forEach.call(self.menu.parentNode.querySelectorAll(".dropdown-menu>li>a"), (value, i) => {
       value.addEventListener('click', (e) => {
@@ -205,7 +192,7 @@ class Dropdown {
   }
 
   setReadonly() {
-    var self = this;
+    let self = this;
     [].forEach.call(self.menu.parentNode.querySelectorAll(".readonly .btn"), (value, i) => {
       value.setAttribute('disabled', 'disabled');
       value.classList.add('readonly');
@@ -213,14 +200,14 @@ class Dropdown {
   }
 
   setDisabledItem() {
-    var self = this;
+    let self = this;
     [].forEach.call(self.menu.parentNode.querySelectorAll(".disabled a"), (value, j) => {
       value.classList.add('disabled');
     });
   }
 
   setDisabled() {
-    var self = this;
+    let self = this;
     [].forEach.call(self.menu.parentNode.querySelectorAll(".disabled .dropdown-toggle"), (value, i) => {
       value.setAttribute('disabled', 'disabled');
       value.classList.add('disabled');
@@ -228,7 +215,7 @@ class Dropdown {
   }
 
   setState(value) {
-    var self = this;
+    let self = this;
     if (value) {
       self.menu.parentNode.classList.add('disabled');
       self.menu.setAttribute('disabled', 'disabled');
@@ -249,7 +236,7 @@ class Dropdown {
   }
 
   setRestricted() {
-    var self = this;
+    let self = this;
     [].forEach.call(self.menu.parentNode.querySelectorAll(".restricted .dropdown-menu li a"), (value, i) => {
       value.innerHTML = '&#183;&#183;&#183;&#183;&#183;&#183;';
     });
@@ -261,7 +248,7 @@ class Dropdown {
   }
 
   setError() {
-    var self = this;
+    let self = this;
     [].forEach.call(self.menu.parentNode.querySelectorAll(".error .btn"), (value, i) => {
       value.classList.add('error');
       //self.menu.removeEventListener('blur', self.close);
@@ -269,7 +256,7 @@ class Dropdown {
   }
 
   closeit(e) {
-    var target = this.menu;
+    let target = this.menu;
     setTimeout(function() {
       if (target.parentNode && target.parentNode !== null)
         target.parentNode.classList.remove('open');
@@ -277,16 +264,16 @@ class Dropdown {
   }
 
   actions() {
-    var self = this;
+    let self = this;
 
     self.toggle = function(e) {
-      var target = e.currentTarget || e.srcElement;
+      let target = e.currentTarget || e.srcElement;
       target.parentNode.classList.toggle('open');
-      var selValue = self.menu.parentNode.querySelector(".btn .selectedText").getAttribute('value');
+      let selValue = self.menu.parentNode.querySelector(".btn .selectedText").getAttribute('value');
       if (selValue === null && self.menu.parentNode.querySelector('.dropdown-menu li:first-child') !== null) {
         self.menu.parentNode.querySelector('.dropdown-menu li:first-child').classList.add('selected-text');
       } else {
-        //var selValue = self.menu.parentNode.querySelector(".btn .selectedText").getAttribute('value');
+        //let selValue = self.menu.parentNode.querySelector(".btn .selectedText").getAttribute('value');
         if (self.menu.parentNode.querySelector("li[value='" + selValue + "']") !== null)
           self.menu.parentNode.querySelector("li[value='" + selValue + "']").classList.add('selected-text');
       }
@@ -296,7 +283,7 @@ class Dropdown {
     };
 
     self.open = function(e) {
-      var target = self.menu;
+      let target = self.menu;
       setTimeout(function() { // links inside dropdown-menu don't fire without a short delay
         if (target.parentNode && target.parentNode !== null) {
           //console.log('parent node', target.parentNode);
@@ -305,8 +292,11 @@ class Dropdown {
       }, 200);
     };
 
-    self.close = function(e) {
-      var target = self.menu;
+    self.close = function (e) {
+
+      let target = self.menu;
+      //console.log('target');
+     // console.log(target.parentNode.querySelector('ul').a;
       if (document.activeElement.tagName === 'DIV') // Do not close the dropdown if clicked on scroll bar
         return false;
       setTimeout(function() { // links inside dropdown-menu don't fire without a short delay
@@ -318,7 +308,7 @@ class Dropdown {
     };
 
     self.closeMain = function(e) {
-      var target = self.menu.parentNode;
+      let target = self.menu.parentNode;
       console.log(target);
       setTimeout(function() { // links inside dropdown-menu don't fire without a short delay
         if (target && target !== null) {
@@ -330,7 +320,7 @@ class Dropdown {
   }
 
   static load() {
-    var Dropdowns = document.querySelectorAll('[class="em-dropdown"]');
+    let Dropdowns = document.querySelectorAll('[class="em-dropdown"]');
     [].forEach.call(Dropdowns, function(item, index) {
       return new Dropdown(item);
     });
