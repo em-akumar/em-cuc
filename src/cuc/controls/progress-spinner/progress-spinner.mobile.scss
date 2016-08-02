@@ -16,7 +16,7 @@
       opacity: 0.75;
       left: 30%;
       top: 80%;
-      @include font-size(light, 12,$white);
+      @include font-size(light, 12px,$white);
       content: attr(data-heading);
     }
   }

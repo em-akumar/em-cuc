@@ -16,7 +16,7 @@
       opacity: 0.75;
       left: 30%;
       top: 80%;
-      @include font-size(light, 12,$white);
+      @include font-size(light, 12px,$white);
       content: attr(data-heading);
     }
   }
@@ -57,42 +57,50 @@
 }
 
 .em-notify{
+  &.em-lightbox-spinner{
   .block-ui-container{
     .block-ui-message-container{
-      top:65%;
+      top:80%;
     }
     .block-ui-message{
       background-color: $black;
       opacity: 0.75;
-      @include font-size(light, 12,$white);
+      @include font-size(light, 12px,$white);
       font-weight:normal;
       padding:7px 22px 0 22px;
       border-radius: 22px;
       height: 30px;
     }
   }
+
+  &.em-lightbox-spinner .block-ui-container .block-ui-message:after, &.em-lightbox-spinner .block-ui-container .block-ui-overlay{
+   background: transparent;
+  }
+  }
+}
+
+.block-ui{
+  position: inherit;
 }
 
 .em-no-lightbox-spinner{
   .block-ui-container{
     .block-ui-message-container{
-      top:35%;
+      top:40%;
     }
-
     .block-ui-overlay{
       opacity:0;
-
     }
     .block-ui-message{
       background-color: transparent;
-      @include font-size(regular,15, $white);
       font-weight:normal;
-       &::after {
+       &:after {
         content: "";
         background: url("../../assets/images/spinner-lightbox_responsive.svg") no-repeat;
         width:$spinner-height-width;
         height:$spinner-height-width;
-        padding:$block-ui-message-after-padding;
+        display: flex;
+        margin: 0 auto;
       }
     }
   }
@@ -101,30 +109,23 @@
 
 .em-lightbox-spinner{
   .block-ui-container{
-   /* .block-ui-message-container{
-      top:0;
-    }*/
-
+     .block-ui-message-container{
+      top:40%;
+    }
     .block-ui-overlay{
       opacity:0.75;
       background: $cod-gray;
-
     }
     .block-ui-message{
       background-color: transparent;
-      //opacity: 0.75;
-      @include font-size(regular,15, $white);
       font-weight:normal;
       &:after {
         content: "";
         background: url("../../assets/images/spinner-lightbox_responsive.svg") no-repeat;
         width:$spinner-height-width;
         height:$spinner-height-width;
-        padding:$block-ui-message-after-padding;
-        position: absolute;
-        left: $block-ui-message-after-left;
-        top: $block-ui-message-after-top;
-        margin-top: $block-ui-message-after-margin-top;
+        display: flex;
+        margin: 0 auto;
       }
 
     }
