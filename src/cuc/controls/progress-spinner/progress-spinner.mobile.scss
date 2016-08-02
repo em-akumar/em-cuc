@@ -1,57 +1,24 @@
+
 .em-spinner {
-  position:relative;
   &:after {
     content: "";
-    left: 50%;
-    margin: -20px 0 0 -20px;
-    position: absolute;
-    top: 50%;
-    text-align:center;
+    display: flex;
+    margin: 0 auto;
     z-index: 10002;
   }
-   &.em-loading-text{
-      &:after {
-        @include font-size(light,12, $silver-light);
-        text-align: center;
-        width: 100%;
-        position: inherit;
-        line-height: 3;
-        content: attr(data-heading);
-      }
-  }
-  &.em-loading-heading{
-     &:after {
-        @include font-size(regular,15, $white);
-        text-align: center;
-        width: 100%;
-        left: 2%;
-        line-height: 0.5;
-        content: attr(data-heading);
-      }
-  }
-
-    &.em-pagenotify-message{
-       &:after {
-      display: inline-block;
-      padding:5px 22px 0 22px;
+ &.em-pagenotify-message{
+    &:after {
+      position: absolute;
+      padding: 5px 22px 0 23px;
       border-radius: 22px;
       height: 30px;
       background: $cod-gray;
       opacity: 0.75;
-      left:41.5%;
-      top:80%;
+      left: 30%;
+      top: 80%;
       @include font-size(light, 12,$white);
       content: attr(data-heading);
-       }
-       @keyframes removed-item-animation {
-          0% {
-            opacity: 1;
-          }
-
-          100% {
-            opacity: 0;
-          }
-       }
+    }
   }
 
   &.lightbox {
@@ -87,5 +54,4 @@
       }
     }
   }
-
 }
