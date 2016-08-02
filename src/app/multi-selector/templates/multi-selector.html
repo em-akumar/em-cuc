@@ -10,14 +10,14 @@
     <label>Default MultiSelector Dropdown</label>
     <multi-selector class="em-reo-dropdown-t"
                        title="Default"
-                       onChange="vm.onChange(update)"
+                       on-done="vm.onChange(updated)"
                        options="vm.options">
     </multi-selector>
     <br/>
     <label>Pre-Selected MultiSelector Dropdown</label>
     <multi-selector class="em-reo-dropdown-t"
                     title="Pre-Selected"
-                    onChange="vm.onChange(update)"
+                    on-done="vm.onChange(updated)"
                     options="vm.optionsPreSelected"
                     selected="vm.selected">
     </multi-selector>
@@ -30,14 +30,14 @@
                 &lt;label&gt;Default MultiSelector Dropdown&lt;/label&gt;
                 &lt;multi-selector class=&quot;em-reo-dropdown-t&quot;
                     title=&quot;Default&quot;
-                    onChange=&quot;vm.onChange(update)&quot;
+                    on-done=&quot;vm.onChange(update)&quot;
                     options=&quot;vm.options&quot;&gt;
                 &lt;/multi-selector&gt;
                 &lt;br/&gt;
                 &lt;label&gt;Pre-Selected MultiSelector Dropdown&lt;/label&gt;
                 &lt;multi-selector class=&quot;em-reo-dropdown-t&quot;
                 title=&quot;Pre-Selected&quot;
-                    onChange=&quot;vm.onChange(update)&quot;
+                    on-done=&quot;vm.onChange(update)&quot;
                     options=&quot;vm.optionsPreSelected&quot;
                     selected=&quot;vm.selected&quot;&gt;
                 &lt;/multi-selector&gt;
@@ -52,8 +52,8 @@
                     {text: &#x27;Item2&#x27;, value: &#x27;Item2&#x27;},
                     {text: &#x27;Item3&#x27;, value: &#x27;Item3&#x27;}
                     ];
-                this.onChange = (update)=&gt; {
-                    console.log(update);
+                this.onChange = (updated)=&gt; {
+                    console.log(updated);
                     };
                 this.selected=[];
                 this.selected.push(this.optionsPreSelected[0]);

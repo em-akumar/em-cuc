@@ -46,7 +46,7 @@ class MultiSelectorController {
     //commaSeperated = commaSeperated.join(',');
     this.selected = commaSeperated;
 
-    this.onchange !== undefined ? this.onchange({updated: commaSeperated}) : '';
+    this.onDone !== undefined ? this.onDone({updated: commaSeperated}) : '';
 
     this._checkStatus();
 

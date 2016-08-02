@@ -10,7 +10,7 @@ let multiSelectorComponent = () => {
     restrict: 'E',
     scope: {
       title: '@',
-      onchange: '&',
+      onDone: '&',
       selected: '=?',
       options: '='
     },
