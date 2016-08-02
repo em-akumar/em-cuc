@@ -95,6 +95,19 @@ class Dropdown {
       }
     });
 
+     //dropdown position left or right justify
+    let dropdownEl = self.menu.parentNode.getElementsByTagName('UL')[0];
+    let dropdownElRightOffset = dropdownEl.getBoundingClientRect();
+    console.log('offsetLeft');
+    console.log(dropdownEl.offsetLeft);
+    console.log('innerWidth');
+    console.log(window.innerWidth);
+    //let dropdownElWidth = dropdownEl.getBoundingClientRect().offsetWidth;
+    //if (dropdownElWidth > dropdownElRightOffset) {
+      dropdownEl.right = dropdownElRightOffset.right;
+      dropdownEl.left = 'auto';
+    //}
+
     self.menu.addEventListener('keydown', (e) => {
       let index = 0;
       if (e.keyCode === 27) {  //Closes dropdown on Esc key
@@ -268,6 +281,14 @@ class Dropdown {
 
     self.toggle = function(e) {
       let target = e.currentTarget || e.srcElement;
+      if (e.clientY * 2 > e.view.window.outerHeight) {
+        e.currentTarget.parentElement.classList.add("open-top");
+      }
+      else {
+        if (e.currentTarget.parentElement.classList.contains("open-top")) {
+          e.currentTarget.parentElement.classList.remove("open-top");
+        }
+      }
       target.parentNode.classList.toggle('open');
       let selValue = self.menu.parentNode.querySelector(".btn .selectedText").getAttribute('value');
       if (selValue === null && self.menu.parentNode.querySelector('.dropdown-menu li:first-child') !== null) {
