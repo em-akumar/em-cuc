@@ -95,18 +95,6 @@ class Dropdown {
       }
     });
 
-     //dropdown position left or right justify
-    let dropdownEl = self.menu.parentNode.getElementsByTagName('UL')[0];
-    let dropdownElRightOffset = dropdownEl.getBoundingClientRect();
-    console.log('offsetLeft');
-    console.log(dropdownEl.offsetLeft);
-    console.log('innerWidth');
-    console.log(window.innerWidth);
-    //let dropdownElWidth = dropdownEl.getBoundingClientRect().offsetWidth;
-    //if (dropdownElWidth > dropdownElRightOffset) {
-      dropdownEl.right = dropdownElRightOffset.right;
-      dropdownEl.left = 'auto';
-    //}
 
     self.menu.addEventListener('keydown', (e) => {
       let index = 0;
@@ -281,15 +269,33 @@ class Dropdown {
 
     self.toggle = function(e) {
       let target = e.currentTarget || e.srcElement;
-      if (e.clientY * 2 > e.view.window.outerHeight) {
+
+     /* if (e.clientY * 2 > e.view.window.outerHeight) {
         e.currentTarget.parentElement.classList.add("open-top");
       }
       else {
         if (e.currentTarget.parentElement.classList.contains("open-top")) {
           e.currentTarget.parentElement.classList.remove("open-top");
         }
-      }
+      }*/
       target.parentNode.classList.toggle('open');
+      //dropdown position left or right justify
+
+      var divposition = self.menu.parentNode.querySelector('.dropdown-menu').getBoundingClientRect();
+      console.log(window.pageYOffset)
+      console.log(window.innerHeight);
+      if( (window.pageYOffset + window.innerHeight - (divposition.top + divposition.height)) < 0) {
+        console.log('element is off the bottom of the view');
+        self.menu.parentNode.classList.add("open-top");
+      } else {
+        if (self.menu.parentNode.classList.contains("open-top")) {
+          self.menu.parentNode.classList.remove("open-top");
+        }
+      }
+      if( (divposition.left + divposition.width) > window.innerWidth) {
+        console.log('element is off to the right of the view');
+        self.menu.parentNode.querySelector('.dropdown-menu').classList.add("dropdown-right-off");
+      }
       let selValue = self.menu.parentNode.querySelector(".btn .selectedText").getAttribute('value');
       if (selValue === null && self.menu.parentNode.querySelector('.dropdown-menu li:first-child') !== null) {
         self.menu.parentNode.querySelector('.dropdown-menu li:first-child').classList.add('selected-text');
@@ -316,8 +322,8 @@ class Dropdown {
     self.close = function (e) {
 
       let target = self.menu;
-      //console.log('target');
-     // console.log(target.parentNode.querySelector('ul').a;
+      console.log('target');
+     console.log(document.activeElement);
       if (document.activeElement.tagName === 'DIV') // Do not close the dropdown if clicked on scroll bar
         return false;
       setTimeout(function() { // links inside dropdown-menu don't fire without a short delay
