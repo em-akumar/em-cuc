@@ -282,9 +282,11 @@ class Dropdown {
       //dropdown position left or right justify
 
       var divposition = self.menu.parentNode.querySelector('.dropdown-menu').getBoundingClientRect();
-      console.log(window.pageYOffset)
+      console.log(window.pageYOffset);
       console.log(window.innerHeight);
-      if( (window.pageYOffset + window.innerHeight - (divposition.top + divposition.height)) < 0) {
+      console.log(divposition.top);
+      console.log(divposition.height);
+      if( (window.innerHeight - (divposition.top + divposition.height)) < 0) {
         console.log('element is off the bottom of the view');
         self.menu.parentNode.classList.add("open-top");
       } else {
