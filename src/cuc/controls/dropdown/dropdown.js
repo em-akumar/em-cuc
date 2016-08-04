@@ -280,24 +280,29 @@ class Dropdown {
       }*/
       target.parentNode.classList.toggle('open');
       //dropdown position left or right justify
+      let dropdownUL = self.menu.parentNode.querySelector('.dropdown-menu');
+      var divposition = dropdownUL.getBoundingClientRect();
 
-      var divposition = self.menu.parentNode.querySelector('.dropdown-menu').getBoundingClientRect();
-      console.log(window.pageYOffset);
-      console.log(window.innerHeight);
-      console.log(divposition.top);
-      console.log(divposition.height);
-      if( (window.innerHeight - (divposition.top + divposition.height)) < 0) {
+      var spaceUp = ( (divposition.top + window.pageYOffset) - divposition.height) - window.pageYOffset;
+
+      // how much space is left at the bottom
+      var spaceDown = window.pageYOffset + window.innerHeight - (divposition.top + window.pageYOffset + divposition.height);
+      // switch to dropup only if there is no space at the bottom AND there is space at the top, or there isn't either but it would be still better fit
+
+      if (spaceDown < 0 && (spaceUp >= 0 || spaceUp > spaceDown)) {
         console.log('element is off the bottom of the view');
         self.menu.parentNode.classList.add("open-top");
       } else {
-        if (self.menu.parentNode.classList.contains("open-top")) {
-          self.menu.parentNode.classList.remove("open-top");
-        }
+          console.log('element is off the top of the view');
+         self.menu.parentNode.classList.remove("open-top");
       }
+
+      // if dropdown is off to right side
       if( (divposition.left + divposition.width) > window.innerWidth) {
         console.log('element is off to the right of the view');
-        self.menu.parentNode.querySelector('.dropdown-menu').classList.add("dropdown-right-off");
+        dropdownUL.classList.add("dropdown-right-off");
       }
+
       let selValue = self.menu.parentNode.querySelector(".btn .selectedText").getAttribute('value');
       if (selValue === null && self.menu.parentNode.querySelector('.dropdown-menu li:first-child') !== null) {
         self.menu.parentNode.querySelector('.dropdown-menu li:first-child').classList.add('selected-text');
@@ -332,6 +337,7 @@ class Dropdown {
         if (target.parentNode && target.parentNode !== null) {
          // console.log('parent node', target.parentNode);
           target.parentNode.classList.remove('open');
+          target.parentNode.classList.remove("open-top");
         }
       }, 200);
     };
