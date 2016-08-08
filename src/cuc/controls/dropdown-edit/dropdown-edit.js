@@ -285,7 +285,7 @@ class DropdownEdit {
       }
 
       let selValue = self.combobox.parentNode.querySelector("input.form-control.em-combobox").getAttribute('value');
-      console.log(selValue);
+
       if (selValue == '' || selValue == null) {
         self.menu.parentNode.querySelector('.dropdown-menu li:first-child').classList.add('selected-text');
       } else {
@@ -298,7 +298,7 @@ class DropdownEdit {
     self.open = (e) => {
       let target = self.menu;
 
-      setTimeout(function() { // links inside dropdown-menu don't fire without a short delay
+      setTimeout(()=> { // links inside dropdown-menu don't fire without a short delay
         if (target.parentNode && target.parentNode !== null) {
           target.parentNode.classList.add('open');
         }
@@ -311,7 +311,7 @@ class DropdownEdit {
         return true;
       }
       let target = self.menu;
-      setTimeout(function() { // links inside dropdown-menu don't fire without a short delay
+      setTimeout(()=> { // links inside dropdown-menu don't fire without a short delay
         if (target.parentNode && target.parentNode !== null) {
           self.menu.parentNode.classList.remove("dropup");
           target.parentNode.classList.remove('open');

@@ -304,7 +304,7 @@ class Dropdown {
 
     self.open = (e) => {
       let target = self.menu;
-      setTimeout(function() { // links inside dropdown-menu don't fire without a short delay
+      setTimeout(()=> { // links inside dropdown-menu don't fire without a short delay
         if (target.parentNode && target.parentNode !== null) {
           target.parentNode.classList.add('open');
         }
@@ -317,7 +317,7 @@ class Dropdown {
         return true;
       }
       let target = self.menu;
-      setTimeout(function() { // links inside dropdown-menu don't fire without a short delay
+      setTimeout(()=> { // links inside dropdown-menu don't fire without a short delay
         if (target.parentNode && target.parentNode !== null) {
           self.menu.parentNode.classList.remove("dropup");
           target.parentNode.classList.remove('open');
