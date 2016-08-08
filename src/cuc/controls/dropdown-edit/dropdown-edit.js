@@ -66,11 +66,16 @@ class DropdownEdit {
     self.menu.setAttribute('tabindex', '0'); // Fix onblur on Chrome
     self.menu.addEventListener('click', self.toggle, false);
     self.menu.addEventListener('focus', self.open, false);
-    self.menu.addEventListener('blur', self.close, false);
+     self.menu.addEventListener('blur', self.close, false);
+
     self.menu.parentNode.addEventListener('click', (e) => {
       e.stopPropagation();
     });
-    document.addEventListener('click', self.closeit.bind(self), false);
+    //document.addEventListener('click', self.closeit.bind(self), false);
+    self.menu.parentNode.querySelector('.dropdown-menu').addEventListener('mousedown', (e) => {
+      self.mousedown = true;
+    });
+     document.addEventListener('click', self.close, false);
 
     document.getElementsByTagName('html')[0].addEventListener('keydown', (e) => {
       if (e.keyCode === 27) {  //Closes dropdown on Esc key
@@ -258,20 +263,26 @@ class DropdownEdit {
     });
   }
 
-  closeit(e) {
-    let target = this.menu;
-    setTimeout(function() {
-      if (target.parentNode && target.parentNode !== null)
-        target.parentNode.classList.remove('open');
-    }, 50);
-  }
-
   actions() {
     let self = this;
 
-    self.toggle = function (e) {
+    self.toggle = (e) => {
       let target = e.currentTarget || e.srcElement;
+      self.menu.parentNode.classList.remove("dropup");
+
       target.parentNode.classList.toggle('open');
+      //dropdown position left or right justify
+      let dropdownUL = self.menu.parentNode.querySelector('.dropdown-menu');
+      var divposition = dropdownUL.getBoundingClientRect();
+
+       if( (window.innerHeight - (divposition.top + divposition.height)) < 0) {
+        self.menu.parentNode.classList.add("dropup");
+      }
+
+      // if dropdown is off to right side
+      if( (divposition.left + divposition.width) > window.innerWidth) {
+        dropdownUL.classList.add("dropdown-right-off");
+      }
 
       let selValue = self.combobox.parentNode.querySelector("input.form-control.em-combobox").getAttribute('value');
       console.log(selValue);
@@ -284,20 +295,27 @@ class DropdownEdit {
       return false;
     };
 
-    self.open = function(e) {
-      let target = e.currentTarget || e.srcElement;
-      setTimeout(function () { // links inside dropdown-menu don't fire without a short delay
-        target.parentNode.classList.add('open');
+    self.open = (e) => {
+      let target = self.menu;
+
+      setTimeout(function() { // links inside dropdown-menu don't fire without a short delay
+        if (target.parentNode && target.parentNode !== null) {
+          target.parentNode.classList.add('open');
+        }
       }, 200);
     };
 
-    self.close = function (e) {
-       if (document.activeElement.tagName === 'DIV') // Do not close the dropdown if clicked on scroll bar
-        return false;
-      let target = e.currentTarget || e.srcElement;
-
-      setTimeout(function () { // links inside dropdown-menu don't fire without a short delay
-        target.parentNode.classList.remove('open');
+    self.close = (e) =>  {
+      if (self.mousedown) {
+        self.mousedown = false;
+        return true;
+      }
+      let target = self.menu;
+      setTimeout(function() { // links inside dropdown-menu don't fire without a short delay
+        if (target.parentNode && target.parentNode !== null) {
+          self.menu.parentNode.classList.remove("dropup");
+          target.parentNode.classList.remove('open');
+        }
       }, 200);
     };
   }

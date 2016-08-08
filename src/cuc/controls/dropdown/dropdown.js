@@ -20,14 +20,16 @@ class Dropdown {
         //Sort dropdown values
         this.itemList =  this.options.itemList.slice(0);
         if (this.itemList) {
-          this.itemList = this.itemList.sort((a, b) => {
+           this.itemList = this.itemList.sort((a, b) => {
             if (this.sortFieldType === 'number') {
+
               a = Number(a[this.options.sortField]);
               b = Number(b[this.options.sortField]);
             }
             else {
-              a = a[this.options.sortField].toLowerCase();
-              b = b[this.options.sortField].toLowerCase();
+
+              a = a[this.options.sortField].toLowerCase().trim();
+              b = b[this.options.sortField].toLowerCase().trim();
             }
             if (this.options.sortOrder === 'asc')
               return a > b;
@@ -77,16 +79,20 @@ class Dropdown {
 
   init() {
     let self = this;
+    self.mousedown = false;
     self.actions();
     self.menu.setAttribute('tabindex', '0'); // Fix onblur on Chrome
     self.menu.addEventListener('click', self.toggle, false);
     self.menu.addEventListener('focus', self.open, false);
     self.menu.addEventListener('blur', self.close, false);
-    //self.menu.addEventListener('onmouseup', self.close, false);  //switched from blur to onmouseup due to blur not capturing scroll bar as apart of element
+
     self.menu.parentNode.addEventListener('click', (e) => {
       e.stopPropagation();
     });
-    document.addEventListener('click', self.closeit.bind(self), false);
+    document.addEventListener('click', self.close, false);
+    self.menu.parentNode.querySelector('.dropdown-menu').addEventListener('mousedown', (e) => {
+      self.mousedown = true;
+    });
 
     self.menu.parentNode.querySelector('.dropdown-menu').addEventListener('mouseover', (e) => {
       let dropdownSelect = self.menu.parentNode.querySelector('.dropdown-menu li.selected-text');
@@ -252,7 +258,6 @@ class Dropdown {
     let self = this;
     [].forEach.call(self.menu.parentNode.querySelectorAll(".error .btn"), (value, i) => {
       value.classList.add('error');
-      //self.menu.removeEventListener('blur', self.close);
     });
   }
 
@@ -267,39 +272,20 @@ class Dropdown {
   actions() {
     let self = this;
 
-    self.toggle = function(e) {
+    self.toggle = (e) =>{
       let target = e.currentTarget || e.srcElement;
 
-     /* if (e.clientY * 2 > e.view.window.outerHeight) {
-        e.currentTarget.parentElement.classList.add("open-top");
-      }
-      else {
-        if (e.currentTarget.parentElement.classList.contains("open-top")) {
-          e.currentTarget.parentElement.classList.remove("open-top");
-        }
-      }*/
+      self.menu.parentNode.classList.remove("dropup");
+
       target.parentNode.classList.toggle('open');
-      //dropdown position left or right justify
+      // if dropdown is off to top, bottom right side
       let dropdownUL = self.menu.parentNode.querySelector('.dropdown-menu');
       var divposition = dropdownUL.getBoundingClientRect();
 
-      var spaceUp = ( (divposition.top + window.pageYOffset) - divposition.height) - window.pageYOffset;
-
-      // how much space is left at the bottom
-      var spaceDown = window.pageYOffset + window.innerHeight - (divposition.top + window.pageYOffset + divposition.height);
-      // switch to dropup only if there is no space at the bottom AND there is space at the top, or there isn't either but it would be still better fit
-
-      if (spaceDown < 0 && (spaceUp >= 0 || spaceUp > spaceDown)) {
-        console.log('element is off the bottom of the view');
-        self.menu.parentNode.classList.add("open-top");
-      } else {
-          console.log('element is off the top of the view');
-         self.menu.parentNode.classList.remove("open-top");
+       if( (window.innerHeight - (divposition.top + divposition.height)) < 0) {
+        self.menu.parentNode.classList.add("dropup");
       }
-
-      // if dropdown is off to right side
       if( (divposition.left + divposition.width) > window.innerWidth) {
-        console.log('element is off to the right of the view');
         dropdownUL.classList.add("dropdown-right-off");
       }
 
@@ -316,39 +302,25 @@ class Dropdown {
       return false;
     };
 
-    self.open = function(e) {
+    self.open = (e) => {
       let target = self.menu;
       setTimeout(function() { // links inside dropdown-menu don't fire without a short delay
         if (target.parentNode && target.parentNode !== null) {
-          //console.log('parent node', target.parentNode);
           target.parentNode.classList.add('open');
         }
       }, 200);
     };
 
-    self.close = function (e) {
-
+    self.close =  (e) => {
+      if (self.mousedown) {
+        self.mousedown = false;
+        return true;
+      }
       let target = self.menu;
-      console.log('target');
-     console.log(document.activeElement);
-      if (document.activeElement.tagName === 'DIV') // Do not close the dropdown if clicked on scroll bar
-        return false;
       setTimeout(function() { // links inside dropdown-menu don't fire without a short delay
         if (target.parentNode && target.parentNode !== null) {
-         // console.log('parent node', target.parentNode);
+          self.menu.parentNode.classList.remove("dropup");
           target.parentNode.classList.remove('open');
-          target.parentNode.classList.remove("open-top");
-        }
-      }, 200);
-    };
-
-    self.closeMain = function(e) {
-      let target = self.menu.parentNode;
-      console.log(target);
-      setTimeout(function() { // links inside dropdown-menu don't fire without a short delay
-        if (target && target !== null) {
-          //console.log('parent node', target.parentNode);
-          target.classList.remove('open');
         }
       }, 200);
     };
