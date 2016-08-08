@@ -13,6 +13,10 @@
     margin-bottom: 3px;
     display: block;
   }
+  .dropdown-right-off {
+    right: 0;
+    left: auto;
+  }
   .btn {
     background-color: @dropdown-default-background;
     border-color: @dropdown-default-border-color;
@@ -68,7 +72,6 @@
       color: @dropdown-default-icon-color;
       cursor: hand;
     }
-
     &:hover {
       background-color: @dropdown-hover-background-color;
       border: 1px solid @dropdown-hover-border-color;
@@ -280,13 +283,6 @@
     }
     .divider {
       margin: 5px 0;
-    }
-  }
-  &.open-top {
-    ul {
-      &.dropdown-menu {
-        transform: translateY(~"calc(-100% - 38px)");
-      }
     }
   }
 }
