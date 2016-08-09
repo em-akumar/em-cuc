@@ -2,7 +2,6 @@ import {safeApply} from 'ems/core';
 class DropdownController {
   /* @ngInject */
   constructor(DropdownService) {
-    this.label = 'Dropdown Controller !!';
     this.dropdownService = DropdownService;
     this.initialize();
     this.renderDropdown();
@@ -25,7 +24,7 @@ class DropdownController {
 
     this.drpState = {
       defaultText: 'Select State',
-      onChange: function (e) {
+      onChange: (e) => {
         console.log('clicked');
       },
       defaultSize: 'large'
@@ -34,23 +33,25 @@ class DropdownController {
     this.drpBranches = {
 
       defaultText: 'Select One',
-      onChange: function (e) {
+      onChange: (e) => {
         console.log('clicked');
       },
-      defaultSize: 'large'
+      defaultSize: 'large',
+      sortField: 'text',
+      sortOrder: 'desc'
     };
 
     this.drpCities = {
       defaultText: 'Select Multiple',
-      onChange: function (e, selectedId, selectedText) {
-        console.log('clicked selected Text '+ selectedText);
+      onChange: (e, selectedId, selectedText) => {
+        console.log('clicked selected Text ' + selectedText);
       },
       defaultSize: 'large'
     };
     this.drpCitiesTest = {
       defaultText: 'Select Multiple',
-      onChange: function (e, selectedId, selectedText) {
-        console.log('clicked '+ selectedId);
+      onChange: (e, selectedId, selectedText) => {
+        console.log('clicked ' + selectedId);
       },
       defaultSize: 'large'
     };
@@ -58,7 +59,7 @@ class DropdownController {
     this.drpStateDisabledItem = {
 
       defaultText: 'Select One',
-      onChange: function (e) {
+      onChange: (e) => {
         console.log('clicked');
       },
       defaultSize: 'large',
@@ -69,7 +70,7 @@ class DropdownController {
     this.drpStateDividerItem = {
       defaultValue: 2,
       defaultText: 'Select One',
-      onChange: function (e) {
+      onChange: (e) => {
         console.log('clicked');
       },
       defaultSize: 'large',
@@ -79,7 +80,7 @@ class DropdownController {
     this.drpStateLarge = {
 
       defaultText: 'Select One',
-      onChange: function (e) {
+      onChange: (e) => {
         console.log('clicked');
       },
       defaultSize: 'large',
@@ -88,7 +89,7 @@ class DropdownController {
     this.drpStateHeightXs = {
 
       defaultText: 'Select One',
-      onChange: function (e) {
+      onChange: (e) => {
         console.log('clicked');
       },
       defaultSize: 'xs-height',
@@ -98,7 +99,7 @@ class DropdownController {
     this.drpStateHeightSm = {
 
       defaultText: 'Select One',
-      onChange: function (e) {
+      onChange: (e) => {
         console.log('clicked');
       },
       defaultSize: 'sm-height',
@@ -108,7 +109,7 @@ class DropdownController {
     this.drpStateHeightMd = {
 
       defaultText: 'Select One',
-      onChange: function (e) {
+      onChange: (e) => {
         console.log('clicked');
       },
       defaultSize: 'md-height',
@@ -118,7 +119,7 @@ class DropdownController {
     this.drpStateHeightLg = {
 
       defaultText: 'Select One',
-      onChange: function (e) {
+      onChange: (e) => {
         console.log('clicked');
       },
       defaultSize: 'lg-height',
@@ -128,7 +129,7 @@ class DropdownController {
     this.drpStateMedium = {
 
       defaultText: 'Select One',
-      onChange: function (e) {
+      onChange: (e) => {
         console.log('clicked');
       },
       defaultSize: 'medium',
@@ -138,7 +139,7 @@ class DropdownController {
     this.drpStateSmall = {
 
       defaultText: 'Select One',
-      onChange: function (e) {
+      onChange: (e) => {
         console.log('clicked');
       },
       defaultSize: 'small',
@@ -148,7 +149,7 @@ class DropdownController {
     this.drpStateExtraSmall = {
 
       defaultText: 'Select One',
-      onChange: function (e) {
+      onChange: (e) => {
         console.log('clicked');
       },
       defaultSize: 'xs',
@@ -158,7 +159,7 @@ class DropdownController {
     this.drpStateFlexible = {
 
       defaultText: 'Select One',
-      onChange: function (e) {
+      onChange: (e) => {
         console.log('clicked');
       },
       defaultSize: 'flexible-width',
@@ -170,9 +171,9 @@ class DropdownController {
     this.dropdownService.resolvePromise().then((response) => {
       // this.drpCountry.itemList = response.data;
       this.drpBranches.itemList = response.data;
-      response.data.forEach(function (arrayItem)
+      response.data.forEach((arrayItem) =>
       {
-        arrayItem.check= false;
+        arrayItem.check = false;
       });
       this.drpCities.itemList = response.data;
       this.drpCitiesTest.itemList = response.data;

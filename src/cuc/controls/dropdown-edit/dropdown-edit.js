@@ -19,23 +19,23 @@ class DropdownEdit {
         this.itemList =  this.options.itemList.slice(0);
         if (this.itemList) {
           if (this.sortFieldType === 'number') {
-            this.itemList = this.itemList.sort((a, b) => {
-              a = Number(a[this.options.sortField]);
-              b = Number(b[this.options.sortField]);
+            this.itemList = this.itemList.sort((txt, val) => {
+              txt = Number(txt[this.options.sortField]);
+              val = Number(val[this.options.sortField]);
 
               if (this.options.sortOrder === 'asc')
-                return a > b;
+                return txt > val;
               else
-                return a < b;
+                return txt < val;
             });
           } else {
-            this.itemList = this.itemList.sort((obj1, obj2) => {
-              let x = obj1[this.options.sortField].toLowerCase();
-              let y = obj2[this.options.sortField].toLowerCase();
+            this.itemList = this.itemList.sort((txt, val) => {
+              let sortText = txt[this.options.sortField].toLowerCase();
+              let sortVal = val[this.options.sortField].toLowerCase();
               if (this.options.sortOrder === 'desc') {
-                return x > y ? -1 : x < y ? 1 : 0;
+                return sortText > sortVal ? -1 : sortText < sortVal ? 1 : 0;
               } else {
-                return x < y ? -1 : x > y ? 1 : 0;
+                return sortText < sortVal ? -1 : sortText > sortVal ? 1 : 0;
               }
             });
           }
