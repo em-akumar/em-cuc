@@ -16,16 +16,29 @@ class DropdownEdit {
         this.options.size = this.options.defaultSize || 'medium';
 
         //Sort dropdown values
-        if (this.options.itemList) {
-          this.options.itemList.sort((obj1, obj2) => {
-            let x = obj1[this.options.sortField].toLowerCase();
-            let y = obj2[this.options.sortField].toLowerCase();
-            if (this.options.sortOrder === 'desc') {
-              return x > y ? -1 : x < y ? 1 : 0;
-            } else {
-              return x < y ? -1 : x > y ? 1 : 0;
-            }
-          });
+        this.itemList =  this.options.itemList.slice(0);
+        if (this.itemList) {
+          if (this.sortFieldType === 'number') {
+            this.itemList = this.itemList.sort((a, b) => {
+              a = Number(a[this.options.sortField]);
+              b = Number(b[this.options.sortField]);
+
+              if (this.options.sortOrder === 'asc')
+                return a > b;
+              else
+                return a < b;
+            });
+          } else {
+            this.itemList = this.itemList.sort((obj1, obj2) => {
+              let x = obj1[this.options.sortField].toLowerCase();
+              let y = obj2[this.options.sortField].toLowerCase();
+              if (this.options.sortOrder === 'desc') {
+                return x > y ? -1 : x < y ? 1 : 0;
+              } else {
+                return x < y ? -1 : x > y ? 1 : 0;
+              }
+            });
+          }
         }
 
         //Check wheather any item has image in dropdown options
@@ -42,10 +55,7 @@ class DropdownEdit {
       <span class="caret"></span></button>
 			<ul class="dropdown-menu ${this.options.size}" role="menu">
 			${this.options.itemList.map((value, i) =>
-            ` ${value.divider ? '<li class="divider"></li>' : ''}<li value="${value[this.options.valueField || 'value']}" class="${value.class === undefined ? '' : value.class}"><a value="${value[this.options.valueField || 'value']}">${value.leftImage !== undefined ? `<img class="em-left-icon" src="${value.leftImage}" />` : (IconFlagEdit == true) ? '<span class="em-left-icon"></span>' : ''} ${value[this.options.textField || 'text']}
-       ${value.rightImage !== undefined ? `<img class="em-right-icon" src="${value.rightImage}" />` : ``}</a> </li>`
-          ).join('')}
-			</ul></div></div>`;
+            ` ${value.divider ? '<li class="divider"></li>' : ''}<li value="${value[this.options.valueField || 'value']}" class="${value.class === undefined ? '' : value.class}"><a value="${value[this.options.valueField || 'value']}">${value.leftImage !== undefined ? `<img class="em-left-icon" src="${value.leftImage}" />` : (IconFlagEdit == true) ? '<span class="em-left-icon"></span>' : ''}${value[this.options.textField || 'text']}${value.rightImage !== undefined ? `<img class="em-right-icon" src="${value.rightImage}" />` : ``}</a></li>`).join('')}</ul></div></div>`;
         this.mainParent.innerHTML = this.template;
       }
       this.menu = this.mainParent.querySelector(".btn");
