@@ -2,6 +2,7 @@
   .btn {
     height: $dropdown-default-height;
     padding: 0;
+    border-radius: 0;
     .caret-box {
       width: 30px;
       float: right;
@@ -20,6 +21,7 @@
     }
   }
     ul.dropdown-menu {
+      border-radius: 0;
       li {
         :hover {
           background-color: $curious-blue-light;
