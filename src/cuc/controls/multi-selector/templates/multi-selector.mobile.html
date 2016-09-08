@@ -1,6 +1,6 @@
 <div class="reo-mobile item">
   <label class="item-input item-stacked-label">
-          <div class="input-label" ng-bind="vm.title"></div>
+          <div class="input-label"> <span ng-if="vm.required" class="required-multiselect">*</span>{{vm.title}}</div>
   </label>
   <label class="item item-checkbox" ng-class="{true: 'selection'}[vm.selectedArray != undefined && vm.selectedArray.length > 0]" ng-click="vm.toggleOptionModal()">
     <div class="checkbox checkbox-input-hidden disable-pointer-events checkbox-circle">

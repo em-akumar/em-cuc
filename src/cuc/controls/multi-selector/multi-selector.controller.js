@@ -14,9 +14,11 @@ class MultiSelectorController {
     this.title = this.title || 'Select Option';
     this.defaultTitle = 'Select';
     this.check_status = false;
+    this.required = this.required || false;
 
     // check modal biding
     this.selected = this.selectedArray = this.selected || '';
+    this.selectedCount = this.selectedArray.length || 0;
     this._checkStatus();
     this._initializePreSelect();
   }
@@ -28,6 +30,10 @@ class MultiSelectorController {
       this.optionsModal.show();
     }
     this.optionsModalState = !this.optionsModalState;
+  }
+
+  validatedCheck(itemCheck) {
+    itemCheck ? this.selectedCount++ : this.selectedCount--;
   }
 
   saveChange() { // done button click
