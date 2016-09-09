@@ -8,7 +8,9 @@
     "posttest": "./node_modules/istanbul report --include coverage/**/.json --dir reports/coverage cobertura",
     "start": "ems",
     "prebuild": "ems build --lint",
-    "build": "cd dist && mkdir web && cp *.* web/. && cd .."
+    "build": "cd dist && mkdir web && cp *.* web/. && cd ..",
+    "prepub": "ems build --lint",
+    "pub": "cd dist && mkdir web && cp *.* web/. && cd .. && npm version patch && git push --follow-tags"
   },
   "repository": {
     "type": "git",
@@ -96,4 +98,3 @@
     "ionic-sdk": "1.2.4"
   }
 }
-
