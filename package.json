@@ -10,7 +10,8 @@
     "prebuild": "ems build --lint",
     "build": "cd dist && mkdir web && cp *.* web/. && cd ..",
     "prepub": "ems build --lint",
-    "pub": "cd dist && mkdir web && cp *.* web/. && cd .. && npm version patch && git push --follow-tags"
+    "pub": "cd dist && mkdir web && cp *.* web/. && cd .. && npm version patch && git push --follow-tags",
+    "postpub": "npm publish"
   },
   "repository": {
     "type": "git",
