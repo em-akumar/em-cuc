@@ -23,8 +23,11 @@ class MultiSelectorController {
     this._initializePreSelect();
   }
 
-  toggleOptionModal() {
+  toggleOptionModal(modified = false) {
     if (this.optionsModalState) { // true opened
+      if (!modified) { //reset to original checked values
+        this._initializePreSelect();
+      }
       this.optionsModal.hide();
     } else { // false closed
       this.optionsModal.show();
@@ -56,7 +59,7 @@ class MultiSelectorController {
 
     this._checkStatus();
 
-    this.toggleOptionModal();
+    this.toggleOptionModal(true);
   }
 
   _checkStatus() {
