@@ -2,14 +2,14 @@
     <ion-view class="modal-view-body">
       <ion-header-bar class="bar bar-header bar-calm bar-em-header">
         <h1 class="title title-left" ng-bind="vm.title"></h1>
-        <div class="button button-clear" ng-click="vm.toggleOptionModal()"><span class="icon ion-ios-close-empty"></span></div>
+        <div class="button button-clear" ng-click="vm.toggleOptionModal()"  ng-if="!vm.required"><span class="icon ion-ios-close-empty"></span></div>
       </ion-header-bar>
       <ion-content class="has-header">
-        <ion-checkbox ng-repeat="item in vm.options track by $index" ng-model="vm.checkboxModel[$index]">{{item.text}}</ion-checkbox>
+        <ion-checkbox ng-repeat="item in vm.options track by $index" ng-model="vm.checkboxModel[$index]" ng-change="vm.validatedCheck(vm.checkboxModel[$index])">{{item.text}}</ion-checkbox>
       </ion-content>
       <ion-footer-bar class="bar bar-footer" text-align="center">
         <div class="button-bar">
-          <a class="button button-positive" ng-click="vm.saveChange()">Done</a>
+          <a class="button button-positive" ng-click="vm.saveChange()" ng-disabled="vm.required ? vm.selectedCount === 0 ? true : false : false">Done</a>
         </div>
       </ion-footer-bar>
     </ion-view>

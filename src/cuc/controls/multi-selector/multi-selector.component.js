@@ -12,7 +12,8 @@ let multiSelectorComponent = () => {
       title: '@',
       onDone: '&',
       selected: '=?',
-      options: '='
+      options: '=',
+      required: '@'
     },
     template,
     controller,

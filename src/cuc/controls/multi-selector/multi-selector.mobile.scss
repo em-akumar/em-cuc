@@ -1,8 +1,8 @@
 .bar {
   &.bar-header {
     &.bar-em-header {
-      background-color: $item-list-header-bg-color;
-      border-color: $item-list-header-bg-color;
+      background-color: $keppel-dark;
+      border-color: $keppel-dark;
     }
   }
 }
@@ -12,6 +12,11 @@
     label.item {
       &.item-checkbox {
         border: none;
+      }
+    }
+    .button-bar {
+      .button{
+        border-radius:0;
       }
     }
   }
@@ -24,20 +29,25 @@
       padding: 10px 5px;
       padding-top: 0;
     }
+    .input-label {
+      .required-multiselect {
+      color: $alizarin-crimson;
+      }
+    }
   }
   label.item {
     &.item-checkbox {
       padding-top: 16px;
       padding-bottom: 16px;
       &.selection {
-        border:2px solid $lock-locked-color;
+        border:2px solid $cornflower-blue;
       }
       .checkbox {
         &.checkbox-circle {
           .checkbox-icon {
             &:before {
-              background: $lock-locked-color;
-              border-color: $lock-locked-color;
+              background: $cornflower-blue;
+              border-color: $cornflower-blue;
               border-width: calculateRem(2);
             }
             &:after {
@@ -63,7 +73,7 @@
           border-top: none;
         }
         &:first-child {
-          border-top-color: $lock-locked-color;
+          border-top-color: $cornflower-blue;
         }
         &:not(:last-child) {
           border-bottom: none;
