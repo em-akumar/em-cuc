@@ -752,7 +752,7 @@ cuc.directive('emTxtDecimalUpto', function () {
         /*To allow only positive decimals*/
         if (attrs.emAllowNegative == "false") {
           if (spiltArray[0] == '-') {
-            newValue = newValue ? newValue.replace("-", "") : "";
+            newValue = newValue && newValue.constructor === String ? newValue.replace("-", "") : "";
             ngModel.$setViewValue(newValue);
             ngModel.$render();
           }
@@ -761,7 +761,7 @@ cuc.directive('emTxtDecimalUpto', function () {
         /*to restrict number of digits after decimal points*/
         if (attrs.emTxtDecimalUpto == 0) {
           if (newValue) {
-            newValue = newValue.replace(".", "");
+            newValue = newValue.constructor === String ? newValue.replace(".", "") : newValue;
             ngModel.$setViewValue(newValue);
             ngModel.$render();
           }
