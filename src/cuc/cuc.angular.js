@@ -95,46 +95,49 @@ cuc.directive('lockField', ($compile) => {
     },
     controller: function ($scope, $element) {
       if (!$scope.lockField) {
-        $scope.lockField = {align: 'right', isActive: true};
+        $scope.lockField = {align: 'right',isActive: true};
       }
-      $scope.activeButton = function($event){
+      $scope.activeButton = function ($event) {
         let par = $event.target.parentNode;
-        if($scope.lockField.isActive) {
+        if ($scope.lockField.isActive) {
           angular.element(par.querySelector("input")).prop("disabled", true);
           $scope.lockField.isActive = !$scope.lockField.isActive;
         }
-        else{
+        else {
           angular.element(par.querySelector("input")).prop("disabled", false);
           $scope.lockField.isActive = !$scope.lockField.isActive;
+        }
+        if (typeof $scope.lockField.click === 'function') {
+          $scope.lockField.click($event);
         }
       };
     },
     compile: (tElement, tAttrs, transclude) => {
-    return {
-      pre: function preLink(scope, iElement, iAttrs, controller) {
-        let parentElement = iElement.parent().parent();
-        parentElement.addClass('em-lbl-left');
+      return {
+        pre: function preLink(scope, iElement, iAttrs, controller) {
+          let parentElement = iElement.parent().parent();
+          parentElement.addClass('em-lbl-left');
 
-        let newDirective = angular.element(`<span ng-class="{'lock-unlocked': lockField.isActive, 'lock-expired': !lockField.isActive }"
+          let newDirective = angular.element(`<span ng-class="{'lock-unlocked': lockField.isActive, 'lock-expired': !lockField.isActive }"
         ng-click="activeButton($event)" class="input-group-addon icon em-lock-state"></span>`);
 
-        var content = $compile(newDirective)(scope);
+          var content = $compile(newDirective)(scope);
 
-        // var content = linkFn(scope);
-        if (scope.lockField && scope.lockField.align === 'right') {
-          parentElement.append(content);
+          // var content = linkFn(scope);
+          if (scope.lockField && scope.lockField.align === 'right') {
+            parentElement.append(content);
 
+          }
+          else if (iElement.parent && parentElement && parentElement.find("label").length > 0) {
+            parentElement.find("label").after(content);
+          }
+          else {
+            parentElement.prepend(content);
+          }
         }
-        else if (iElement.parent && parentElement && parentElement.find("label").length > 0) {
-          parentElement.find("label").after(content);
-        }
-        else {
-          parentElement.prepend(content);
-        }
-      }
-    };
-}
-}
+      };
+    }
+  }
 });
 cuc.directive('ckEditor', () => {
   return {
@@ -288,8 +291,8 @@ cuc.directive('uiGridCustomPaging', function ($compile, $timeout) {
         '</nav>' +
         '</div>';
         // Added to update page = 1 in UI Grid
-        if(uiGridctrl.grid.api.pagination.getPage() !== 1) uiGridctrl.grid.api.pagination.seek(1);
-        if(element[0].querySelector('.em-complex-table-footer')){
+        if (uiGridctrl.grid.api.pagination.getPage() !== 1) uiGridctrl.grid.api.pagination.seek(1);
+        if (element[0].querySelector('.em-complex-table-footer')) {
           let elementToRemove = element[0].querySelector('.em-complex-table-footer').parentNode;
           elementToRemove.parentNode.removeChild(elementToRemove);
         }
@@ -451,12 +454,12 @@ cuc.directive('uiGridCustomPaging', function ($compile, $timeout) {
           selectPage.style.width = ( selectPage.options[selectPage.selectedIndex].text.length * 10) + 'px';
           uiGridctrl.grid.api.pagination.seek(Number(val));
         }
-        scope._pageOnNumSelect =  (e)=>{
+        scope._pageOnNumSelect = (e)=> {
           // Prevent unnecessary initPage calls
           if (!(maxPage <= 1 && parseInt(scope._selectedPageVal) >= totalRow)) {
             uiGridctrl.grid.options.paginationPageSize = scope._selectedPageVal;
             initPage(scope);
-					}
+          }
         }
         scope._onPageSelectLeave = (e)=> {
           element[0].querySelector('.em-complex-table-footer .em-page-ddl').classList.remove('hover');

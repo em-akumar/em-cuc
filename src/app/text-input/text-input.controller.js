@@ -12,7 +12,10 @@ class TextInputController {
     };
   this.lockFieldOptions = {
     align: 'left',
-    isActive: true
+    isActive: true,
+    click: (e) => {
+      console.log('clicked');
+    }
   };
     // this.initialize();
     this.change_event = ($event) => {
