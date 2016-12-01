@@ -86,6 +86,56 @@ cuc.directive('emc', () => {
   };
 });
 
+cuc.directive('lockField', ($compile) => {
+  return {
+    restrict: 'A',
+    replace: true,
+    scope: {
+      lockField: "=?lockField"
+    },
+    controller: function ($scope, $element) {
+      if (!$scope.lockField) {
+        $scope.lockField = {align: 'right', isActive: true};
+      }
+      $scope.activeButton = function($event){
+        let par = $event.target.parentNode;
+        if($scope.lockField.isActive) {
+          angular.element(par.querySelector("input")).prop("disabled", true);
+          $scope.lockField.isActive = !$scope.lockField.isActive;
+        }
+        else{
+          angular.element(par.querySelector("input")).prop("disabled", false);
+          $scope.lockField.isActive = !$scope.lockField.isActive;
+        }
+      };
+    },
+    compile: (tElement, tAttrs, transclude) => {
+    return {
+      pre: function preLink(scope, iElement, iAttrs, controller) {
+        let parentElement = iElement.parent().parent();
+        parentElement.addClass('em-lbl-left');
+
+        let newDirective = angular.element(`<span ng-class="{'lock-unlocked': lockField.isActive, 'lock-expired': !lockField.isActive }"
+        ng-click="activeButton($event)" class="input-group-addon icon em-lock-state"></span>`);
+
+        var content = $compile(newDirective)(scope);
+
+        // var content = linkFn(scope);
+        if (scope.lockField && scope.lockField.align === 'right') {
+          parentElement.append(content);
+
+        }
+        else if (iElement.parent && parentElement && parentElement.find("label").length > 0) {
+          parentElement.find("label").after(content);
+        }
+        else {
+          parentElement.prepend(content);
+        }
+      }
+    };
+}
+}
+});
 cuc.directive('ckEditor', () => {
   return {
     require: '?ngModel',

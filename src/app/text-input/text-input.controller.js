@@ -10,7 +10,10 @@ class TextInputController {
           // ssn value chnage handler.
       }
     };
-
+  this.lockFieldOptions = {
+    align: 'left',
+    isActive: true
+  };
     // this.initialize();
     this.change_event = ($event) => {
       console.log(angular.element($event.srcElement).hasClass('locked'));
