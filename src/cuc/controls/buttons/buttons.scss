@@ -1,0 +1,159 @@
+.btn {
+  /* override primary button */
+  &.btn-primary {
+    background-color: $dark-cerulean;
+    height: $btn-size-medium;
+    min-width: $btn-size-medium;
+    padding: $btn-size-padding;
+    border-color: 1px solid $dark-cerulean;
+    border-radius: $btn-radius;
+    @include font-size(regular, $btn-text-font-size, $white);
+    /* override primary hover button state  */
+    &:hover,
+    &.hover {
+      background-color: $secondary-blue;
+      border-color: $dark-cerulean;
+    }
+    /* override primary active button state  */
+    &:active,
+    &.active,
+    &:focus,
+    &.focus,
+    &:active:hover,
+    &.active:hover {
+      background-color: $dark-cerulean;
+      border-color: $dark-cerulean;
+      outline: 0;
+      box-shadow: none;
+    }
+    /* disabled the primary button */
+    &.disabled,
+    &.disabled.active,
+    &.disabled.focus,
+    &.disabled:active,
+    &.disabled:focus,
+    &.disabled:hover,
+    &[disabled],
+    &[disabled].active,
+    &[disabled].focus,
+    &[disabled]:active,
+    &[disabled]:focus,
+    &[disabled]:hover {
+      background-color: $dusk;
+      border-color: $dusk;
+      color: $white-smoke;
+    }
+  }
+
+  /* override default button */
+  &.btn-default {
+    background-color: $white;
+    height: $btn-size-medium;
+    min-width: $btn-size-medium;
+    padding: $btn-size-padding;
+    border: 1px solid $dusk;
+    border-radius: $btn-radius;
+    @include font-size(regular, $btn-text-font-size, $primary-blue);
+    /* override default hover and focus button state  */
+    &:hover,
+    &.hover {
+      border-color: $secondary-blue;
+    }
+    /* override default active button state  */
+    &:active,
+    &.active,
+    &:focus,
+    &.focus,
+    &:active:hover,
+    &.active:hover {
+      border: 1px solid $dark-cerulean;
+      outline: 0;
+      box-shadow: none;
+    }
+    /* disabled the default button */
+    &:disabled,
+    &.disabled,
+    &.disabled.active,
+    &.disabled.focus,
+    &.disabled:hover,
+    &[disabled],
+    &[disabled].active,
+    &[disabled].focus,
+    &[disabled].hover {
+      border: 1px solid $silver-wolf;
+      color: $dusk;
+    }
+  }
+
+  /* added new class for tertiary button */
+  &.em-btn-tertiary {
+    background-color: $jordy-blue;
+    border: 1px solid $primary-blue;
+    height: $btn-size-medium;
+    min-width: $btn-size-medium;
+    border-radius: $btn-radius;
+    padding: $btn-size-padding;
+    @include font-size(regular, $btn-tertiary-text-font-size, $white);
+    /* added new class for tertiary hover and focus button state  */
+    &.hover,
+    &:hover {
+      background-color: $secondary-blue;
+      border: 1px solid $primary-blue;
+      //color: $white;
+    }
+    /* added new class for tertiary active button state  */
+    &:active,
+    &.active,
+    &:focus,
+    &.focus,
+    &:active:hover,
+    &.active:hover {
+      background-color: $primary-blue;
+      border: 1px solid $primary-blue;
+      outline: 0;
+      box-shadow: none;
+    }
+
+    /* added new class to disabled the tertiary button */
+    &:disabled,
+    &.disabled,
+    &.disabled.active,
+    &.disabled.focus,
+    &.disabled:hover,
+    &[disabled],
+    &[disabled].active,
+    &[disabled].focus {
+      background-color: $dusk;
+      border: 1px solid $dusk;
+      color: $white-smoke;
+    }
+  }
+
+  /* override extra small button */
+  &.btn-xs {
+    height: $btn-size-height-xsmall;
+    padding: $btn-xs-padding;
+    @include font-size(regular, $btn-tertiary-text-font-size);
+  }
+
+  /* override small button */
+  &.btn-sm {
+    height: $btn-size-height-small;
+    padding: $btn-sm-padding;
+  }
+
+  /* override medium button */
+  &.btn-md {
+    height: $btn-size-medium;
+  }
+
+  /* override large button */
+  &.btn-lg {
+    height: $btn-size-height-large;
+  }
+
+  /* override flex button */
+  &.btn-block {
+    width: $btn-width-flexible;
+  }
+}

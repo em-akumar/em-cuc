@@ -1,0 +1,26 @@
+@import "./shared/variables.scss";
+
+//Checkbox
+$checkbox-size: 16px;
+$checkbox-margin-top-bottom:12px;
+$checkbox-padding-left: 26px;
+$checkbox-background-size: 10px;
+
+$checkbox-label-font-size:13px;
+$checkbox-label-width:13px;
+$checkbox-label-width:22px;
+
+//Button
+
+$btn-size-medium: 28px;
+$btn-size-height-xsmall: 18px;
+$btn-size-height-small: 24px;
+$btn-size-height-large: 40px;
+$btn-width-flexible: 100%;
+$btn-size-padding: 5px 10px;
+$btn-xs-padding:1px 5px;
+$btn-sm-padding:1px 10px;
+$btn-radius: 2px;
+$btn-text-font-size: 13px;
+$btn-tertiary-size-medium: 21px;
+$btn-tertiary-text-font-size: 11px;

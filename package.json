@@ -1,6 +1,6 @@
 {
   "name": "@elliemae/em-cuc",
-  "version": "3.5.8",
+  "version": "4.0.0",
   "description": "Ellie Mae EmCuc Development",
   "main": "index.js",
   "scripts": {
@@ -37,7 +37,7 @@
     },
     "styles": {
       "app": "./src/app/app.less",
-      "cuc": "./src/cuc/cuc.less",
+      "cuc": "./src/cuc/cuc.web.scss",
       "cuc.tablet": "./src/cuc/cuc.tablet.scss",
       "cuc.mobile": "./src/cuc/cuc.mobile.scss",
       "cuc.grid": "./src/cuc/controls/ui-grid/ui-grid.less",
