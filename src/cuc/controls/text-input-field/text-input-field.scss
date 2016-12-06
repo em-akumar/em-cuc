@@ -1,0 +1,85 @@
+/* override default input text box */
+input[type="text"], input[type="password"], input[type="ssn"], input[type="number"],  input[type="email"]{
+  height: $input-field-height;
+  background-color: $white;
+  border: 1px solid $dusk;
+  box-shadow: $input-field-box-shadow $white-smoke;
+  padding: $input-field-padding;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  @include font-size(regular, $input-field-label-font-size, $black);
+  text-align: left;
+  &:hover, &.hover {
+    border: 1px solid $secondary-blue;
+    //box-shadow: $input-field-box-shadow $secondary-blue; // Check with Bryan
+  }
+  &:active, &.active, &:focus,&.focus {
+    color: $night-hawk;
+    font-weight: $font-family-semibold;
+  }
+  &[disabled],&[disabled]:hover,&[disabled]:active,&[disabled]:focus {
+    background-color: $white-smoke;
+    border: 1px solid $dusk;
+    color: $dusk;
+  }
+  &.error{
+    border: 1px solid $danger;
+    box-shadow: $input-field-box-shadow $strawberry
+  }
+  &[data-restricted=true], &[data-restricted=true]:hover {
+    background-color: $white-smoke;
+    border: 1px solid $white-smoke;
+    color: $dusk;
+    box-shadow: none !important;
+    -webkit-text-security: none;
+    -webkit-text-security: circle;
+    -webkit-text-security: square;
+    -webkit-text-security: disc; /* Default */
+  }
+  &.em-txt-ex-sm{
+    width: $input-field-size-extra-small;
+  }
+  &.em-txt-sm{
+    width: $input-field-size-small;
+  }
+  &.em-txt-md{
+    width: $input-field-size-medium;
+  }
+  &.em-txt-lg{
+    width: $input-field-size-large;
+  }
+  &.em-txt-flex{
+    width: $input-field-size-flexible;
+  }
+}
+.em-astRequired {
+  color: $danger;
+}
+
+
+// label position left
+.form-group.em-lbl-left, .input-group.em-lbl-left {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: flex-start;
+  label {
+    margin-right: 10px;
+  }
+}
+
+
+/*.em-text-label {
+  color: $black;
+  max-width: $text-line-max-width;
+  font-size: $font-size-small;
+  font-weight: 400;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.em-top-align {
+  margin-top: 0;
+  padding-top: 0;
+}
+*/
