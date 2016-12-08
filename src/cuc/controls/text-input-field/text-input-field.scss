@@ -8,11 +8,11 @@ input[type="text"], input[type="password"], input[type="ssn"], input[type="numbe
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  border-radius: 0;
   @include font-size(regular, $input-field-label-font-size, $black);
   text-align: left;
   &:hover, &.hover {
     border: 1px solid $secondary-blue;
-    //box-shadow: $input-field-box-shadow $secondary-blue; // Check with Bryan
   }
   &:active, &.active, &:focus,&.focus {
     color: $night-hawk;
@@ -22,6 +22,12 @@ input[type="text"], input[type="password"], input[type="ssn"], input[type="numbe
     background-color: $white-smoke;
     border: 1px solid $dusk;
     color: $dusk;
+  }
+  &[readonly],&[readonly]:hover,&[readonly]:active,&[readonly]:focus {
+    background-color: $white-smoke;
+    border: 1px solid $dusk;
+    box-shadow: none;
+    color:$black;
   }
   &.error{
     border: 1px solid $danger;

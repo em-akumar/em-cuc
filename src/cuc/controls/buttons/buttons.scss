@@ -39,9 +39,9 @@
     &[disabled]:active,
     &[disabled]:focus,
     &[disabled]:hover {
-      background-color: $dusk;
-      border-color: $dusk;
-      color: $white-smoke;
+      background-color: $gray-star;
+      border-color: $gray-star;
+      color: $cloud;
     }
   }
 
@@ -67,6 +67,8 @@
     &:active:hover,
     &.active:hover {
       border: 1px solid $dark-cerulean;
+      background-color: $white;
+      color: $dark-cerulean;
       outline: 0;
       box-shadow: none;
     }
@@ -80,8 +82,8 @@
     &[disabled].active,
     &[disabled].focus,
     &[disabled].hover {
-      border: 1px solid $silver-wolf;
-      color: $dusk;
+      border: 1px solid $gray-star;
+      color: $gray-star;
     }
   }
 
@@ -123,9 +125,9 @@
     &[disabled],
     &[disabled].active,
     &[disabled].focus {
-      background-color: $dusk;
-      border: 1px solid $dusk;
-      color: $white-smoke;
+      background-color: $gray-star;
+      border: 1px solid $gray-star;
+      color: $cloud;
     }
   }
 
